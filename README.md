@@ -18,6 +18,7 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 ## TO-DO list 
 
 - [ ] Vérifier que chacun peut ouvrir le projet DOTNET 
+- [ ] Ajouter base de données 
 - [ ] Ajouter toutes les extensions (packages NUGGET)
 - [ ] Organiser le dépôt git (workflow)
 - [ ] Se mettre d'accord sur les éléments à afficher pour chaque menu 
