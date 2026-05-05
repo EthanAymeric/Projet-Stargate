@@ -15,3 +15,12 @@ Pour push :
 
 Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender)
 
+## TO-DO list 
+
+- [ ] Vérifier que chacun peut ouvrir le projet DOTNET 
+- [ ] Ajouter toutes les extensions (packages NUGGET)
+- [ ] Organiser le dépôt git (workflow)
+- [ ] Se mettre d'accord sur les éléments à afficher pour chaque menu 
+- [ ] Choisir comment séparer les menus / morceaux de code 
+- [ ] Se répartir les tâches
+- [ ] Choisir un thème global et l'appliquer 
