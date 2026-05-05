@@ -7,14 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SQLite;
 
 namespace SAE24
 {
     public partial class Form1 : Form
     {
+        string chaine = @"Data Source = ..\..\DataBase\Stargate.db";
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
         }
     }
 }
