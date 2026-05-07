@@ -31,3 +31,93 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 La branche `main` est la branche "stable": elle contient toutes les features fonctionnelles. Pour chaque feature, une branche `feature-NOM_DE_FEATURE` est créée, avec dans celle-ci un fichier `README.md` contenant le **responsable de la feature** (assigné après discussion) et une TO-DO list des éléments à ajouter à cette feature et ceux qui l'ont déjà été. 
 
 Une fois la feature terminée, cette branche sera `merge` directement sur la branche `main` par le **responsable de la feature** après avoir vérifié que celle-ci s'intègre correctement au reste (tous les conflits ayant été résolus). 
+
+## Organisation des menus / volets 
+
+### Tableau de bord des missions 
+
+Afficher les informations suivantes sur toutes les missions: 
+- De nom de la mission 
+- Date de départ 
+- Durée
+- Identité du chef (nom + prénom + grade ?)
+
+> Mode connecté puis déconnecté 
+
+### Création d'une mission 
+
+- Faire un champ login
+- Faire un champ mot de passe (caché) avec un bouton pour afficher le mot de passe en clair 
+- Faire un bouton se connecter / valider 
+
+> Mode connecté
+
+- Champ nom de planète 
+- Générer un nom de mission par rapport aux nombre de missions faites sur cette planète 
+- Combobox pour le chef de mission 
+- Choisir une date de départ et d'arrivée (label durée)
+- Grosse TextBox permettant de saisir la feuille de route 
+- Champ nombre de membres 
+- Champ objectif databaz 
+- Champ budget
+- Sélectionner les membres 
+- Sélectionner objectifs de capture 
+- Bouton valider 
+
+> Mode connecté 
+
+### Récapitulatif complet des informations sur une mission 
+
+> Faire un formulaire avec des onglets 
+
+- Afficher toutes les informations concernant la mission sélectionnée (voir [Création d'une mission](#Création-d'une-mission))
+- Bouton générer pdf 
+
+> Mode déconnecté 
+
+- Evénements du journal de bord (moyen de naviguer dedans)
+- Récapitulatif des dépenses (et sommes versées)
+- Récapitulatif des captures 
+- Récapitulatif des contacts (informateurs)
+- Bouton générer pdf 
+
+> Mode liaison de données
+
+- Bouton/Volet modifier les informations/ajouter des événements
+
+### Affichage des races répertoriées 
+
+> Faire un formulaire avec des onglets 
+
+- Afficher nom, couleur (pour neutre si existe)
+- Afficher type arme, degré d'agressivité (pour ennemi)
+- Afficher date de premier contact, degré de bienveillance et instrument favori (pour allié)
+- Faire des filtres 
+
+> Mode déconnecté 
+
+### Affichage des informations sur les planètes 
+
+- Afficher nom, température moyenne (avec un petit logo), gravité, présence de databaz
+- Popup (formulaire supplémentaire) avec: espèces, missions, civils, etc...
+- Faire des filtres 
+
+### Données statistiques 
+
+- Liste de toutes les personnes (nom, prénom, type (militaire ou civil)) avec laquelle un membre
+(sélectionné dans une zone de liste) est déjà parti en mission.
+- Pour les missions comportant un équipage de plus de 10 personnes, indiquer la liste des
+dépenses effectuées, ainsi que les budgets initiaux et actuels.
+- Pour chaque planète, indiquer le nombre de missions qui y ont déjà eu lieu. Certaines planètes
+n’ont jamais fait l’objet de mission, elles devront néanmoins apparaître.
+- Liste des dépenses (date, motif et montant concaténés dans une seule colonne intitulée
+« Dépenses les plus importantes »), nom de la mission et nom et prénom du chef de la mission,
+pour les dépenses les plus élevées de chaque mission.
+- Quels sont les informateurs (nom de code, espèce d’origine, somme totale reçue) qui ont perçu
+le moins d’argent pendant une mission donnée ?
+
+## Listes de questions 
+
+- Volet récapitulatif des missions: Qu'entendez-vous par "mode déconnecté puis déconnecté" ? 
+- Pour l'ajout d'informations concernant une mission sélectionnée, est-ce en mode connecté ou déconnecté ? 
+- Est-ce que la totalité des membres sont soit civils soit militaires ? Est-ce que la totalité des espèces sont soit alliées soit ennemies ? 
