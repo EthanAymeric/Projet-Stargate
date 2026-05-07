@@ -35,3 +35,4 @@ Une fois la feature terminée, cette branche sera `merge` directement sur la bra
 ## Listes de questions 
 
 - Volet récapitulatif des missions: Qu'entendez-vous par "mode déconnecté puis déconnecté" ? 
+- Pour l'ajout d'informations concernant une mission sélectionnée, est-ce en mode connecté ou déconnecté ? 
