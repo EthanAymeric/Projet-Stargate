@@ -120,6 +120,6 @@ le moins d’argent pendant une mission donnée ?
 
 ## Listes de questions 
 
-[x] Volet récapitulatif des missions: Qu'entendez-vous par "mode déconnecté puis déconnecté" ? 
-[x] Pour l'ajout d'informations concernant une mission sélectionnée, est-ce en mode connecté ou déconnecté ? 
-[x] Est-ce que la totalité des membres sont soit civils soit militaires ? Est-ce que la totalité des espèces sont soit alliées soit ennemies ? 
+- [x] Volet récapitulatif des missions: Qu'entendez-vous par "mode déconnecté puis déconnecté" ? 
+- [x] Pour l'ajout d'informations concernant une mission sélectionnée, est-ce en mode connecté ou déconnecté ? 
+- [x] Est-ce que la totalité des membres sont soit civils soit militaires ? Est-ce que la totalité des espèces sont soit alliées soit ennemies ? 
