@@ -36,6 +36,8 @@ Une fois la feature terminée, cette branche sera `merge` directement sur la bra
 
 ### Tableau de bord des missions 
 
+Guillaume
+
 Afficher les informations suivantes sur toutes les missions: 
 - De nom de la mission 
 - Date de départ 
@@ -44,7 +46,9 @@ Afficher les informations suivantes sur toutes les missions:
 
 > Affichage en Mode déconnecté et actualisation de l'affichage après création d'une mission 
 
-### Création d'une mission 
+### Création d'une mission
+
+Eliott
 
 - Faire un champ login
 - Faire un champ mot de passe (caché) avec un bouton pour afficher le mot de passe en clair 
@@ -64,9 +68,11 @@ Afficher les informations suivantes sur toutes les missions:
 - Sélectionner objectifs de capture 
 - Bouton valider 
 
-> Mode connecté 
+> Mode connecté avec transaction
 
-### Récapitulatif complet des informations sur une mission 
+### Récapitulatif complet des informations sur une mission
+
+Guillaume
 
 > Faire un formulaire avec des onglets 
 
@@ -89,6 +95,8 @@ Afficher les informations suivantes sur toutes les missions:
 
 ### Affichage des races répertoriées 
 
+Ethan
+
 > Faire un formulaire avec des onglets 
 
 - Afficher nom, couleur
@@ -100,11 +108,15 @@ Afficher les informations suivantes sur toutes les missions:
 
 ### Affichage des informations sur les planètes 
 
+Ethan
+
 - Afficher nom, température moyenne (avec un petit logo), gravité, présence de databaz
 - Popup (formulaire supplémentaire) avec: espèces, missions, civils, etc...
 - Faire des filtres 
 
 ### Données statistiques 
+
+Ethan
 
 - Liste de toutes les personnes (nom, prénom, type (militaire ou civil)) avec laquelle un membre
 (sélectionné dans une zone de liste) est déjà parti en mission.
