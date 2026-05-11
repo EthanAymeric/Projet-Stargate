@@ -11,16 +11,30 @@ using System.Data.SQLite;
 
 namespace SAE24
 {
-    public partial class Form1 : Form
+    public partial class FormPrincipal : Form
     {
         string chaine = @"Data Source = ..\..\DataBase\Stargate.db";
-        public Form1()
+        public FormPrincipal()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+        }
+
+        private void buttonConnexion_Click(object sender, EventArgs e)
+        {
+            FormConnexion formConnexion = new FormConnexion();
+
+            if (formConnexion.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Access Granted");
+            }
+            else
+            {
+                MessageBox.Show("Access Denied");
+            }
         }
     }
 }
