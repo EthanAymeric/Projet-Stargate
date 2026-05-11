@@ -26,12 +26,13 @@ namespace SAE24
         private void buttonConnexion_Click(object sender, EventArgs e)
         {
             FormConnexion formConnexion = new FormConnexion();
+            DialogResult result = formConnexion.ShowDialog();
 
-            if (formConnexion.ShowDialog() == DialogResult.OK)
+            if (result == DialogResult.OK)
             {
                 MessageBox.Show("Access Granted");
             }
-            else
+            else if (result == DialogResult.Cancel)
             {
                 MessageBox.Show("Access Denied");
             }

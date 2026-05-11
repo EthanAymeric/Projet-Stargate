@@ -27,11 +27,11 @@ namespace SAE24
                     try
                     {
                         // Chaîne de connexion à votre base de données
-                        //string chaine = @"Data Source = ..\..\..\Stargate.db";
-                        string chaine = @"Data Source = Stargate.db";
+                        string chaine = @"Data Source = ..\..\DataBase\Stargate.db";
+                        // string chaine = @"Data Source = Stargate.db";
                         connec = new SQLiteConnection(chaine);
                         connec.Open();
-                        //MessageBox.Show(connec.State.ToString());
+                        // MessageBox.Show(connec.State.ToString());
                     }
                     catch (SQLiteException err) 
                     {
