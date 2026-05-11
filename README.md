@@ -42,7 +42,7 @@ Afficher les informations suivantes sur toutes les missions:
 - Durée
 - Identité du chef (nom + prénom + grade ?)
 
-> Mode connecté puis déconnecté 
+> Affichage en Mode déconnecté et actualisation de l'affichage après création d'une mission 
 
 ### Création d'une mission 
 
@@ -85,11 +85,13 @@ Afficher les informations suivantes sur toutes les missions:
 
 - Bouton/Volet modifier les informations/ajouter des événements
 
+> Mode connecté puis déconnecté
+
 ### Affichage des races répertoriées 
 
 > Faire un formulaire avec des onglets 
 
-- Afficher nom, couleur (pour neutre si existe)
+- Afficher nom, couleur
 - Afficher type arme, degré d'agressivité (pour ennemi)
 - Afficher date de premier contact, degré de bienveillance et instrument favori (pour allié)
 - Faire des filtres 
@@ -118,6 +120,6 @@ le moins d’argent pendant une mission donnée ?
 
 ## Listes de questions 
 
-- Volet récapitulatif des missions: Qu'entendez-vous par "mode déconnecté puis déconnecté" ? 
-- Pour l'ajout d'informations concernant une mission sélectionnée, est-ce en mode connecté ou déconnecté ? 
-- Est-ce que la totalité des membres sont soit civils soit militaires ? Est-ce que la totalité des espèces sont soit alliées soit ennemies ? 
+[x] Volet récapitulatif des missions: Qu'entendez-vous par "mode déconnecté puis déconnecté" ? 
+[x] Pour l'ajout d'informations concernant une mission sélectionnée, est-ce en mode connecté ou déconnecté ? 
+[x] Est-ce que la totalité des membres sont soit civils soit militaires ? Est-ce que la totalité des espèces sont soit alliées soit ennemies ? 
