@@ -13,7 +13,8 @@ namespace SAE24
 {
     public partial class Form1 : Form
     {
-        string chaine = @"Data Source = ..\..\DataBase\Stargate.db";
+        DataSet ds = MesDatas.DsGlobal;
+        SQLiteConnection co;
         public Form1()
         {
             InitializeComponent();
@@ -21,6 +22,37 @@ namespace SAE24
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            co = Connexion.Connec;
+            DataTable mesDT = co.GetSchema("Tables");
+
+            foreach (DataRow r in mesDT.Rows)
+            {
+                string request = $"SELECT * FROM {r[2].ToString()}";
+                SQLiteCommand cmd = new SQLiteCommand(request, co);
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                da.Fill(ds, r[2].ToString());
+            }
+
+            Connexion.FermerConnexion();
+        }
+        private void btnTDB_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNouvelleMission_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRaces_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPlanetes_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
