@@ -9,6 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using BCrypt.Net;
+
 namespace SAE24
 {
     public partial class FormConnexion : Form
@@ -42,6 +44,7 @@ namespace SAE24
 
             if (login == string.Empty || mdp == string.Empty)
             {
+                Connexion.FermerConnexion();
                 return;
             }
 
@@ -53,13 +56,21 @@ namespace SAE24
             if (obj == null)
             {
                 this.genererErreurLoginMdp();
+                Connexion.FermerConnexion();
                 return;
             }
 
             String mdpHash = obj.ToString();
-            MessageBox.Show(mdpHash);
+            bool valide = BCrypt.Net.BCrypt.Verify(mdp, mdpHash); // on vérifie que le mot de passe correspond
 
-            DialogResult = DialogResult.OK;
+            if (valide)
+            {
+                DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                genererErreurLoginMdp();
+            }
 
             Connexion.FermerConnexion();
         }
