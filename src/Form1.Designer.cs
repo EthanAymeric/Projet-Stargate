@@ -28,20 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grpTDB = new System.Windows.Forms.GroupBox();
             this.btnTDB = new System.Windows.Forms.Button();
             this.btnNouvelleMission = new System.Windows.Forms.Button();
             this.btnRaces = new System.Windows.Forms.Button();
             this.btnPlanetes = new System.Windows.Forms.Button();
+            this.pnlTDB = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // grpTDB
-            // 
-            this.grpTDB.Location = new System.Drawing.Point(13, 13);
-            this.grpTDB.Name = "grpTDB";
-            this.grpTDB.Size = new System.Drawing.Size(775, 373);
-            this.grpTDB.TabIndex = 0;
-            this.grpTDB.TabStop = false;
             // 
             // btnTDB
             // 
@@ -83,16 +75,24 @@
             this.btnPlanetes.UseVisualStyleBackColor = true;
             this.btnPlanetes.Click += new System.EventHandler(this.btnPlanetes_Click);
             // 
+            // pnlTDB
+            // 
+            this.pnlTDB.AutoScroll = true;
+            this.pnlTDB.Location = new System.Drawing.Point(13, 13);
+            this.pnlTDB.Name = "pnlTDB";
+            this.pnlTDB.Size = new System.Drawing.Size(775, 373);
+            this.pnlTDB.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pnlTDB);
             this.Controls.Add(this.btnPlanetes);
             this.Controls.Add(this.btnRaces);
             this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.btnTDB);
-            this.Controls.Add(this.grpTDB);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -101,12 +101,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox grpTDB;
         private System.Windows.Forms.Button btnTDB;
         private System.Windows.Forms.Button btnNouvelleMission;
         private System.Windows.Forms.Button btnRaces;
         private System.Windows.Forms.Button btnPlanetes;
+        private System.Windows.Forms.Panel pnlTDB;
     }
 }
 
