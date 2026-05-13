@@ -12,28 +12,46 @@ using System.Globalization;
 
 namespace SAE24
 {
-    public partial class Form1 : Form
+    public partial class FrmTableauDeBord : Form
     {
         SQLiteConnection co;
-        public Form1()
+        public FrmTableauDeBord()
         {
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            RemplissageDS();
+            RelationDataSet();
+        }
+
+        private void RemplissageDS()
+        {
             co = Connexion.Connec;
-            DataTable mesDT = co.GetSchema("Tables");
-
-            foreach (DataRow r in mesDT.Rows)
+            try
             {
-                string request = $"SELECT * FROM {r[2].ToString()}";
-                SQLiteCommand cmd = new SQLiteCommand(request, co);
-                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-                da.Fill(MesDatas.DsGlobal, r[2].ToString());
-            }
+                DataTable mesDT = co.GetSchema("Tables");
 
-            Connexion.FermerConnexion();
+                foreach (DataRow r in mesDT.Rows)
+                {
+                    string request = $"SELECT * FROM {r[2].ToString()}";
+                    SQLiteCommand cmd = new SQLiteCommand(request, co);
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                    da.Fill(MesDatas.DsGlobal, r[2].ToString());
+                }   
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            finally { Connexion.FermerConnexion(); }
+        }
+
+        private void RelationDataSet()
+        {
+            MesDatas.DsGlobal.Relations.Add("FK_Militaire_Chef", MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"], MesDatas.DsGlobal.Tables["Mission"].Columns["matriculeChef"]);
+            MesDatas.DsGlobal.Relations.Add("FK_Membre_Militaire", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"]);
+            MesDatas.DsGlobal.Relations.Add("FK_Membre_Civil", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Civil"].Columns["matriculeMembre"]);
+            MesDatas.DsGlobal.Relations.Add("FK_Membre_Composer", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Composer"].Columns["matriculeMembre"]);
+
         }
         private void btnTDB_Click(object sender, EventArgs e)
         {
@@ -46,7 +64,9 @@ namespace SAE24
                 DateTime dateDepart = DateTime.Parse(r["dateDepart"].ToString());
                 TimeSpan duree = dateRetour.Subtract(dateDepart);
                 string strDuree = duree.ToString("dd");
-                string chef = r["matriculeChef"].ToString();
+                string grade = r.GetParentRow("FK_Militaire_Chef")[1].ToString();
+                string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
+                string chef = $"{identite} : {grade}";
 
 
                 MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
@@ -54,10 +74,23 @@ namespace SAE24
                 mr.Left = left;
                 pnlTDB.Controls.Add(mr);
 
-                top += 150;
+                top += mr.Height + 20;
             }
+        }
+
+        private DataTable getMembre()
+        {
+            DataTable res = new DataTable();
+
+            res.Columns.Add("ID", typeof(string));
+            res.Columns.Add("Nom", typeof(string));
+            res.Columns.Add("Prenom", typeof(string));
+            res.Columns.Add("Fonction", typeof(string));
+            res.Columns.Add("DateNaissance", typeof(string));
 
 
+
+            return res;
         }
 
         private void btnNouvelleMission_Click(object sender, EventArgs e)
@@ -73,6 +106,33 @@ namespace SAE24
         private void btnPlanetes_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Form1_Shown(object sender, EventArgs e)
+        {
+            //Chargement();
+            foreach (Button b in Controls.OfType<Button>())
+            {
+                b.Visible = true;
+            }
+            pbChargement.Visible = false;
+        }
+
+        private void Chargement()
+        {
+            pbChargement.Value = 0;
+            System.Threading.Thread.Sleep(1000);
+            pbChargement.Value = 13;
+            System.Threading.Thread.Sleep(1500);
+            pbChargement.Value = 21;
+            System.Threading.Thread.Sleep(500);
+            pbChargement.Value = 34;
+            System.Threading.Thread.Sleep(250);
+            pbChargement.Value = 55;
+            System.Threading.Thread.Sleep(1000);
+            pbChargement.Value = 89;
+            System.Threading.Thread.Sleep(500);
+            pbChargement.Value = 100;
         }
     }
 }

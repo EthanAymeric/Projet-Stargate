@@ -29,11 +29,22 @@ namespace SAE24
             lblDateDeb.Visible = true;
             lblDuree.Visible = true;
             lblChef.Visible = true;
+            pbPlanete.Image = Image.FromFile("../../Images/Planetes/Kobaia.png");
         }
 
         private void MissionResume_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void MissionResume_MouseEnter(object sender, EventArgs e)
+        {
+            BackColor = Color.LightGray;
+        }
+
+        private void MissionResume_MouseLeave(object sender, EventArgs e)
+        {
+            BackColor = Color.White;
         }
     }
 }
