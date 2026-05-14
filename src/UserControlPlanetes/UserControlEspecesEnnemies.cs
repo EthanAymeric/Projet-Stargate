@@ -10,23 +10,21 @@ using System.Windows.Forms;
 
 namespace UserControlPlanetes
 {
-    public partial class UserControlEspecesAlliees : UserControl
+    public partial class UserControlEspecesEnnemies : UserControl
     {
-        public UserControlEspecesAlliees()
+        public UserControlEspecesEnnemies()
         {
             InitializeComponent();
         }
 
-        public UserControlEspecesAlliees(string nomImageEspeceAlliee, string couleur, string nomEspeceAlliee, string degreBienveillance, List<string> planeteOrigine, string premierContact, string instrument)
+        public UserControlEspecesEnnemies(string nomImageEnnemi, string couleur, string nomEspeceEnnemie, List<string> planeteOrigine, string degreAggressivite, string typeArme)
         {
             InitializeComponent();
-
-            // Initialisation des différents labels composants la fiche de présentation générale des espèces alliées
-            lblNomEspeceAlliee.Text = nomEspeceAlliee;
-            lblDegreBienveillance.Text = degreBienveillance;
-            lblInstrument.Text = instrument;
-            lblDatePremierContact.Text = premierContact;
-            lblCouleur.Text = "Couleur : " + couleur;
+            // Initialisation des labels pour l'affichage
+            lblNomEspeceEnnemie.Text = nomEspeceEnnemie;
+            lblArme.Text = typeArme;
+            lblAgressivite.Text = degreAggressivite;
+            lblCouleur.Text = couleur;
 
             // Vérification spéciale pour l'affichage de la/des planète(s) d'origine
             // Si cette(ces) dernière(s) existe(nt), on l'(les) affiche(nt)
@@ -45,7 +43,7 @@ namespace UserControlPlanetes
                     string texte = "";
                     for (int i = 0; i < planeteOrigine.Count - 1; i++)
                     {
-                        texte += planeteOrigine[i] + ", ";   // Affichage des éléments de la liste avec la virgule
+                        texte += planeteOrigine[i] + "/";   // Affichage des éléments de la liste avec la virgule
                     }
                     texte += planeteOrigine[planeteOrigine.Count];  // Affichage du dernier élément de la liste SANS la virgule
                 }
@@ -57,15 +55,15 @@ namespace UserControlPlanetes
                 lblOrigine.ForeColor = Color.Red;
             }
 
-            // Ajout de l'image pour l'espèce
-            if (nomImageEspeceAlliee != string.Empty)
+            // Ajout de l'image pour l'espèce ennemie
+            if (nomImageEnnemi != string.Empty)
             {
-                pbEspeceAlliee.Image = Image.FromFile(nomImageEspeceAlliee);
-                pbEspeceAlliee.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbEspeceEnnemie.Image = Image.FromFile(nomImageEnnemi);
+                pbEspeceEnnemie.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
 
-        private void UserControlEspecesAlliees_Load(object sender, EventArgs e)
+        private void lblArme_Click(object sender, EventArgs e)
         {
 
         }

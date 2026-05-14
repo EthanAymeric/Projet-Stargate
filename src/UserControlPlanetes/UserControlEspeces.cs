@@ -17,13 +17,13 @@ namespace UserControlPlanetes
             InitializeComponent();
         }
 
-        public UserControlEspeces(string nomEspece, string couleur, List<string> planeteOrigine)
+        public UserControlEspeces(string nomImageEspece, string nomEspece, string couleur, List<string> planeteOrigine)
         {
             InitializeComponent();
 
             // Initialisation des différents labels composants la fiche de présentation générale des espèces
             lblNomEspece.Text = nomEspece;
-            lblCouleur.Text = couleur;
+            lblCouleur.Text = "Couleur : " + couleur;
 
             // Vérification spéciale pour l'affichage de la/des planète(s) d'origine
             // Si cette(ces) dernière(s) existe(nt), on l'(les) affiche(nt)
@@ -32,7 +32,6 @@ namespace UserControlPlanetes
                 // S'il n'y a qu'une seule planète, on n'affiche que celle-là
                 if (planeteOrigine.Count == 1)
                 {
-                    lblNbPlanete.Text = "Planète d'origine : ";
                     lblOrigine.Text = planeteOrigine[0];
                 }
                 // Sinon, on les affiche toutes les unes après les autres
@@ -54,10 +53,22 @@ namespace UserControlPlanetes
                 lblOrigine.Text = "Origine inconnue";
                 lblOrigine.ForeColor = Color.Red;
             }
+
+            // Ajout de l'image pour l'espèce
+            if (nomImageEspece != string.Empty)
+            {
+                pbEspece.Image = Image.FromFile(nomImageEspece);
+                pbEspece.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
             
         }
 
         private void UserControlEspeces_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblNomEspece_Click(object sender, EventArgs e)
         {
 
         }

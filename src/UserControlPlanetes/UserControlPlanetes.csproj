@@ -49,11 +49,38 @@
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlEspeces.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlEspeces.Designer.cs">
+      <DependentUpon>UserControlEspeces.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlEspecesAllies.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlEspecesAllies.Designer.cs">
+      <DependentUpon>UserControlEspecesAllies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlEspecesEnnemies.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlEspecesEnnemies.Designer.cs">
+      <DependentUpon>UserControlEspecesEnnemies.cs</DependentUpon>
+    </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlEspeces.resx">
+      <DependentUpon>UserControlEspeces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlEspecesAllies.resx">
+      <DependentUpon>UserControlEspecesAllies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlEspecesEnnemies.resx">
+      <DependentUpon>UserControlEspecesEnnemies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -50,39 +50,40 @@
             this.lblNomEspece.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNomEspece.Location = new System.Drawing.Point(47, 272);
             this.lblNomEspece.Name = "lblNomEspece";
-            this.lblNomEspece.Size = new System.Drawing.Size(100, 37);
+            this.lblNomEspece.Size = new System.Drawing.Size(118, 37);
             this.lblNomEspece.TabIndex = 1;
-            this.lblNomEspece.Text = "label1";
+            this.lblNomEspece.Text = "<nom>";
+            this.lblNomEspece.Click += new System.EventHandler(this.lblNomEspece_Click);
             // 
             // lblOrigine
             // 
             this.lblOrigine.AutoSize = true;
             this.lblOrigine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrigine.Location = new System.Drawing.Point(50, 400);
+            this.lblOrigine.Location = new System.Drawing.Point(50, 346);
             this.lblOrigine.Name = "lblOrigine";
-            this.lblOrigine.Size = new System.Drawing.Size(58, 22);
+            this.lblOrigine.Size = new System.Drawing.Size(247, 22);
             this.lblOrigine.TabIndex = 2;
-            this.lblOrigine.Text = "label1";
+            this.lblOrigine.Text = "<nom de la planète d\'origine>";
             // 
             // lblCouleur
             // 
             this.lblCouleur.AutoSize = true;
             this.lblCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCouleur.Location = new System.Drawing.Point(50, 320);
+            this.lblCouleur.Location = new System.Drawing.Point(50, 394);
             this.lblCouleur.Name = "lblCouleur";
-            this.lblCouleur.Size = new System.Drawing.Size(58, 22);
+            this.lblCouleur.Size = new System.Drawing.Size(91, 22);
             this.lblCouleur.TabIndex = 3;
-            this.lblCouleur.Text = "label1";
+            this.lblCouleur.Text = "<couleur>";
             // 
             // lblNbPlanete
             // 
             this.lblNbPlanete.AutoSize = true;
             this.lblNbPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNbPlanete.Location = new System.Drawing.Point(50, 367);
+            this.lblNbPlanete.Location = new System.Drawing.Point(50, 313);
             this.lblNbPlanete.Name = "lblNbPlanete";
-            this.lblNbPlanete.Size = new System.Drawing.Size(58, 22);
+            this.lblNbPlanete.Size = new System.Drawing.Size(154, 22);
             this.lblNbPlanete.TabIndex = 4;
-            this.lblNbPlanete.Text = "label1";
+            this.lblNbPlanete.Text = "Planète d\'origine :";
             // 
             // UserControlEspeces
             // 

@@ -58,12 +58,12 @@
             // lblNomPlanete
             // 
             this.lblNomPlanete.AutoSize = true;
-            this.lblNomPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomPlanete.Location = new System.Drawing.Point(84, 224);
+            this.lblNomPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNomPlanete.Location = new System.Drawing.Point(23, 222);
             this.lblNomPlanete.Name = "lblNomPlanete";
-            this.lblNomPlanete.Size = new System.Drawing.Size(64, 25);
+            this.lblNomPlanete.Size = new System.Drawing.Size(88, 29);
             this.lblNomPlanete.TabIndex = 1;
-            this.lblNomPlanete.Text = "label1";
+            this.lblNomPlanete.Text = "<nom>";
             this.lblNomPlanete.Click += new System.EventHandler(this.label1_Click);
             // 
             // pbTemp
@@ -78,17 +78,17 @@
             // 
             this.lblTemp.AutoSize = true;
             this.lblTemp.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTemp.Location = new System.Drawing.Point(279, 52);
+            this.lblTemp.Location = new System.Drawing.Point(269, 52);
             this.lblTemp.Name = "lblTemp";
-            this.lblTemp.Size = new System.Drawing.Size(51, 20);
+            this.lblTemp.Size = new System.Drawing.Size(114, 20);
             this.lblTemp.TabIndex = 3;
-            this.lblTemp.Text = "label1";
+            this.lblTemp.Text = "<température>";
             // 
             // lblGraviteCommun
             // 
             this.lblGraviteCommun.AutoSize = true;
             this.lblGraviteCommun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGraviteCommun.Location = new System.Drawing.Point(221, 127);
+            this.lblGraviteCommun.Location = new System.Drawing.Point(217, 120);
             this.lblGraviteCommun.Name = "lblGraviteCommun";
             this.lblGraviteCommun.Size = new System.Drawing.Size(68, 20);
             this.lblGraviteCommun.TabIndex = 4;
@@ -98,11 +98,11 @@
             // 
             this.lblGraviteValue.AutoSize = true;
             this.lblGraviteValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGraviteValue.Location = new System.Drawing.Point(295, 127);
+            this.lblGraviteValue.Location = new System.Drawing.Point(287, 120);
             this.lblGraviteValue.Name = "lblGraviteValue";
-            this.lblGraviteValue.Size = new System.Drawing.Size(46, 20);
+            this.lblGraviteValue.Size = new System.Drawing.Size(74, 20);
             this.lblGraviteValue.TabIndex = 5;
-            this.lblGraviteValue.Text = "value";
+            this.lblGraviteValue.Text = "<gravité>";
             // 
             // lblPresenceDatabaz
             // 
@@ -110,14 +110,14 @@
             this.lblPresenceDatabaz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPresenceDatabaz.Location = new System.Drawing.Point(216, 88);
             this.lblPresenceDatabaz.Name = "lblPresenceDatabaz";
-            this.lblPresenceDatabaz.Size = new System.Drawing.Size(64, 25);
+            this.lblPresenceDatabaz.Size = new System.Drawing.Size(303, 25);
             this.lblPresenceDatabaz.TabIndex = 6;
-            this.lblPresenceDatabaz.Text = "label1";
+            this.lblPresenceDatabaz.Text = "<Présence de Databaz (ou non)>";
             // 
             // lblEspecesCommun
             // 
             this.lblEspecesCommun.AutoSize = true;
-            this.lblEspecesCommun.Location = new System.Drawing.Point(221, 165);
+            this.lblEspecesCommun.Location = new System.Drawing.Point(217, 158);
             this.lblEspecesCommun.Name = "lblEspecesCommun";
             this.lblEspecesCommun.Size = new System.Drawing.Size(154, 20);
             this.lblEspecesCommun.TabIndex = 7;
@@ -127,17 +127,17 @@
             // 
             this.lblEspecesValue.AutoSize = true;
             this.lblEspecesValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEspecesValue.Location = new System.Drawing.Point(381, 165);
+            this.lblEspecesValue.Location = new System.Drawing.Point(367, 158);
             this.lblEspecesValue.Name = "lblEspecesValue";
-            this.lblEspecesValue.Size = new System.Drawing.Size(46, 20);
+            this.lblEspecesValue.Size = new System.Drawing.Size(76, 20);
             this.lblEspecesValue.TabIndex = 8;
-            this.lblEspecesValue.Text = "value";
+            this.lblEspecesValue.Text = "<nom(s)>";
             // 
             // lblMissionsCommun
             // 
             this.lblMissionsCommun.AutoSize = true;
             this.lblMissionsCommun.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMissionsCommun.Location = new System.Drawing.Point(221, 229);
+            this.lblMissionsCommun.Location = new System.Drawing.Point(216, 231);
             this.lblMissionsCommun.Name = "lblMissionsCommun";
             this.lblMissionsCommun.Size = new System.Drawing.Size(145, 20);
             this.lblMissionsCommun.TabIndex = 9;
@@ -147,16 +147,16 @@
             // 
             this.lblMissionsValue.AutoSize = true;
             this.lblMissionsValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMissionsValue.Location = new System.Drawing.Point(372, 229);
+            this.lblMissionsValue.Location = new System.Drawing.Point(357, 231);
             this.lblMissionsValue.Name = "lblMissionsValue";
-            this.lblMissionsValue.Size = new System.Drawing.Size(46, 20);
+            this.lblMissionsValue.Size = new System.Drawing.Size(76, 20);
             this.lblMissionsValue.TabIndex = 10;
-            this.lblMissionsValue.Text = "value";
+            this.lblMissionsValue.Text = "<nom(s)>";
             // 
             // lblAlliesCommun
             // 
             this.lblAlliesCommun.AutoSize = true;
-            this.lblAlliesCommun.Location = new System.Drawing.Point(221, 200);
+            this.lblAlliesCommun.Location = new System.Drawing.Point(217, 193);
             this.lblAlliesCommun.Name = "lblAlliesCommun";
             this.lblAlliesCommun.Size = new System.Drawing.Size(54, 20);
             this.lblAlliesCommun.TabIndex = 11;
@@ -165,7 +165,7 @@
             // lblEnnemis
             // 
             this.lblEnnemis.AutoSize = true;
-            this.lblEnnemis.Location = new System.Drawing.Point(381, 200);
+            this.lblEnnemis.Location = new System.Drawing.Point(377, 193);
             this.lblEnnemis.Name = "lblEnnemis";
             this.lblEnnemis.Size = new System.Drawing.Size(79, 20);
             this.lblEnnemis.TabIndex = 12;
@@ -175,21 +175,21 @@
             // 
             this.lblAlliesValue.AutoSize = true;
             this.lblAlliesValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAlliesValue.Location = new System.Drawing.Point(281, 200);
+            this.lblAlliesValue.Location = new System.Drawing.Point(269, 193);
             this.lblAlliesValue.Name = "lblAlliesValue";
-            this.lblAlliesValue.Size = new System.Drawing.Size(46, 20);
+            this.lblAlliesValue.Size = new System.Drawing.Size(72, 20);
             this.lblAlliesValue.TabIndex = 13;
-            this.lblAlliesValue.Text = "value";
+            this.lblAlliesValue.Text = "<% allié>";
             // 
             // lblEnnemisValue
             // 
             this.lblEnnemisValue.AutoSize = true;
             this.lblEnnemisValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnnemisValue.Location = new System.Drawing.Point(466, 200);
+            this.lblEnnemisValue.Location = new System.Drawing.Point(453, 193);
             this.lblEnnemisValue.Name = "lblEnnemisValue";
-            this.lblEnnemisValue.Size = new System.Drawing.Size(46, 20);
+            this.lblEnnemisValue.Size = new System.Drawing.Size(97, 20);
             this.lblEnnemisValue.TabIndex = 14;
-            this.lblEnnemisValue.Text = "value";
+            this.lblEnnemisValue.Text = "<% ennemi>";
             // 
             // UserControlPlanete
             // 
@@ -210,6 +210,7 @@
             this.Controls.Add(this.pbTemp);
             this.Controls.Add(this.lblNomPlanete);
             this.Controls.Add(this.pbPlanete);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "UserControlPlanete";
             this.Size = new System.Drawing.Size(695, 292);
             this.Load += new System.EventHandler(this.UserControl1_Load);

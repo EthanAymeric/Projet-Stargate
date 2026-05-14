@@ -44,6 +44,7 @@ namespace UserControlPlanetes
             if (especesPresentes.Count() == 1)
             {
                 lblEspecesValue.Text = especesPresentes[0];
+                lblEspecesCommun.Text = "Espèce présente : ";
             }
             // S'il n'y en a aucune, on le dit
             else if (especesPresentes.Count() == 0)
