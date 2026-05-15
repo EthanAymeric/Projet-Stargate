@@ -110,8 +110,8 @@
             this.Name = "FrmTableauDeBord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tableau de Bord";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.Shown += new System.EventHandler(this.Form1_Shown);
+            this.Load += new System.EventHandler(this.FrmTableauDeBord_Load);
+            this.Shown += new System.EventHandler(this.FrmTableauDeBord_Shown);
             this.pnlTDB.ResumeLayout(false);
             this.ResumeLayout(false);
 

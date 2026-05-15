@@ -20,7 +20,7 @@ namespace SAE24
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void FrmTableauDeBord_Load(object sender, EventArgs e)
         {
             RemplissageDS();
             AjoutRelation();
@@ -132,7 +132,7 @@ namespace SAE24
 
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
+        private void FrmTableauDeBord_Shown(object sender, EventArgs e)
         {
             Chargement();
             foreach (Button b in Controls.OfType<Button>())
