@@ -29,7 +29,8 @@ namespace SAE24
             lblDateDeb.Visible = true;
             lblDuree.Visible = true;
             lblChef.Visible = true;
-            pbPlanete.Image = Image.FromFile("../../Images/Planetes/Kobaia.png");
+            string nomPlanete = nomMission.Substring(0, nomMission.Length - 1);
+            pbPlanete.Image = Image.FromFile($"../../Images/Planetes/{nomPlanete}.png");
         }
 
         private void MissionResume_Load(object sender, EventArgs e)
@@ -45,6 +46,12 @@ namespace SAE24
         private void MissionResume_MouseLeave(object sender, EventArgs e)
         {
             BackColor = Color.White;
+        }
+
+        private void pbPlanete_Click(object sender, EventArgs e)
+        {
+            FormulaireMission frm = new FormulaireMission(lblNomMission.Text);
+            frm.ShowDialog();
         }
     }
 }

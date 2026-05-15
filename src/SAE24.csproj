@@ -57,12 +57,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />
+    <Compile Include="FormulaireMission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormulaireMission.Designer.cs">
+      <DependentUpon>FormulaireMission.cs</DependentUpon>
+    </Compile>
     <Compile Include="mesDatas.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MissionPB.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MissionPB.Designer.cs">
+      <DependentUpon>MissionPB.cs</DependentUpon>
     </Compile>
     <Compile Include="MissionResume.cs">
       <SubType>UserControl</SubType>
@@ -74,6 +86,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormulaireMission.resx">
+      <DependentUpon>FormulaireMission.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MissionPB.resx">
+      <DependentUpon>MissionPB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MissionResume.resx">
       <DependentUpon>MissionResume.cs</DependentUpon>

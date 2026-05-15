@@ -51,7 +51,9 @@ namespace SAE24
             MesDatas.DsGlobal.Relations.Add("FK_Membre_Militaire", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"]);
             MesDatas.DsGlobal.Relations.Add("FK_Membre_Civil", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Civil"].Columns["matriculeMembre"]);
             MesDatas.DsGlobal.Relations.Add("FK_Membre_Composer", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Composer"].Columns["matriculeMembre"]);
-
+            DataColumn[] missionPK = new DataColumn[] { MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Mission"].Columns["numero"] };
+            DataColumn[] depensePK = new DataColumn[] { MesDatas.DsGlobal.Tables["Depense"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Depense"].Columns["numeroMission"] };
+            MesDatas.DsGlobal.Relations.Add("FK_Mission_Depense", missionPK, depensePK);
         }
         private void btnTDB_Click(object sender, EventArgs e)
         {
@@ -76,21 +78,6 @@ namespace SAE24
 
                 top += mr.Height + 20;
             }
-        }
-
-        private DataTable getMembre()
-        {
-            DataTable res = new DataTable();
-
-            res.Columns.Add("ID", typeof(string));
-            res.Columns.Add("Nom", typeof(string));
-            res.Columns.Add("Prenom", typeof(string));
-            res.Columns.Add("Fonction", typeof(string));
-            res.Columns.Add("DateNaissance", typeof(string));
-
-
-
-            return res;
         }
 
         private void btnNouvelleMission_Click(object sender, EventArgs e)
