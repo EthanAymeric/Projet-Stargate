@@ -23,7 +23,27 @@ namespace SAE24
         private void Form1_Load(object sender, EventArgs e)
         {
             RemplissageDS();
-            RelationDataSet();
+            AjoutRelation();
+        }
+
+        private void UpdateDataSet()
+        {
+            MesDatas.DsGlobal.Clear();
+            co = Connexion.Connec;
+            try
+            {
+                DataTable mesDT = co.GetSchema("Tables");
+
+                foreach (DataRow r in mesDT.Rows)
+                {
+                    string request = $"SELECT * FROM {r[2].ToString()}";
+                    SQLiteCommand cmd = new SQLiteCommand(request, co);
+                    SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                    da.Update(MesDatas.DsGlobal, r[2].ToString());
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            finally { Connexion.FermerConnexion(); }
         }
 
         private void RemplissageDS()
@@ -45,8 +65,10 @@ namespace SAE24
             finally { Connexion.FermerConnexion(); }
         }
 
-        private void RelationDataSet()
+        private void AjoutRelation()
         {
+            try
+            {
             MesDatas.DsGlobal.Relations.Add("FK_Militaire_Chef", MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"], MesDatas.DsGlobal.Tables["Mission"].Columns["matriculeChef"]);
             MesDatas.DsGlobal.Relations.Add("FK_Membre_Militaire", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"]);
             MesDatas.DsGlobal.Relations.Add("FK_Membre_Civil", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Civil"].Columns["matriculeMembre"]);
@@ -59,8 +81,9 @@ namespace SAE24
             DataColumn[] objectifCapture = new DataColumn[] { MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["numeroMission"] };
             MesDatas.DsGlobal.Relations.Add("FK_Mission_ObjectifCapture", missionPK, objectifCapture);
             MesDatas.DsGlobal.Relations.Add("FK_Espece_ObjectifCapture", MesDatas.DsGlobal.Tables["Espece"].Columns["id"] , MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["idEspeceEnnemi"]);
+            } catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-        private void btnTDB_Click(object sender, EventArgs e)
+        private void ActualisationTDB()
         {
             int top = 20, left = 20;
             foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Rows)
@@ -84,10 +107,19 @@ namespace SAE24
                 top += mr.Height + 20;
             }
         }
+        private void btnTDB_Click(object sender, EventArgs e)
+        {
+            ActualisationTDB();
+        }
 
         private void btnNouvelleMission_Click(object sender, EventArgs e)
         {
-
+            if (DialogResult == DialogResult.OK)
+            {
+                UpdateDataSet();
+                AjoutRelation();
+                ActualisationTDB();
+            }
         }
 
         private void btnRaces_Click(object sender, EventArgs e)
@@ -102,7 +134,7 @@ namespace SAE24
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            //Chargement();
+            Chargement();
             foreach (Button b in Controls.OfType<Button>())
             {
                 b.Visible = true;
