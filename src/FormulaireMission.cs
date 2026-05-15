@@ -101,9 +101,10 @@ namespace SAE24
             RemplissageObjectif();
         }
 
-        private void txtFeuilleRoute_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnFormJournal_Click(object sender, EventArgs e)
         {
-            e.Handled = true;
+            FormulaireJournalDeBord frmJournal = new FormulaireJournalDeBord(missionActuelle[0]);
+            frmJournal.ShowDialog();
         }
     }
 }
