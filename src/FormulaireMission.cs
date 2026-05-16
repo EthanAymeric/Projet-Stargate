@@ -105,6 +105,8 @@ namespace SAE24
             creationDGVContacts();
             creationDGVDepense();
             creationListeEvent();
+            creationDGVCapture();
+            Text = $"Resume de la mission : {missionActuelle[0]["nomPlanete"]} {missionActuelle[0]["numero"]}";
         }
 
         private void creationDGVDepense()
@@ -193,6 +195,49 @@ namespace SAE24
             }
             dgvContact.DataSource = dt;
             lblSommeVersees.Text = $"Somme totale versée : {montantSommeVersee.ToString()}";
+        }
+
+        private void creationDGVCapture()
+        {
+            //On crée une table qui servira à donner les informations de Contact de la mission actuelle
+            DataTable dt = new DataTable("CaptureMissionActuelle");
+            dt.Columns.Add("Nom de l'espèce", typeof(string));
+            dt.Columns.Add("Objectif initial", typeof(string));
+            dt.Columns.Add("Nombre de captures réalisées", typeof(string));
+            dt.Columns.Add("Taux de réussite (en %)", typeof(string));
+
+
+            DataRow[] captures = missionActuelle[0].GetChildRows("FK_Mission_Capturer");
+            foreach (DataRow capture in captures)
+            {
+                DataRow newCapture = dt.NewRow();
+                DataRow idEspece = capture.GetParentRow("FK_Espece_Capturer");
+                DataRow[] objectifCapture = missionActuelle[0].GetChildRows("FK_Mission_ObjectifCapture");
+                newCapture[0] = idEspece["nom"];
+                Int32 objectif = 0;
+                foreach (DataRow r in  objectifCapture)
+                {
+                    if (r["idEspeceEnnemi"].ToString() == capture["idEspeceEnnemi"].ToString())
+                    {
+                        objectif = Convert.ToInt32(r["objectif"]);
+                        newCapture[1] = r["objectif"].ToString();
+                    }
+                }
+                DataRow[] capturé = missionActuelle[0].GetChildRows("FK_Mission_Capturer");
+                Int32 nbCapture = 0;
+                foreach (DataRow r in capturé)
+                {
+                    if (r["idEspeceEnnemi"].ToString() == capture["idEspeceEnnemi"].ToString())
+                    {
+                        nbCapture = Convert.ToInt32(r["nombre"]);
+                    }
+                }
+                newCapture[2] = nbCapture.ToString();
+                newCapture[3] = (nbCapture*100/objectif).ToString();
+                dt.Rows.Add(newCapture);
+            }
+            dgvCapture.DataSource = dt;
+
         }
 
         private void btnFirst_Click(object sender, EventArgs e)

@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.tcResume = new System.Windows.Forms.TabControl();
+            this.tpInfoGeneral = new System.Windows.Forms.TabPage();
             this.lblSolde = new System.Windows.Forms.Label();
             this.lblBudget = new System.Windows.Forms.Label();
             this.lblArrivee = new System.Windows.Forms.Label();
@@ -42,7 +43,7 @@
             this.txtCaptures = new System.Windows.Forms.RichTextBox();
             this.grpFeuilleRoute = new System.Windows.Forms.GroupBox();
             this.txtFeuilleRoute = new System.Windows.Forms.RichTextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tpEvent = new System.Windows.Forms.TabPage();
             this.lblDepense = new System.Windows.Forms.Label();
             this.lblSommeVersees = new System.Windows.Forms.Label();
             this.grpDepenses = new System.Windows.Forms.GroupBox();
@@ -56,51 +57,57 @@
             this.btnFirst = new System.Windows.Forms.Button();
             this.lblEventDescription = new System.Windows.Forms.Label();
             this.lblDateEvent = new System.Windows.Forms.Label();
+            this.dgvCapture = new System.Windows.Forms.DataGridView();
+            this.grpCapture = new System.Windows.Forms.GroupBox();
+            this.tpAjout = new System.Windows.Forms.TabPage();
             this.missionPB1 = new SAE24.MissionPB();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tcResume.SuspendLayout();
+            this.tpInfoGeneral.SuspendLayout();
             this.grpMembre.SuspendLayout();
             this.grpCaptures.SuspendLayout();
             this.grpFeuilleRoute.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.tpEvent.SuspendLayout();
             this.grpDepenses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepenses)).BeginInit();
             this.grpContacts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
             this.grpEvent.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCapture)).BeginInit();
+            this.grpCapture.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tabControl1
+            // tcResume
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 119);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(996, 613);
-            this.tabControl1.TabIndex = 10;
+            this.tcResume.Controls.Add(this.tpInfoGeneral);
+            this.tcResume.Controls.Add(this.tpEvent);
+            this.tcResume.Controls.Add(this.tpAjout);
+            this.tcResume.Location = new System.Drawing.Point(12, 154);
+            this.tcResume.Name = "tcResume";
+            this.tcResume.SelectedIndex = 0;
+            this.tcResume.Size = new System.Drawing.Size(996, 551);
+            this.tcResume.TabIndex = 10;
             // 
-            // tabPage1
+            // tpInfoGeneral
             // 
-            this.tabPage1.Controls.Add(this.lblSolde);
-            this.tabPage1.Controls.Add(this.lblBudget);
-            this.tabPage1.Controls.Add(this.lblArrivee);
-            this.tabPage1.Controls.Add(this.lblDepart);
-            this.tabPage1.Controls.Add(this.grpMembre);
-            this.tabPage1.Controls.Add(this.grpCaptures);
-            this.tabPage1.Controls.Add(this.grpFeuilleRoute);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(988, 587);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tpInfoGeneral.Controls.Add(this.lblSolde);
+            this.tpInfoGeneral.Controls.Add(this.grpCaptures);
+            this.tpInfoGeneral.Controls.Add(this.lblBudget);
+            this.tpInfoGeneral.Controls.Add(this.lblArrivee);
+            this.tpInfoGeneral.Controls.Add(this.lblDepart);
+            this.tpInfoGeneral.Controls.Add(this.grpMembre);
+            this.tpInfoGeneral.Controls.Add(this.grpFeuilleRoute);
+            this.tpInfoGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tpInfoGeneral.Name = "tpInfoGeneral";
+            this.tpInfoGeneral.Padding = new System.Windows.Forms.Padding(3);
+            this.tpInfoGeneral.Size = new System.Drawing.Size(988, 525);
+            this.tpInfoGeneral.TabIndex = 0;
+            this.tpInfoGeneral.Text = "Informations Générales";
+            this.tpInfoGeneral.UseVisualStyleBackColor = true;
             // 
             // lblSolde
             // 
             this.lblSolde.AutoSize = true;
-            this.lblSolde.Location = new System.Drawing.Point(9, 103);
+            this.lblSolde.Location = new System.Drawing.Point(330, 47);
             this.lblSolde.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSolde.Name = "lblSolde";
             this.lblSolde.Size = new System.Drawing.Size(35, 13);
@@ -110,7 +117,7 @@
             // lblBudget
             // 
             this.lblBudget.AutoSize = true;
-            this.lblBudget.Location = new System.Drawing.Point(9, 75);
+            this.lblBudget.Location = new System.Drawing.Point(330, 19);
             this.lblBudget.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBudget.Name = "lblBudget";
             this.lblBudget.Size = new System.Drawing.Size(35, 13);
@@ -140,7 +147,7 @@
             // grpMembre
             // 
             this.grpMembre.Controls.Add(this.pnlMembre);
-            this.grpMembre.Location = new System.Drawing.Point(3, 259);
+            this.grpMembre.Location = new System.Drawing.Point(3, 193);
             this.grpMembre.Name = "grpMembre";
             this.grpMembre.Size = new System.Drawing.Size(556, 182);
             this.grpMembre.TabIndex = 11;
@@ -158,9 +165,9 @@
             // grpCaptures
             // 
             this.grpCaptures.Controls.Add(this.txtCaptures);
-            this.grpCaptures.Location = new System.Drawing.Point(3, 447);
+            this.grpCaptures.Location = new System.Drawing.Point(3, 381);
             this.grpCaptures.Name = "grpCaptures";
-            this.grpCaptures.Size = new System.Drawing.Size(553, 136);
+            this.grpCaptures.Size = new System.Drawing.Size(556, 136);
             this.grpCaptures.TabIndex = 12;
             this.grpCaptures.TabStop = false;
             this.grpCaptures.Text = "Objectifs (captures)";
@@ -171,14 +178,14 @@
             this.txtCaptures.Name = "txtCaptures";
             this.txtCaptures.ReadOnly = true;
             this.txtCaptures.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtCaptures.Size = new System.Drawing.Size(540, 110);
+            this.txtCaptures.Size = new System.Drawing.Size(543, 110);
             this.txtCaptures.TabIndex = 0;
             this.txtCaptures.Text = "";
             // 
             // grpFeuilleRoute
             // 
             this.grpFeuilleRoute.Controls.Add(this.txtFeuilleRoute);
-            this.grpFeuilleRoute.Location = new System.Drawing.Point(6, 142);
+            this.grpFeuilleRoute.Location = new System.Drawing.Point(3, 76);
             this.grpFeuilleRoute.Name = "grpFeuilleRoute";
             this.grpFeuilleRoute.Size = new System.Drawing.Size(553, 111);
             this.grpFeuilleRoute.TabIndex = 10;
@@ -191,24 +198,25 @@
             this.txtFeuilleRoute.Name = "txtFeuilleRoute";
             this.txtFeuilleRoute.ReadOnly = true;
             this.txtFeuilleRoute.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtFeuilleRoute.Size = new System.Drawing.Size(540, 86);
+            this.txtFeuilleRoute.Size = new System.Drawing.Size(541, 86);
             this.txtFeuilleRoute.TabIndex = 6;
             this.txtFeuilleRoute.Text = "";
             // 
-            // tabPage2
+            // tpEvent
             // 
-            this.tabPage2.Controls.Add(this.lblDepense);
-            this.tabPage2.Controls.Add(this.lblSommeVersees);
-            this.tabPage2.Controls.Add(this.grpDepenses);
-            this.tabPage2.Controls.Add(this.grpContacts);
-            this.tabPage2.Controls.Add(this.grpEvent);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(988, 587);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tpEvent.Controls.Add(this.grpCapture);
+            this.tpEvent.Controls.Add(this.lblDepense);
+            this.tpEvent.Controls.Add(this.lblSommeVersees);
+            this.tpEvent.Controls.Add(this.grpDepenses);
+            this.tpEvent.Controls.Add(this.grpContacts);
+            this.tpEvent.Controls.Add(this.grpEvent);
+            this.tpEvent.Location = new System.Drawing.Point(4, 22);
+            this.tpEvent.Name = "tpEvent";
+            this.tpEvent.Padding = new System.Windows.Forms.Padding(3);
+            this.tpEvent.Size = new System.Drawing.Size(988, 576);
+            this.tpEvent.TabIndex = 1;
+            this.tpEvent.Text = "Évènements";
+            this.tpEvent.UseVisualStyleBackColor = true;
             // 
             // lblDepense
             // 
@@ -233,7 +241,7 @@
             this.grpDepenses.Controls.Add(this.dgvDepenses);
             this.grpDepenses.Location = new System.Drawing.Point(559, 6);
             this.grpDepenses.Name = "grpDepenses";
-            this.grpDepenses.Size = new System.Drawing.Size(423, 446);
+            this.grpDepenses.Size = new System.Drawing.Size(423, 262);
             this.grpDepenses.TabIndex = 7;
             this.grpDepenses.TabStop = false;
             this.grpDepenses.Text = "Dépenses Effectuées";
@@ -245,18 +253,18 @@
             this.dgvDepenses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDepenses.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDepenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDepenses.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDepenses.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvDepenses.Location = new System.Drawing.Point(6, 19);
             this.dgvDepenses.Name = "dgvDepenses";
             this.dgvDepenses.ReadOnly = true;
-            this.dgvDepenses.Size = new System.Drawing.Size(411, 419);
+            this.dgvDepenses.Size = new System.Drawing.Size(411, 237);
             this.dgvDepenses.TabIndex = 0;
             // 
             // grpContacts
@@ -278,14 +286,14 @@
             this.dgvContact.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvContact.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvContact.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvContact.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvContact.Location = new System.Drawing.Point(7, 20);
             this.dgvContact.Name = "dgvContact";
             this.dgvContact.ReadOnly = true;
@@ -311,7 +319,7 @@
             // 
             // btnLast
             // 
-            this.btnLast.Location = new System.Drawing.Point(262, 213);
+            this.btnLast.Location = new System.Drawing.Point(328, 213);
             this.btnLast.Name = "btnLast";
             this.btnLast.Size = new System.Drawing.Size(46, 43);
             this.btnLast.TabIndex = 5;
@@ -321,7 +329,7 @@
             // 
             // btnSuivant
             // 
-            this.btnSuivant.Location = new System.Drawing.Point(210, 213);
+            this.btnSuivant.Location = new System.Drawing.Point(276, 213);
             this.btnSuivant.Name = "btnSuivant";
             this.btnSuivant.Size = new System.Drawing.Size(46, 43);
             this.btnSuivant.TabIndex = 4;
@@ -331,7 +339,7 @@
             // 
             // btnPrecedent
             // 
-            this.btnPrecedent.Location = new System.Drawing.Point(158, 213);
+            this.btnPrecedent.Location = new System.Drawing.Point(224, 213);
             this.btnPrecedent.Name = "btnPrecedent";
             this.btnPrecedent.Size = new System.Drawing.Size(46, 43);
             this.btnPrecedent.TabIndex = 3;
@@ -341,7 +349,7 @@
             // 
             // btnFirst
             // 
-            this.btnFirst.Location = new System.Drawing.Point(106, 213);
+            this.btnFirst.Location = new System.Drawing.Point(172, 213);
             this.btnFirst.Name = "btnFirst";
             this.btnFirst.Size = new System.Drawing.Size(46, 43);
             this.btnFirst.TabIndex = 2;
@@ -367,6 +375,46 @@
             this.lblDateEvent.TabIndex = 0;
             this.lblDateEvent.Text = "label1";
             // 
+            // dgvCapture
+            // 
+            this.dgvCapture.AllowUserToAddRows = false;
+            this.dgvCapture.AllowUserToDeleteRows = false;
+            this.dgvCapture.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCapture.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvCapture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCapture.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCapture.Location = new System.Drawing.Point(6, 19);
+            this.dgvCapture.Name = "dgvCapture";
+            this.dgvCapture.ReadOnly = true;
+            this.dgvCapture.Size = new System.Drawing.Size(411, 150);
+            this.dgvCapture.TabIndex = 0;
+            // 
+            // grpCapture
+            // 
+            this.grpCapture.Controls.Add(this.dgvCapture);
+            this.grpCapture.Location = new System.Drawing.Point(559, 273);
+            this.grpCapture.Name = "grpCapture";
+            this.grpCapture.Size = new System.Drawing.Size(423, 178);
+            this.grpCapture.TabIndex = 8;
+            this.grpCapture.TabStop = false;
+            this.grpCapture.Text = "Capture Effectuées";
+            // 
+            // tpAjout
+            // 
+            this.tpAjout.Location = new System.Drawing.Point(4, 22);
+            this.tpAjout.Name = "tpAjout";
+            this.tpAjout.Size = new System.Drawing.Size(988, 576);
+            this.tpAjout.TabIndex = 2;
+            this.tpAjout.Text = "Ajout d\'évènements";
+            this.tpAjout.UseVisualStyleBackColor = true;
+            // 
             // missionPB1
             // 
             this.missionPB1.Location = new System.Drawing.Point(424, 10);
@@ -379,28 +427,30 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 744);
-            this.Controls.Add(this.tabControl1);
+            this.ClientSize = new System.Drawing.Size(1020, 706);
+            this.Controls.Add(this.tcResume);
             this.Controls.Add(this.missionPB1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormulaireMission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormulaireMission";
             this.Load += new System.EventHandler(this.FormulaireMission_Load);
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tcResume.ResumeLayout(false);
+            this.tpInfoGeneral.ResumeLayout(false);
+            this.tpInfoGeneral.PerformLayout();
             this.grpMembre.ResumeLayout(false);
             this.grpCaptures.ResumeLayout(false);
             this.grpFeuilleRoute.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
+            this.tpEvent.ResumeLayout(false);
+            this.tpEvent.PerformLayout();
             this.grpDepenses.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepenses)).EndInit();
             this.grpContacts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();
             this.grpEvent.ResumeLayout(false);
             this.grpEvent.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCapture)).EndInit();
+            this.grpCapture.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -408,15 +458,15 @@
         #endregion
 
         private MissionPB missionPB1;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabControl tcResume;
+        private System.Windows.Forms.TabPage tpInfoGeneral;
         private System.Windows.Forms.GroupBox grpMembre;
         private System.Windows.Forms.Panel pnlMembre;
         private System.Windows.Forms.GroupBox grpCaptures;
         private System.Windows.Forms.RichTextBox txtCaptures;
         private System.Windows.Forms.GroupBox grpFeuilleRoute;
         private System.Windows.Forms.RichTextBox txtFeuilleRoute;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tpEvent;
         private System.Windows.Forms.Label lblSolde;
         private System.Windows.Forms.Label lblBudget;
         private System.Windows.Forms.Label lblArrivee;
@@ -434,5 +484,8 @@
         private System.Windows.Forms.Button btnFirst;
         private System.Windows.Forms.Label lblEventDescription;
         private System.Windows.Forms.Label lblDateEvent;
+        private System.Windows.Forms.GroupBox grpCapture;
+        private System.Windows.Forms.DataGridView dgvCapture;
+        private System.Windows.Forms.TabPage tpAjout;
     }
 }
