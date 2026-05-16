@@ -57,12 +57,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />
-    <Compile Include="FormulaireJournalDeBord.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormulaireJournalDeBord.Designer.cs">
-      <DependentUpon>FormulaireJournalDeBord.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormulaireMission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,9 +116,6 @@
     <Compile Include="UserControlPlanetes\UserControlEspecesEnnemies.Designer.cs">
       <DependentUpon>UserControlEspecesEnnemies.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormulaireJournalDeBord.resx">
-      <DependentUpon>FormulaireJournalDeBord.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormulaireMission.resx">
       <DependentUpon>FormulaireMission.cs</DependentUpon>
     </EmbeddedResource>
