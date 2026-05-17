@@ -39,9 +39,10 @@
             // 
             // btnTDB
             // 
-            this.btnTDB.Location = new System.Drawing.Point(13, 392);
+            this.btnTDB.Location = new System.Drawing.Point(15, 490);
+            this.btnTDB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnTDB.Name = "btnTDB";
-            this.btnTDB.Size = new System.Drawing.Size(162, 46);
+            this.btnTDB.Size = new System.Drawing.Size(182, 58);
             this.btnTDB.TabIndex = 1;
             this.btnTDB.Text = "Tableau de bord";
             this.btnTDB.UseVisualStyleBackColor = true;
@@ -50,9 +51,10 @@
             // 
             // btnNouvelleMission
             // 
-            this.btnNouvelleMission.Location = new System.Drawing.Point(217, 392);
+            this.btnNouvelleMission.Location = new System.Drawing.Point(244, 490);
+            this.btnNouvelleMission.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
-            this.btnNouvelleMission.Size = new System.Drawing.Size(162, 46);
+            this.btnNouvelleMission.Size = new System.Drawing.Size(182, 58);
             this.btnNouvelleMission.TabIndex = 2;
             this.btnNouvelleMission.Text = "Nouvelle Mission";
             this.btnNouvelleMission.UseVisualStyleBackColor = true;
@@ -61,9 +63,10 @@
             // 
             // btnRaces
             // 
-            this.btnRaces.Location = new System.Drawing.Point(418, 392);
+            this.btnRaces.Location = new System.Drawing.Point(470, 490);
+            this.btnRaces.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRaces.Name = "btnRaces";
-            this.btnRaces.Size = new System.Drawing.Size(162, 46);
+            this.btnRaces.Size = new System.Drawing.Size(182, 58);
             this.btnRaces.TabIndex = 3;
             this.btnRaces.Text = "Decouverte des races";
             this.btnRaces.UseVisualStyleBackColor = true;
@@ -72,9 +75,10 @@
             // 
             // btnPlanetes
             // 
-            this.btnPlanetes.Location = new System.Drawing.Point(626, 392);
+            this.btnPlanetes.Location = new System.Drawing.Point(704, 490);
+            this.btnPlanetes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnPlanetes.Name = "btnPlanetes";
-            this.btnPlanetes.Size = new System.Drawing.Size(162, 46);
+            this.btnPlanetes.Size = new System.Drawing.Size(182, 58);
             this.btnPlanetes.TabIndex = 4;
             this.btnPlanetes.Text = "Infos des planètes";
             this.btnPlanetes.UseVisualStyleBackColor = true;
@@ -85,28 +89,31 @@
             // 
             this.pnlTDB.AutoScroll = true;
             this.pnlTDB.Controls.Add(this.pbChargement);
-            this.pnlTDB.Location = new System.Drawing.Point(13, 13);
+            this.pnlTDB.Location = new System.Drawing.Point(15, 16);
+            this.pnlTDB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pnlTDB.Name = "pnlTDB";
-            this.pnlTDB.Size = new System.Drawing.Size(775, 373);
+            this.pnlTDB.Size = new System.Drawing.Size(872, 466);
             this.pnlTDB.TabIndex = 5;
             // 
             // pbChargement
             // 
-            this.pbChargement.Location = new System.Drawing.Point(206, 144);
+            this.pbChargement.Location = new System.Drawing.Point(232, 180);
+            this.pbChargement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbChargement.Name = "pbChargement";
-            this.pbChargement.Size = new System.Drawing.Size(363, 44);
+            this.pbChargement.Size = new System.Drawing.Size(408, 55);
             this.pbChargement.TabIndex = 0;
             // 
             // FrmTableauDeBord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(900, 562);
             this.Controls.Add(this.pnlTDB);
             this.Controls.Add(this.btnPlanetes);
             this.Controls.Add(this.btnRaces);
             this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.btnTDB);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmTableauDeBord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tableau de Bord";

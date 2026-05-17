@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Globalization;
+using UserControlPlanetes;
 
 namespace SAE24
 {
@@ -129,12 +130,35 @@ namespace SAE24
 
         private void btnPlanetes_Click(object sender, EventArgs e)
         {
+            // Mise à jour
+            pnlTDB.Controls.Clear();
+            string texte = "";
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Planete"].Rows)
+            {
+                texte += r[0] + "\n";
+            }
+            MessageBox.Show(texte);
 
+            // tests
+            List<string> listeEspeces = new List<string>();
+            listeEspeces.Add("Mobians");
+
+            List<string> listeMissions = new List<string>();
+            listeMissions.Add("Mission Prime");
+            UserControlPlanete u = new UserControlPlanete("", "", "Mobius", "32", 1, 1, listeEspeces, listeMissions, 20, 80);
+
+            // Gérer la taille du UserControl (réduire sa taille comme celle par défaut est trop grande)
+            u.Width = u.Width - 200;
+            u.Height = u.Height - 125;
+            pnlTDB.Controls.Add(u);
+            
         }
+
+        
 
         private void FrmTableauDeBord_Shown(object sender, EventArgs e)
         {
-            Chargement();
+            //Chargement();
             foreach (Button b in Controls.OfType<Button>())
             {
                 b.Visible = true;
