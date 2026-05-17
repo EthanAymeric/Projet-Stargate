@@ -132,14 +132,48 @@ namespace SAE24
         {
             // Mise à jour
             pnlTDB.Controls.Clear();
-            string texte = "";
+            Int32 left = 0;
+            int nbPlaneteOnScreen = 0;
+            // Parcours de la table pour récupérer toutes les infos nécessaires
             foreach (DataRow r in MesDatas.DsGlobal.Tables["Planete"].Rows)
             {
-                texte += r[0] + "\n";
+
+                // Récupération du chemin des images
+                string nomImagePlanete = "";
+                string nomImageTemp = "";
+
+                // Récupération des chaînes de caractères
+                string nomPlanete = r["nom"].ToString();
+                string temp = r["temperature"].ToString();
+                string gravite = r["gravite"].ToString();
+                string presenceDatabaz = r["dataBazON"].ToString();
+
+                // Initialisation des listes
+                List<string> listeEspeces = new List<string>();
+                listeEspeces.Add("Mobians");
+
+                List<string> listeMissions = new List<string>();
+                listeMissions.Add("Mission Prime");
+
+                // Création de l'UserControl en le surchargeant
+                UserControlPlanete u = new UserControlPlanete(nomImagePlanete, nomImageTemp, nomPlanete, temp, gravite, presenceDatabaz, listeEspeces, listeMissions, 20, 80);
+
+                // Gérer la taille du UserControl (réduire sa taille comme celle par défaut est trop grande)
+                u.Width = u.Width - 100;
+                nbPlaneteOnScreen++;
+
+                // Affichage séparée
+                u.Left = left;
+                left += u.Width + 225;
+
+                // Ajout de l'UserControl dans le panel du tableau de bord
+                pnlTDB.Controls.Add(u);
             }
-            MessageBox.Show(texte);
+
+            MessageBox.Show(MesDatas.DsGlobal.Tables["Planete"].Rows.Count.ToString());
 
             // tests
+            /*
             List<string> listeEspeces = new List<string>();
             listeEspeces.Add("Mobians");
 
@@ -148,10 +182,10 @@ namespace SAE24
             UserControlPlanete u = new UserControlPlanete("", "", "Mobius", "32", 1, 1, listeEspeces, listeMissions, 20, 80);
 
             // Gérer la taille du UserControl (réduire sa taille comme celle par défaut est trop grande)
-            u.Width = u.Width - 200;
-            u.Height = u.Height - 125;
+            u.Size = new Size(u.Width - 100, u.Height);
             pnlTDB.Controls.Add(u);
-            
+            */
+
         }
 
         

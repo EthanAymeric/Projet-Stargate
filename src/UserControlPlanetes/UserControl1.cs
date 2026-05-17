@@ -17,19 +17,19 @@ namespace UserControlPlanetes
             InitializeComponent();
         }
 
-        public UserControlPlanete(string nomImagePlanete, string nomImageTemp, string nomPlanete, string temp, float gravite, Int64 presenceDatabaz, List<string> especesPresentes, List<string> missionsRealisees, Int64 pourcentageAllies, Int64 pourcentageEnnemis)
+        public UserControlPlanete(string nomImagePlanete, string nomImageTemp, string nomPlanete, string temp, string gravite, string presenceDatabaz, List<string> especesPresentes, List<string> missionsRealisees, Int64 pourcentageAllies, Int64 pourcentageEnnemis)
         {
             InitializeComponent();
             // Ajout des éléments textuels
             lblNomPlanete.Text = nomPlanete;
-            lblTemp.Text = temp;
+            lblTemp.Text = temp + "°";
             lblGraviteValue.Text = gravite.ToString();
 
             lblAlliesValue.Text = pourcentageAllies + " %";
             lblEnnemisValue.Text = pourcentageEnnemis + " %";
 
             // Dire s'il y a du Databz ou pas
-            if (presenceDatabaz == 1)
+            if (presenceDatabaz == "1")
             {
                 lblPresenceDatabaz.Text = "Présence de Databaz";
             }
