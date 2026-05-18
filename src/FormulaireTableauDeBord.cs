@@ -70,19 +70,35 @@ namespace SAE24
         {
             try
             {
-            MesDatas.DsGlobal.Relations.Add("FK_Militaire_Chef", MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"], MesDatas.DsGlobal.Tables["Mission"].Columns["matriculeChef"]);
-            MesDatas.DsGlobal.Relations.Add("FK_Membre_Militaire", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"]);
-            MesDatas.DsGlobal.Relations.Add("FK_Membre_Civil", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Civil"].Columns["matriculeMembre"]);
-            MesDatas.DsGlobal.Relations.Add("FK_Membre_Composer", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Composer"].Columns["matriculeMembre"]);
-            DataColumn[] missionPK = new DataColumn[] { MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Mission"].Columns["numero"] };
-            DataColumn[] depensePK = new DataColumn[] { MesDatas.DsGlobal.Tables["Depense"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Depense"].Columns["numeroMission"] };
-            MesDatas.DsGlobal.Relations.Add("FK_Mission_Depense", missionPK, depensePK);
-            DataColumn[] composer = new DataColumn[] { MesDatas.DsGlobal.Tables["Composer"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Composer"].Columns["numeroMission"] };
-            MesDatas.DsGlobal.Relations.Add("FK_Mission_Composer", missionPK, composer);
-            DataColumn[] objectifCapture = new DataColumn[] { MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["numeroMission"] };
-            MesDatas.DsGlobal.Relations.Add("FK_Mission_ObjectifCapture", missionPK, objectifCapture);
-            MesDatas.DsGlobal.Relations.Add("FK_Espece_ObjectifCapture", MesDatas.DsGlobal.Tables["Espece"].Columns["id"] , MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["idEspeceEnnemi"]);
-            } catch (Exception ex) { MessageBox.Show(ex.Message); }
+                // Relations Tableau de bord
+                MesDatas.DsGlobal.Relations.Add("FK_Militaire_Chef", MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"], MesDatas.DsGlobal.Tables["Mission"].Columns["matriculeChef"]);
+                MesDatas.DsGlobal.Relations.Add("FK_Membre_Militaire", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"]);
+                MesDatas.DsGlobal.Relations.Add("FK_Membre_Civil", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Civil"].Columns["matriculeMembre"]);
+                MesDatas.DsGlobal.Relations.Add("FK_Membre_Composer", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Composer"].Columns["matriculeMembre"]);
+                DataColumn[] missionPK = new DataColumn[] { MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Mission"].Columns["numero"] };
+                DataColumn[] depensePK = new DataColumn[] { MesDatas.DsGlobal.Tables["Depense"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Depense"].Columns["numeroMission"] };
+                MesDatas.DsGlobal.Relations.Add("FK_Mission_Depense", missionPK, depensePK);
+                DataColumn[] composer = new DataColumn[] { MesDatas.DsGlobal.Tables["Composer"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Composer"].Columns["numeroMission"] };
+                MesDatas.DsGlobal.Relations.Add("FK_Mission_Composer", missionPK, composer);
+                DataColumn[] objectifCapture = new DataColumn[] { MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["numeroMission"] };
+                MesDatas.DsGlobal.Relations.Add("FK_Mission_ObjectifCapture", missionPK, objectifCapture);
+                MesDatas.DsGlobal.Relations.Add("FK_Espece_ObjectifCapture", MesDatas.DsGlobal.Tables["Espece"].Columns["id"] , MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["idEspeceEnnemi"]);
+
+                // Relations Planètes
+                
+                // nom (Planete) <-> nomPlanete (Habiter)
+                MesDatas.DsGlobal.Relations.Add("FK_Planete_Habiter", MesDatas.DsGlobal.Tables["Planete"].Columns["nom"], MesDatas.DsGlobal.Tables["Habiter"].Columns["nomPlanete"]);
+                // id (Espece) <-> idEspece (Habiter)
+                MesDatas.DsGlobal.Relations.Add("FK_Espece_Habiter", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Habiter"].Columns["idEspece"]);
+
+                // nom (Planete) <-> nomPlanete (Mission)
+                MesDatas.DsGlobal.Relations.Add("FK_Planete_Mission", MesDatas.DsGlobal.Tables["Planete"].Columns["nom"], MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"]);                
+
+            } 
+            catch (Exception ex) 
+            { 
+                MessageBox.Show(ex.Message); 
+            }
         }
         private void ActualisationTDB()
         {
@@ -149,11 +165,34 @@ namespace SAE24
                 string presenceDatabaz = r["dataBazON"].ToString();
 
                 // Initialisation des listes
-                List<string> listeEspeces = new List<string>();
-                listeEspeces.Add("Mobians");
 
+                // Pour les espèces :
+                List<string> listeEspeces = new List<string>();
+
+                
+                DataRow[] espece = r.GetChildRows("FK_Planete_Habiter");
+
+                foreach (DataRow dr in espece)
+                {
+                    if (dr.GetParentRow("FK_Espece_Habiter") != null)
+                    {
+                        listeEspeces.Add(dr.GetParentRow("FK_Espece_Habiter")[1].ToString());
+                    }
+                    
+                }
+                
+
+                // Pour les missions :
                 List<string> listeMissions = new List<string>();
-                listeMissions.Add("Mission Prime");
+
+                DataRow[] mission = r.GetChildRows("FK_Planete_Mission");
+                foreach(DataRow dr in mission)
+                {
+                    if (dr[0] != null)
+                    {
+                        listeMissions.Add(dr[0].ToString() + dr[1]);
+                    }
+                }
 
                 // Création de l'UserControl en le surchargeant
                 UserControlPlanete u = new UserControlPlanete(nomImagePlanete, nomImageTemp, nomPlanete, temp, gravite, presenceDatabaz, listeEspeces, listeMissions, 20, 80);
@@ -169,22 +208,6 @@ namespace SAE24
                 // Ajout de l'UserControl dans le panel du tableau de bord
                 pnlTDB.Controls.Add(u);
             }
-
-            MessageBox.Show(MesDatas.DsGlobal.Tables["Planete"].Rows.Count.ToString());
-
-            // tests
-            /*
-            List<string> listeEspeces = new List<string>();
-            listeEspeces.Add("Mobians");
-
-            List<string> listeMissions = new List<string>();
-            listeMissions.Add("Mission Prime");
-            UserControlPlanete u = new UserControlPlanete("", "", "Mobius", "32", 1, 1, listeEspeces, listeMissions, 20, 80);
-
-            // Gérer la taille du UserControl (réduire sa taille comme celle par défaut est trop grande)
-            u.Size = new Size(u.Width - 100, u.Height);
-            pnlTDB.Controls.Add(u);
-            */
 
         }
 

@@ -55,11 +55,11 @@ namespace UserControlPlanetes
             else
             {
                 string texte = "";
-                for (int i = 0; i < especesPresentes.Count() - 1; i++)
+                for (int i = 0; i < especesPresentes.Count(); i++)
                 {
                     texte += especesPresentes[i] + ", ";
                 }
-                texte += " et " + especesPresentes[especesPresentes.Count()];
+                texte += "et " + especesPresentes[especesPresentes.Count()-1];
 
                 lblEspecesValue.Text = texte;
             }
@@ -79,11 +79,11 @@ namespace UserControlPlanetes
             else
             {
                 string texte = "";
-                for (int i = 0; i < missionsRealisees.Count() - 1; i++)
+                for (int i = 0; i < missionsRealisees.Count(); i++)
                 {
                     texte += missionsRealisees[i] + ", ";
                 }
-                texte += " et " + missionsRealisees[missionsRealisees.Count()];
+                texte += "et " + missionsRealisees[missionsRealisees.Count()-1];
 
                 lblMissionsValue.Text = texte;
             }
@@ -108,6 +108,16 @@ namespace UserControlPlanetes
         }
 
         private void UserControl1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEspecesValue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMissionsValue_Click(object sender, EventArgs e)
         {
 
         }
