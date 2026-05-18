@@ -22,8 +22,23 @@ namespace UserControlPlanetes
             InitializeComponent();
             // Ajout des éléments textuels
             lblNomPlanete.Text = nomPlanete;
-            lblTemp.Text = temp + "°";
-            lblGraviteValue.Text = gravite.ToString();
+            if (temp == "")
+            {
+                lblTemp.Text = "Température inconnue";
+            }
+            else
+            {
+                lblTemp.Text = temp + "°";
+            }
+
+            if (gravite == "")
+            {
+                lblGraviteValue.Text = "Inconnue";
+            }
+            else
+            {
+                lblGraviteValue.Text = gravite;
+            }
 
             lblAlliesValue.Text = pourcentageAllies + " %";
             lblEnnemisValue.Text = pourcentageEnnemis + " %";
@@ -49,7 +64,7 @@ namespace UserControlPlanetes
             // S'il n'y en a aucune, on le dit
             else if (especesPresentes.Count() == 0)
             {
-                lblEspecesValue.Text = "Pas d'espèces (connues)";
+                lblEspecesValue.Text = "Absence d'espèces connues";
             }
             // Sinon, on parcourt et on affiche toutes les espèces
             else

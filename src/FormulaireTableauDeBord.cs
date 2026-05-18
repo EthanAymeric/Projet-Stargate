@@ -153,16 +153,19 @@ namespace SAE24
             // Parcours de la table pour récupérer toutes les infos nécessaires
             foreach (DataRow r in MesDatas.DsGlobal.Tables["Planete"].Rows)
             {
-
-                // Récupération du chemin des images
-                string nomImagePlanete = "";
-                string nomImageTemp = "";
-
                 // Récupération des chaînes de caractères
                 string nomPlanete = r["nom"].ToString();
                 string temp = r["temperature"].ToString();
                 string gravite = r["gravite"].ToString();
                 string presenceDatabaz = r["dataBazON"].ToString();
+
+
+                // Récupération du chemin des images
+                // La fonction replace permete de remplacer les espaces présents dans 'la 9e planete' pour quon' puisse afficher la bonne image correspondante
+                string nomImageP = nomPlanete.Replace(" ", "");
+                string nomImagePlanete = $"../../Images/Planetes/{nomImageP}.png";
+                string nomImageTemp = "";
+
 
                 // Initialisation des listes
 
