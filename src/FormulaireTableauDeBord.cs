@@ -126,6 +126,7 @@ namespace SAE24
         }
         private void btnTDB_Click(object sender, EventArgs e)
         {
+            pnlTDB.Controls.Clear();
             ActualisationTDB();
         }
 
@@ -161,10 +162,71 @@ namespace SAE24
 
 
                 // Récupération du chemin des images
+
+                // Pour les planètes
                 // La fonction replace permete de remplacer les espaces présents dans 'la 9e planete' pour quon' puisse afficher la bonne image correspondante
                 string nomImageP = nomPlanete.Replace(" ", "");
                 string nomImagePlanete = $"../../Images/Planetes/{nomImageP}.png";
-                string nomImageTemp = "";
+
+                // Pour la température
+                string nomImageTemp;
+                Int32 valueTemp = 0;
+                int xOut;
+
+                
+                // Si la valeur est positive, on reprend simplement la valeur obtenue en la castant
+                if (!r["temperature"].ToString().Contains("-"))
+                {
+                    // On vérifie qu'on puisse bien la convertir
+                    if (Int32.TryParse(r["temperature"].ToString(), out xOut))
+                    {
+                        // Si oui, on affecte la valeur dans valueTemp
+                        valueTemp = xOut;
+                    }
+                    else
+                    {
+                        // Sinon, on renvoie un string vide indiquant que la température est inconnue
+                        nomImageTemp = "";
+                    }
+                }
+                // Si la température est négative
+                else if (r["temperature"].ToString().Contains("-"))
+                {
+                    string valuePositive = "";
+                    // On parcourt la chaîne de caractères APRES le signe moins ('-')
+                    for (int i = 1; i < r["temperature"].ToString().Length; i++)
+                    {
+                        // On affecte ces valeurs dans la variable temporaire
+                        valuePositive += r["temperature"].ToString()[i];
+                    }
+                    // On les convertit en entier pour obtenir la valeur absolue
+                    valueTemp = Int32.Parse(valuePositive);
+
+                    // Comme le nombre original est négatif, on le multiplie par -1 pour inverser son signe
+                    valueTemp *= -1;
+
+                }
+                
+                // Affichage en conséquence
+                // Température froide
+                if (valueTemp <= 5)
+                {
+                    nomImageTemp = $"../../Images/Temperature/Froid.png";
+                }
+                // Température medium
+                else if (valueTemp > 5 && valueTemp < 100)
+                {
+                    nomImageTemp = $"../../Images/Temperature/Medium.png";
+                }
+                // Température chaude
+                else if (valueTemp > 100)
+                {
+                    nomImageTemp = $"../../Images/Temperature/Chaud.png";
+                }
+                else
+                {
+                    nomImageTemp = "";
+                }
 
 
                 // Initialisation des listes
