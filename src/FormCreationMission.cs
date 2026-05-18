@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Data.SQLite;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace SAE24
+{
+    public partial class FormCreationMission : Form
+    {
+        public FormCreationMission()
+        {
+            InitializeComponent();
+        }
+
+        private void FormCreationMission_Load(object sender, EventArgs e)
+        {
+            SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = @"select nom from planete";
+
+            SQLiteDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                comboBoxPlanete.Items.Add(reader.GetString(0));
+            }
+
+            Connexion.FermerConnexion();
+        }
+
+        private void comboBoxPlanete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = $@"select count(*) 
+from Mission 
+where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
+            int nbMission = Convert.ToInt32(cmd.ExecuteScalar()) + 1;
+
+            labelNomMission.Text = $"Nom de mission: {comboBoxPlanete.SelectedItem} - {nbMission}";
+        }
+    }
+}

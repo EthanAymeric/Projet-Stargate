@@ -63,6 +63,12 @@
     <Compile Include="FormConnexion.Designer.cs">
       <DependentUpon>FormConnexion.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormCreationMission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreationMission.Designer.cs">
+      <DependentUpon>FormCreationMission.cs</DependentUpon>
+    </Compile>
     <Compile Include="mesDatas.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormConnexion.resx">
       <DependentUpon>FormConnexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreationMission.resx">
+      <DependentUpon>FormCreationMission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

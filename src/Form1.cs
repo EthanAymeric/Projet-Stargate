@@ -30,12 +30,20 @@ namespace SAE24
 
             if (result == DialogResult.OK)
             {
-                MessageBox.Show("Access Granted");
+                FormCreationMission formCreation = new FormCreationMission();
+
+                if (formCreation.ShowDialog() == DialogResult.OK)
+                {
+                    MessageBox.Show("Mission créée");
+                }
             }
+
+            /*
             else if (result == DialogResult.Cancel)
             {
                 MessageBox.Show("Access Denied");
             }
+            */
         }
     }
 }
