@@ -36,6 +36,7 @@
             this.textBoxMdp = new System.Windows.Forms.TextBox();
             this.buttonAnnuler = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.checkBoxAfficherMdp = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,6 +82,7 @@
             this.textBoxMdp.Name = "textBoxMdp";
             this.textBoxMdp.Size = new System.Drawing.Size(183, 32);
             this.textBoxMdp.TabIndex = 4;
+            this.textBoxMdp.UseSystemPasswordChar = true;
             this.textBoxMdp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxMdp_KeyPress);
             // 
             // buttonAnnuler
@@ -97,11 +99,23 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // checkBoxAfficherMdp
+            // 
+            this.checkBoxAfficherMdp.AutoSize = true;
+            this.checkBoxAfficherMdp.Location = new System.Drawing.Point(189, 128);
+            this.checkBoxAfficherMdp.Name = "checkBoxAfficherMdp";
+            this.checkBoxAfficherMdp.Size = new System.Drawing.Size(103, 30);
+            this.checkBoxAfficherMdp.TabIndex = 6;
+            this.checkBoxAfficherMdp.Text = "Visible";
+            this.checkBoxAfficherMdp.UseVisualStyleBackColor = true;
+            this.checkBoxAfficherMdp.CheckedChanged += new System.EventHandler(this.checkBoxAfficherMdp_CheckedChanged);
+            // 
             // FormConnexion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(399, 244);
+            this.Controls.Add(this.checkBoxAfficherMdp);
             this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.textBoxMdp);
             this.Controls.Add(this.textBoxLogin);
@@ -131,5 +145,6 @@
         private System.Windows.Forms.TextBox textBoxMdp;
         private System.Windows.Forms.Button buttonAnnuler;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.CheckBox checkBoxAfficherMdp;
     }
 }

@@ -99,5 +99,10 @@ namespace SAE24
                 errorProvider.SetError(textBoxMdp, "");
             }
         }
+
+        private void checkBoxAfficherMdp_CheckedChanged(object sender, EventArgs e)
+        {
+            textBoxMdp.UseSystemPasswordChar = !checkBoxAfficherMdp.Checked;
+        }
     }
 }
