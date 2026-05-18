@@ -30,6 +30,18 @@ namespace SAE24
                 comboBoxPlanete.Items.Add(reader.GetString(0));
             }
 
+            cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = @"select m.grade || ' · ' || me.nom || ' ' || me.prenom
+from Militaire m
+join Membre me on m.matriculeMembre = me.matricule
+order by m.grade";
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                comboBoxChef.Items.Add(reader.GetString(0));
+            }
+
             Connexion.FermerConnexion();
         }
 
