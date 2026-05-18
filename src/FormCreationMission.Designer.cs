@@ -39,6 +39,12 @@
             this.labelDateDepart = new System.Windows.Forms.Label();
             this.labelDateRetour = new System.Windows.Forms.Label();
             this.labelDuree = new System.Windows.Forms.Label();
+            this.labelFeuilleRoute = new System.Windows.Forms.Label();
+            this.richTextBoxFeuilleRoute = new System.Windows.Forms.RichTextBox();
+            this.labelNbMembres = new System.Windows.Forms.Label();
+            this.trackBarNbMembres = new System.Windows.Forms.TrackBar();
+            this.labelMembres = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).BeginInit();
             this.SuspendLayout();
             // 
             // labelPlanete
@@ -63,10 +69,10 @@
             // labelNomMission
             // 
             this.labelNomMission.AutoSize = true;
-            this.labelNomMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 17F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelNomMission.Location = new System.Drawing.Point(115, 109);
+            this.labelNomMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.labelNomMission.Location = new System.Drawing.Point(392, 113);
             this.labelNomMission.Name = "labelNomMission";
-            this.labelNomMission.Size = new System.Drawing.Size(295, 39);
+            this.labelNomMission.Size = new System.Drawing.Size(182, 26);
             this.labelNomMission.TabIndex = 2;
             this.labelNomMission.Text = "Nom de mission: ";
             // 
@@ -142,11 +148,61 @@
             this.labelDuree.TabIndex = 10;
             this.labelDuree.Text = "Durée: ";
             // 
+            // labelFeuilleRoute
+            // 
+            this.labelFeuilleRoute.AutoSize = true;
+            this.labelFeuilleRoute.Location = new System.Drawing.Point(43, 451);
+            this.labelFeuilleRoute.Name = "labelFeuilleRoute";
+            this.labelFeuilleRoute.Size = new System.Drawing.Size(192, 26);
+            this.labelFeuilleRoute.TabIndex = 11;
+            this.labelFeuilleRoute.Text = "4 - Feuille de route";
+            // 
+            // richTextBoxFeuilleRoute
+            // 
+            this.richTextBoxFeuilleRoute.Location = new System.Drawing.Point(396, 451);
+            this.richTextBoxFeuilleRoute.Name = "richTextBoxFeuilleRoute";
+            this.richTextBoxFeuilleRoute.Size = new System.Drawing.Size(291, 168);
+            this.richTextBoxFeuilleRoute.TabIndex = 12;
+            this.richTextBoxFeuilleRoute.Text = "";
+            // 
+            // labelNbMembres
+            // 
+            this.labelNbMembres.AutoSize = true;
+            this.labelNbMembres.Location = new System.Drawing.Point(43, 659);
+            this.labelNbMembres.Name = "labelNbMembres";
+            this.labelNbMembres.Size = new System.Drawing.Size(314, 26);
+            this.labelNbMembres.TabIndex = 13;
+            this.labelNbMembres.Text = "5 - Nombre de membres requis";
+            // 
+            // trackBarNbMembres
+            // 
+            this.trackBarNbMembres.Location = new System.Drawing.Point(384, 659);
+            this.trackBarNbMembres.Minimum = 1;
+            this.trackBarNbMembres.Name = "trackBarNbMembres";
+            this.trackBarNbMembres.Size = new System.Drawing.Size(261, 69);
+            this.trackBarNbMembres.TabIndex = 14;
+            this.trackBarNbMembres.TickStyle = System.Windows.Forms.TickStyle.Both;
+            this.trackBarNbMembres.Value = 1;
+            this.trackBarNbMembres.Scroll += new System.EventHandler(this.trackBarNbMembres_Scroll);
+            // 
+            // labelMembres
+            // 
+            this.labelMembres.AutoSize = true;
+            this.labelMembres.Location = new System.Drawing.Point(652, 673);
+            this.labelMembres.Name = "labelMembres";
+            this.labelMembres.Size = new System.Drawing.Size(0, 26);
+            this.labelMembres.TabIndex = 15;
+            // 
             // FormCreationMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 859);
+            this.Controls.Add(this.labelMembres);
+            this.Controls.Add(this.trackBarNbMembres);
+            this.Controls.Add(this.labelNbMembres);
+            this.Controls.Add(this.richTextBoxFeuilleRoute);
+            this.Controls.Add(this.labelFeuilleRoute);
             this.Controls.Add(this.labelDuree);
             this.Controls.Add(this.labelDateRetour);
             this.Controls.Add(this.labelDateDepart);
@@ -163,6 +219,7 @@
             this.Name = "FormCreationMission";
             this.Text = "Création d\'une nouvelle mission";
             this.Load += new System.EventHandler(this.FormCreationMission_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +238,10 @@
         private System.Windows.Forms.Label labelDateDepart;
         private System.Windows.Forms.Label labelDateRetour;
         private System.Windows.Forms.Label labelDuree;
+        private System.Windows.Forms.Label labelFeuilleRoute;
+        private System.Windows.Forms.RichTextBox richTextBoxFeuilleRoute;
+        private System.Windows.Forms.Label labelNbMembres;
+        private System.Windows.Forms.TrackBar trackBarNbMembres;
+        private System.Windows.Forms.Label labelMembres;
     }
 }

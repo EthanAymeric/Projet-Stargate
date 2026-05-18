@@ -43,6 +43,10 @@ order by m.grade";
                 comboBoxChef.Items.Add(reader.GetString(0));
             }
 
+            cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = @"select count(*) from Membre";
+            trackBarNbMembres.Maximum = Convert.ToInt32(cmd.ExecuteScalar());
+
             Connexion.FermerConnexion();
         }
 
@@ -89,6 +93,11 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
             DateTime retour = dateTimePickerRetour.Value;
 
             return retour.Subtract(depart);
+        }
+
+        private void trackBarNbMembres_Scroll(object sender, EventArgs e)
+        {
+            labelMembres.Text = trackBarNbMembres.Value.ToString();
         }
     }
 }
