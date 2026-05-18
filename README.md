@@ -18,7 +18,7 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 ## TO-DO list 
 
 - [x] Faire formulaire de login 
-- [ ] Ajouter Admin à la bdd pour vérifier le login 
+- [x] Ajouter Admin à la bdd pour vérifier le login 
 - [ ] Ajouter les éléments formulaire création 
 - [ ] Générer un nom de mission 
 - [ ] Blinder les saisies 
