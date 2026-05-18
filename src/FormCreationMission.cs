@@ -99,5 +99,10 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
         {
             labelMembres.Text = trackBarNbMembres.Value.ToString();
         }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
     }
 }

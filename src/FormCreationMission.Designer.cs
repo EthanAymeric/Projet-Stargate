@@ -44,6 +44,9 @@
             this.labelNbMembres = new System.Windows.Forms.Label();
             this.trackBarNbMembres = new System.Windows.Forms.TrackBar();
             this.labelMembres = new System.Windows.Forms.Label();
+            this.labelDatabaz = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.labelTonnes = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,11 +196,40 @@
             this.labelMembres.Size = new System.Drawing.Size(0, 26);
             this.labelMembres.TabIndex = 15;
             // 
+            // labelDatabaz
+            // 
+            this.labelDatabaz.AutoSize = true;
+            this.labelDatabaz.Location = new System.Drawing.Point(48, 734);
+            this.labelDatabaz.Name = "labelDatabaz";
+            this.labelDatabaz.Size = new System.Drawing.Size(230, 26);
+            this.labelDatabaz.TabIndex = 16;
+            this.labelDatabaz.Text = "6 - Objectif de databaz";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(397, 731);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(141, 32);
+            this.textBox1.TabIndex = 17;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // labelTonnes
+            // 
+            this.labelTonnes.AutoSize = true;
+            this.labelTonnes.Location = new System.Drawing.Point(561, 734);
+            this.labelTonnes.Name = "labelTonnes";
+            this.labelTonnes.Size = new System.Drawing.Size(77, 26);
+            this.labelTonnes.TabIndex = 18;
+            this.labelTonnes.Text = "tonnes";
+            // 
             // FormCreationMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 859);
+            this.Controls.Add(this.labelTonnes);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.labelDatabaz);
             this.Controls.Add(this.labelMembres);
             this.Controls.Add(this.trackBarNbMembres);
             this.Controls.Add(this.labelNbMembres);
@@ -243,5 +275,8 @@
         private System.Windows.Forms.Label labelNbMembres;
         private System.Windows.Forms.TrackBar trackBarNbMembres;
         private System.Windows.Forms.Label labelMembres;
+        private System.Windows.Forms.Label labelDatabaz;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelTonnes;
     }
 }
