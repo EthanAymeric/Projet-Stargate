@@ -28,22 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tcResume = new System.Windows.Forms.TabControl();
             this.tpInfoGeneral = new System.Windows.Forms.TabPage();
             this.lblSolde = new System.Windows.Forms.Label();
+            this.grpCaptures = new System.Windows.Forms.GroupBox();
+            this.txtCaptures = new System.Windows.Forms.RichTextBox();
             this.lblBudget = new System.Windows.Forms.Label();
             this.lblArrivee = new System.Windows.Forms.Label();
             this.lblDepart = new System.Windows.Forms.Label();
             this.grpMembre = new System.Windows.Forms.GroupBox();
             this.pnlMembre = new System.Windows.Forms.Panel();
-            this.grpCaptures = new System.Windows.Forms.GroupBox();
-            this.txtCaptures = new System.Windows.Forms.RichTextBox();
             this.grpFeuilleRoute = new System.Windows.Forms.GroupBox();
             this.txtFeuilleRoute = new System.Windows.Forms.RichTextBox();
             this.tpEvent = new System.Windows.Forms.TabPage();
+            this.grpCapture = new System.Windows.Forms.GroupBox();
+            this.dgvCapture = new System.Windows.Forms.DataGridView();
             this.lblDepense = new System.Windows.Forms.Label();
             this.lblSommeVersees = new System.Windows.Forms.Label();
             this.grpDepenses = new System.Windows.Forms.GroupBox();
@@ -57,23 +59,33 @@
             this.btnFirst = new System.Windows.Forms.Button();
             this.lblEventDescription = new System.Windows.Forms.Label();
             this.lblDateEvent = new System.Windows.Forms.Label();
-            this.dgvCapture = new System.Windows.Forms.DataGridView();
-            this.grpCapture = new System.Windows.Forms.GroupBox();
             this.tpAjout = new System.Windows.Forms.TabPage();
+            this.grpFormulaireAjout = new System.Windows.Forms.GroupBox();
+            this.grpChoixAjout = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rdbNewContact = new System.Windows.Forms.RadioButton();
             this.missionPB1 = new SAE24.MissionPB();
             this.tcResume.SuspendLayout();
             this.tpInfoGeneral.SuspendLayout();
-            this.grpMembre.SuspendLayout();
             this.grpCaptures.SuspendLayout();
+            this.grpMembre.SuspendLayout();
             this.grpFeuilleRoute.SuspendLayout();
             this.tpEvent.SuspendLayout();
+            this.grpCapture.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCapture)).BeginInit();
             this.grpDepenses.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepenses)).BeginInit();
             this.grpContacts.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
             this.grpEvent.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCapture)).BeginInit();
-            this.grpCapture.SuspendLayout();
+            this.tpAjout.SuspendLayout();
+            this.grpChoixAjout.SuspendLayout();
             this.SuspendLayout();
             // 
             // tcResume
@@ -81,10 +93,11 @@
             this.tcResume.Controls.Add(this.tpInfoGeneral);
             this.tcResume.Controls.Add(this.tpEvent);
             this.tcResume.Controls.Add(this.tpAjout);
-            this.tcResume.Location = new System.Drawing.Point(12, 154);
+            this.tcResume.Location = new System.Drawing.Point(16, 190);
+            this.tcResume.Margin = new System.Windows.Forms.Padding(4);
             this.tcResume.Name = "tcResume";
             this.tcResume.SelectedIndex = 0;
-            this.tcResume.Size = new System.Drawing.Size(996, 551);
+            this.tcResume.Size = new System.Drawing.Size(1328, 675);
             this.tcResume.TabIndex = 10;
             // 
             // tpInfoGeneral
@@ -96,10 +109,11 @@
             this.tpInfoGeneral.Controls.Add(this.lblDepart);
             this.tpInfoGeneral.Controls.Add(this.grpMembre);
             this.tpInfoGeneral.Controls.Add(this.grpFeuilleRoute);
-            this.tpInfoGeneral.Location = new System.Drawing.Point(4, 22);
+            this.tpInfoGeneral.Location = new System.Drawing.Point(4, 25);
+            this.tpInfoGeneral.Margin = new System.Windows.Forms.Padding(4);
             this.tpInfoGeneral.Name = "tpInfoGeneral";
-            this.tpInfoGeneral.Padding = new System.Windows.Forms.Padding(3);
-            this.tpInfoGeneral.Size = new System.Drawing.Size(988, 525);
+            this.tpInfoGeneral.Padding = new System.Windows.Forms.Padding(4);
+            this.tpInfoGeneral.Size = new System.Drawing.Size(1320, 646);
             this.tpInfoGeneral.TabIndex = 0;
             this.tpInfoGeneral.Text = "Informations Générales";
             this.tpInfoGeneral.UseVisualStyleBackColor = true;
@@ -107,49 +121,70 @@
             // lblSolde
             // 
             this.lblSolde.AutoSize = true;
-            this.lblSolde.Location = new System.Drawing.Point(330, 47);
-            this.lblSolde.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSolde.Location = new System.Drawing.Point(440, 58);
             this.lblSolde.Name = "lblSolde";
-            this.lblSolde.Size = new System.Drawing.Size(35, 13);
+            this.lblSolde.Size = new System.Drawing.Size(44, 16);
             this.lblSolde.TabIndex = 17;
             this.lblSolde.Text = "label1";
+            // 
+            // grpCaptures
+            // 
+            this.grpCaptures.Controls.Add(this.txtCaptures);
+            this.grpCaptures.Location = new System.Drawing.Point(4, 469);
+            this.grpCaptures.Margin = new System.Windows.Forms.Padding(4);
+            this.grpCaptures.Name = "grpCaptures";
+            this.grpCaptures.Padding = new System.Windows.Forms.Padding(4);
+            this.grpCaptures.Size = new System.Drawing.Size(741, 167);
+            this.grpCaptures.TabIndex = 12;
+            this.grpCaptures.TabStop = false;
+            this.grpCaptures.Text = "Objectifs (captures)";
+            // 
+            // txtCaptures
+            // 
+            this.txtCaptures.Location = new System.Drawing.Point(9, 25);
+            this.txtCaptures.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCaptures.Name = "txtCaptures";
+            this.txtCaptures.ReadOnly = true;
+            this.txtCaptures.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtCaptures.Size = new System.Drawing.Size(723, 134);
+            this.txtCaptures.TabIndex = 0;
+            this.txtCaptures.Text = "";
             // 
             // lblBudget
             // 
             this.lblBudget.AutoSize = true;
-            this.lblBudget.Location = new System.Drawing.Point(330, 19);
-            this.lblBudget.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBudget.Location = new System.Drawing.Point(440, 23);
             this.lblBudget.Name = "lblBudget";
-            this.lblBudget.Size = new System.Drawing.Size(35, 13);
+            this.lblBudget.Size = new System.Drawing.Size(44, 16);
             this.lblBudget.TabIndex = 16;
             this.lblBudget.Text = "label1";
             // 
             // lblArrivee
             // 
             this.lblArrivee.AutoSize = true;
-            this.lblArrivee.Location = new System.Drawing.Point(9, 47);
-            this.lblArrivee.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblArrivee.Location = new System.Drawing.Point(12, 58);
             this.lblArrivee.Name = "lblArrivee";
-            this.lblArrivee.Size = new System.Drawing.Size(35, 13);
+            this.lblArrivee.Size = new System.Drawing.Size(44, 16);
             this.lblArrivee.TabIndex = 15;
             this.lblArrivee.Text = "label1";
             // 
             // lblDepart
             // 
             this.lblDepart.AutoSize = true;
-            this.lblDepart.Location = new System.Drawing.Point(9, 19);
-            this.lblDepart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDepart.Location = new System.Drawing.Point(12, 23);
             this.lblDepart.Name = "lblDepart";
-            this.lblDepart.Size = new System.Drawing.Size(35, 13);
+            this.lblDepart.Size = new System.Drawing.Size(44, 16);
             this.lblDepart.TabIndex = 14;
             this.lblDepart.Text = "label1";
             // 
             // grpMembre
             // 
             this.grpMembre.Controls.Add(this.pnlMembre);
-            this.grpMembre.Location = new System.Drawing.Point(3, 193);
+            this.grpMembre.Location = new System.Drawing.Point(4, 238);
+            this.grpMembre.Margin = new System.Windows.Forms.Padding(4);
             this.grpMembre.Name = "grpMembre";
-            this.grpMembre.Size = new System.Drawing.Size(556, 182);
+            this.grpMembre.Padding = new System.Windows.Forms.Padding(4);
+            this.grpMembre.Size = new System.Drawing.Size(741, 224);
             this.grpMembre.TabIndex = 11;
             this.grpMembre.TabStop = false;
             this.grpMembre.Text = "Membre de l\'équipage";
@@ -157,48 +192,32 @@
             // pnlMembre
             // 
             this.pnlMembre.AutoScroll = true;
-            this.pnlMembre.Location = new System.Drawing.Point(7, 20);
+            this.pnlMembre.Location = new System.Drawing.Point(9, 25);
+            this.pnlMembre.Margin = new System.Windows.Forms.Padding(4);
             this.pnlMembre.Name = "pnlMembre";
-            this.pnlMembre.Size = new System.Drawing.Size(543, 155);
+            this.pnlMembre.Size = new System.Drawing.Size(724, 191);
             this.pnlMembre.TabIndex = 0;
-            // 
-            // grpCaptures
-            // 
-            this.grpCaptures.Controls.Add(this.txtCaptures);
-            this.grpCaptures.Location = new System.Drawing.Point(3, 381);
-            this.grpCaptures.Name = "grpCaptures";
-            this.grpCaptures.Size = new System.Drawing.Size(556, 136);
-            this.grpCaptures.TabIndex = 12;
-            this.grpCaptures.TabStop = false;
-            this.grpCaptures.Text = "Objectifs (captures)";
-            // 
-            // txtCaptures
-            // 
-            this.txtCaptures.Location = new System.Drawing.Point(7, 20);
-            this.txtCaptures.Name = "txtCaptures";
-            this.txtCaptures.ReadOnly = true;
-            this.txtCaptures.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtCaptures.Size = new System.Drawing.Size(543, 110);
-            this.txtCaptures.TabIndex = 0;
-            this.txtCaptures.Text = "";
             // 
             // grpFeuilleRoute
             // 
             this.grpFeuilleRoute.Controls.Add(this.txtFeuilleRoute);
-            this.grpFeuilleRoute.Location = new System.Drawing.Point(3, 76);
+            this.grpFeuilleRoute.Location = new System.Drawing.Point(4, 94);
+            this.grpFeuilleRoute.Margin = new System.Windows.Forms.Padding(4);
             this.grpFeuilleRoute.Name = "grpFeuilleRoute";
-            this.grpFeuilleRoute.Size = new System.Drawing.Size(553, 111);
+            this.grpFeuilleRoute.Padding = new System.Windows.Forms.Padding(4);
+            this.grpFeuilleRoute.Size = new System.Drawing.Size(737, 137);
             this.grpFeuilleRoute.TabIndex = 10;
             this.grpFeuilleRoute.TabStop = false;
             this.grpFeuilleRoute.Text = "Feuille de route";
             // 
             // txtFeuilleRoute
             // 
-            this.txtFeuilleRoute.Location = new System.Drawing.Point(6, 19);
+            this.txtFeuilleRoute.Location = new System.Drawing.Point(8, 23);
+            this.txtFeuilleRoute.Margin = new System.Windows.Forms.Padding(4);
             this.txtFeuilleRoute.Name = "txtFeuilleRoute";
             this.txtFeuilleRoute.ReadOnly = true;
             this.txtFeuilleRoute.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtFeuilleRoute.Size = new System.Drawing.Size(541, 86);
+            this.txtFeuilleRoute.Size = new System.Drawing.Size(720, 105);
             this.txtFeuilleRoute.TabIndex = 6;
             this.txtFeuilleRoute.Text = "";
             // 
@@ -210,38 +229,78 @@
             this.tpEvent.Controls.Add(this.grpDepenses);
             this.tpEvent.Controls.Add(this.grpContacts);
             this.tpEvent.Controls.Add(this.grpEvent);
-            this.tpEvent.Location = new System.Drawing.Point(4, 22);
+            this.tpEvent.Location = new System.Drawing.Point(4, 25);
+            this.tpEvent.Margin = new System.Windows.Forms.Padding(4);
             this.tpEvent.Name = "tpEvent";
-            this.tpEvent.Padding = new System.Windows.Forms.Padding(3);
-            this.tpEvent.Size = new System.Drawing.Size(988, 576);
+            this.tpEvent.Padding = new System.Windows.Forms.Padding(4);
+            this.tpEvent.Size = new System.Drawing.Size(1320, 646);
             this.tpEvent.TabIndex = 1;
             this.tpEvent.Text = "Évènements";
             this.tpEvent.UseVisualStyleBackColor = true;
             // 
+            // grpCapture
+            // 
+            this.grpCapture.Controls.Add(this.dgvCapture);
+            this.grpCapture.Location = new System.Drawing.Point(745, 336);
+            this.grpCapture.Margin = new System.Windows.Forms.Padding(4);
+            this.grpCapture.Name = "grpCapture";
+            this.grpCapture.Padding = new System.Windows.Forms.Padding(4);
+            this.grpCapture.Size = new System.Drawing.Size(564, 219);
+            this.grpCapture.TabIndex = 8;
+            this.grpCapture.TabStop = false;
+            this.grpCapture.Text = "Capture Effectuées";
+            // 
+            // dgvCapture
+            // 
+            this.dgvCapture.AllowUserToAddRows = false;
+            this.dgvCapture.AllowUserToDeleteRows = false;
+            this.dgvCapture.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCapture.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvCapture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCapture.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvCapture.Location = new System.Drawing.Point(8, 23);
+            this.dgvCapture.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvCapture.Name = "dgvCapture";
+            this.dgvCapture.ReadOnly = true;
+            this.dgvCapture.RowHeadersWidth = 51;
+            this.dgvCapture.Size = new System.Drawing.Size(548, 185);
+            this.dgvCapture.TabIndex = 0;
+            // 
             // lblDepense
             // 
             this.lblDepense.AutoSize = true;
-            this.lblDepense.Location = new System.Drawing.Point(562, 462);
+            this.lblDepense.Location = new System.Drawing.Point(749, 569);
+            this.lblDepense.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDepense.Name = "lblDepense";
-            this.lblDepense.Size = new System.Drawing.Size(35, 13);
+            this.lblDepense.Size = new System.Drawing.Size(44, 16);
             this.lblDepense.TabIndex = 9;
             this.lblDepense.Text = "label1";
             // 
             // lblSommeVersees
             // 
             this.lblSommeVersees.AutoSize = true;
-            this.lblSommeVersees.Location = new System.Drawing.Point(10, 454);
+            this.lblSommeVersees.Location = new System.Drawing.Point(13, 559);
+            this.lblSommeVersees.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSommeVersees.Name = "lblSommeVersees";
-            this.lblSommeVersees.Size = new System.Drawing.Size(35, 13);
+            this.lblSommeVersees.Size = new System.Drawing.Size(44, 16);
             this.lblSommeVersees.TabIndex = 8;
             this.lblSommeVersees.Text = "label1";
             // 
             // grpDepenses
             // 
             this.grpDepenses.Controls.Add(this.dgvDepenses);
-            this.grpDepenses.Location = new System.Drawing.Point(559, 6);
+            this.grpDepenses.Location = new System.Drawing.Point(745, 7);
+            this.grpDepenses.Margin = new System.Windows.Forms.Padding(4);
             this.grpDepenses.Name = "grpDepenses";
-            this.grpDepenses.Size = new System.Drawing.Size(423, 262);
+            this.grpDepenses.Padding = new System.Windows.Forms.Padding(4);
+            this.grpDepenses.Size = new System.Drawing.Size(564, 322);
             this.grpDepenses.TabIndex = 7;
             this.grpDepenses.TabStop = false;
             this.grpDepenses.Text = "Dépenses Effectuées";
@@ -261,18 +320,22 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvDepenses.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvDepenses.Location = new System.Drawing.Point(6, 19);
+            this.dgvDepenses.Location = new System.Drawing.Point(8, 23);
+            this.dgvDepenses.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDepenses.Name = "dgvDepenses";
             this.dgvDepenses.ReadOnly = true;
-            this.dgvDepenses.Size = new System.Drawing.Size(411, 237);
+            this.dgvDepenses.RowHeadersWidth = 51;
+            this.dgvDepenses.Size = new System.Drawing.Size(548, 292);
             this.dgvDepenses.TabIndex = 0;
             // 
             // grpContacts
             // 
             this.grpContacts.Controls.Add(this.dgvContact);
-            this.grpContacts.Location = new System.Drawing.Point(6, 273);
+            this.grpContacts.Location = new System.Drawing.Point(8, 336);
+            this.grpContacts.Margin = new System.Windows.Forms.Padding(4);
             this.grpContacts.Name = "grpContacts";
-            this.grpContacts.Size = new System.Drawing.Size(547, 178);
+            this.grpContacts.Padding = new System.Windows.Forms.Padding(4);
+            this.grpContacts.Size = new System.Drawing.Size(729, 219);
             this.grpContacts.TabIndex = 6;
             this.grpContacts.TabStop = false;
             this.grpContacts.Text = "Contacts avec les informateurs";
@@ -294,12 +357,14 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvContact.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvContact.Location = new System.Drawing.Point(7, 20);
+            this.dgvContact.Location = new System.Drawing.Point(9, 25);
+            this.dgvContact.Margin = new System.Windows.Forms.Padding(4);
             this.dgvContact.Name = "dgvContact";
             this.dgvContact.ReadOnly = true;
+            this.dgvContact.RowHeadersWidth = 51;
             this.dgvContact.RowTemplate.ReadOnly = true;
             this.dgvContact.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvContact.Size = new System.Drawing.Size(534, 150);
+            this.dgvContact.Size = new System.Drawing.Size(712, 185);
             this.dgvContact.TabIndex = 0;
             // 
             // grpEvent
@@ -310,18 +375,21 @@
             this.grpEvent.Controls.Add(this.btnFirst);
             this.grpEvent.Controls.Add(this.lblEventDescription);
             this.grpEvent.Controls.Add(this.lblDateEvent);
-            this.grpEvent.Location = new System.Drawing.Point(6, 6);
+            this.grpEvent.Location = new System.Drawing.Point(8, 7);
+            this.grpEvent.Margin = new System.Windows.Forms.Padding(4);
             this.grpEvent.Name = "grpEvent";
-            this.grpEvent.Size = new System.Drawing.Size(547, 262);
+            this.grpEvent.Padding = new System.Windows.Forms.Padding(4);
+            this.grpEvent.Size = new System.Drawing.Size(729, 322);
             this.grpEvent.TabIndex = 5;
             this.grpEvent.TabStop = false;
             this.grpEvent.Text = "Evénement du Journal";
             // 
             // btnLast
             // 
-            this.btnLast.Location = new System.Drawing.Point(328, 213);
+            this.btnLast.Location = new System.Drawing.Point(437, 262);
+            this.btnLast.Margin = new System.Windows.Forms.Padding(4);
             this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(46, 43);
+            this.btnLast.Size = new System.Drawing.Size(61, 53);
             this.btnLast.TabIndex = 5;
             this.btnLast.Text = ">>";
             this.btnLast.UseVisualStyleBackColor = true;
@@ -329,9 +397,10 @@
             // 
             // btnSuivant
             // 
-            this.btnSuivant.Location = new System.Drawing.Point(276, 213);
+            this.btnSuivant.Location = new System.Drawing.Point(368, 262);
+            this.btnSuivant.Margin = new System.Windows.Forms.Padding(4);
             this.btnSuivant.Name = "btnSuivant";
-            this.btnSuivant.Size = new System.Drawing.Size(46, 43);
+            this.btnSuivant.Size = new System.Drawing.Size(61, 53);
             this.btnSuivant.TabIndex = 4;
             this.btnSuivant.Text = ">";
             this.btnSuivant.UseVisualStyleBackColor = true;
@@ -339,9 +408,10 @@
             // 
             // btnPrecedent
             // 
-            this.btnPrecedent.Location = new System.Drawing.Point(224, 213);
+            this.btnPrecedent.Location = new System.Drawing.Point(299, 262);
+            this.btnPrecedent.Margin = new System.Windows.Forms.Padding(4);
             this.btnPrecedent.Name = "btnPrecedent";
-            this.btnPrecedent.Size = new System.Drawing.Size(46, 43);
+            this.btnPrecedent.Size = new System.Drawing.Size(61, 53);
             this.btnPrecedent.TabIndex = 3;
             this.btnPrecedent.Text = "<";
             this.btnPrecedent.UseVisualStyleBackColor = true;
@@ -349,9 +419,10 @@
             // 
             // btnFirst
             // 
-            this.btnFirst.Location = new System.Drawing.Point(172, 213);
+            this.btnFirst.Location = new System.Drawing.Point(229, 262);
+            this.btnFirst.Margin = new System.Windows.Forms.Padding(4);
             this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(46, 43);
+            this.btnFirst.Size = new System.Drawing.Size(61, 53);
             this.btnFirst.TabIndex = 2;
             this.btnFirst.Text = "<<";
             this.btnFirst.UseVisualStyleBackColor = true;
@@ -360,77 +431,163 @@
             // lblEventDescription
             // 
             this.lblEventDescription.AutoSize = true;
-            this.lblEventDescription.Location = new System.Drawing.Point(71, 125);
+            this.lblEventDescription.Location = new System.Drawing.Point(95, 154);
+            this.lblEventDescription.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEventDescription.Name = "lblEventDescription";
-            this.lblEventDescription.Size = new System.Drawing.Size(35, 13);
+            this.lblEventDescription.Size = new System.Drawing.Size(44, 16);
             this.lblEventDescription.TabIndex = 1;
             this.lblEventDescription.Text = "label2";
             // 
             // lblDateEvent
             // 
             this.lblDateEvent.AutoSize = true;
-            this.lblDateEvent.Location = new System.Drawing.Point(8, 125);
+            this.lblDateEvent.Location = new System.Drawing.Point(11, 154);
+            this.lblDateEvent.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDateEvent.Name = "lblDateEvent";
-            this.lblDateEvent.Size = new System.Drawing.Size(35, 13);
+            this.lblDateEvent.Size = new System.Drawing.Size(44, 16);
             this.lblDateEvent.TabIndex = 0;
             this.lblDateEvent.Text = "label1";
             // 
-            // dgvCapture
-            // 
-            this.dgvCapture.AllowUserToAddRows = false;
-            this.dgvCapture.AllowUserToDeleteRows = false;
-            this.dgvCapture.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCapture.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvCapture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCapture.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvCapture.Location = new System.Drawing.Point(6, 19);
-            this.dgvCapture.Name = "dgvCapture";
-            this.dgvCapture.ReadOnly = true;
-            this.dgvCapture.Size = new System.Drawing.Size(411, 150);
-            this.dgvCapture.TabIndex = 0;
-            // 
-            // grpCapture
-            // 
-            this.grpCapture.Controls.Add(this.dgvCapture);
-            this.grpCapture.Location = new System.Drawing.Point(559, 273);
-            this.grpCapture.Name = "grpCapture";
-            this.grpCapture.Size = new System.Drawing.Size(423, 178);
-            this.grpCapture.TabIndex = 8;
-            this.grpCapture.TabStop = false;
-            this.grpCapture.Text = "Capture Effectuées";
-            // 
             // tpAjout
             // 
-            this.tpAjout.Location = new System.Drawing.Point(4, 22);
+            this.tpAjout.Controls.Add(this.grpFormulaireAjout);
+            this.tpAjout.Controls.Add(this.grpChoixAjout);
+            this.tpAjout.Location = new System.Drawing.Point(4, 25);
+            this.tpAjout.Margin = new System.Windows.Forms.Padding(4);
             this.tpAjout.Name = "tpAjout";
-            this.tpAjout.Size = new System.Drawing.Size(988, 576);
+            this.tpAjout.Size = new System.Drawing.Size(1320, 646);
             this.tpAjout.TabIndex = 2;
             this.tpAjout.Text = "Ajout d\'évènements";
             this.tpAjout.UseVisualStyleBackColor = true;
             // 
+            // grpFormulaireAjout
+            // 
+            this.grpFormulaireAjout.Location = new System.Drawing.Point(278, 138);
+            this.grpFormulaireAjout.Name = "grpFormulaireAjout";
+            this.grpFormulaireAjout.Size = new System.Drawing.Size(765, 503);
+            this.grpFormulaireAjout.TabIndex = 1;
+            this.grpFormulaireAjout.TabStop = false;
+            this.grpFormulaireAjout.Text = "groupBox1";
+            this.grpFormulaireAjout.Visible = false;
+            // 
+            // grpChoixAjout
+            // 
+            this.grpChoixAjout.Controls.Add(this.label4);
+            this.grpChoixAjout.Controls.Add(this.label3);
+            this.grpChoixAjout.Controls.Add(this.label2);
+            this.grpChoixAjout.Controls.Add(this.label1);
+            this.grpChoixAjout.Controls.Add(this.radioButton3);
+            this.grpChoixAjout.Controls.Add(this.radioButton2);
+            this.grpChoixAjout.Controls.Add(this.radioButton1);
+            this.grpChoixAjout.Controls.Add(this.rdbNewContact);
+            this.grpChoixAjout.Location = new System.Drawing.Point(372, 4);
+            this.grpChoixAjout.Name = "grpChoixAjout";
+            this.grpChoixAjout.Size = new System.Drawing.Size(577, 128);
+            this.grpChoixAjout.TabIndex = 0;
+            this.grpChoixAjout.TabStop = false;
+            this.grpChoixAjout.Text = "Type d\'évènement à ajouter";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(461, 87);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 38);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Nouvelle capture";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(314, 87);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 38);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Nouvel Évènement";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(168, 87);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 38);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Nouvelle Dépense";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(18, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 38);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Nouveau Contact";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton3.Location = new System.Drawing.Point(486, 34);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(50, 50);
+            this.radioButton3.TabIndex = 3;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Tag = "4";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton2.Location = new System.Drawing.Point(339, 34);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(50, 50);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Tag = "3";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton1.Location = new System.Drawing.Point(193, 34);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(50, 50);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Tag = "2";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            // 
+            // rdbNewContact
+            // 
+            this.rdbNewContact.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdbNewContact.Location = new System.Drawing.Point(43, 34);
+            this.rdbNewContact.Name = "rdbNewContact";
+            this.rdbNewContact.Size = new System.Drawing.Size(50, 50);
+            this.rdbNewContact.TabIndex = 0;
+            this.rdbNewContact.TabStop = true;
+            this.rdbNewContact.Tag = "1";
+            this.rdbNewContact.UseVisualStyleBackColor = true;
+            this.rdbNewContact.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            // 
             // missionPB1
             // 
-            this.missionPB1.Location = new System.Drawing.Point(424, 10);
-            this.missionPB1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.missionPB1.Location = new System.Drawing.Point(565, 12);
+            this.missionPB1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.missionPB1.Name = "missionPB1";
-            this.missionPB1.Size = new System.Drawing.Size(172, 139);
+            this.missionPB1.Size = new System.Drawing.Size(229, 171);
             this.missionPB1.TabIndex = 0;
             // 
             // FormulaireMission
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1020, 706);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1360, 878);
             this.Controls.Add(this.tcResume);
             this.Controls.Add(this.missionPB1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormulaireMission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormulaireMission";
@@ -438,19 +595,21 @@
             this.tcResume.ResumeLayout(false);
             this.tpInfoGeneral.ResumeLayout(false);
             this.tpInfoGeneral.PerformLayout();
-            this.grpMembre.ResumeLayout(false);
             this.grpCaptures.ResumeLayout(false);
+            this.grpMembre.ResumeLayout(false);
             this.grpFeuilleRoute.ResumeLayout(false);
             this.tpEvent.ResumeLayout(false);
             this.tpEvent.PerformLayout();
+            this.grpCapture.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCapture)).EndInit();
             this.grpDepenses.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepenses)).EndInit();
             this.grpContacts.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();
             this.grpEvent.ResumeLayout(false);
             this.grpEvent.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvCapture)).EndInit();
-            this.grpCapture.ResumeLayout(false);
+            this.tpAjout.ResumeLayout(false);
+            this.grpChoixAjout.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -487,5 +646,15 @@
         private System.Windows.Forms.GroupBox grpCapture;
         private System.Windows.Forms.DataGridView dgvCapture;
         private System.Windows.Forms.TabPage tpAjout;
+        private System.Windows.Forms.GroupBox grpChoixAjout;
+        private System.Windows.Forms.RadioButton rdbNewContact;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox grpFormulaireAjout;
     }
 }

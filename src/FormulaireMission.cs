@@ -16,6 +16,9 @@ namespace SAE24
         DataRow[] missionActuelle;
         BindingSource bsMission;
         BindingSource bsJournalDeBord;
+        DataTable depenseMissionActuelle;
+        DataTable contactMissionActuelle;
+        DataTable captureMissionActuelle;
         public FormulaireMission()
         {
             InitializeComponent();
@@ -45,12 +48,10 @@ namespace SAE24
             int top = 10;
             MembreEquipage m = new MembreEquipage();
             DataRow profil = r.GetParentRow("FK_Membre_Composer");
-            if (profil["matricule"].ToString()[0] == 'C')
-            {
+            if (profil["matricule"].ToString()[0] == 'C') {
                 m.SetImage = "Civil";
             }
-            else
-            {
+            else {
                 m.SetImage = "Soldier";
             }
             m.setText = $"{profil["nom"].ToString()}\n{profil["prenom"].ToString()}";
@@ -113,12 +114,12 @@ namespace SAE24
         {
             //On créer une nouvelle table qui est constitué des informations que l'on souhaite
             //pour la mission actuelle.
-            DataTable dt = new DataTable("DepenseMissionActuelle");
-            dt.Columns.Add("N°", typeof(string));
-            dt.Columns.Add("Date", typeof(string));
-            dt.Columns.Add("Motif", typeof(string));
-            dt.Columns.Add("Montant", typeof(string));
-            dt.Columns.Add("Type de dépense", typeof(string));
+            depenseMissionActuelle = new DataTable("DepenseMissionActuelle");
+            depenseMissionActuelle.Columns.Add("N°", typeof(string));
+            depenseMissionActuelle.Columns.Add("Date", typeof(string));
+            depenseMissionActuelle.Columns.Add("Motif", typeof(string));
+            depenseMissionActuelle.Columns.Add("Montant", typeof(string));
+            depenseMissionActuelle.Columns.Add("Type de dépense", typeof(string));
 
             //Variable servant à compter les dépenses totales
             Double montantDepense = 0;
@@ -129,7 +130,7 @@ namespace SAE24
             //Pour chaque dépense, on crée une nouvelle ligne qui ira dans notre DataGridView
             foreach (DataRow depense in depenses)
             {
-                DataRow newDepense = dt.NewRow();
+                DataRow newDepense = depenseMissionActuelle.NewRow();
                 newDepense[0] = depense["id"];
                 newDepense[1] = depense["dateD"];
                 newDepense[2] = depense["motif"];
@@ -141,11 +142,11 @@ namespace SAE24
 
                 //On incrémente notre somme totale de dépense
                 montantDepense += Convert.ToDouble(depense["montant"]);
-                dt.Rows.Add(newDepense);
+                depenseMissionActuelle.Rows.Add(newDepense);
             }
 
             //On affiche la somme totale des dépenses et on les affiche dans le DataGridView
-            dgvDepenses.DataSource = dt;
+            dgvDepenses.DataSource = depenseMissionActuelle;
             lblDepense.Text = $"Depense totale : {montantDepense.ToString()}";
         }
 
@@ -173,44 +174,44 @@ namespace SAE24
         private void creationDGVContacts()
         {
             //On crée une table qui servira à donner les informations de Contact de la mission actuelle
-            DataTable dt = new DataTable("ContactMissionActuelle");
-            dt.Columns.Add("Date", typeof(string));
-            dt.Columns.Add("Somme", typeof(string));
-            dt.Columns.Add("Appreciation", typeof(string));
-            dt.Columns.Add("Informateur", typeof(string));
+            contactMissionActuelle = new DataTable("ContactMissionActuelle");
+            contactMissionActuelle.Columns.Add("Date", typeof(string));
+            contactMissionActuelle.Columns.Add("Somme", typeof(string));
+            contactMissionActuelle.Columns.Add("Appreciation", typeof(string));
+            contactMissionActuelle.Columns.Add("Informateur", typeof(string));
 
 
             DataRow[] contacts = missionActuelle[0].GetChildRows("FK_Mission_Contact");
             Double montantSommeVersee = 0;
             foreach (DataRow contact in contacts)
             {
-                DataRow newContact = dt.NewRow();
+                DataRow newContact = contactMissionActuelle.NewRow();
                 newContact[0] = contact["dateC"];
                 newContact[1] = contact["sommeVersee"];
                 newContact[2] = contact["appreciation"];
                 DataRow informateur = contact.GetParentRow("FK_Informateur_Contact");
                 newContact[3] = informateur["nom"];
                 montantSommeVersee += Convert.ToDouble(newContact[1]);
-                dt.Rows.Add(newContact);
+                contactMissionActuelle.Rows.Add(newContact);
             }
-            dgvContact.DataSource = dt;
+            dgvContact.DataSource = contactMissionActuelle;
             lblSommeVersees.Text = $"Somme totale versée : {montantSommeVersee.ToString()}";
         }
 
         private void creationDGVCapture()
         {
             //On crée une table qui servira à donner les informations de Contact de la mission actuelle
-            DataTable dt = new DataTable("CaptureMissionActuelle");
-            dt.Columns.Add("Nom de l'espèce", typeof(string));
-            dt.Columns.Add("Objectif initial", typeof(string));
-            dt.Columns.Add("Nombre de captures réalisées", typeof(string));
-            dt.Columns.Add("Taux de réussite (en %)", typeof(string));
+            captureMissionActuelle = new DataTable("CaptureMissionActuelle");
+            captureMissionActuelle.Columns.Add("Nom de l'espèce", typeof(string));
+            captureMissionActuelle.Columns.Add("Objectif initial", typeof(string));
+            captureMissionActuelle.Columns.Add("Nombre de captures réalisées", typeof(string));
+            captureMissionActuelle.Columns.Add("Taux de réussite (en %)", typeof(string));
 
 
             DataRow[] captures = missionActuelle[0].GetChildRows("FK_Mission_Capturer");
             foreach (DataRow capture in captures)
             {
-                DataRow newCapture = dt.NewRow();
+                DataRow newCapture = captureMissionActuelle.NewRow();
                 DataRow idEspece = capture.GetParentRow("FK_Espece_Capturer");
                 DataRow[] objectifCapture = missionActuelle[0].GetChildRows("FK_Mission_ObjectifCapture");
                 newCapture[0] = idEspece["nom"];
@@ -234,9 +235,9 @@ namespace SAE24
                 }
                 newCapture[2] = nbCapture.ToString();
                 newCapture[3] = (nbCapture*100/objectif).ToString();
-                dt.Rows.Add(newCapture);
+                captureMissionActuelle.Rows.Add(newCapture);
             }
-            dgvCapture.DataSource = dt;
+            dgvCapture.DataSource = captureMissionActuelle;
 
         }
 
@@ -258,6 +259,151 @@ namespace SAE24
         private void btnLast_Click(object sender, EventArgs e)
         {
             bsJournalDeBord.MoveLast();
+        }
+
+        private void rdb_CheckedChanged(object sender, EventArgs e)
+        {
+            RadioButton rdb = (RadioButton)sender;
+            if (rdb.Checked)
+            {
+                grpFormulaireAjout.Controls.Clear();
+                switch (rdb.Tag)
+                {
+                    case "1":
+                        AfficherFormContact();
+                        break;
+                    case "2":
+                        AfficherFormDepense();
+                        break;
+                    case "3":
+                        break;
+                    case "4":
+                        break;
+                }
+            }
+        }
+
+        private void AfficherFormContact()
+        {
+            int top = 40;
+            int left = 20;
+            grpFormulaireAjout.Visible = true;
+            DateTimePicker dtp = new DateTimePicker();
+            Label lblDate = new Label();
+            Label lblMontant = new Label();
+            TextBox txtMontant = new TextBox();
+            Label lblMotif = new Label();
+            RichTextBox txtMotif = new RichTextBox();
+            Label lblInformateur = new Label();
+            ComboBox cboInformateur = new ComboBox();
+
+            lblDate.Text = "Date";
+            lblDate.Top = top;
+            lblDate.Left = left;
+            lblDate.Name = "lblDate";
+
+            dtp.Top = lblDate.Top;
+            dtp.Left = lblDate.Width + 20 + left;
+            dtp.MinDate = Convert.ToDateTime(missionActuelle[0]["dateDepart"]);
+
+            lblMontant.Top = top + lblDate.Height + 20;
+            lblMontant.Left = left;
+            lblMontant.Text = "Montant";
+
+            txtMontant.Top = lblMontant.Top;
+            txtMontant.Left = lblMontant.Width + 20 + left;
+
+            lblMotif.Text = "Motif";
+            lblMotif.Left = left;
+            lblMotif.Top = lblMontant.Top + lblMontant.Height + 20;
+
+            txtMotif.Top = lblMotif.Top + lblMotif.Height;
+            txtMotif.Left = left;
+            txtMotif.Width = grpFormulaireAjout.Width - 40;
+
+            lblInformateur.Text = "Informateur";
+            lblInformateur.Left = left;
+            lblInformateur.Top = txtMotif.Top + txtMotif.Height + 20;
+
+            cboInformateur.Top = txtMotif.Top + txtMotif.Height + 20;
+            cboInformateur.Left = lblInformateur.Width + 20 + left;
+            cboInformateur.DataSource = MesDatas.DsGlobal.Tables["TypeDepense"];
+            cboInformateur.DisplayMember = "libelle";
+            cboInformateur.ValueMember = "id";
+
+
+
+            grpFormulaireAjout.Controls.Add(lblDate);
+            grpFormulaireAjout.Controls.Add(dtp);
+            grpFormulaireAjout.Controls.Add(lblMontant);
+            grpFormulaireAjout.Controls.Add(txtMontant);
+            grpFormulaireAjout.Controls.Add(lblMotif);
+            grpFormulaireAjout.Controls.Add(txtMotif);
+            grpFormulaireAjout.Controls.Add(lblInformateur);
+            grpFormulaireAjout.Controls.Add(cboInformateur);
+
+
+        }
+
+    private void AfficherFormDepense()
+        {
+            int top = 40;
+            int left = 20;
+            grpFormulaireAjout.Visible = true;
+            DateTimePicker dtp = new DateTimePicker();
+            Label lblDate = new Label();
+            Label lblSomme = new Label();
+            TextBox txtSomme = new TextBox();
+            Label lblAppreciation = new Label();
+            RichTextBox txtAppreciation = new RichTextBox();
+            Label lblInformateur = new Label();
+            ComboBox cboInformateur = new ComboBox();
+
+            lblDate.Text = "Date";
+            lblDate.Top = top;
+            lblDate.Left = left;
+            lblDate.Name = "lblDate";
+
+            dtp.Top = lblDate.Top;
+            dtp.Left = lblDate.Width + 20 + left;
+            dtp.MinDate = Convert.ToDateTime(missionActuelle[0]["dateDepart"]);
+
+            lblSomme.Top = top + lblDate.Height + 20;
+            lblSomme.Left = left;
+            lblSomme.Text = "Somme";
+
+            txtSomme.Top = lblSomme.Top;
+            txtSomme.Left = lblSomme.Width + 20 + left;
+
+            lblAppreciation.Text = "Appreciation";
+            lblAppreciation.Left = left;
+            lblAppreciation.Top = lblSomme.Top + lblSomme.Height + 20;
+
+            txtAppreciation.Top = lblAppreciation.Top + lblAppreciation.Height;
+            txtAppreciation.Left = left;
+            txtAppreciation.Width = grpFormulaireAjout.Width - 40;
+
+            lblInformateur.Text = "Informateur";
+            lblInformateur.Left = left;
+            lblInformateur.Top = txtAppreciation.Top + txtAppreciation.Height + 20;
+
+            cboInformateur.Top = txtAppreciation.Top + txtAppreciation.Height + 20;
+            cboInformateur.Left = lblInformateur.Width + 20 + left;
+            cboInformateur.DataSource = MesDatas.DsGlobal.Tables["Informateur"];
+            cboInformateur.DisplayMember = "nom";
+            cboInformateur.ValueMember = "nomCode";
+
+
+
+            grpFormulaireAjout.Controls.Add(lblDate);
+            grpFormulaireAjout.Controls.Add(dtp);
+            grpFormulaireAjout.Controls.Add(lblSomme);
+            grpFormulaireAjout.Controls.Add(txtSomme);
+            grpFormulaireAjout.Controls.Add(lblAppreciation);
+            grpFormulaireAjout.Controls.Add(txtAppreciation);
+            grpFormulaireAjout.Controls.Add(lblInformateur);
+            grpFormulaireAjout.Controls.Add(cboInformateur);
+
         }
     }
 }

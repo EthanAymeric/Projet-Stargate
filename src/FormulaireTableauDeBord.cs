@@ -115,10 +115,18 @@ namespace SAE24
                 MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
                 mr.Top = top;
                 mr.Left = left;
+                mr.afficher += AfficherResume;
                 pnlTDB.Controls.Add(mr);
 
                 top += mr.Height + 20;
             }
+        }
+
+        private void AfficherResume(object sender, EventArgs e)
+        {
+            MissionResume mr = (MissionResume)sender;
+            FormulaireMission frm = new FormulaireMission(mr.GetMission);
+            frm.ShowDialog();
         }
         private void btnTDB_Click(object sender, EventArgs e)
         {
@@ -147,7 +155,7 @@ namespace SAE24
 
         private void FrmTableauDeBord_Shown(object sender, EventArgs e)
         {
-            Chargement();
+            //Chargement();
             foreach (Button b in Controls.OfType<Button>())
             {
                 b.Visible = true;

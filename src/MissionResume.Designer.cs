@@ -45,7 +45,7 @@
             this.pbPlanete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbPlanete.TabIndex = 0;
             this.pbPlanete.TabStop = false;
-            this.pbPlanete.Click += new System.EventHandler(this.pbPlanete_Click);
+            this.pbPlanete.Click += new System.EventHandler(this.AfficherResume_Click);
             this.pbPlanete.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
             this.pbPlanete.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);
             // 
@@ -58,7 +58,7 @@
             this.lblNomMission.TabIndex = 1;
             this.lblNomMission.Text = "label1";
             this.lblNomMission.Visible = false;
-            this.lblNomMission.Click += new System.EventHandler(this.pbPlanete_Click);
+            this.lblNomMission.Click += new System.EventHandler(this.AfficherResume_Click);
             this.lblNomMission.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
             this.lblNomMission.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);
             // 
@@ -71,7 +71,7 @@
             this.lblDateDeb.TabIndex = 2;
             this.lblDateDeb.Text = "label1";
             this.lblDateDeb.Visible = false;
-            this.lblDateDeb.Click += new System.EventHandler(this.pbPlanete_Click);
+            this.lblDateDeb.Click += new System.EventHandler(this.AfficherResume_Click);
             this.lblDateDeb.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
             this.lblDateDeb.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);
             // 
@@ -84,7 +84,7 @@
             this.lblDuree.TabIndex = 3;
             this.lblDuree.Text = "label1";
             this.lblDuree.Visible = false;
-            this.lblDuree.Click += new System.EventHandler(this.pbPlanete_Click);
+            this.lblDuree.Click += new System.EventHandler(this.AfficherResume_Click);
             this.lblDuree.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
             this.lblDuree.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);
             // 
@@ -97,7 +97,7 @@
             this.lblChef.TabIndex = 4;
             this.lblChef.Text = "label1";
             this.lblChef.Visible = false;
-            this.lblChef.Click += new System.EventHandler(this.pbPlanete_Click);
+            this.lblChef.Click += new System.EventHandler(this.AfficherResume_Click);
             this.lblChef.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
             this.lblChef.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);
             // 
@@ -110,7 +110,7 @@
             this.label4.TabIndex = 5;
             this.label4.Text = "label1";
             this.label4.Visible = false;
-            this.label4.Click += new System.EventHandler(this.pbPlanete_Click);
+            this.label4.Click += new System.EventHandler(this.AfficherResume_Click);
             this.label4.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
             this.label4.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);
             // 
@@ -128,8 +128,7 @@
             this.Controls.Add(this.pbPlanete);
             this.Name = "MissionResume";
             this.Size = new System.Drawing.Size(549, 148);
-            this.Load += new System.EventHandler(this.MissionResume_Load);
-            this.Click += new System.EventHandler(this.pbPlanete_Click);
+            this.Click += new System.EventHandler(this.AfficherResume_Click);
             this.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);
             ((System.ComponentModel.ISupportInitialize)(this.pbPlanete)).EndInit();

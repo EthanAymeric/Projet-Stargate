@@ -12,7 +12,15 @@ namespace SAE24
 {
     public partial class MissionResume : UserControl
     {
-
+        public delegate void AfficherResume(object sender, EventArgs e);
+        public AfficherResume afficher;
+        private void AfficherResume_Click(object sender, EventArgs e)
+        {
+            if (afficher != null)
+            {
+                afficher(this, e); 
+            }
+        }
         public MissionResume()
         {
             InitializeComponent();
@@ -33,9 +41,11 @@ namespace SAE24
             pbPlanete.Image = Image.FromFile($"../../Images/Planetes/{nomPlanete}.png");
         }
 
-        private void MissionResume_Load(object sender, EventArgs e)
-        {
-
+        public string GetMission{
+            get
+            {
+                return lblNomMission.Text;
+            }
         }
 
         private void MissionResume_MouseEnter(object sender, EventArgs e)
@@ -46,12 +56,6 @@ namespace SAE24
         private void MissionResume_MouseLeave(object sender, EventArgs e)
         {
             BackColor = Color.White;
-        }
-
-        private void pbPlanete_Click(object sender, EventArgs e)
-        {
-            FormulaireMission frm = new FormulaireMission(lblNomMission.Text);
-            frm.ShowDialog();
         }
     }
 }
