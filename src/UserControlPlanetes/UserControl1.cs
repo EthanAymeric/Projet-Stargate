@@ -73,7 +73,7 @@ namespace UserControlPlanetes
             else
             {
                 string texte = "";
-                for (int i = 0; i < especesPresentes.Count() - 1; i++)
+                for (int i = 0; i < especesPresentes.Count(); i++)
                 {
                     texte += pourcentageEspece[i] + "% des " + especesPresentes[i] + "\n";
                 }

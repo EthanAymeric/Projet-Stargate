@@ -93,12 +93,6 @@ namespace SAE24
 
                 // nom (Planete) <-> nomPlanete (Mission)
                 MesDatas.DsGlobal.Relations.Add("FK_Planete_Mission", MesDatas.DsGlobal.Tables["Planete"].Columns["nom"], MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"]);
-
-                // id (Espece) <-> idEspece (Allie)
-                MesDatas.DsGlobal.Relations.Add("FK_Espece_Allie", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Allie"].Columns["idEspece"]);
-
-                // id (Espece) <-> idEspece (Ennemi)
-                MesDatas.DsGlobal.Relations.Add("FK_Espece_Ennemi", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Ennemi"].Columns["idEspece"]);
             } 
             catch (Exception ex) 
             { 
@@ -246,13 +240,10 @@ namespace SAE24
                 DataRow[] espece = r.GetChildRows("FK_Planete_Habiter");
 
                 foreach (DataRow dr in espece)
-                {
-                    if (dr.GetParentRow("FK_Espece_Habiter") != null)
-                    {
-                        listeEspeces.Add(dr.GetParentRow("FK_Espece_Habiter")[1].ToString());
-                        listePourcentageEspece.Add(dr[2].ToString());
-                    }
-                    
+                {                    
+                    listeEspeces.Add(dr.GetParentRow("FK_Espece_Habiter")[1].ToString());
+                    //MessageBox.Show(dr.GetParentRow("FK_Espece_Habiter")[1].ToString() + " : " + listeEspeces.Contains(dr.GetParentRow("FK_Espece_Habiter")[1].ToString()).ToString());
+                    listePourcentageEspece.Add(dr[2].ToString());
                 }
                 
 
@@ -267,51 +258,13 @@ namespace SAE24
                         listeMissions.Add(dr[0].ToString() + dr[1]);
                     }
                 }
-                /*
-                // Gestion des pourcentages
-                string pourcentageAllie = "";
-                string pourcentageEnnemi = "";
-
-                Int32 pourcentageCalculAllie = 0;
-                Int32 pourcentageCalculEnnemi = 0;
-
-                DataRow[] pourcentage = r.GetChildRows("FK_Planete_Habiter");
                 
-                foreach (DataRow dr in pourcentage)
-                {
-                    //MessageBox.Show(dr.GetParentRow("FK_Espece_Habiter")[0].ToString());
-                    
-                    //MessageBox.Show(dr[1].ToString());
-                    if (Convert.ToInt32(dr[1]) >= 1 && Convert.ToInt32(dr[1]) <= 18)
-                    {
-                        pourcentageCalculAllie += Convert.ToInt32(dr[2]);
-                    }
-                    else if (Convert.ToInt32(dr[1]) >= 19 && Convert.ToInt32(dr[1]) <= 34)
-                    {
-                        pourcentageCalculEnnemi += Convert.ToInt32(dr[2]);
-                    }
-
-                }
-                //
-                if (pourcentageCalculAllie != 0)
-                {
-                    pourcentageAllie = pourcentageCalculAllie.ToString();
-                }
-                if (pourcentageCalculEnnemi != 0)
-                {
-                    pourcentageEnnemi = pourcentageCalculEnnemi.ToString();
-                }
-                */
                 // Création de l'UserControl en le surchargeant
-                UserControlPlanete u = new UserControlPlanete(nomImagePlanete, nomImageTemp, nomPlanete, temp, gravite, presenceDatabaz, listeEspeces, listeMissions, listePourcentageEspece);
-                
-                // Gérer la taille du UserControl (réduire sa taille comme celle par défaut est trop grande)
-                //u.Width = u.Width - 100;
-                
+                UserControlPlanete u = new UserControlPlanete(nomImagePlanete, nomImageTemp, nomPlanete, temp, gravite, presenceDatabaz, listeEspeces, listeMissions, listePourcentageEspece);                
 
-                // Affichage séparée
+                // Affichage des UserControl les uns en-dessous des autres
                 u.Top = top;
-                top += u.Height + 10;
+                top += u.Height;
                 
                 // Ajout de l'UserControl dans le panel du tableau de bord
                 pnlTDB.Controls.Add(u);

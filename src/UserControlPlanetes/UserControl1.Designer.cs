@@ -181,7 +181,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UserControlPlanete";
-            this.Size = new System.Drawing.Size(586, 296);
+            this.Size = new System.Drawing.Size(573, 296);
             this.Load += new System.EventHandler(this.UserControl1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPlanete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemp)).EndInit();
