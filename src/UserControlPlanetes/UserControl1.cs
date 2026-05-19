@@ -17,10 +17,11 @@ namespace UserControlPlanetes
             InitializeComponent();
         }
 
-        public UserControlPlanete(string nomImagePlanete, string nomImageTemp, string nomPlanete, string temp, string gravite, string presenceDatabaz, List<string> especesPresentes, List<string> missionsRealisees, Int64 pourcentageAllies, Int64 pourcentageEnnemis)
+        public UserControlPlanete(string nomImagePlanete, string nomImageTemp, string nomPlanete, string temp, string gravite, string presenceDatabaz, List<string> especesPresentes, List<string> missionsRealisees, string pourcentageAllies, string pourcentageEnnemis)
         {
             InitializeComponent();
             // Ajout des éléments textuels
+            // Image/Nom des planètes
             lblNomPlanete.Text = nomPlanete;
             if (temp == "")
             {
@@ -40,8 +41,33 @@ namespace UserControlPlanetes
                 lblGraviteValue.Text = gravite;
             }
 
-            lblAlliesValue.Text = pourcentageAllies + " %";
-            lblEnnemisValue.Text = pourcentageEnnemis + " %";
+            // Pourcentage des espèces
+            // Si elles n'existent pas, on ne les affiche pas 
+            if (pourcentageAllies == "")
+            {
+                lblAlliesCommun.Visible = false;
+                lblAlliesValue.Visible = false;
+            }
+            else
+            {
+                lblAlliesValue.Text = pourcentageAllies + " %";
+                lblAlliesCommun.Visible = true;
+                lblAlliesValue.Visible = true;
+            }
+            
+            if (pourcentageEnnemis == "")
+            {
+                lblEnnemisCommun.Visible = false;
+                lblEnnemisValue.Visible = false;
+            }
+            else
+            {
+                lblEnnemisValue.Text = pourcentageEnnemis + " %";
+                lblEnnemisCommun.Visible = true;
+                lblEnnemisValue.Visible = true;
+            }
+
+            
 
             // Dire s'il y a du Databz ou pas
             if (presenceDatabaz == "1")
@@ -64,7 +90,8 @@ namespace UserControlPlanetes
             // S'il n'y en a aucune, on le dit
             else if (especesPresentes.Count() == 0)
             {
-                lblEspecesValue.Text = "Absence d'espèces connues";
+                lblEspecesCommun.Text = "Absence d'espèces connues";
+                lblEspecesValue.Visible = false;
             }
             // Sinon, on parcourt et on affiche toutes les espèces
             else
@@ -88,7 +115,8 @@ namespace UserControlPlanetes
             // S'il n'y en a aucune, on le dit
             else if (missionsRealisees.Count() == 0)
             {
-                lblMissionsValue.Text = "Aucune mission réalisée";
+                lblMissionsCommun.Text = "Aucune mission réalisée";
+                lblMissionsValue.Visible = false;
             }
             // Sinon, on parcourt et on affiche toutes les espèces
             else

@@ -40,7 +40,7 @@
             this.lblMissionsCommun = new System.Windows.Forms.Label();
             this.lblMissionsValue = new System.Windows.Forms.Label();
             this.lblAlliesCommun = new System.Windows.Forms.Label();
-            this.lblEnnemis = new System.Windows.Forms.Label();
+            this.lblEnnemisCommun = new System.Windows.Forms.Label();
             this.lblAlliesValue = new System.Windows.Forms.Label();
             this.lblEnnemisValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlanete)).BeginInit();
@@ -166,15 +166,15 @@
             this.lblAlliesCommun.TabIndex = 11;
             this.lblAlliesCommun.Text = "Alliés :";
             // 
-            // lblEnnemis
+            // lblEnnemisCommun
             // 
-            this.lblEnnemis.AutoSize = true;
-            this.lblEnnemis.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnnemis.Location = new System.Drawing.Point(321, 144);
-            this.lblEnnemis.Name = "lblEnnemis";
-            this.lblEnnemis.Size = new System.Drawing.Size(89, 22);
-            this.lblEnnemis.TabIndex = 12;
-            this.lblEnnemis.Text = "Ennemis :";
+            this.lblEnnemisCommun.AutoSize = true;
+            this.lblEnnemisCommun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnnemisCommun.Location = new System.Drawing.Point(321, 144);
+            this.lblEnnemisCommun.Name = "lblEnnemisCommun";
+            this.lblEnnemisCommun.Size = new System.Drawing.Size(89, 22);
+            this.lblEnnemisCommun.TabIndex = 12;
+            this.lblEnnemisCommun.Text = "Ennemis :";
             // 
             // lblAlliesValue
             // 
@@ -202,7 +202,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.lblEnnemisValue);
             this.Controls.Add(this.lblAlliesValue);
-            this.Controls.Add(this.lblEnnemis);
+            this.Controls.Add(this.lblEnnemisCommun);
             this.Controls.Add(this.lblAlliesCommun);
             this.Controls.Add(this.lblMissionsValue);
             this.Controls.Add(this.lblMissionsCommun);
@@ -240,7 +240,7 @@
         private System.Windows.Forms.Label lblMissionsCommun;
         private System.Windows.Forms.Label lblMissionsValue;
         private System.Windows.Forms.Label lblAlliesCommun;
-        private System.Windows.Forms.Label lblEnnemis;
+        private System.Windows.Forms.Label lblEnnemisCommun;
         private System.Windows.Forms.Label lblAlliesValue;
         private System.Windows.Forms.Label lblEnnemisValue;
     }
