@@ -17,7 +17,7 @@ namespace UserControlPlanetes
             InitializeComponent();
         }
 
-        public UserControlPlanete(string nomImagePlanete, string nomImageTemp, string nomPlanete, string temp, string gravite, string presenceDatabaz, List<string> especesPresentes, List<string> missionsRealisees, string pourcentageAllies, string pourcentageEnnemis)
+        public UserControlPlanete(string nomImagePlanete, string nomImageTemp, string nomPlanete, string temp, string gravite, string presenceDatabaz, List<string> especesPresentes, List<string> missionsRealisees, List<string> pourcentageEspece)
         {
             InitializeComponent();
             // Ajout des éléments textuels
@@ -41,31 +41,7 @@ namespace UserControlPlanetes
                 lblGraviteValue.Text = gravite;
             }
 
-            // Pourcentage des espèces
-            // Si elles n'existent pas, on ne les affiche pas 
-            if (pourcentageAllies == "")
-            {
-                lblAlliesCommun.Visible = false;
-                lblAlliesValue.Visible = false;
-            }
-            else
-            {
-                lblAlliesValue.Text = pourcentageAllies + " %";
-                lblAlliesCommun.Visible = true;
-                lblAlliesValue.Visible = true;
-            }
             
-            if (pourcentageEnnemis == "")
-            {
-                lblEnnemisCommun.Visible = false;
-                lblEnnemisValue.Visible = false;
-            }
-            else
-            {
-                lblEnnemisValue.Text = pourcentageEnnemis + " %";
-                lblEnnemisCommun.Visible = true;
-                lblEnnemisValue.Visible = true;
-            }
 
             
 
@@ -84,7 +60,7 @@ namespace UserControlPlanetes
             // S'il n'y a qu'une espèce, on n'affiche que celle-là
             if (especesPresentes.Count() == 1)
             {
-                lblEspecesValue.Text = especesPresentes[0];
+                lblEspecesValue.Text = pourcentageEspece[0] + "% des " + especesPresentes[0];
                 lblEspecesCommun.Text = "Espèce présente : ";
             }
             // S'il n'y en a aucune, on le dit
@@ -97,11 +73,10 @@ namespace UserControlPlanetes
             else
             {
                 string texte = "";
-                for (int i = 0; i < especesPresentes.Count(); i++)
+                for (int i = 0; i < especesPresentes.Count() - 1; i++)
                 {
-                    texte += especesPresentes[i] + ", ";
+                    texte += pourcentageEspece[i] + "% des " + especesPresentes[i] + "\n";
                 }
-                texte += "et " + especesPresentes[especesPresentes.Count()-1];
 
                 lblEspecesValue.Text = texte;
             }
