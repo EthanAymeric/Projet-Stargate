@@ -93,6 +93,12 @@ namespace SAE24
                 // id (Espece) <-> idEspece (Habiter)
                 MesDatas.DsGlobal.Relations.Add("FK_Espece_Habiter", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Habiter"].Columns["idEspece"]);
 
+                // id (Espece) <-> idEspece (Allie)
+                MesDatas.DsGlobal.Relations.Add("FK_Espece_Allie", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Allie"].Columns["idEspece"]);
+
+                // id (Espece) <-> idEspece (Ennemi)
+                MesDatas.DsGlobal.Relations.Add("FK_Espece_Ennemi", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Ennemi"].Columns["idEspece"]);
+
                 // nom (Planete) <-> nomPlanete (Mission)
                 MesDatas.DsGlobal.Relations.Add("FK_Planete_Mission", MesDatas.DsGlobal.Tables["Planete"].Columns["nom"], MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"]);
             } 
@@ -131,6 +137,8 @@ namespace SAE24
             pnlTDB.Visible = true;
             pnlPlanetes.Visible = false;
             pnlEspeces.Visible = false;
+            pnlAllies.Visible = false;
+            pnlEnnemis.Visible = false;
             grpEspeces.Visible = false;
 
             ActualisationTDB();
@@ -151,6 +159,8 @@ namespace SAE24
             pnlTDB.Visible = false;
             pnlPlanetes.Visible = false;
             pnlEspeces.Visible = true;
+            pnlAllies.Visible = false;
+            pnlEnnemis.Visible = false;
             grpEspeces.Visible = true;
         }
 
@@ -159,6 +169,8 @@ namespace SAE24
             pnlTDB.Visible = false;
             pnlPlanetes.Visible = true;
             pnlEspeces.Visible = false;
+            pnlAllies.Visible = false;
+            pnlEnnemis.Visible = false;
             grpEspeces.Visible = false;
         }
 
@@ -167,6 +179,8 @@ namespace SAE24
             // Mise à jour
             pnlEspeces.Visible = false;
             grpEspeces.Visible = false;
+            pnlAllies.Visible = false;
+            pnlEnnemis.Visible = false;
             Int32 top = 0;
             Int32 left = 0;
 
@@ -371,6 +385,173 @@ namespace SAE24
             pbChargement.Value = 89;
             System.Threading.Thread.Sleep(500);
             pbChargement.Value = 100;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            // Décoche les radioButton
+            foreach (RadioButton rdb in grpEspeces.Controls.OfType<RadioButton>())
+            {
+                rdbAllies.Checked = false;
+                rdbEnnemis.Checked = false;
+            }
+        }
+
+        private void btnRecherche_Click(object sender, EventArgs e)
+        {
+            // Vérifie
+            foreach (RadioButton rdb in grpEspeces.Controls.OfType<RadioButton>())
+            {
+                if (rdbAllies.Checked)
+                {
+                    pnlAllies.Visible = true;
+                    pnlEnnemis.Visible = false;
+                    pnlEspeces.Visible = false;
+                    InfoEspecesAlliees();
+
+
+                }
+                else if (rdbEnnemis.Checked)
+                {
+                    pnlAllies.Visible = false;
+                    pnlEnnemis.Visible = true;
+                    pnlEspeces.Visible = false;
+                    InfoEspecesEnnemies();
+                }
+                else
+                {
+                    pnlAllies.Visible = false;
+                    pnlEnnemis.Visible = false;
+                    pnlEspeces.Visible = true;
+                }
+            }
+        }
+
+        private void InfoEspecesAlliees()
+        {
+            Int32 top = 0;
+            Int32 left = 0;
+
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Allie"].Rows)
+            {
+                //MessageBox.Show(r["idEspece"].ToString());
+                //MessageBox.Show(r["idEspece"].ToString() + " : " + r.GetParentRow("FK_Espece_Allie")[1].ToString());
+
+                //MessageBox.Show(r["nom"].ToString());
+                // Ajout des informations pour toutes les espèces (générales)
+                // Ajout du lien de l'image correspondant à l'espèce
+                string degreBienveillance = r["degreBienveillance"].ToString();
+                string instrument = r["instrumentMusique"].ToString();
+                string datePremierContact = r["datePremierContact"].ToString();
+
+                string nomImageEspece = "";
+
+                // Ajout du nom de l'espèce
+                string nomEspece = r.GetParentRow("FK_Espece_Allie")[1].ToString();
+
+                // Ajout de sa couleur
+                string couleur = r.GetParentRow("FK_Espece_Allie")[2].ToString();
+
+                // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
+                List<string> listePlanetes = new List<string>();
+
+                DataRow[] planetes = r.GetParentRow("FK_Espece_Allie").GetChildRows("FK_Espece_Habiter");
+
+                foreach (DataRow dr in planetes)
+                {
+                    if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                    {
+                        listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                    }
+
+                }
+
+                // test du UserControl
+                // Création de l'UserControl en le surchargeant); 
+                UserControlEspecesAlliees u = new UserControlEspecesAlliees(nomImageEspece, couleur, nomEspece, degreBienveillance, listePlanetes, datePremierContact, instrument); 
+
+
+                // Affichage des UserControl les uns en-dessous des autres
+                u.Top = top;
+                u.Left = left;
+
+                left += u.Width;
+
+                if (left > pnlAllies.Width)
+                {
+                    top += u.Height;
+                    left = 0;
+                }
+
+                
+                // Ajout de l'UserControl dans le panel du tableau de bord
+                pnlAllies.Controls.Add(u);
+                
+
+            }
+        }
+
+        private void InfoEspecesEnnemies()
+        {
+            Int32 top = 0;
+            Int32 left = 0;
+
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Ennemi"].Rows)
+            {
+                //MessageBox.Show(r["idEspece"].ToString());
+                //MessageBox.Show(r["idEspece"].ToString() + " : " + r.GetParentRow("FK_Espece_Allie")[1].ToString());
+
+                //MessageBox.Show(r["nom"].ToString());
+                // Ajout des informations pour toutes les espèces (générales)
+                // Ajout du lien de l'image correspondant à l'espèce
+                string degreAgressivite = r["degreAgressivite"].ToString();
+                string arme = r["typeArme"].ToString();
+
+                string nomImageEspece = "";
+
+                // Ajout du nom de l'espèce
+                string nomEspece = r.GetParentRow("FK_Espece_Ennemi")[1].ToString();
+
+                // Ajout de sa couleur
+                string couleur = r.GetParentRow("FK_Espece_Ennemi")[2].ToString();
+
+                // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
+                List<string> listePlanetes = new List<string>();
+
+                DataRow[] planetes = r.GetParentRow("FK_Espece_Ennemi").GetChildRows("FK_Espece_Habiter");
+
+                foreach (DataRow dr in planetes)
+                {
+                    if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                    {
+                        listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                    }
+
+                }
+
+                // test du UserControl
+                // Création de l'UserControl en le surchargeant); 
+                UserControlEspecesEnnemies u = new UserControlEspecesEnnemies(nomImageEspece, couleur, nomEspece, listePlanetes, degreAgressivite, arme);
+
+
+                // Affichage des UserControl les uns en-dessous des autres
+                u.Top = top;
+                u.Left = left;
+
+                left += u.Width;
+
+                if (left > pnlEnnemis.Width)
+                {
+                    top += u.Height;
+                    left = 0;
+                }
+
+
+                // Ajout de l'UserControl dans le panel du tableau de bord
+                pnlEnnemis.Controls.Add(u);
+
+
+            }
         }
     }
 }

@@ -41,11 +41,11 @@ namespace UserControlPlanetes
                     lblNbPlanete.Text = "Planètes d'origine : ";
 
                     string texte = "";
-                    for (int i = 0; i < planeteOrigine.Count - 1; i++)
+                    foreach (string planete in planeteOrigine)
                     {
-                        texte += planeteOrigine[i] + "/";   // Affichage des éléments de la liste avec la virgule
+                        texte += planete + "/";
                     }
-                    texte += planeteOrigine[planeteOrigine.Count];  // Affichage du dernier élément de la liste SANS la virgule
+                    lblOrigine.Text = texte.Remove(texte.Length - 1);
                 }
             }
             // Sinon, on affiche "Origine inconnue" et on change la couleur du texte

@@ -154,7 +154,7 @@
             this.Controls.Add(this.lblNomEspeceAlliee);
             this.Controls.Add(this.pbEspeceAlliee);
             this.Name = "UserControlEspecesAlliees";
-            this.Size = new System.Drawing.Size(370, 519);
+            this.Size = new System.Drawing.Size(354, 519);
             this.Load += new System.EventHandler(this.UserControlEspecesAlliees_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbEspeceAlliee)).EndInit();
             this.ResumeLayout(false);
