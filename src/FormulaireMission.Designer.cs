@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tcResume = new System.Windows.Forms.TabControl();
             this.tpInfoGeneral = new System.Windows.Forms.TabPage();
             this.lblSolde = new System.Windows.Forms.Label();
@@ -60,7 +60,14 @@
             this.lblEventDescription = new System.Windows.Forms.Label();
             this.lblDateEvent = new System.Windows.Forms.Label();
             this.tpAjout = new System.Windows.Forms.TabPage();
-            this.grpFormulaireAjout = new System.Windows.Forms.GroupBox();
+            this.grpFormDepense = new System.Windows.Forms.GroupBox();
+            this.btnAjoutDepense = new System.Windows.Forms.Button();
+            this.grpFormCapture = new System.Windows.Forms.GroupBox();
+            this.btnAjoutCapture = new System.Windows.Forms.Button();
+            this.grpFormContact = new System.Windows.Forms.GroupBox();
+            this.btnAjoutContact = new System.Windows.Forms.Button();
+            this.grpFormEvent = new System.Windows.Forms.GroupBox();
+            this.btnAjoutEvent = new System.Windows.Forms.Button();
             this.grpChoixAjout = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -71,6 +78,14 @@
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.rdbNewContact = new System.Windows.Forms.RadioButton();
             this.missionPB1 = new SAE24.MissionPB();
+            this.lblDateDepense = new System.Windows.Forms.Label();
+            this.dtpDepense = new System.Windows.Forms.DateTimePicker();
+            this.lblMontantDepense = new System.Windows.Forms.Label();
+            this.lblMotifDepense = new System.Windows.Forms.Label();
+            this.lblTypeDepense = new System.Windows.Forms.Label();
+            this.cboTypeDepense = new System.Windows.Forms.ComboBox();
+            this.txtMontantDepense = new System.Windows.Forms.TextBox();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tcResume.SuspendLayout();
             this.tpInfoGeneral.SuspendLayout();
             this.grpCaptures.SuspendLayout();
@@ -85,6 +100,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
             this.grpEvent.SuspendLayout();
             this.tpAjout.SuspendLayout();
+            this.grpFormDepense.SuspendLayout();
+            this.grpFormCapture.SuspendLayout();
+            this.grpFormContact.SuspendLayout();
+            this.grpFormEvent.SuspendLayout();
             this.grpChoixAjout.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -257,14 +276,14 @@
             this.dgvCapture.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCapture.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvCapture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCapture.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCapture.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvCapture.Location = new System.Drawing.Point(8, 23);
             this.dgvCapture.Margin = new System.Windows.Forms.Padding(4);
             this.dgvCapture.Name = "dgvCapture";
@@ -312,14 +331,14 @@
             this.dgvDepenses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDepenses.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDepenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvDepenses.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDepenses.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgvDepenses.Location = new System.Drawing.Point(8, 23);
             this.dgvDepenses.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDepenses.Name = "dgvDepenses";
@@ -349,14 +368,14 @@
             this.dgvContact.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvContact.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvContact.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvContact.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgvContact.Location = new System.Drawing.Point(9, 25);
             this.dgvContact.Margin = new System.Windows.Forms.Padding(4);
             this.dgvContact.Name = "dgvContact";
@@ -450,7 +469,10 @@
             // 
             // tpAjout
             // 
-            this.tpAjout.Controls.Add(this.grpFormulaireAjout);
+            this.tpAjout.Controls.Add(this.grpFormDepense);
+            this.tpAjout.Controls.Add(this.grpFormCapture);
+            this.tpAjout.Controls.Add(this.grpFormContact);
+            this.tpAjout.Controls.Add(this.grpFormEvent);
             this.tpAjout.Controls.Add(this.grpChoixAjout);
             this.tpAjout.Location = new System.Drawing.Point(4, 25);
             this.tpAjout.Margin = new System.Windows.Forms.Padding(4);
@@ -460,15 +482,94 @@
             this.tpAjout.Text = "Ajout d\'évènements";
             this.tpAjout.UseVisualStyleBackColor = true;
             // 
-            // grpFormulaireAjout
+            // grpFormDepense
             // 
-            this.grpFormulaireAjout.Location = new System.Drawing.Point(278, 138);
-            this.grpFormulaireAjout.Name = "grpFormulaireAjout";
-            this.grpFormulaireAjout.Size = new System.Drawing.Size(765, 503);
-            this.grpFormulaireAjout.TabIndex = 1;
-            this.grpFormulaireAjout.TabStop = false;
-            this.grpFormulaireAjout.Text = "groupBox1";
-            this.grpFormulaireAjout.Visible = false;
+            this.grpFormDepense.Controls.Add(this.richTextBox1);
+            this.grpFormDepense.Controls.Add(this.txtMontantDepense);
+            this.grpFormDepense.Controls.Add(this.cboTypeDepense);
+            this.grpFormDepense.Controls.Add(this.lblTypeDepense);
+            this.grpFormDepense.Controls.Add(this.lblMotifDepense);
+            this.grpFormDepense.Controls.Add(this.lblMontantDepense);
+            this.grpFormDepense.Controls.Add(this.dtpDepense);
+            this.grpFormDepense.Controls.Add(this.lblDateDepense);
+            this.grpFormDepense.Controls.Add(this.btnAjoutDepense);
+            this.grpFormDepense.Location = new System.Drawing.Point(278, 138);
+            this.grpFormDepense.Name = "grpFormDepense";
+            this.grpFormDepense.Size = new System.Drawing.Size(765, 503);
+            this.grpFormDepense.TabIndex = 3;
+            this.grpFormDepense.TabStop = false;
+            this.grpFormDepense.Text = "Ajout de Dépense";
+            this.grpFormDepense.Visible = false;
+            // 
+            // btnAjoutDepense
+            // 
+            this.btnAjoutDepense.Location = new System.Drawing.Point(662, 459);
+            this.btnAjoutDepense.Name = "btnAjoutDepense";
+            this.btnAjoutDepense.Size = new System.Drawing.Size(97, 38);
+            this.btnAjoutDepense.TabIndex = 2;
+            this.btnAjoutDepense.Text = "Valider";
+            this.btnAjoutDepense.UseVisualStyleBackColor = true;
+            // 
+            // grpFormCapture
+            // 
+            this.grpFormCapture.Controls.Add(this.btnAjoutCapture);
+            this.grpFormCapture.Location = new System.Drawing.Point(278, 138);
+            this.grpFormCapture.Name = "grpFormCapture";
+            this.grpFormCapture.Size = new System.Drawing.Size(765, 503);
+            this.grpFormCapture.TabIndex = 3;
+            this.grpFormCapture.TabStop = false;
+            this.grpFormCapture.Text = "Ajout de Capture";
+            this.grpFormCapture.Visible = false;
+            // 
+            // btnAjoutCapture
+            // 
+            this.btnAjoutCapture.Location = new System.Drawing.Point(662, 459);
+            this.btnAjoutCapture.Name = "btnAjoutCapture";
+            this.btnAjoutCapture.Size = new System.Drawing.Size(97, 38);
+            this.btnAjoutCapture.TabIndex = 2;
+            this.btnAjoutCapture.Text = "Valider";
+            this.btnAjoutCapture.UseVisualStyleBackColor = true;
+            // 
+            // grpFormContact
+            // 
+            this.grpFormContact.Controls.Add(this.btnAjoutContact);
+            this.grpFormContact.Location = new System.Drawing.Point(278, 138);
+            this.grpFormContact.Name = "grpFormContact";
+            this.grpFormContact.Size = new System.Drawing.Size(797, 511);
+            this.grpFormContact.TabIndex = 3;
+            this.grpFormContact.TabStop = false;
+            this.grpFormContact.Text = "Ajout de Contact";
+            this.grpFormContact.Visible = false;
+            // 
+            // btnAjoutContact
+            // 
+            this.btnAjoutContact.Location = new System.Drawing.Point(662, 459);
+            this.btnAjoutContact.Name = "btnAjoutContact";
+            this.btnAjoutContact.Size = new System.Drawing.Size(97, 38);
+            this.btnAjoutContact.TabIndex = 2;
+            this.btnAjoutContact.Text = "Valider";
+            this.btnAjoutContact.UseVisualStyleBackColor = true;
+            // 
+            // grpFormEvent
+            // 
+            this.grpFormEvent.Controls.Add(this.btnAjoutEvent);
+            this.grpFormEvent.Location = new System.Drawing.Point(278, 138);
+            this.grpFormEvent.Name = "grpFormEvent";
+            this.grpFormEvent.Size = new System.Drawing.Size(765, 503);
+            this.grpFormEvent.TabIndex = 1;
+            this.grpFormEvent.TabStop = false;
+            this.grpFormEvent.Text = "Ajout d\'Évènements";
+            this.grpFormEvent.Visible = false;
+            // 
+            // btnAjoutEvent
+            // 
+            this.btnAjoutEvent.Location = new System.Drawing.Point(662, 459);
+            this.btnAjoutEvent.Name = "btnAjoutEvent";
+            this.btnAjoutEvent.Size = new System.Drawing.Size(97, 38);
+            this.btnAjoutEvent.TabIndex = 2;
+            this.btnAjoutEvent.Text = "Valider";
+            this.btnAjoutEvent.UseVisualStyleBackColor = true;
+            this.btnAjoutEvent.Click += new System.EventHandler(this.btnValidationAjout_Click);
             // 
             // grpChoixAjout
             // 
@@ -579,6 +680,72 @@
             this.missionPB1.Size = new System.Drawing.Size(229, 171);
             this.missionPB1.TabIndex = 0;
             // 
+            // lblDateDepense
+            // 
+            this.lblDateDepense.AutoSize = true;
+            this.lblDateDepense.Location = new System.Drawing.Point(7, 48);
+            this.lblDateDepense.Name = "lblDateDepense";
+            this.lblDateDepense.Size = new System.Drawing.Size(45, 16);
+            this.lblDateDepense.TabIndex = 3;
+            this.lblDateDepense.Text = "Date : ";
+            // 
+            // dtpDepense
+            // 
+            this.dtpDepense.Location = new System.Drawing.Point(94, 43);
+            this.dtpDepense.Name = "dtpDepense";
+            this.dtpDepense.Size = new System.Drawing.Size(200, 22);
+            this.dtpDepense.TabIndex = 4;
+            // 
+            // lblMontantDepense
+            // 
+            this.lblMontantDepense.AutoSize = true;
+            this.lblMontantDepense.Location = new System.Drawing.Point(7, 89);
+            this.lblMontantDepense.Name = "lblMontantDepense";
+            this.lblMontantDepense.Size = new System.Drawing.Size(44, 16);
+            this.lblMontantDepense.TabIndex = 5;
+            this.lblMontantDepense.Text = "label5";
+            // 
+            // lblMotifDepense
+            // 
+            this.lblMotifDepense.AutoSize = true;
+            this.lblMotifDepense.Location = new System.Drawing.Point(7, 130);
+            this.lblMotifDepense.Name = "lblMotifDepense";
+            this.lblMotifDepense.Size = new System.Drawing.Size(44, 16);
+            this.lblMotifDepense.TabIndex = 6;
+            this.lblMotifDepense.Text = "label6";
+            // 
+            // lblTypeDepense
+            // 
+            this.lblTypeDepense.AutoSize = true;
+            this.lblTypeDepense.Location = new System.Drawing.Point(10, 170);
+            this.lblTypeDepense.Name = "lblTypeDepense";
+            this.lblTypeDepense.Size = new System.Drawing.Size(44, 16);
+            this.lblTypeDepense.TabIndex = 7;
+            this.lblTypeDepense.Text = "label7";
+            // 
+            // cboTypeDepense
+            // 
+            this.cboTypeDepense.FormattingEnabled = true;
+            this.cboTypeDepense.Location = new System.Drawing.Point(94, 170);
+            this.cboTypeDepense.Name = "cboTypeDepense";
+            this.cboTypeDepense.Size = new System.Drawing.Size(121, 24);
+            this.cboTypeDepense.TabIndex = 8;
+            // 
+            // txtMontantDepense
+            // 
+            this.txtMontantDepense.Location = new System.Drawing.Point(94, 82);
+            this.txtMontantDepense.Name = "txtMontantDepense";
+            this.txtMontantDepense.Size = new System.Drawing.Size(100, 22);
+            this.txtMontantDepense.TabIndex = 9;
+            // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(94, 130);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(176, 15);
+            this.richTextBox1.TabIndex = 10;
+            this.richTextBox1.Text = "";
+            // 
             // FormulaireMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -609,6 +776,11 @@
             this.grpEvent.ResumeLayout(false);
             this.grpEvent.PerformLayout();
             this.tpAjout.ResumeLayout(false);
+            this.grpFormDepense.ResumeLayout(false);
+            this.grpFormDepense.PerformLayout();
+            this.grpFormCapture.ResumeLayout(false);
+            this.grpFormContact.ResumeLayout(false);
+            this.grpFormEvent.ResumeLayout(false);
             this.grpChoixAjout.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -655,6 +827,21 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox grpFormulaireAjout;
+        private System.Windows.Forms.GroupBox grpFormDepense;
+        private System.Windows.Forms.Button btnAjoutDepense;
+        private System.Windows.Forms.GroupBox grpFormCapture;
+        private System.Windows.Forms.Button btnAjoutCapture;
+        private System.Windows.Forms.GroupBox grpFormContact;
+        private System.Windows.Forms.Button btnAjoutContact;
+        private System.Windows.Forms.GroupBox grpFormEvent;
+        private System.Windows.Forms.Button btnAjoutEvent;
+        private System.Windows.Forms.DateTimePicker dtpDepense;
+        private System.Windows.Forms.Label lblDateDepense;
+        private System.Windows.Forms.TextBox txtMontantDepense;
+        private System.Windows.Forms.ComboBox cboTypeDepense;
+        private System.Windows.Forms.Label lblTypeDepense;
+        private System.Windows.Forms.Label lblMotifDepense;
+        private System.Windows.Forms.Label lblMontantDepense;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

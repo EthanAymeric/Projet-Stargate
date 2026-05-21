@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -27,8 +28,8 @@ namespace SAE24
         public FormulaireMission(string idMission)
         {
             InitializeComponent();
-            missionActuelle = MesDatas.DsGlobal.Tables["Mission"].Select($"nomPlanete = '{idMission.Substring(0, idMission.Length - 1)}' AND numero = '{ idMission.Substring(idMission.Length - 1, 1)}'")[0];
-            missionPB1.SetImage = idMission.Substring(0,idMission.Length - 1);
+            missionActuelle = MesDatas.DsGlobal.Tables["Mission"].Select($"nomPlanete = '{idMission.Substring(0, idMission.Length - 1)}' AND numero = '{idMission.Substring(idMission.Length - 1, 1)}'")[0];
+            missionPB1.SetImage = idMission.Substring(0, idMission.Length - 1);
             missionPB1.SetText = idMission;
         }
 
@@ -48,10 +49,12 @@ namespace SAE24
             int top = 10;
             MembreEquipage m = new MembreEquipage();
             DataRow profil = r.GetParentRow("FK_Membre_Composer");
-            if (profil["matricule"].ToString()[0] == 'C') {
+            if (profil["matricule"].ToString()[0] == 'C')
+            {
                 m.SetImage = "Civil";
             }
-            else {
+            else
+            {
                 m.SetImage = "Soldier";
             }
             m.setText = $"{profil["nom"].ToString()}\n{profil["prenom"].ToString()}";
@@ -216,7 +219,7 @@ namespace SAE24
                 DataRow[] objectifCapture = missionActuelle.GetChildRows("FK_Mission_ObjectifCapture");
                 newCapture[0] = idEspece["nom"];
                 Int32 objectif = 0;
-                foreach (DataRow r in  objectifCapture)
+                foreach (DataRow r in objectifCapture)
                 {
                     if (r["idEspeceEnnemi"].ToString() == capture["idEspeceEnnemi"].ToString())
                     {
@@ -234,7 +237,7 @@ namespace SAE24
                     }
                 }
                 newCapture[2] = nbCapture.ToString();
-                newCapture[3] = (nbCapture*100/objectif).ToString();
+                newCapture[3] = (nbCapture * 100 / objectif).ToString();
                 captureMissionActuelle.Rows.Add(newCapture);
             }
             dgvCapture.DataSource = captureMissionActuelle;
@@ -280,6 +283,9 @@ namespace SAE24
                         break;
                     case "4":
                         AfficherFormCapture();
+                        break;
+                    default:
+                        MessageBox.Show("Une erreur est survenue");
                         break;
                 }
             }
@@ -495,6 +501,49 @@ namespace SAE24
             grpFormulaireAjout.Controls.Add(cboCapture);
             grpFormulaireAjout.Controls.Add(lblSomme);
             grpFormulaireAjout.Controls.Add(txtSomme);
+        }
+
+        private void btnValidationAjout_Click(object sender, EventArgs e)
+        {
+            string tag = "";
+            foreach (RadioButton rdb in grpChoixAjout.Controls.OfType<RadioButton>())
+            {
+                if (rdb.Checked)
+                {
+                    tag = rdb.Text;
+                }
+            }
+
+            switch (tag)
+            {
+                case "1":
+                    ;
+                    break;
+                case "2":
+                    ;
+                    break;
+                case "3":
+                    ;
+                    break;
+                case "4":
+                    ;
+                    break;
+                default:
+                    MessageBox.Show("Une erreur est survenue");
+                    break;
+            }
+        }
+
+        public void ajoutContact()
+        {
+            SQLiteConnection co = Connexion.Connec();
+
+            try
+            {
+                string nomPlanete = missionActuelle[0];
+                string numeroMission = missionActuelle[1];
+                string date = 
+            }
         }
     }
 }
