@@ -33,14 +33,18 @@
             this.btnRaces = new System.Windows.Forms.Button();
             this.btnPlanetes = new System.Windows.Forms.Button();
             this.pnlTDB = new System.Windows.Forms.Panel();
+            this.pnlPlanetes = new System.Windows.Forms.Panel();
             this.pbChargement = new System.Windows.Forms.ProgressBar();
+            this.pnlEspeces = new System.Windows.Forms.Panel();
+            this.grpEspeces = new System.Windows.Forms.GroupBox();
             this.pnlTDB.SuspendLayout();
+            this.pnlPlanetes.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnTDB
             // 
-            this.btnTDB.Location = new System.Drawing.Point(15, 490);
-            this.btnTDB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnTDB.Location = new System.Drawing.Point(15, 489);
+            this.btnTDB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnTDB.Name = "btnTDB";
             this.btnTDB.Size = new System.Drawing.Size(182, 58);
             this.btnTDB.TabIndex = 1;
@@ -51,8 +55,8 @@
             // 
             // btnNouvelleMission
             // 
-            this.btnNouvelleMission.Location = new System.Drawing.Point(244, 490);
-            this.btnNouvelleMission.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnNouvelleMission.Location = new System.Drawing.Point(244, 489);
+            this.btnNouvelleMission.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
             this.btnNouvelleMission.Size = new System.Drawing.Size(182, 58);
             this.btnNouvelleMission.TabIndex = 2;
@@ -63,8 +67,8 @@
             // 
             // btnRaces
             // 
-            this.btnRaces.Location = new System.Drawing.Point(470, 490);
-            this.btnRaces.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnRaces.Location = new System.Drawing.Point(470, 489);
+            this.btnRaces.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnRaces.Name = "btnRaces";
             this.btnRaces.Size = new System.Drawing.Size(182, 58);
             this.btnRaces.TabIndex = 3;
@@ -75,8 +79,8 @@
             // 
             // btnPlanetes
             // 
-            this.btnPlanetes.Location = new System.Drawing.Point(704, 490);
-            this.btnPlanetes.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnPlanetes.Location = new System.Drawing.Point(704, 489);
+            this.btnPlanetes.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnPlanetes.Name = "btnPlanetes";
             this.btnPlanetes.Size = new System.Drawing.Size(182, 58);
             this.btnPlanetes.TabIndex = 4;
@@ -89,37 +93,68 @@
             // 
             this.pnlTDB.AutoScroll = true;
             this.pnlTDB.Controls.Add(this.pbChargement);
-            this.pnlTDB.Location = new System.Drawing.Point(15, 16);
-            this.pnlTDB.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pnlTDB.Location = new System.Drawing.Point(15, 15);
+            this.pnlTDB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlTDB.Name = "pnlTDB";
             this.pnlTDB.Size = new System.Drawing.Size(872, 466);
             this.pnlTDB.TabIndex = 5;
             // 
+            // pnlPlanetes
+            // 
+            this.pnlPlanetes.AutoScroll = true;
+            this.pnlPlanetes.Controls.Add(this.grpEspeces);
+            this.pnlPlanetes.Location = new System.Drawing.Point(15, 15);
+            this.pnlPlanetes.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pnlPlanetes.Name = "pnlPlanetes";
+            this.pnlPlanetes.Size = new System.Drawing.Size(872, 466);
+            this.pnlPlanetes.TabIndex = 6;
+            // 
             // pbChargement
             // 
             this.pbChargement.Location = new System.Drawing.Point(232, 180);
-            this.pbChargement.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pbChargement.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pbChargement.Name = "pbChargement";
             this.pbChargement.Size = new System.Drawing.Size(408, 55);
             this.pbChargement.TabIndex = 0;
+            // 
+            // pnlEspeces
+            // 
+            this.pnlEspeces.AutoScroll = true;
+            this.pnlEspeces.Location = new System.Drawing.Point(15, 15);
+            this.pnlEspeces.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pnlEspeces.Name = "pnlEspeces";
+            this.pnlEspeces.Size = new System.Drawing.Size(872, 348);
+            this.pnlEspeces.TabIndex = 7;
+            // 
+            // grpEspeces
+            // 
+            this.grpEspeces.Location = new System.Drawing.Point(0, 353);
+            this.grpEspeces.Name = "grpEspeces";
+            this.grpEspeces.Size = new System.Drawing.Size(869, 110);
+            this.grpEspeces.TabIndex = 0;
+            this.grpEspeces.TabStop = false;
+            this.grpEspeces.Text = "Recherche d\'espèces";
             // 
             // FrmTableauDeBord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 562);
+            this.Controls.Add(this.pnlEspeces);
+            this.Controls.Add(this.pnlPlanetes);
             this.Controls.Add(this.pnlTDB);
             this.Controls.Add(this.btnPlanetes);
             this.Controls.Add(this.btnRaces);
             this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.btnTDB);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FrmTableauDeBord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tableau de Bord";
             this.Load += new System.EventHandler(this.FrmTableauDeBord_Load);
             this.Shown += new System.EventHandler(this.FrmTableauDeBord_Shown);
             this.pnlTDB.ResumeLayout(false);
+            this.pnlPlanetes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -131,6 +166,9 @@
         private System.Windows.Forms.Button btnPlanetes;
         private System.Windows.Forms.Panel pnlTDB;
         private System.Windows.Forms.ProgressBar pbChargement;
+        private System.Windows.Forms.Panel pnlPlanetes;
+        private System.Windows.Forms.Panel pnlEspeces;
+        private System.Windows.Forms.GroupBox grpEspeces;
     }
 }
 

@@ -25,6 +25,8 @@ namespace SAE24
         {
             RemplissageDS();
             AjoutRelation();
+            InfosPlanetes();
+            InfosEspeces();
         }
 
         private void UpdateDataSet()
@@ -125,7 +127,12 @@ namespace SAE24
         }
         private void btnTDB_Click(object sender, EventArgs e)
         {
-            pnlTDB.Controls.Clear();
+            
+            pnlTDB.Visible = true;
+            pnlPlanetes.Visible = false;
+            pnlEspeces.Visible = false;
+            grpEspeces.Visible = false;
+
             ActualisationTDB();
         }
 
@@ -141,8 +148,25 @@ namespace SAE24
 
         private void btnRaces_Click(object sender, EventArgs e)
         {
+            pnlTDB.Visible = false;
+            pnlPlanetes.Visible = false;
+            pnlEspeces.Visible = true;
+            grpEspeces.Visible = true;
+        }
+
+        private void btnPlanetes_Click(object sender, EventArgs e)
+        {
+            pnlTDB.Visible = false;
+            pnlPlanetes.Visible = true;
+            pnlEspeces.Visible = false;
+            grpEspeces.Visible = false;
+        }
+
+        private void InfosEspeces()
+        {
             // Mise à jour
-            pnlTDB.Controls.Clear();
+            pnlEspeces.Visible = false;
+            grpEspeces.Visible = false;
             Int32 top = 0;
             Int32 left = 0;
 
@@ -169,7 +193,7 @@ namespace SAE24
                     if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
                     {
                         listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
-                    }                    
+                    }
 
                 }
 
@@ -177,32 +201,30 @@ namespace SAE24
                 // Création de l'UserControl en le surchargeant); 
                 UserControlEspeces u = new UserControlEspeces(nomImageEspece, nomEspece, couleur, listePlanetes);
 
-                
+
                 // Affichage des UserControl les uns en-dessous des autres
                 u.Top = top;
                 u.Left = left;
 
                 left += u.Width;
-                
-                if (left > pnlTDB.Width)
+
+                if (left > pnlEspeces.Width)
                 {
                     top += u.Height;
                     left = 0;
                 }
-                
+
 
                 // Ajout de l'UserControl dans le panel du tableau de bord
-                pnlTDB.Controls.Add(u);
+                pnlEspeces.Controls.Add(u);
             }
-            
         }
 
-        private void btnPlanetes_Click(object sender, EventArgs e)
+        private void InfosPlanetes()
         {
-            // Mise à jour
-            pnlTDB.Controls.Clear();
+            pnlPlanetes.Visible = false;
             Int32 top = 0;
-            
+
             // Parcours de la table pour récupérer toutes les infos nécessaires
             foreach (DataRow r in MesDatas.DsGlobal.Tables["Planete"].Rows)
             {
@@ -225,7 +247,7 @@ namespace SAE24
                 Int32 valueTemp = 0;
                 int xOut;
                 bool tempImageInconnue = false;
-                
+
                 // Si la valeur est positive, on reprend simplement la valeur obtenue en la castant
                 if (!r["temperature"].ToString().Contains("-"))
                 {
@@ -259,10 +281,10 @@ namespace SAE24
                     valueTemp *= -1;
 
                 }
-                
+
                 // Affichage en conséquence d'une image pour la température
                 // Température froide
-                
+
                 if (valueTemp <= 5)
                 {
                     nomImageTemp = $"../../Images/Temperature/Froid.png";
@@ -289,43 +311,40 @@ namespace SAE24
                 // Pour les espèces :
                 List<string> listeEspeces = new List<string>();
                 List<string> listePourcentageEspece = new List<string>();
-                
+
                 DataRow[] espece = r.GetChildRows("FK_Planete_Habiter");
 
                 foreach (DataRow dr in espece)
-                {                    
+                {
                     listeEspeces.Add(dr.GetParentRow("FK_Espece_Habiter")[1].ToString());
                     //MessageBox.Show(dr.GetParentRow("FK_Espece_Habiter")[1].ToString() + " : " + listeEspeces.Contains(dr.GetParentRow("FK_Espece_Habiter")[1].ToString()).ToString());
                     listePourcentageEspece.Add(dr[2].ToString());
                 }
-                
+
 
                 // Pour les missions :
                 List<string> listeMissions = new List<string>();
 
                 DataRow[] mission = r.GetChildRows("FK_Planete_Mission");
-                foreach(DataRow dr in mission)
+                foreach (DataRow dr in mission)
                 {
                     if (dr[0] != null)
                     {
                         listeMissions.Add(dr[0].ToString() + dr[1]);
                     }
                 }
-                
+
                 // Création de l'UserControl en le surchargeant
-                UserControlPlanete u = new UserControlPlanete(nomImagePlanete, nomImageTemp, nomPlanete, temp, gravite, presenceDatabaz, listeEspeces, listeMissions, listePourcentageEspece);                
+                UserControlPlanete u = new UserControlPlanete(nomImagePlanete, nomImageTemp, nomPlanete, temp, gravite, presenceDatabaz, listeEspeces, listeMissions, listePourcentageEspece);
 
                 // Affichage des UserControl les uns en-dessous des autres
                 u.Top = top;
                 top += u.Height;
-                
+
                 // Ajout de l'UserControl dans le panel du tableau de bord
-                pnlTDB.Controls.Add(u);
+                pnlPlanetes.Controls.Add(u);
             }
-
         }
-
-        
 
         private void FrmTableauDeBord_Shown(object sender, EventArgs e)
         {
