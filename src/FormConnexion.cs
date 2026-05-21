@@ -88,7 +88,7 @@ namespace SAE24
                 errorProvider.SetError(textBoxLogin, "");
             }
 
-            e.Handled = e.KeyChar == (char)Keys.Space;
+            e.Handled = e.KeyChar == (char)Keys.Space || e.KeyChar == '\'';
         }
 
         private void textBoxMdp_KeyPress(object sender, KeyPressEventArgs e)
@@ -98,6 +98,8 @@ namespace SAE24
             {
                 errorProvider.SetError(textBoxMdp, "");
             }
+
+            e.Handled = e.KeyChar == '\'';
         }
 
         private void checkBoxAfficherMdp_CheckedChanged(object sender, EventArgs e)
