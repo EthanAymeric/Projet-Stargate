@@ -141,7 +141,60 @@ namespace SAE24
 
         private void btnRaces_Click(object sender, EventArgs e)
         {
+            // Mise à jour
+            pnlTDB.Controls.Clear();
+            Int32 top = 0;
+            Int32 left = 0;
 
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Espece"].Rows)
+            {
+                //MessageBox.Show(r["nom"].ToString());
+                // Ajout des informations pour toutes les espèces (générales)
+                // Ajout du lien de l'image correspondant à l'espèce
+                string nomImageEspece = "";
+
+                // Ajout du nom de l'espèce
+                string nomEspece = r["nom"].ToString();
+
+                // Ajout de sa couleur
+                string couleur = r["couleur"].ToString();
+
+                // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
+                List<string> listePlanetes = new List<string>();
+
+                DataRow[] planete = r.GetChildRows("FK_Espece_Habiter");
+
+                foreach (DataRow dr in planete)
+                {
+                    if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                    {
+                        listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                    }                    
+
+                }
+
+                // test du UserControl
+                // Création de l'UserControl en le surchargeant); 
+                UserControlEspeces u = new UserControlEspeces(nomImageEspece, nomEspece, couleur, listePlanetes);
+
+                
+                // Affichage des UserControl les uns en-dessous des autres
+                u.Top = top;
+                u.Left = left;
+
+                left += u.Width;
+                
+                if (left > pnlTDB.Width)
+                {
+                    top += u.Height;
+                    left = 0;
+                }
+                
+
+                // Ajout de l'UserControl dans le panel du tableau de bord
+                pnlTDB.Controls.Add(u);
+            }
+            
         }
 
         private void btnPlanetes_Click(object sender, EventArgs e)
