@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
 using System.Globalization;
+using UserControlPlanetes;
 
 namespace SAE24
 {
@@ -69,19 +70,34 @@ namespace SAE24
         {
             try
             {
-            MesDatas.DsGlobal.Relations.Add("FK_Militaire_Chef", MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"], MesDatas.DsGlobal.Tables["Mission"].Columns["matriculeChef"]);
-            MesDatas.DsGlobal.Relations.Add("FK_Membre_Militaire", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"]);
-            MesDatas.DsGlobal.Relations.Add("FK_Membre_Civil", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Civil"].Columns["matriculeMembre"]);
-            MesDatas.DsGlobal.Relations.Add("FK_Membre_Composer", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Composer"].Columns["matriculeMembre"]);
-            DataColumn[] missionPK = new DataColumn[] { MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Mission"].Columns["numero"] };
-            DataColumn[] depensePK = new DataColumn[] { MesDatas.DsGlobal.Tables["Depense"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Depense"].Columns["numeroMission"] };
-            MesDatas.DsGlobal.Relations.Add("FK_Mission_Depense", missionPK, depensePK);
-            DataColumn[] composer = new DataColumn[] { MesDatas.DsGlobal.Tables["Composer"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Composer"].Columns["numeroMission"] };
-            MesDatas.DsGlobal.Relations.Add("FK_Mission_Composer", missionPK, composer);
-            DataColumn[] objectifCapture = new DataColumn[] { MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["numeroMission"] };
-            MesDatas.DsGlobal.Relations.Add("FK_Mission_ObjectifCapture", missionPK, objectifCapture);
-            MesDatas.DsGlobal.Relations.Add("FK_Espece_ObjectifCapture", MesDatas.DsGlobal.Tables["Espece"].Columns["id"] , MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["idEspeceEnnemi"]);
-            } catch (Exception ex) { MessageBox.Show(ex.Message); }
+                // Relations Tableau de bord
+                MesDatas.DsGlobal.Relations.Add("FK_Militaire_Chef", MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"], MesDatas.DsGlobal.Tables["Mission"].Columns["matriculeChef"]);
+                MesDatas.DsGlobal.Relations.Add("FK_Membre_Militaire", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Militaire"].Columns["matriculeMembre"]);
+                MesDatas.DsGlobal.Relations.Add("FK_Membre_Civil", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Civil"].Columns["matriculeMembre"]);
+                MesDatas.DsGlobal.Relations.Add("FK_Membre_Composer", MesDatas.DsGlobal.Tables["Membre"].Columns["matricule"], MesDatas.DsGlobal.Tables["Composer"].Columns["matriculeMembre"]);
+                DataColumn[] missionPK = new DataColumn[] { MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Mission"].Columns["numero"] };
+                DataColumn[] depensePK = new DataColumn[] { MesDatas.DsGlobal.Tables["Depense"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Depense"].Columns["numeroMission"] };
+                MesDatas.DsGlobal.Relations.Add("FK_Mission_Depense", missionPK, depensePK);
+                DataColumn[] composer = new DataColumn[] { MesDatas.DsGlobal.Tables["Composer"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Composer"].Columns["numeroMission"] };
+                MesDatas.DsGlobal.Relations.Add("FK_Mission_Composer", missionPK, composer);
+                DataColumn[] objectifCapture = new DataColumn[] { MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["numeroMission"] };
+                MesDatas.DsGlobal.Relations.Add("FK_Mission_ObjectifCapture", missionPK, objectifCapture);
+                MesDatas.DsGlobal.Relations.Add("FK_Espece_ObjectifCapture", MesDatas.DsGlobal.Tables["Espece"].Columns["id"] , MesDatas.DsGlobal.Tables["ObjectifCapture"].Columns["idEspeceEnnemi"]);
+
+                // Relations Planètes
+                
+                // nom (Planete) <-> nomPlanete (Habiter)
+                MesDatas.DsGlobal.Relations.Add("FK_Planete_Habiter", MesDatas.DsGlobal.Tables["Planete"].Columns["nom"], MesDatas.DsGlobal.Tables["Habiter"].Columns["nomPlanete"]);
+                // id (Espece) <-> idEspece (Habiter)
+                MesDatas.DsGlobal.Relations.Add("FK_Espece_Habiter", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Habiter"].Columns["idEspece"]);
+
+                // nom (Planete) <-> nomPlanete (Mission)
+                MesDatas.DsGlobal.Relations.Add("FK_Planete_Mission", MesDatas.DsGlobal.Tables["Planete"].Columns["nom"], MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"]);
+            } 
+            catch (Exception ex) 
+            { 
+                MessageBox.Show(ex.Message); 
+            }
         }
         private void ActualisationTDB()
         {
@@ -109,6 +125,7 @@ namespace SAE24
         }
         private void btnTDB_Click(object sender, EventArgs e)
         {
+            pnlTDB.Controls.Clear();
             ActualisationTDB();
         }
 
@@ -129,12 +146,137 @@ namespace SAE24
 
         private void btnPlanetes_Click(object sender, EventArgs e)
         {
+            // Mise à jour
+            pnlTDB.Controls.Clear();
+            Int32 top = 0;
+            
+            // Parcours de la table pour récupérer toutes les infos nécessaires
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Planete"].Rows)
+            {
+                // Récupération des chaînes de caractères
+                string nomPlanete = r["nom"].ToString();
+                string temp = r["temperature"].ToString();
+                string gravite = r["gravite"].ToString();
+                string presenceDatabaz = r["dataBazON"].ToString();
+
+
+                // Récupération du chemin des images
+
+                // Pour les planètes
+                // La fonction replace permete de remplacer les espaces présents dans 'la 9e planete' pour quon' puisse afficher la bonne image correspondante
+                string nomImageP = nomPlanete.Replace(" ", "");
+                string nomImagePlanete = $"../../Images/Planetes/{nomImageP}.png";
+
+                // Pour la température
+                string nomImageTemp = "";
+                Int32 valueTemp = 0;
+                int xOut;
+                bool tempImageInconnue = false;
+                
+                // Si la valeur est positive, on reprend simplement la valeur obtenue en la castant
+                if (!r["temperature"].ToString().Contains("-"))
+                {
+                    // On vérifie qu'on puisse bien la convertir
+                    if (Int32.TryParse(r["temperature"].ToString(), out xOut))
+                    {
+                        // Si oui, on affecte la valeur dans valueTemp
+                        valueTemp = xOut;
+                    }
+                    else
+                    {
+                        // Sinon, on renvoie un string vide indiquant que la température est inconnue
+                        nomImageTemp = "";
+                        tempImageInconnue = true;
+                    }
+                }
+                // Si la température est négative
+                else if (r["temperature"].ToString().Contains("-"))
+                {
+                    string valuePositive = "";
+                    // On parcourt la chaîne de caractères APRES le signe moins ('-')
+                    for (int i = 1; i < r["temperature"].ToString().Length; i++)
+                    {
+                        // On affecte ces valeurs dans la variable temporaire
+                        valuePositive += r["temperature"].ToString()[i];
+                    }
+                    // On les convertit en entier pour obtenir la valeur absolue
+                    valueTemp = Int32.Parse(valuePositive);
+
+                    // Comme le nombre original est négatif, on le multiplie par -1 pour inverser son signe
+                    valueTemp *= -1;
+
+                }
+                
+                // Affichage en conséquence d'une image pour la température
+                // Température froide
+                
+                if (valueTemp <= 5)
+                {
+                    nomImageTemp = $"../../Images/Temperature/Froid.png";
+                }
+                // Température medium
+                else if (valueTemp > 5 && valueTemp < 100)
+                {
+                    nomImageTemp = $"../../Images/Temperature/Medium.png";
+                }
+                // Température chaude
+                else if (valueTemp > 100)
+                {
+                    nomImageTemp = $"../../Images/Temperature/Chaud.png";
+                }
+
+                // Température inconnue
+                if (tempImageInconnue)
+                {
+                    nomImageTemp = $"../../Images/Temperature/Inconnue.png";
+                }
+
+                // Initialisation des listes
+
+                // Pour les espèces :
+                List<string> listeEspeces = new List<string>();
+                List<string> listePourcentageEspece = new List<string>();
+                
+                DataRow[] espece = r.GetChildRows("FK_Planete_Habiter");
+
+                foreach (DataRow dr in espece)
+                {                    
+                    listeEspeces.Add(dr.GetParentRow("FK_Espece_Habiter")[1].ToString());
+                    //MessageBox.Show(dr.GetParentRow("FK_Espece_Habiter")[1].ToString() + " : " + listeEspeces.Contains(dr.GetParentRow("FK_Espece_Habiter")[1].ToString()).ToString());
+                    listePourcentageEspece.Add(dr[2].ToString());
+                }
+                
+
+                // Pour les missions :
+                List<string> listeMissions = new List<string>();
+
+                DataRow[] mission = r.GetChildRows("FK_Planete_Mission");
+                foreach(DataRow dr in mission)
+                {
+                    if (dr[0] != null)
+                    {
+                        listeMissions.Add(dr[0].ToString() + dr[1]);
+                    }
+                }
+                
+                // Création de l'UserControl en le surchargeant
+                UserControlPlanete u = new UserControlPlanete(nomImagePlanete, nomImageTemp, nomPlanete, temp, gravite, presenceDatabaz, listeEspeces, listeMissions, listePourcentageEspece);                
+
+                // Affichage des UserControl les uns en-dessous des autres
+                u.Top = top;
+                top += u.Height;
+                
+                // Ajout de l'UserControl dans le panel du tableau de bord
+                pnlTDB.Controls.Add(u);
+            }
 
         }
 
+        
+
         private void FrmTableauDeBord_Shown(object sender, EventArgs e)
         {
-            Chargement();
+            //Chargement();
             foreach (Button b in Controls.OfType<Button>())
             {
                 b.Visible = true;

@@ -114,6 +114,11 @@ Ethan
 - Popup (formulaire supplémentaire) avec: espèces, missions, civils, etc...
 - Faire des filtres 
 
+#### Note d'Ethan
+- L'affichage des espèces et de leur pourcentage respectif fonctionne, sans distinguer visuellement les espèces alliés des ennemis (par manque de solution pour y parvenir) ; ce n'est pas directement demandé dans le sujet, mais peut être perçu comme sous-entendu. Si quelqu'un arrive à voir comment gérer cela plus tard, n'hésitez pas. Autrement, tout fonctionne bien.
+- Bien sûr, il est possible que des changements visuels ou de style soient nécessaires pour une meilleure cohésion d'apparence de l'appli. N'hésitez pas à l'indiquer si besoin.
+- De nouvelles images pour les planètes et les températures ont été ajoutées dans le dossier Image.
+
 ### Données statistiques 
 
 Ethan

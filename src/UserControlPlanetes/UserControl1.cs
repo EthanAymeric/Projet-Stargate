@@ -17,19 +17,36 @@ namespace UserControlPlanetes
             InitializeComponent();
         }
 
-        public UserControlPlanete(string nomImagePlanete, string nomImageTemp, string nomPlanete, string temp, float gravite, Int64 presenceDatabaz, List<string> especesPresentes, List<string> missionsRealisees, Int64 pourcentageAllies, Int64 pourcentageEnnemis)
+        public UserControlPlanete(string nomImagePlanete, string nomImageTemp, string nomPlanete, string temp, string gravite, string presenceDatabaz, List<string> especesPresentes, List<string> missionsRealisees, List<string> pourcentageEspece)
         {
             InitializeComponent();
             // Ajout des éléments textuels
+            // Image/Nom des planètes
             lblNomPlanete.Text = nomPlanete;
-            lblTemp.Text = temp;
-            lblGraviteValue.Text = gravite.ToString();
+            if (temp == "")
+            {
+                lblTemp.Text = "Température inconnue";
+            }
+            else
+            {
+                lblTemp.Text = temp + "°";
+            }
 
-            lblAlliesValue.Text = pourcentageAllies + " %";
-            lblEnnemisValue.Text = pourcentageEnnemis + " %";
+            if (gravite == "")
+            {
+                lblGraviteValue.Text = "Inconnue";
+            }
+            else
+            {
+                lblGraviteValue.Text = gravite;
+            }
+
+            
+
+            
 
             // Dire s'il y a du Databz ou pas
-            if (presenceDatabaz == 1)
+            if (presenceDatabaz == "1")
             {
                 lblPresenceDatabaz.Text = "Présence de Databaz";
             }
@@ -43,23 +60,23 @@ namespace UserControlPlanetes
             // S'il n'y a qu'une espèce, on n'affiche que celle-là
             if (especesPresentes.Count() == 1)
             {
-                lblEspecesValue.Text = especesPresentes[0];
+                lblEspecesValue.Text = pourcentageEspece[0] + "% des " + especesPresentes[0];
                 lblEspecesCommun.Text = "Espèce présente : ";
             }
             // S'il n'y en a aucune, on le dit
             else if (especesPresentes.Count() == 0)
             {
-                lblEspecesValue.Text = "Pas d'espèces (connues)";
+                lblEspecesCommun.Text = "Absence d'espèces connues";
+                lblEspecesValue.Visible = false;
             }
             // Sinon, on parcourt et on affiche toutes les espèces
             else
             {
                 string texte = "";
-                for (int i = 0; i < especesPresentes.Count() - 1; i++)
+                for (int i = 0; i < especesPresentes.Count(); i++)
                 {
-                    texte += especesPresentes[i] + ", ";
+                    texte += pourcentageEspece[i] + "% des " + especesPresentes[i] + "\n";
                 }
-                texte += " et " + especesPresentes[especesPresentes.Count()];
 
                 lblEspecesValue.Text = texte;
             }
@@ -73,17 +90,18 @@ namespace UserControlPlanetes
             // S'il n'y en a aucune, on le dit
             else if (missionsRealisees.Count() == 0)
             {
-                lblMissionsValue.Text = "Aucune mission réalisée";
+                lblMissionsCommun.Text = "Aucune mission réalisée";
+                lblMissionsValue.Visible = false;
             }
             // Sinon, on parcourt et on affiche toutes les espèces
             else
             {
                 string texte = "";
-                for (int i = 0; i < missionsRealisees.Count() - 1; i++)
+                for (int i = 0; i < missionsRealisees.Count(); i++)
                 {
                     texte += missionsRealisees[i] + ", ";
                 }
-                texte += " et " + missionsRealisees[missionsRealisees.Count()];
+                texte += "et " + missionsRealisees[missionsRealisees.Count()-1];
 
                 lblMissionsValue.Text = texte;
             }
@@ -108,6 +126,16 @@ namespace UserControlPlanetes
         }
 
         private void UserControl1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblEspecesValue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblMissionsValue_Click(object sender, EventArgs e)
         {
 
         }
