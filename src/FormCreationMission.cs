@@ -32,16 +32,21 @@ namespace SAE24
             }
 
             cmd = new SQLiteCommand(Connexion.Connec);
-            cmd.CommandText = @"select m.grade || ' · ' || me.nom || ' ' || me.prenom
+            cmd.CommandText = @"select m.grade || ' · ' || me.nom || ' ' || me.prenom, me.matricule
 from Militaire m
 join Membre me on m.matriculeMembre = me.matricule
 order by m.grade";
             reader = cmd.ExecuteReader();
+            Dictionary<string, string> result = new Dictionary<string, string>();
 
             while (reader.Read())
             {
-                comboBoxChef.Items.Add(reader.GetString(0));
+                result.Add(reader.GetString(0), reader.GetString(1));
             }
+
+            comboBoxChef.DataSource = new BindingSource(result, null);
+            comboBoxChef.DisplayMember = "Key";
+            comboBoxChef.ValueMember = "Value";
 
             cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = @"select count(*) from Membre";
@@ -50,15 +55,21 @@ order by m.grade";
             Connexion.FermerConnexion();
         }
 
-        private void comboBoxPlanete_SelectedIndexChanged(object sender, EventArgs e)
+        private int nbMissionsPlanete(String planete)
         {
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = $@"select count(*) 
 from Mission 
 where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
-            int nbMission = Convert.ToInt32(cmd.ExecuteScalar()) + 1;
 
-            labelNomMission.Text = $"Nom de mission: {comboBoxPlanete.SelectedItem} - {nbMission}";
+            return Convert.ToInt32(cmd.ExecuteScalar());
+        }
+
+        private void comboBoxPlanete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorProvider.SetError(comboBoxPlanete, "");
+            int nbMissions = nbMissionsPlanete(comboBoxPlanete.SelectedItem.ToString());
+            labelNomMission.Text = $"Nom de mission: {comboBoxPlanete.SelectedItem} - {nbMissions + 1}";
         }
 
         private void dateTimePickerDepart_ValueChanged(object sender, EventArgs e)
@@ -102,7 +113,52 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
+            errorProvider.SetError((TextBox)sender, "");
             e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void buttonValider_Click(object sender, EventArgs e)
+        {
+            bool erreur = false;
+            if (comboBoxPlanete.SelectedIndex < 0) // si rien n'est sélectionné
+            {
+                errorProvider.SetError(comboBoxPlanete, "Le nom de planète doit être sélectionné");
+                erreur = true;
+            }
+            if (richTextBoxFeuilleRoute.Text == String.Empty)
+            {
+                errorProvider.SetError(richTextBoxFeuilleRoute, "La feuille de route doit être saisie");
+                erreur = true;
+            }
+            if (textBoxDatabaz.Text == String.Empty)
+            {
+                errorProvider.SetError(textBoxDatabaz, "L'objectif de databaz doit être saisi");
+                erreur = true;
+            }
+            if (textBoxBudget.Text == String.Empty)
+            {
+                errorProvider.SetError(textBoxBudget, "Le budget doit être saisi");
+                erreur = true;
+            }
+            if (erreur)
+            {
+                return;
+            }
+
+            string planete = comboBoxPlanete.SelectedItem.ToString();
+            int num = nbMissionsPlanete(planete) + 1;
+            int nbMembres = trackBarNbMembres.Value;
+            string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
+            string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
+            string matriculeChef = comboBoxChef.SelectedValue.ToString();
+            string feuille = richTextBoxFeuilleRoute.Text;
+            int databaz = int.Parse(this.textBoxDatabaz.Text);
+            int budget = int.Parse(textBoxBudget.Text);
+        }
+
+        private void richTextBoxFeuilleRoute_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorProvider.SetError(richTextBoxFeuilleRoute, "");
         }
     }
 }

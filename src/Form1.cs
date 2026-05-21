@@ -13,7 +13,6 @@ namespace SAE24
 {
     public partial class FormPrincipal : Form
     {
-        string chaine = @"Data Source = ..\..\DataBase\Stargate.db";
         public FormPrincipal()
         {
             InitializeComponent();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.labelPlanete = new System.Windows.Forms.Label();
             this.comboBoxPlanete = new System.Windows.Forms.ComboBox();
             this.labelNomMission = new System.Windows.Forms.Label();
@@ -45,9 +46,15 @@
             this.trackBarNbMembres = new System.Windows.Forms.TrackBar();
             this.labelMembres = new System.Windows.Forms.Label();
             this.labelDatabaz = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxDatabaz = new System.Windows.Forms.TextBox();
             this.labelTonnes = new System.Windows.Forms.Label();
+            this.buttonValider = new System.Windows.Forms.Button();
+            this.labelEuro = new System.Windows.Forms.Label();
+            this.textBoxBudget = new System.Windows.Forms.TextBox();
+            this.labelBudget = new System.Windows.Forms.Label();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // labelPlanete
@@ -147,9 +154,9 @@
             this.labelDuree.AutoSize = true;
             this.labelDuree.Location = new System.Drawing.Point(391, 374);
             this.labelDuree.Name = "labelDuree";
-            this.labelDuree.Size = new System.Drawing.Size(83, 26);
+            this.labelDuree.Size = new System.Drawing.Size(137, 26);
             this.labelDuree.TabIndex = 10;
-            this.labelDuree.Text = "Durée: ";
+            this.labelDuree.Text = "Durée: 0 jour";
             // 
             // labelFeuilleRoute
             // 
@@ -167,6 +174,7 @@
             this.richTextBoxFeuilleRoute.Size = new System.Drawing.Size(291, 168);
             this.richTextBoxFeuilleRoute.TabIndex = 12;
             this.richTextBoxFeuilleRoute.Text = "";
+            this.richTextBoxFeuilleRoute.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBoxFeuilleRoute_KeyPress);
             // 
             // labelNbMembres
             // 
@@ -205,13 +213,13 @@
             this.labelDatabaz.TabIndex = 16;
             this.labelDatabaz.Text = "6 - Objectif de databaz";
             // 
-            // textBox1
+            // textBoxDatabaz
             // 
-            this.textBox1.Location = new System.Drawing.Point(397, 731);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(141, 32);
-            this.textBox1.TabIndex = 17;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            this.textBoxDatabaz.Location = new System.Drawing.Point(397, 731);
+            this.textBoxDatabaz.Name = "textBoxDatabaz";
+            this.textBoxDatabaz.Size = new System.Drawing.Size(141, 32);
+            this.textBoxDatabaz.TabIndex = 17;
+            this.textBoxDatabaz.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // labelTonnes
             // 
@@ -222,13 +230,57 @@
             this.labelTonnes.TabIndex = 18;
             this.labelTonnes.Text = "tonnes";
             // 
+            // buttonValider
+            // 
+            this.buttonValider.Location = new System.Drawing.Point(516, 846);
+            this.buttonValider.Name = "buttonValider";
+            this.buttonValider.Size = new System.Drawing.Size(143, 67);
+            this.buttonValider.TabIndex = 19;
+            this.buttonValider.Text = "Valider";
+            this.buttonValider.UseVisualStyleBackColor = true;
+            this.buttonValider.Click += new System.EventHandler(this.buttonValider_Click);
+            // 
+            // labelEuro
+            // 
+            this.labelEuro.AutoSize = true;
+            this.labelEuro.Location = new System.Drawing.Point(560, 785);
+            this.labelEuro.Name = "labelEuro";
+            this.labelEuro.Size = new System.Drawing.Size(24, 26);
+            this.labelEuro.TabIndex = 22;
+            this.labelEuro.Text = "€";
+            // 
+            // textBoxBudget
+            // 
+            this.textBoxBudget.Location = new System.Drawing.Point(396, 782);
+            this.textBoxBudget.Name = "textBoxBudget";
+            this.textBoxBudget.Size = new System.Drawing.Size(141, 32);
+            this.textBoxBudget.TabIndex = 21;
+            this.textBoxBudget.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
+            // 
+            // labelBudget
+            // 
+            this.labelBudget.AutoSize = true;
+            this.labelBudget.Location = new System.Drawing.Point(47, 785);
+            this.labelBudget.Name = "labelBudget";
+            this.labelBudget.Size = new System.Drawing.Size(112, 26);
+            this.labelBudget.TabIndex = 20;
+            this.labelBudget.Text = "7 - Budget";
+            // 
+            // errorProvider
+            // 
+            this.errorProvider.ContainerControl = this;
+            // 
             // FormCreationMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 859);
+            this.ClientSize = new System.Drawing.Size(730, 943);
+            this.Controls.Add(this.labelEuro);
+            this.Controls.Add(this.textBoxBudget);
+            this.Controls.Add(this.labelBudget);
+            this.Controls.Add(this.buttonValider);
             this.Controls.Add(this.labelTonnes);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxDatabaz);
             this.Controls.Add(this.labelDatabaz);
             this.Controls.Add(this.labelMembres);
             this.Controls.Add(this.trackBarNbMembres);
@@ -252,6 +304,7 @@
             this.Text = "Création d\'une nouvelle mission";
             this.Load += new System.EventHandler(this.FormCreationMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -276,7 +329,12 @@
         private System.Windows.Forms.TrackBar trackBarNbMembres;
         private System.Windows.Forms.Label labelMembres;
         private System.Windows.Forms.Label labelDatabaz;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxDatabaz;
         private System.Windows.Forms.Label labelTonnes;
+        private System.Windows.Forms.Button buttonValider;
+        private System.Windows.Forms.Label labelEuro;
+        private System.Windows.Forms.TextBox textBoxBudget;
+        private System.Windows.Forms.Label labelBudget;
+        private System.Windows.Forms.ErrorProvider errorProvider;
     }
 }
