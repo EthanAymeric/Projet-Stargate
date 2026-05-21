@@ -152,8 +152,17 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
             string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
             string matriculeChef = comboBoxChef.SelectedValue.ToString();
             string feuille = richTextBoxFeuilleRoute.Text;
+            feuille = feuille.Replace("'", "''");
             int databaz = int.Parse(this.textBoxDatabaz.Text);
             int budget = int.Parse(textBoxBudget.Text);
+
+            SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = $@"insert into Mission (nomPlanete, numero, nbMembreRequis, dateDepart, dateRetour, matriculeChef, feuilleDeRoute, objectifDatabaz, budget) 
+values ('{planete}', {num}, {nbMembres}, '{depart}', '{retour}', '{matriculeChef}', '{feuille}', {databaz}, {budget})";
+
+            if (cmd.ExecuteNonQuery() == 1) {
+                MessageBox.Show("Mission créée !");
+            }
         }
 
         private void richTextBoxFeuilleRoute_KeyPress(object sender, KeyPressEventArgs e)
