@@ -24,6 +24,7 @@ namespace SAE24
         {
             RemplissageDS();
             AjoutRelation();
+            ModifDate();
         }
 
         private void UpdateDataSet()
@@ -65,6 +66,37 @@ namespace SAE24
             finally { Connexion.FermerConnexion(); }
         }
 
+        private void ModifDate()
+        {
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Depense"].Rows)
+            {
+                r[3] = Convert.ToDateTime(r[3]).ToString("yyyy/MM/dd");
+
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Allie"].Rows)
+            {
+                r[1] = Convert.ToDateTime(r[1]).ToString("yyyy/MM/dd"); 
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Rows)
+            {
+                r[3] = Convert.ToDateTime(r[3]).ToString("yyyy/MM/dd");
+                r[4] = Convert.ToDateTime(r[4]).ToString("yyyy/MM/dd");
+
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Contact"].Rows)
+            {
+                r[2] = Convert.ToDateTime(r[2]).ToString("yyyy/MM/dd");
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["JournalDeBord"].Rows)
+            {
+                r[2] = Convert.ToDateTime(r[2]).ToString("yyyy/MM/dd");
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Membre"].Rows)
+            {
+                r[3] = Convert.ToDateTime(r[3]).ToString("yyyy/MM/dd");
+            }
+        }
+
         private void AjoutRelation()
         {
             try
@@ -91,6 +123,8 @@ namespace SAE24
                 DataColumn[] capture = new DataColumn[] { MesDatas.DsGlobal.Tables["Capturer"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Capturer"].Columns["numeroMission"] };
                 MesDatas.DsGlobal.Relations.Add("FK_Mission_Capturer", missionPK, capture);
                 MesDatas.DsGlobal.Relations.Add("FK_Espece_Capturer", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Capturer"].Columns["idEspeceEnnemi"]);
+
+                MesDatas.DsGlobal.Relations.Add("FK_Espece_Ennemi", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Ennemi"].Columns["idEspece"]);
 
 
             }
