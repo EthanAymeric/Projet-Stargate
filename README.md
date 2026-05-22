@@ -22,9 +22,9 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 - [x] Ajouter les éléments formulaire création 
 - [x] Générer un nom de mission 
 - [x] Blinder les saisies 
-- [ ] Ne proposer que des chefs disponibles pendant la durée de la mission 
+- [x] Ne proposer que des chefs disponibles pendant la durée de la mission 
 - [ ] Ajouter les membres de mission 
-- [ ] Protéger les TextBox des injections SQL (String.Replace("'", "''");) et autres
+- [x] Protéger les TextBox des injections SQL (String.Replace("'", "''");) et autres
 
 ## Organisation du dépôt 
 

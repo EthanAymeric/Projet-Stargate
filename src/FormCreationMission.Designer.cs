@@ -32,8 +32,6 @@
             this.labelPlanete = new System.Windows.Forms.Label();
             this.comboBoxPlanete = new System.Windows.Forms.ComboBox();
             this.labelNomMission = new System.Windows.Forms.Label();
-            this.comboBoxChef = new System.Windows.Forms.ComboBox();
-            this.labelChef = new System.Windows.Forms.Label();
             this.labelDate = new System.Windows.Forms.Label();
             this.dateTimePickerDepart = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerRetour = new System.Windows.Forms.DateTimePicker();
@@ -53,6 +51,8 @@
             this.textBoxBudget = new System.Windows.Forms.TextBox();
             this.labelBudget = new System.Windows.Forms.Label();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.comboBoxChef = new System.Windows.Forms.ComboBox();
+            this.labelChef = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
@@ -86,37 +86,19 @@
             this.labelNomMission.TabIndex = 2;
             this.labelNomMission.Text = "Nom de mission: ";
             // 
-            // comboBoxChef
-            // 
-            this.comboBoxChef.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxChef.FormattingEnabled = true;
-            this.comboBoxChef.Location = new System.Drawing.Point(396, 190);
-            this.comboBoxChef.Name = "comboBoxChef";
-            this.comboBoxChef.Size = new System.Drawing.Size(291, 34);
-            this.comboBoxChef.TabIndex = 4;
-            // 
-            // labelChef
-            // 
-            this.labelChef.AutoSize = true;
-            this.labelChef.Location = new System.Drawing.Point(38, 193);
-            this.labelChef.Name = "labelChef";
-            this.labelChef.Size = new System.Drawing.Size(287, 26);
-            this.labelChef.TabIndex = 3;
-            this.labelChef.Text = "2 - Choix du chef de mission";
-            // 
             // labelDate
             // 
             this.labelDate.AutoSize = true;
-            this.labelDate.Location = new System.Drawing.Point(38, 274);
+            this.labelDate.Location = new System.Drawing.Point(38, 169);
             this.labelDate.Name = "labelDate";
             this.labelDate.Size = new System.Drawing.Size(206, 26);
             this.labelDate.TabIndex = 5;
-            this.labelDate.Text = "3 - Choix de la date ";
+            this.labelDate.Text = "2 - Choix de la date ";
             // 
             // dateTimePickerDepart
             // 
             this.dateTimePickerDepart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDepart.Location = new System.Drawing.Point(516, 274);
+            this.dateTimePickerDepart.Location = new System.Drawing.Point(516, 169);
             this.dateTimePickerDepart.Name = "dateTimePickerDepart";
             this.dateTimePickerDepart.Size = new System.Drawing.Size(171, 32);
             this.dateTimePickerDepart.TabIndex = 6;
@@ -125,7 +107,7 @@
             // dateTimePickerRetour
             // 
             this.dateTimePickerRetour.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerRetour.Location = new System.Drawing.Point(516, 323);
+            this.dateTimePickerRetour.Location = new System.Drawing.Point(516, 218);
             this.dateTimePickerRetour.Name = "dateTimePickerRetour";
             this.dateTimePickerRetour.Size = new System.Drawing.Size(171, 32);
             this.dateTimePickerRetour.TabIndex = 7;
@@ -134,7 +116,7 @@
             // labelDateDepart
             // 
             this.labelDateDepart.AutoSize = true;
-            this.labelDateDepart.Location = new System.Drawing.Point(391, 279);
+            this.labelDateDepart.Location = new System.Drawing.Point(391, 174);
             this.labelDateDepart.Name = "labelDateDepart";
             this.labelDateDepart.Size = new System.Drawing.Size(83, 26);
             this.labelDateDepart.TabIndex = 8;
@@ -143,7 +125,7 @@
             // labelDateRetour
             // 
             this.labelDateRetour.AutoSize = true;
-            this.labelDateRetour.Location = new System.Drawing.Point(391, 328);
+            this.labelDateRetour.Location = new System.Drawing.Point(391, 223);
             this.labelDateRetour.Name = "labelDateRetour";
             this.labelDateRetour.Size = new System.Drawing.Size(83, 26);
             this.labelDateRetour.TabIndex = 9;
@@ -152,7 +134,7 @@
             // labelDuree
             // 
             this.labelDuree.AutoSize = true;
-            this.labelDuree.Location = new System.Drawing.Point(391, 374);
+            this.labelDuree.Location = new System.Drawing.Point(391, 269);
             this.labelDuree.Name = "labelDuree";
             this.labelDuree.Size = new System.Drawing.Size(137, 26);
             this.labelDuree.TabIndex = 10;
@@ -161,7 +143,7 @@
             // labelFeuilleRoute
             // 
             this.labelFeuilleRoute.AutoSize = true;
-            this.labelFeuilleRoute.Location = new System.Drawing.Point(43, 451);
+            this.labelFeuilleRoute.Location = new System.Drawing.Point(43, 382);
             this.labelFeuilleRoute.Name = "labelFeuilleRoute";
             this.labelFeuilleRoute.Size = new System.Drawing.Size(192, 26);
             this.labelFeuilleRoute.TabIndex = 11;
@@ -169,7 +151,7 @@
             // 
             // richTextBoxFeuilleRoute
             // 
-            this.richTextBoxFeuilleRoute.Location = new System.Drawing.Point(396, 451);
+            this.richTextBoxFeuilleRoute.Location = new System.Drawing.Point(396, 382);
             this.richTextBoxFeuilleRoute.Name = "richTextBoxFeuilleRoute";
             this.richTextBoxFeuilleRoute.Size = new System.Drawing.Size(291, 168);
             this.richTextBoxFeuilleRoute.TabIndex = 12;
@@ -179,7 +161,7 @@
             // labelNbMembres
             // 
             this.labelNbMembres.AutoSize = true;
-            this.labelNbMembres.Location = new System.Drawing.Point(43, 659);
+            this.labelNbMembres.Location = new System.Drawing.Point(43, 590);
             this.labelNbMembres.Name = "labelNbMembres";
             this.labelNbMembres.Size = new System.Drawing.Size(314, 26);
             this.labelNbMembres.TabIndex = 13;
@@ -187,7 +169,7 @@
             // 
             // trackBarNbMembres
             // 
-            this.trackBarNbMembres.Location = new System.Drawing.Point(384, 659);
+            this.trackBarNbMembres.Location = new System.Drawing.Point(384, 590);
             this.trackBarNbMembres.Minimum = 1;
             this.trackBarNbMembres.Name = "trackBarNbMembres";
             this.trackBarNbMembres.Size = new System.Drawing.Size(261, 69);
@@ -199,7 +181,7 @@
             // labelMembres
             // 
             this.labelMembres.AutoSize = true;
-            this.labelMembres.Location = new System.Drawing.Point(652, 673);
+            this.labelMembres.Location = new System.Drawing.Point(652, 604);
             this.labelMembres.Name = "labelMembres";
             this.labelMembres.Size = new System.Drawing.Size(0, 26);
             this.labelMembres.TabIndex = 15;
@@ -207,7 +189,7 @@
             // labelDatabaz
             // 
             this.labelDatabaz.AutoSize = true;
-            this.labelDatabaz.Location = new System.Drawing.Point(48, 734);
+            this.labelDatabaz.Location = new System.Drawing.Point(48, 665);
             this.labelDatabaz.Name = "labelDatabaz";
             this.labelDatabaz.Size = new System.Drawing.Size(230, 26);
             this.labelDatabaz.TabIndex = 16;
@@ -215,7 +197,7 @@
             // 
             // textBoxDatabaz
             // 
-            this.textBoxDatabaz.Location = new System.Drawing.Point(397, 731);
+            this.textBoxDatabaz.Location = new System.Drawing.Point(397, 662);
             this.textBoxDatabaz.Name = "textBoxDatabaz";
             this.textBoxDatabaz.Size = new System.Drawing.Size(141, 32);
             this.textBoxDatabaz.TabIndex = 17;
@@ -224,7 +206,7 @@
             // labelTonnes
             // 
             this.labelTonnes.AutoSize = true;
-            this.labelTonnes.Location = new System.Drawing.Point(561, 734);
+            this.labelTonnes.Location = new System.Drawing.Point(561, 665);
             this.labelTonnes.Name = "labelTonnes";
             this.labelTonnes.Size = new System.Drawing.Size(77, 26);
             this.labelTonnes.TabIndex = 18;
@@ -232,7 +214,7 @@
             // 
             // buttonValider
             // 
-            this.buttonValider.Location = new System.Drawing.Point(516, 846);
+            this.buttonValider.Location = new System.Drawing.Point(516, 777);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(143, 67);
             this.buttonValider.TabIndex = 19;
@@ -243,7 +225,7 @@
             // labelEuro
             // 
             this.labelEuro.AutoSize = true;
-            this.labelEuro.Location = new System.Drawing.Point(560, 785);
+            this.labelEuro.Location = new System.Drawing.Point(560, 716);
             this.labelEuro.Name = "labelEuro";
             this.labelEuro.Size = new System.Drawing.Size(24, 26);
             this.labelEuro.TabIndex = 22;
@@ -251,7 +233,7 @@
             // 
             // textBoxBudget
             // 
-            this.textBoxBudget.Location = new System.Drawing.Point(396, 782);
+            this.textBoxBudget.Location = new System.Drawing.Point(396, 713);
             this.textBoxBudget.Name = "textBoxBudget";
             this.textBoxBudget.Size = new System.Drawing.Size(141, 32);
             this.textBoxBudget.TabIndex = 21;
@@ -260,7 +242,7 @@
             // labelBudget
             // 
             this.labelBudget.AutoSize = true;
-            this.labelBudget.Location = new System.Drawing.Point(47, 785);
+            this.labelBudget.Location = new System.Drawing.Point(47, 716);
             this.labelBudget.Name = "labelBudget";
             this.labelBudget.Size = new System.Drawing.Size(112, 26);
             this.labelBudget.TabIndex = 20;
@@ -270,11 +252,31 @@
             // 
             this.errorProvider.ContainerControl = this;
             // 
+            // comboBoxChef
+            // 
+            this.comboBoxChef.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxChef.FormattingEnabled = true;
+            this.comboBoxChef.Location = new System.Drawing.Point(397, 315);
+            this.comboBoxChef.Name = "comboBoxChef";
+            this.comboBoxChef.Size = new System.Drawing.Size(291, 34);
+            this.comboBoxChef.TabIndex = 24;
+            // 
+            // labelChef
+            // 
+            this.labelChef.AutoSize = true;
+            this.labelChef.Location = new System.Drawing.Point(39, 318);
+            this.labelChef.Name = "labelChef";
+            this.labelChef.Size = new System.Drawing.Size(287, 26);
+            this.labelChef.TabIndex = 23;
+            this.labelChef.Text = "3 - Choix du chef de mission";
+            // 
             // FormCreationMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 943);
+            this.ClientSize = new System.Drawing.Size(730, 852);
+            this.Controls.Add(this.comboBoxChef);
+            this.Controls.Add(this.labelChef);
             this.Controls.Add(this.labelEuro);
             this.Controls.Add(this.textBoxBudget);
             this.Controls.Add(this.labelBudget);
@@ -293,8 +295,6 @@
             this.Controls.Add(this.dateTimePickerRetour);
             this.Controls.Add(this.dateTimePickerDepart);
             this.Controls.Add(this.labelDate);
-            this.Controls.Add(this.comboBoxChef);
-            this.Controls.Add(this.labelChef);
             this.Controls.Add(this.labelNomMission);
             this.Controls.Add(this.comboBoxPlanete);
             this.Controls.Add(this.labelPlanete);
@@ -315,8 +315,6 @@
         private System.Windows.Forms.Label labelPlanete;
         private System.Windows.Forms.ComboBox comboBoxPlanete;
         private System.Windows.Forms.Label labelNomMission;
-        private System.Windows.Forms.ComboBox comboBoxChef;
-        private System.Windows.Forms.Label labelChef;
         private System.Windows.Forms.Label labelDate;
         private System.Windows.Forms.DateTimePicker dateTimePickerDepart;
         private System.Windows.Forms.DateTimePicker dateTimePickerRetour;
@@ -336,5 +334,7 @@
         private System.Windows.Forms.TextBox textBoxBudget;
         private System.Windows.Forms.Label labelBudget;
         private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ComboBox comboBoxChef;
+        private System.Windows.Forms.Label labelChef;
     }
 }

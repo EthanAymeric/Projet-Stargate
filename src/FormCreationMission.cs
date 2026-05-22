@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace SAE24
 {
@@ -31,12 +34,32 @@ namespace SAE24
                 comboBoxPlanete.Items.Add(reader.GetString(0));
             }
 
+            reloadComboBoxChef();
+
             cmd = new SQLiteCommand(Connexion.Connec);
-            cmd.CommandText = @"select m.grade || ' · ' || me.nom || ' ' || me.prenom, me.matricule
-from Militaire m
-join Membre me on m.matriculeMembre = me.matricule
-order by m.grade";
-            reader = cmd.ExecuteReader();
+            cmd.CommandText = @"select count(*) from Membre";
+            trackBarNbMembres.Maximum = Convert.ToInt32(cmd.ExecuteScalar());
+
+            Connexion.FermerConnexion();
+        }
+
+        private void reloadComboBoxChef()
+        {
+            string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
+            string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
+
+            SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = $@"SELECT DISTINCT m.grade || ' · ' || me.nom || ' ' || me.prenom, me.matricule
+            FROM Militaire m
+JOIN Membre me ON m.matriculeMembre = me.matricule
+WHERE me.matricule NOT IN(
+    SELECT c.matriculeMembre
+    FROM Composer c
+    JOIN Mission mi ON c.nomPlanete = mi.nomPlanete AND c.numeroMission = mi.numero
+    WHERE mi.dateDepart <= '{retour}' AND mi.dateRetour >= '{depart}')
+ORDER BY m.grade";
+
+            SQLiteDataReader reader = cmd.ExecuteReader();
             Dictionary<string, string> result = new Dictionary<string, string>();
 
             while (reader.Read())
@@ -47,12 +70,6 @@ order by m.grade";
             comboBoxChef.DataSource = new BindingSource(result, null);
             comboBoxChef.DisplayMember = "Key";
             comboBoxChef.ValueMember = "Value";
-
-            cmd = new SQLiteCommand(Connexion.Connec);
-            cmd.CommandText = @"select count(*) from Membre";
-            trackBarNbMembres.Maximum = Convert.ToInt32(cmd.ExecuteScalar());
-
-            Connexion.FermerConnexion();
         }
 
         private int nbMissionsPlanete(String planete)
@@ -74,6 +91,7 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
 
         private void dateTimePickerDepart_ValueChanged(object sender, EventArgs e)
         {
+            reloadComboBoxChef();
             dateTimePickerRetour.MinDate = dateTimePickerDepart.Value;
             int nbJours = calculerTempsMission().Days;
 
@@ -87,6 +105,7 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
 
         private void dateTimePickerRetour_ValueChanged(object sender, EventArgs e)
         {
+            reloadComboBoxChef();
             dateTimePickerDepart.MaxDate = dateTimePickerRetour.Value;
             int nbJours = calculerTempsMission().Days;
 
