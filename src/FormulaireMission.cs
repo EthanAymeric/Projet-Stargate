@@ -269,7 +269,6 @@ namespace SAE24
             RadioButton rdb = (RadioButton)sender;
             if (rdb.Checked)
             {
-                grpFormulaireAjout.Controls.Clear();
                 switch (rdb.Tag)
                 {
                     case "1":
@@ -295,176 +294,125 @@ namespace SAE24
         {
             int top = 40;
             int left = 20;
-            grpFormulaireAjout.Visible = true;
-            grpFormulaireAjout.Text = "Ajout de Dépense";
-            DateTimePicker dtp = new DateTimePicker();
-            Label lblDate = new Label();
-            Label lblMontant = new Label();
-            TextBox txtMontant = new TextBox();
-            Label lblMotif = new Label();
-            RichTextBox txtMotif = new RichTextBox();
-            Label lblInformateur = new Label();
-            ComboBox cboInformateur = new ComboBox();
+            grpFormDepense.Visible = true;
+            grpFormCapture.Visible = false;
+            grpFormContact.Visible = false;
+            grpFormEvent.Visible = false;
 
-            lblDate.Text = "Date";
-            lblDate.Top = top;
-            lblDate.Left = left;
-            lblDate.Name = "lblDate";
+            lblDateDepense.Top = top;
+            lblDateDepense.Left = left;
 
-            dtp.Top = lblDate.Top;
-            dtp.Left = lblDate.Width + 20 + left;
-            dtp.MinDate = Convert.ToDateTime(missionActuelle["dateDepart"]);
-            dtp.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]);
+            dtpDateDepense.Top = lblDateDepense.Top;
+            dtpDateDepense.Left = lblDateDepense.Width + 20 + left;
+            dtpDateDepense.MinDate = Convert.ToDateTime(missionActuelle["dateDepart"]);
+            dtpDateDepense.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]);
+            dtpDateDepense.Width = 200;
 
 
-            lblMontant.Top = top + lblDate.Height + 20;
-            lblMontant.Left = left;
-            lblMontant.Text = "Montant";
+            lblMontantDepense.Top = top + lblDateDepense.Height + 20;
+            lblMontantDepense.Left = left;
 
-            txtMontant.Top = lblMontant.Top;
-            txtMontant.Left = lblMontant.Width + 20 + left;
+            txtMontantDepense.Top = lblMontantDepense.Top;
+            txtMontantDepense.Left = lblMontantDepense.Width + 20 + left;
 
-            lblMotif.Text = "Motif";
-            lblMotif.Left = left;
-            lblMotif.Top = lblMontant.Top + lblMontant.Height + 20;
+            lblMotifDepense.Left = left;
+            lblMotifDepense.Top = lblMontantDepense.Top + lblMontantDepense.Height + 20;
 
-            txtMotif.Top = lblMotif.Top + lblMotif.Height;
-            txtMotif.Left = left;
-            txtMotif.Width = grpFormulaireAjout.Width - 40;
+            rtxtMotifDepense.Top = lblMotifDepense.Top + lblMotifDepense.Height + 20;
+            rtxtMotifDepense.Left = left;
+            rtxtMotifDepense.Width = grpFormDepense.Width - 40;
+            rtxtMotifDepense.Height = 100;
 
-            lblInformateur.Text = "Informateur";
-            lblInformateur.Left = left;
-            lblInformateur.Top = txtMotif.Top + txtMotif.Height + 20;
+            lblTypeDepense.Left = left;
+            lblTypeDepense.Top = rtxtMotifDepense.Top + rtxtMotifDepense.Height + 20;
 
-            cboInformateur.Top = txtMotif.Top + txtMotif.Height + 20;
-            cboInformateur.Left = lblInformateur.Width + 20 + left;
-            cboInformateur.DataSource = MesDatas.DsGlobal.Tables["TypeDepense"];
-            cboInformateur.DisplayMember = "libelle";
-            cboInformateur.ValueMember = "id";
-
-
-
-            grpFormulaireAjout.Controls.Add(lblDate);
-            grpFormulaireAjout.Controls.Add(dtp);
-            grpFormulaireAjout.Controls.Add(lblMontant);
-            grpFormulaireAjout.Controls.Add(txtMontant);
-            grpFormulaireAjout.Controls.Add(lblMotif);
-            grpFormulaireAjout.Controls.Add(txtMotif);
-            grpFormulaireAjout.Controls.Add(lblInformateur);
-            grpFormulaireAjout.Controls.Add(cboInformateur);
-
-
+            cboTypeDepense.Top = rtxtMotifDepense.Top + rtxtMotifDepense.Height + 20;
+            cboTypeDepense.Left = lblTypeDepense.Width + 20 + left;
+            cboTypeDepense.DataSource = MesDatas.DsGlobal.Tables["TypeDepense"];
+            cboTypeDepense.DisplayMember = "libelle";
+            cboTypeDepense.ValueMember = "id";
         }
 
         private void AfficherFormContact()
         {
             int top = 40;
             int left = 20;
-            grpFormulaireAjout.Visible = true;
-            grpFormulaireAjout.Text = "Ajout de Contact";
-            DateTimePicker dtp = new DateTimePicker();
-            Label lblDate = new Label();
-            Label lblSomme = new Label();
-            TextBox txtSomme = new TextBox();
-            Label lblAppreciation = new Label();
-            RichTextBox txtAppreciation = new RichTextBox();
-            Label lblInformateur = new Label();
-            ComboBox cboInformateur = new ComboBox();
+            grpFormCapture.Visible = false;
+            grpFormDepense.Visible = false;
+            grpFormDepense.Visible = false;
+            grpFormContact.Visible = true;
 
-            lblDate.Text = "Date";
-            lblDate.Top = top;
-            lblDate.Left = left;
-            lblDate.Name = "lblDate";
-
-            dtp.Top = lblDate.Top;
-            dtp.Left = lblDate.Width + 20 + left;
-            dtp.MinDate = Convert.ToDateTime(missionActuelle["dateDepart"]);
-            dtp.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]);
+            lblDateContact.Top = top;
+            lblDateContact.Left = left;
 
 
-            lblSomme.Top = top + lblDate.Height + 20;
-            lblSomme.Left = left;
-            lblSomme.Text = "Somme";
+            dtpDateContact.Top = lblDateContact.Top;
+            dtpDateContact.Left = lblDateContact.Width + 20 + left;
+            dtpDateContact.MinDate = Convert.ToDateTime(missionActuelle["dateDepart"]);
+            dtpDateContact.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]);
+            dtpDateContact.Width = 200;
 
-            txtSomme.Top = lblSomme.Top;
-            txtSomme.Left = lblSomme.Width + 20 + left;
 
-            lblAppreciation.Text = "Appreciation";
+
+            lblNombre.Top = top + lblDateContact.Height + 20;
+            lblNombre.Left = left;
+
+            txtSomme.Top = lblNombre.Top;
+            txtSomme.Left = lblNombre.Width + 20 + left;
+
             lblAppreciation.Left = left;
-            lblAppreciation.Top = lblSomme.Top + lblSomme.Height + 20;
+            lblAppreciation.Top = lblNombre.Top + lblNombre.Height + 20;
 
-            txtAppreciation.Top = lblAppreciation.Top + lblAppreciation.Height;
-            txtAppreciation.Left = left;
-            txtAppreciation.Width = grpFormulaireAjout.Width - 40;
+            rtxtAppreciation.Top = lblAppreciation.Top + lblAppreciation.Height + 20;
+            rtxtAppreciation.Left = left;
+            rtxtAppreciation.Width = grpFormContact.Width - 40;
+            rtxtAppreciation.Height = 100;
 
-            lblInformateur.Text = "Informateur";
             lblInformateur.Left = left;
-            lblInformateur.Top = txtAppreciation.Top + txtAppreciation.Height + 20;
+            lblInformateur.Top = rtxtAppreciation.Top + rtxtAppreciation.Height + 20;
 
-            cboInformateur.Top = txtAppreciation.Top + txtAppreciation.Height + 20;
+            cboInformateur.Top = rtxtAppreciation.Top + rtxtAppreciation.Height + 20;
             cboInformateur.Left = lblInformateur.Width + 20 + left;
             cboInformateur.DataSource = MesDatas.DsGlobal.Tables["Informateur"];
             cboInformateur.DisplayMember = "nom";
             cboInformateur.ValueMember = "nomCode";
-
-
-
-            grpFormulaireAjout.Controls.Add(lblDate);
-            grpFormulaireAjout.Controls.Add(dtp);
-            grpFormulaireAjout.Controls.Add(lblSomme);
-            grpFormulaireAjout.Controls.Add(txtSomme);
-            grpFormulaireAjout.Controls.Add(lblAppreciation);
-            grpFormulaireAjout.Controls.Add(txtAppreciation);
-            grpFormulaireAjout.Controls.Add(lblInformateur);
-            grpFormulaireAjout.Controls.Add(cboInformateur);
-
         }
 
         private void AfficherFormEvent()
         {
             int top = 40;
             int left = 20;
-            grpFormulaireAjout.Visible = true;
-            grpFormulaireAjout.Text = "Ajout d'Évènements";
-            DateTimePicker dtp = new DateTimePicker();
-            Label lblDate = new Label();
-            Label lblMotif = new Label();
-            RichTextBox txtMotif = new RichTextBox();
+            grpFormEvent.Visible = true;
+            grpFormCapture.Visible = false;
+            grpFormContact.Visible = false;
+            grpFormDepense.Visible = false;
 
-            lblDate.Text = "Date";
-            lblDate.Top = top;
-            lblDate.Left = left;
-            lblDate.Name = "lblDate";
+            lblDateAjoutEvent.Top = top;
+            lblDateAjoutEvent.Left = left;
 
-            dtp.Top = lblDate.Top;
-            dtp.Left = lblDate.Width + 20 + left;
-            dtp.MinDate = Convert.ToDateTime(missionActuelle["dateDepart"]);
-            dtp.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]);
+            dtpDateEvent.Top = lblDateAjoutEvent.Top;
+            dtpDateEvent.Left = lblDateAjoutEvent.Width + 20 + left;
+            dtpDateEvent.MinDate = Convert.ToDateTime(missionActuelle["dateDepart"]);
+            dtpDateEvent.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]); 
+            dtpDateEvent.Width = 200;
 
-            lblMotif.Text = "Motif";
-            lblMotif.Left = left;
-            lblMotif.Top = lblDate.Top + lblDate.Height + 20;
 
-            txtMotif.Top = lblMotif.Top + lblMotif.Height;
-            txtMotif.Left = left;
-            txtMotif.Width = grpFormulaireAjout.Width - 40;
+            lblCommentaireEvent.Left = left;
+            lblCommentaireEvent.Top = lblDateAjoutEvent.Top + lblDateAjoutEvent.Height + 20;
 
-            grpFormulaireAjout.Controls.Add(lblDate);
-            grpFormulaireAjout.Controls.Add(dtp);
-            grpFormulaireAjout.Controls.Add(lblMotif);
-            grpFormulaireAjout.Controls.Add(txtMotif);
+            rtxtCommentaire.Top = lblCommentaireEvent.Top + lblCommentaireEvent.Height + 40;
+            rtxtCommentaire.Left = left;
+            rtxtCommentaire.Width = grpFormEvent.Width - 40;
         }
 
         private void AfficherFormCapture()
         {
             int top = 40;
             int left = 20;
-            grpFormulaireAjout.Visible = true;
-            grpFormulaireAjout.Text = "Ajout de Contact";
-            ComboBox cboCapture = new ComboBox();
-            Label lblCapture = new Label();
-            Label lblSomme = new Label();
-            TextBox txtSomme = new TextBox();
+            grpFormCapture.Visible = true;
+            grpFormContact.Visible = false;
+            grpFormDepense.Visible = false;
+            grpFormEvent.Visible = false;
             DataTable especeEnnemi = new DataTable("EspeceEnnemi");
             especeEnnemi.Columns.Add("id", typeof(string));
             especeEnnemi.Columns.Add("nom", typeof(string));
@@ -482,42 +430,36 @@ namespace SAE24
             cboCapture.DisplayMember = "nom";
             cboCapture.ValueMember = "id";
 
-            lblCapture.Text = "Ennemi capturé :";
             lblCapture.Left = left;
             lblCapture.Top = top;
 
             cboCapture.Top = top;
             cboCapture.Left = left + lblCapture.Width + 20;
 
-            lblSomme.Top = top + lblCapture.Height + 20;
-            lblSomme.Left = left;
-            lblSomme.Text = "Nombre d'ennemi\ncapturé :";
-            lblSomme.Height = 25;
+            lblNombre.Top = top + lblCapture.Height + 20;
+            lblNombre.Left = left;
+            lblNombre.Height = 25;
 
-            txtSomme.Top = lblSomme.Top;
-            txtSomme.Left = lblSomme.Width + 20 + left;
-
-            grpFormulaireAjout.Controls.Add(lblCapture);
-            grpFormulaireAjout.Controls.Add(cboCapture);
-            grpFormulaireAjout.Controls.Add(lblSomme);
-            grpFormulaireAjout.Controls.Add(txtSomme);
+            txtNombre.Top = lblNombre.Top;
+            txtNombre.Left = cboCapture.Left;
         }
 
         private void btnValidationAjout_Click(object sender, EventArgs e)
         {
+            Button btn = (Button)sender;
             string tag = "";
             foreach (RadioButton rdb in grpChoixAjout.Controls.OfType<RadioButton>())
             {
                 if (rdb.Checked)
                 {
-                    tag = rdb.Text;
+                    tag = rdb.Tag.ToString();
                 }
             }
 
             switch (tag)
             {
                 case "1":
-                    ;
+                    ajoutContact();
                     break;
                 case "2":
                     ;
@@ -536,13 +478,36 @@ namespace SAE24
 
         public void ajoutContact()
         {
-            SQLiteConnection co = Connexion.Connec();
+            SQLiteConnection co = Connexion.Connec;
 
             try
             {
-                string nomPlanete = missionActuelle[0];
-                string numeroMission = missionActuelle[1];
-                string date = 
+                string nomPlanete = missionActuelle[0].ToString();
+                string numeroMission = missionActuelle[1].ToString();
+                string date = dtpDateContact.Value.ToString("yyyy-MM-dd");
+                string sommeVersee = txtSomme.Text.Replace("'", "''");
+                string appreciation = rtxtAppreciation.Text.Replace("'", "''");
+                string nomCodeInformateur = cboInformateur.SelectedValue.ToString();
+                string request = $"INSERT INTO Contact(nomPlanete, numeroMission, dateC, sommeVersee, appreciation, nomCodeInformateur) VALUES ('{nomPlanete}','{numeroMission}','{date}','{sommeVersee}','{appreciation}','{nomCodeInformateur}')";
+
+                SQLiteCommand cmd = new SQLiteCommand(request, co);
+                int res = cmd.ExecuteNonQuery();
+                MessageBox.Show(res.ToString());
+                DataRow dr = contactMissionActuelle.NewRow();
+                dr[0] = date;
+                dr[1] = sommeVersee;
+                dr[2] = appreciation;
+                dr[3] = MesDatas.DsGlobal.Tables["Espece"].Select($"id = {nomCodeInformateur}")[1];
+                contactMissionActuelle.Rows.Add(dr);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connexion.FermerConnexion();
             }
         }
     }
