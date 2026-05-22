@@ -28,7 +28,7 @@ namespace SAE24
 
         private void buttonConnexion_Click(object sender, EventArgs e)
         {
-            String login = this.textBoxLogin.Text;
+            String login = this.textBoxLogin.Text.Replace("'", "''");
             String mdp = this.textBoxMdp.Text;
 
             // si le nom d'utilisateur ou mdp n'a pas été renseigné 
@@ -83,23 +83,15 @@ namespace SAE24
         private void textBoxLogin_KeyPress(object sender, KeyPressEventArgs e)
         {
             // supprime l'erreur 
-            if (e.KeyChar != (char)Keys.Back)
-            {
-                errorProvider.SetError(textBoxLogin, "");
-            }
+            errorProvider.SetError(textBoxLogin, "");
 
-            e.Handled = e.KeyChar == (char)Keys.Space || e.KeyChar == '\'';
+            e.Handled = e.KeyChar == (char)Keys.Space; 
         }
 
         private void textBoxMdp_KeyPress(object sender, KeyPressEventArgs e)
         {
             // supprime l'erreur 
-            if (e.KeyChar != (char)Keys.Back)
-            {
-                errorProvider.SetError(textBoxMdp, "");
-            }
-
-            e.Handled = e.KeyChar == '\'';
+            errorProvider.SetError(textBoxMdp, "");
         }
 
         private void checkBoxAfficherMdp_CheckedChanged(object sender, EventArgs e)
