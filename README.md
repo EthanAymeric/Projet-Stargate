@@ -23,6 +23,7 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 - [x] Générer un nom de mission 
 - [x] Blinder les saisies 
 - [x] Ne proposer que des chefs disponibles pendant la durée de la mission 
+- [ ] changer nombre de membres requis pour le nombre de membres disponibles (max du slider)
 - [ ] Ajouter les membres de mission 
 - [x] Protéger les TextBox des injections SQL (String.Replace("'", "''");) et autres
 

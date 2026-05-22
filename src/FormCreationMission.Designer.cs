@@ -53,8 +53,12 @@
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.comboBoxChef = new System.Windows.Forms.ComboBox();
             this.labelChef = new System.Windows.Forms.Label();
+            this.groupBox = new System.Windows.Forms.GroupBox();
+            this.labelAjoutMembres = new System.Windows.Forms.Label();
+            this.checkedListBoxMembres = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelPlanete
@@ -270,11 +274,40 @@
             this.labelChef.TabIndex = 23;
             this.labelChef.Text = "3 - Choix du chef de mission";
             // 
+            // groupBox
+            // 
+            this.groupBox.Controls.Add(this.checkedListBoxMembres);
+            this.groupBox.Controls.Add(this.labelAjoutMembres);
+            this.groupBox.Location = new System.Drawing.Point(12, 12);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(706, 832);
+            this.groupBox.TabIndex = 25;
+            this.groupBox.TabStop = false;
+            this.groupBox.Text = "Objectifs et Membres";
+            // 
+            // labelAjoutMembres
+            // 
+            this.labelAjoutMembres.AutoSize = true;
+            this.labelAjoutMembres.Location = new System.Drawing.Point(31, 59);
+            this.labelAjoutMembres.Name = "labelAjoutMembres";
+            this.labelAjoutMembres.Size = new System.Drawing.Size(190, 26);
+            this.labelAjoutMembres.TabIndex = 0;
+            this.labelAjoutMembres.Text = "Ajout de membres";
+            // 
+            // checkedListBoxMembres
+            // 
+            this.checkedListBoxMembres.FormattingEnabled = true;
+            this.checkedListBoxMembres.Location = new System.Drawing.Point(31, 101);
+            this.checkedListBoxMembres.Name = "checkedListBoxMembres";
+            this.checkedListBoxMembres.Size = new System.Drawing.Size(619, 294);
+            this.checkedListBoxMembres.TabIndex = 1;
+            // 
             // FormCreationMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(730, 852);
+            this.Controls.Add(this.groupBox);
             this.Controls.Add(this.comboBoxChef);
             this.Controls.Add(this.labelChef);
             this.Controls.Add(this.labelEuro);
@@ -305,6 +338,8 @@
             this.Load += new System.EventHandler(this.FormCreationMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            this.groupBox.ResumeLayout(false);
+            this.groupBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,5 +371,8 @@
         private System.Windows.Forms.ErrorProvider errorProvider;
         private System.Windows.Forms.ComboBox comboBoxChef;
         private System.Windows.Forms.Label labelChef;
+        private System.Windows.Forms.GroupBox groupBox;
+        private System.Windows.Forms.Label labelAjoutMembres;
+        private System.Windows.Forms.CheckedListBox checkedListBoxMembres;
     }
 }

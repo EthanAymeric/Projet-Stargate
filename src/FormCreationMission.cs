@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace SAE24
 
         private void FormCreationMission_Load(object sender, EventArgs e)
         {
+            groupBox.Visible = false;
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = @"select nom from planete";
 
@@ -180,13 +182,45 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
 values ('{planete}', {num}, {nbMembres}, '{depart}', '{retour}', '{matriculeChef}', '{feuille}', {databaz}, {budget})";
 
             if (cmd.ExecuteNonQuery() == 1) {
-                MessageBox.Show("Mission créée !");
+                groupBox.Visible = true;
+                part2();
             }
         }
 
         private void richTextBoxFeuilleRoute_KeyPress(object sender, KeyPressEventArgs e)
         {
             errorProvider.SetError(richTextBoxFeuilleRoute, "");
+        }
+
+        private void part2()
+        {
+            Dictionary<string, string> result = new Dictionary<string, string>();
+            string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
+            string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
+            string chef = comboBoxChef.SelectedValue.ToString();
+
+            SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = $@"SELECT DISTINCT me.nom || ' ' || me.prenom, me.matricule
+FROM Membre me
+WHERE me.matricule NOT IN (
+    SELECT c.matriculeMembre
+    FROM Composer c
+    JOIN Mission mi ON c.nomPlanete = mi.nomPlanete AND c.numeroMission = mi.numero
+    WHERE mi.dateDepart <= '{retour}' AND mi.dateRetour >= '{depart}')
+AND me.matricule != '{chef}'
+ORDER BY me.nom, me.prenom;";
+
+            SQLiteDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                result.Add(reader.GetString(0), reader.GetString(1));
+            }
+
+            checkedListBoxMembres.DataSource = new BindingSource(result, null);
+            checkedListBoxMembres.DisplayMember = "Key";
+            checkedListBoxMembres.ValueMember = "Value";
+
         }
     }
 }
