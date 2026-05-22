@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SQLite;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SQLite;
-using System.Globalization;
 using UserControlPlanetes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SAE24
 {
@@ -27,6 +28,7 @@ namespace SAE24
             AjoutRelation();
             InfosPlanetes();
             InfosEspeces();
+            ChargementComboBoxes();
         }
 
         private void UpdateDataSet()
@@ -184,7 +186,23 @@ namespace SAE24
             Int32 top = 0;
             Int32 left = 0;
 
-            foreach (DataRow r in MesDatas.DsGlobal.Tables["Espece"].Rows)
+            DataRow[] tab;
+            DataTable dt;
+
+            if (filtreCouleur)
+            {
+                string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
+                tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+                dt = tab.CopyToDataTable();
+                //MesDatas.DsGlobal.Tables.Add(dt);
+                //filtreCouleur = false;
+            }
+            else
+            {
+                dt = MesDatas.DsGlobal.Tables["Ennemi"];
+            }
+
+            foreach (DataRow r in dt.Rows)
             {
                 //MessageBox.Show(r["nom"].ToString());
                 // Ajout des informations pour toutes les espèces (générales)
@@ -363,7 +381,7 @@ namespace SAE24
         private void FrmTableauDeBord_Shown(object sender, EventArgs e)
         {
             //Chargement();
-            foreach (Button b in Controls.OfType<Button>())
+            foreach (System.Windows.Forms.Button b in Controls.OfType<System.Windows.Forms.Button>())
             {
                 b.Visible = true;
             }
@@ -395,6 +413,7 @@ namespace SAE24
                 rdbAllies.Checked = false;
                 rdbEnnemis.Checked = false;
             }
+            filtreCouleur = false;
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)
@@ -483,10 +502,8 @@ namespace SAE24
                     left = 0;
                 }
 
-                
                 // Ajout de l'UserControl dans le panel du tableau de bord
                 pnlAllies.Controls.Add(u);
-                
 
             }
         }
@@ -495,8 +512,23 @@ namespace SAE24
         {
             Int32 top = 0;
             Int32 left = 0;
+            DataRow[] tab;
+            DataTable dt;
 
-            foreach (DataRow r in MesDatas.DsGlobal.Tables["Ennemi"].Rows)
+            if (filtreCouleur)
+            {
+                string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
+                tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+                dt = tab.CopyToDataTable();
+                //MesDatas.DsGlobal.Tables.Add(dt);
+                //filtreCouleur = false;
+            }
+            else
+            {
+                dt = MesDatas.DsGlobal.Tables["Ennemi"];
+            }
+
+            foreach (DataRow r in dt.Rows)
             {
                 //MessageBox.Show(r["idEspece"].ToString());
                 //MessageBox.Show(r["idEspece"].ToString() + " : " + r.GetParentRow("FK_Espece_Allie")[1].ToString());
@@ -549,9 +581,55 @@ namespace SAE24
 
                 // Ajout de l'UserControl dans le panel du tableau de bord
                 pnlEnnemis.Controls.Add(u);
-
+                
 
             }
+        }
+
+        private void Filtre()
+        {
+            string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
+            DataRow[] tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+        }
+
+        private void ChargementComboBoxes()
+        {
+            // ComboBox Couleur
+            co = Connexion.Connec;
+            try
+            {
+                // ComboBox couleur
+                string request = @"select distinct couleur from Espece";
+                SQLiteCommand cmd = new SQLiteCommand(request, co);
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                da.Fill(MesDatas.DsGlobal, "Couleur");
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connexion.FermerConnexion();
+            }
+            cboCouleur.DataSource = MesDatas.DsGlobal.Tables["Couleur"];
+            cboCouleur.DisplayMember = "couleur";
+
+            // ComboBox Nom
+            cboNom.DataSource = MesDatas.DsGlobal.Tables["Espece"];
+            cboNom.DisplayMember = "nom";
+            
+        }
+        bool filtreCouleur = false;
+        private void cboNom_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cboCouleur_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            filtreCouleur = true;
         }
     }
 }

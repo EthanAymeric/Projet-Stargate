@@ -33,16 +33,18 @@
             this.btnRaces = new System.Windows.Forms.Button();
             this.btnPlanetes = new System.Windows.Forms.Button();
             this.pnlTDB = new System.Windows.Forms.Panel();
-            this.pnlPlanetes = new System.Windows.Forms.Panel();
             this.pbChargement = new System.Windows.Forms.ProgressBar();
+            this.pnlPlanetes = new System.Windows.Forms.Panel();
             this.pnlEspeces = new System.Windows.Forms.Panel();
             this.grpEspeces = new System.Windows.Forms.GroupBox();
-            this.rdbAllies = new System.Windows.Forms.RadioButton();
+            this.btnRecherche = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
             this.rdbEnnemis = new System.Windows.Forms.RadioButton();
+            this.rdbAllies = new System.Windows.Forms.RadioButton();
             this.pnlAllies = new System.Windows.Forms.Panel();
             this.pnlEnnemis = new System.Windows.Forms.Panel();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.btnRecherche = new System.Windows.Forms.Button();
+            this.cboCouleur = new System.Windows.Forms.ComboBox();
+            this.cboNom = new System.Windows.Forms.ComboBox();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +107,14 @@
             this.pnlTDB.Size = new System.Drawing.Size(872, 466);
             this.pnlTDB.TabIndex = 5;
             // 
+            // pbChargement
+            // 
+            this.pbChargement.Location = new System.Drawing.Point(232, 180);
+            this.pbChargement.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pbChargement.Name = "pbChargement";
+            this.pbChargement.Size = new System.Drawing.Size(408, 55);
+            this.pbChargement.TabIndex = 0;
+            // 
             // pnlPlanetes
             // 
             this.pnlPlanetes.AutoScroll = true;
@@ -113,14 +123,6 @@
             this.pnlPlanetes.Name = "pnlPlanetes";
             this.pnlPlanetes.Size = new System.Drawing.Size(872, 466);
             this.pnlPlanetes.TabIndex = 6;
-            // 
-            // pbChargement
-            // 
-            this.pbChargement.Location = new System.Drawing.Point(232, 180);
-            this.pbChargement.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
-            this.pbChargement.Name = "pbChargement";
-            this.pbChargement.Size = new System.Drawing.Size(408, 55);
-            this.pbChargement.TabIndex = 0;
             // 
             // pnlEspeces
             // 
@@ -133,6 +135,8 @@
             // 
             // grpEspeces
             // 
+            this.grpEspeces.Controls.Add(this.cboNom);
+            this.grpEspeces.Controls.Add(this.cboCouleur);
             this.grpEspeces.Controls.Add(this.btnRecherche);
             this.grpEspeces.Controls.Add(this.btnReset);
             this.grpEspeces.Controls.Add(this.rdbEnnemis);
@@ -144,16 +148,25 @@
             this.grpEspeces.TabStop = false;
             this.grpEspeces.Text = "Recherche d\'espèces";
             // 
-            // rdbAllies
+            // btnRecherche
             // 
-            this.rdbAllies.AutoSize = true;
-            this.rdbAllies.Location = new System.Drawing.Point(6, 25);
-            this.rdbAllies.Name = "rdbAllies";
-            this.rdbAllies.Size = new System.Drawing.Size(146, 24);
-            this.rdbAllies.TabIndex = 0;
-            this.rdbAllies.TabStop = true;
-            this.rdbAllies.Text = "Espèces Alliées";
-            this.rdbAllies.UseVisualStyleBackColor = true;
+            this.btnRecherche.Location = new System.Drawing.Point(756, 17);
+            this.btnRecherche.Name = "btnRecherche";
+            this.btnRecherche.Size = new System.Drawing.Size(107, 32);
+            this.btnRecherche.TabIndex = 3;
+            this.btnRecherche.Text = "Recherche";
+            this.btnRecherche.UseVisualStyleBackColor = true;
+            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
+            // 
+            // btnReset
+            // 
+            this.btnReset.Location = new System.Drawing.Point(756, 78);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(107, 32);
+            this.btnReset.TabIndex = 2;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // rdbEnnemis
             // 
@@ -165,6 +178,17 @@
             this.rdbEnnemis.TabStop = true;
             this.rdbEnnemis.Text = "Espèces Ennemies";
             this.rdbEnnemis.UseVisualStyleBackColor = true;
+            // 
+            // rdbAllies
+            // 
+            this.rdbAllies.AutoSize = true;
+            this.rdbAllies.Location = new System.Drawing.Point(6, 25);
+            this.rdbAllies.Name = "rdbAllies";
+            this.rdbAllies.Size = new System.Drawing.Size(146, 24);
+            this.rdbAllies.TabIndex = 0;
+            this.rdbAllies.TabStop = true;
+            this.rdbAllies.Text = "Espèces Alliées";
+            this.rdbAllies.UseVisualStyleBackColor = true;
             // 
             // pnlAllies
             // 
@@ -184,25 +208,25 @@
             this.pnlEnnemis.Size = new System.Drawing.Size(872, 348);
             this.pnlEnnemis.TabIndex = 9;
             // 
-            // btnReset
+            // cboCouleur
             // 
-            this.btnReset.Location = new System.Drawing.Point(756, 78);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(107, 32);
-            this.btnReset.TabIndex = 2;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            this.cboCouleur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCouleur.FormattingEnabled = true;
+            this.cboCouleur.Location = new System.Drawing.Point(229, 67);
+            this.cboCouleur.Name = "cboCouleur";
+            this.cboCouleur.Size = new System.Drawing.Size(182, 28);
+            this.cboCouleur.TabIndex = 4;
+            this.cboCouleur.SelectedIndexChanged += new System.EventHandler(this.cboCouleur_SelectedIndexChanged);
             // 
-            // btnRecherche
+            // cboNom
             // 
-            this.btnRecherche.Location = new System.Drawing.Point(756, 17);
-            this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(107, 32);
-            this.btnRecherche.TabIndex = 3;
-            this.btnRecherche.Text = "Recherche";
-            this.btnRecherche.UseVisualStyleBackColor = true;
-            this.btnRecherche.Click += new System.EventHandler(this.btnRecherche_Click);
+            this.cboNom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboNom.FormattingEnabled = true;
+            this.cboNom.Location = new System.Drawing.Point(229, 17);
+            this.cboNom.Name = "cboNom";
+            this.cboNom.Size = new System.Drawing.Size(182, 28);
+            this.cboNom.TabIndex = 5;
+            this.cboNom.SelectedIndexChanged += new System.EventHandler(this.cboNom_SelectedIndexChanged);
             // 
             // FrmTableauDeBord
             // 
@@ -248,6 +272,8 @@
         private System.Windows.Forms.Panel pnlEnnemis;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnRecherche;
+        private System.Windows.Forms.ComboBox cboCouleur;
+        private System.Windows.Forms.ComboBox cboNom;
     }
 }
 
