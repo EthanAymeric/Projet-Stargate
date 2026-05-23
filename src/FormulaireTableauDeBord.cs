@@ -183,12 +183,14 @@ namespace SAE24
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
+            rdbAllies.Checked = false;
+            rdbEnnemis.Checked = false;
             Int32 top = 0;
             Int32 left = 0;
 
             DataRow[] tab;
-            DataTable dt;
-
+            DataTable dt = MesDatas.DsGlobal.Tables["Espece"];
+            /*
             if (filtreCouleur)
             {
                 string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
@@ -199,9 +201,9 @@ namespace SAE24
             }
             else
             {
-                dt = MesDatas.DsGlobal.Tables["Ennemi"];
+                dt = MesDatas.DsGlobal.Tables["Espece"];
             }
-
+            */
             foreach (DataRow r in dt.Rows)
             {
                 //MessageBox.Show(r["nom"].ToString());
@@ -413,7 +415,6 @@ namespace SAE24
                 rdbAllies.Checked = false;
                 rdbEnnemis.Checked = false;
             }
-            filtreCouleur = false;
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)
@@ -439,9 +440,13 @@ namespace SAE24
                 }
                 else
                 {
+                    VerifContenuComboBoxes();
+                    InfosEspeces();
                     pnlAllies.Visible = false;
                     pnlEnnemis.Visible = false;
                     pnlEspeces.Visible = true;
+                    grpEspeces.Visible = true;
+                    
                 }
             }
         }
@@ -513,8 +518,8 @@ namespace SAE24
             Int32 top = 0;
             Int32 left = 0;
             DataRow[] tab;
-            DataTable dt;
-
+            DataTable dt = MesDatas.DsGlobal.Tables["Ennemi"];
+            /*
             if (filtreCouleur)
             {
                 string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
@@ -527,7 +532,7 @@ namespace SAE24
             {
                 dt = MesDatas.DsGlobal.Tables["Ennemi"];
             }
-
+            */
             foreach (DataRow r in dt.Rows)
             {
                 //MessageBox.Show(r["idEspece"].ToString());
@@ -615,13 +620,41 @@ namespace SAE24
             }
             cboCouleur.DataSource = MesDatas.DsGlobal.Tables["Couleur"];
             cboCouleur.DisplayMember = "couleur";
+            cboCouleur.ValueMember = "couleur";
 
             // ComboBox Nom
             cboNom.DataSource = MesDatas.DsGlobal.Tables["Espece"];
             cboNom.DisplayMember = "nom";
+            cboNom.ValueMember = "nom";
+        }
+        
+        private void VerifContenuComboBoxes()
+        {
+            // Parcours des combobox
+            
+            foreach (System.Windows.Forms.ComboBox cbo in grpEspeces.Controls.OfType<System.Windows.Forms.ComboBox>())
+            {
+                DataRow[] tab;
+                DataTable dt = MesDatas.DsGlobal.Tables["Espece"];
+                bool filtreCouleur = false;
+                if (filtreCouleur)
+                {
+                    string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
+                    tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+                    dt = tab.CopyToDataTable();
+                    //MesDatas.DsGlobal.Tables.Add(dt);
+                    //filtreCouleur = false;
+                }
+                else
+                {
+                    dt = MesDatas.DsGlobal.Tables["Espece"];
+                }
+
+            }
+            MessageBox.Show("Test : " + cboCouleur.Name + " : " + cboCouleur.SelectedValue);
             
         }
-        bool filtreCouleur = false;
+
         private void cboNom_SelectedIndexChanged(object sender, EventArgs e)
         {
             
@@ -629,7 +662,12 @@ namespace SAE24
 
         private void cboCouleur_SelectedIndexChanged(object sender, EventArgs e)
         {
-            filtreCouleur = true;
+            
+        }
+
+        private void cboCouleur_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

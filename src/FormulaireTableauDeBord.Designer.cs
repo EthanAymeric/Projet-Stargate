@@ -37,14 +37,14 @@
             this.pnlPlanetes = new System.Windows.Forms.Panel();
             this.pnlEspeces = new System.Windows.Forms.Panel();
             this.grpEspeces = new System.Windows.Forms.GroupBox();
+            this.cboNom = new System.Windows.Forms.ComboBox();
+            this.cboCouleur = new System.Windows.Forms.ComboBox();
             this.btnRecherche = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.rdbEnnemis = new System.Windows.Forms.RadioButton();
             this.rdbAllies = new System.Windows.Forms.RadioButton();
             this.pnlAllies = new System.Windows.Forms.Panel();
             this.pnlEnnemis = new System.Windows.Forms.Panel();
-            this.cboCouleur = new System.Windows.Forms.ComboBox();
-            this.cboNom = new System.Windows.Forms.ComboBox();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.SuspendLayout();
@@ -148,6 +148,27 @@
             this.grpEspeces.TabStop = false;
             this.grpEspeces.Text = "Recherche d\'espèces";
             // 
+            // cboNom
+            // 
+            this.cboNom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboNom.FormattingEnabled = true;
+            this.cboNom.Location = new System.Drawing.Point(229, 17);
+            this.cboNom.Name = "cboNom";
+            this.cboNom.Size = new System.Drawing.Size(182, 28);
+            this.cboNom.TabIndex = 5;
+            this.cboNom.SelectedIndexChanged += new System.EventHandler(this.cboNom_SelectedIndexChanged);
+            // 
+            // cboCouleur
+            // 
+            this.cboCouleur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCouleur.FormattingEnabled = true;
+            this.cboCouleur.Location = new System.Drawing.Point(229, 67);
+            this.cboCouleur.Name = "cboCouleur";
+            this.cboCouleur.Size = new System.Drawing.Size(182, 28);
+            this.cboCouleur.TabIndex = 4;
+            this.cboCouleur.SelectedIndexChanged += new System.EventHandler(this.cboCouleur_SelectedIndexChanged);
+            this.cboCouleur.SelectedValueChanged += new System.EventHandler(this.cboCouleur_SelectedValueChanged);
+            // 
             // btnRecherche
             // 
             this.btnRecherche.Location = new System.Drawing.Point(756, 17);
@@ -207,26 +228,6 @@
             this.pnlEnnemis.Name = "pnlEnnemis";
             this.pnlEnnemis.Size = new System.Drawing.Size(872, 348);
             this.pnlEnnemis.TabIndex = 9;
-            // 
-            // cboCouleur
-            // 
-            this.cboCouleur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCouleur.FormattingEnabled = true;
-            this.cboCouleur.Location = new System.Drawing.Point(229, 67);
-            this.cboCouleur.Name = "cboCouleur";
-            this.cboCouleur.Size = new System.Drawing.Size(182, 28);
-            this.cboCouleur.TabIndex = 4;
-            this.cboCouleur.SelectedIndexChanged += new System.EventHandler(this.cboCouleur_SelectedIndexChanged);
-            // 
-            // cboNom
-            // 
-            this.cboNom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboNom.FormattingEnabled = true;
-            this.cboNom.Location = new System.Drawing.Point(229, 17);
-            this.cboNom.Name = "cboNom";
-            this.cboNom.Size = new System.Drawing.Size(182, 28);
-            this.cboNom.TabIndex = 5;
-            this.cboNom.SelectedIndexChanged += new System.EventHandler(this.cboNom_SelectedIndexChanged);
             // 
             // FrmTableauDeBord
             // 
