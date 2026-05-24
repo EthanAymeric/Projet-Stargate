@@ -21,7 +21,7 @@ namespace SAE24
         {
             InitializeComponent();
         }
-
+        bool filtreCouleur = false;
         private void FrmTableauDeBord_Load(object sender, EventArgs e)
         {
             RemplissageDS();
@@ -179,6 +179,7 @@ namespace SAE24
         private void InfosEspeces()
         {
             // Mise à jour
+            pnlEspeces.Controls.Clear();
             pnlEspeces.Visible = false;
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
@@ -189,21 +190,36 @@ namespace SAE24
             Int32 left = 0;
 
             DataRow[] tab;
-            DataTable dt = MesDatas.DsGlobal.Tables["Espece"];
-            /*
+            DataTable dt;
+            bool filtreEstPresent = false;
+
             if (filtreCouleur)
             {
-                string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
+                string filtre = "couleur = '" + cboCouleur.SelectedValue + "'";
                 tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+                
                 dt = tab.CopyToDataTable();
+                
+                dt.TableName = "Filtre";
+                MessageBox.Show(dt.TableName);
                 //MesDatas.DsGlobal.Tables.Add(dt);
-                //filtreCouleur = false;
+
+                // Création de relations pour cette nouvelle table
+                // id (Espece) <-> idEspece (Habiter)
+                /*
+                ForeignKeyConstraint FK_FiltreEspece = new ForeignKeyConstraint("FK_Filtre_Habiter", MesDatas.DsGlobal.Tables["Filtre"].Columns["id"], MesDatas.DsGlobal.Tables["Habiter"].Columns["idEspece"]);
+                MesDatas.DsGlobal.Tables["Habiter"].Constraints.Add(FK_FiltreEspece);
+                */
+                filtreEstPresent = true;
             }
             else
             {
+                MessageBox.Show("test");
                 dt = MesDatas.DsGlobal.Tables["Espece"];
+                
+                
+
             }
-            */
             foreach (DataRow r in dt.Rows)
             {
                 //MessageBox.Show(r["nom"].ToString());
@@ -251,6 +267,12 @@ namespace SAE24
 
                 // Ajout de l'UserControl dans le panel du tableau de bord
                 pnlEspeces.Controls.Add(u);
+
+                // Supprimer la table temporaire des filtres si nécessaire
+                if (filtreEstPresent)
+                {
+                    
+                }
             }
         }
 
@@ -410,6 +432,7 @@ namespace SAE24
         private void btnReset_Click(object sender, EventArgs e)
         {
             // Décoche les radioButton
+            filtreCouleur = false;
             foreach (RadioButton rdb in grpEspeces.Controls.OfType<RadioButton>())
             {
                 rdbAllies.Checked = false;
@@ -440,7 +463,7 @@ namespace SAE24
                 }
                 else
                 {
-                    VerifContenuComboBoxes();
+                    //VerifContenuComboBoxes();
                     InfosEspeces();
                     pnlAllies.Visible = false;
                     pnlEnnemis.Visible = false;
@@ -634,15 +657,15 @@ namespace SAE24
             
             foreach (System.Windows.Forms.ComboBox cbo in grpEspeces.Controls.OfType<System.Windows.Forms.ComboBox>())
             {
+                MessageBox.Show(filtreCouleur.ToString());
                 DataRow[] tab;
-                DataTable dt = MesDatas.DsGlobal.Tables["Espece"];
-                bool filtreCouleur = false;
-                if (filtreCouleur)
+                DataTable dt;
+                if (filtreCouleur == true)
                 {
-                    string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
+                    string filtre = "couleur = '" + cboCouleur.SelectedValue + "'";
                     tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
                     dt = tab.CopyToDataTable();
-                    //MesDatas.DsGlobal.Tables.Add(dt);
+                    MesDatas.DsGlobal.Tables.Add(dt);
                     //filtreCouleur = false;
                 }
                 else
@@ -667,7 +690,7 @@ namespace SAE24
 
         private void cboCouleur_SelectedValueChanged(object sender, EventArgs e)
         {
-            
+            filtreCouleur = true;
         }
     }
 }
