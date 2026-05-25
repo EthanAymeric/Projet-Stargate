@@ -201,7 +201,7 @@ namespace SAE24
                 dt = tab.CopyToDataTable();
                 
                 dt.TableName = "Filtre";
-                MessageBox.Show(dt.TableName);
+                //MessageBox.Show(dt.TableName);
                 //MesDatas.DsGlobal.Tables.Add(dt);
 
                 // Création de relations pour cette nouvelle table
@@ -236,17 +236,42 @@ namespace SAE24
                 // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
                 List<string> listePlanetes = new List<string>();
 
-                DataRow[] planete = r.GetChildRows("FK_Espece_Habiter");
-
-                foreach (DataRow dr in planete)
+                if (filtreEstPresent)
                 {
-                    if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                    DataTable planete = MesDatas.DsGlobal.Tables["Habiter"];
+                    // Planete
+                    //DataRow dr = planete.Rows[1];
+                    
+                    //MessageBox.Show(dr[1] + " - " + r["id"]);
+                    
+                    
+                    foreach (DataRow dr in planete.Rows)
                     {
-                        listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                        //MessageBox.Show(r["id"] + " - " + dr[1]);
+                        if (dr[1].ToString() == r["id"].ToString())
+                        {
+                            listePlanetes.Add(dr[0].ToString());
+                        }
                     }
+                    
+                    
 
                 }
+                else
+                {
 
+
+                    DataRow[] planete = r.GetChildRows("FK_Espece_Habiter");
+
+                    foreach (DataRow dr in planete)
+                    {
+                        if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                        {
+                            listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                        }
+
+                    }
+                }
                 // test du UserControl
                 // Création de l'UserControl en le surchargeant); 
                 UserControlEspeces u = new UserControlEspeces(nomImageEspece, nomEspece, couleur, listePlanetes);
