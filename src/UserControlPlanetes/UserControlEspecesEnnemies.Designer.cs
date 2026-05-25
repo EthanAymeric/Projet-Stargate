@@ -52,7 +52,7 @@
             // 
             this.lblNomEspeceEnnemie.AutoSize = true;
             this.lblNomEspeceEnnemie.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomEspeceEnnemie.Location = new System.Drawing.Point(47, 249);
+            this.lblNomEspeceEnnemie.Location = new System.Drawing.Point(47, 232);
             this.lblNomEspeceEnnemie.Name = "lblNomEspeceEnnemie";
             this.lblNomEspeceEnnemie.Size = new System.Drawing.Size(118, 37);
             this.lblNomEspeceEnnemie.TabIndex = 2;
@@ -62,7 +62,7 @@
             // 
             this.lblNbPlanete.AutoSize = true;
             this.lblNbPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNbPlanete.Location = new System.Drawing.Point(50, 286);
+            this.lblNbPlanete.Location = new System.Drawing.Point(50, 277);
             this.lblNbPlanete.Name = "lblNbPlanete";
             this.lblNbPlanete.Size = new System.Drawing.Size(154, 22);
             this.lblNbPlanete.TabIndex = 3;
@@ -72,7 +72,7 @@
             // 
             this.lblOrigine.AutoSize = true;
             this.lblOrigine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrigine.Location = new System.Drawing.Point(50, 308);
+            this.lblOrigine.Location = new System.Drawing.Point(50, 299);
             this.lblOrigine.Name = "lblOrigine";
             this.lblOrigine.Size = new System.Drawing.Size(247, 22);
             this.lblOrigine.TabIndex = 4;
@@ -92,7 +92,7 @@
             // 
             this.lblArme.AutoSize = true;
             this.lblArme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArme.Location = new System.Drawing.Point(50, 445);
+            this.lblArme.Location = new System.Drawing.Point(50, 438);
             this.lblArme.Name = "lblArme";
             this.lblArme.Size = new System.Drawing.Size(125, 22);
             this.lblArme.TabIndex = 6;
@@ -113,7 +113,7 @@
             // 
             this.lblArmeCommun.AutoSize = true;
             this.lblArmeCommun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArmeCommun.Location = new System.Drawing.Point(50, 423);
+            this.lblArmeCommun.Location = new System.Drawing.Point(50, 416);
             this.lblArmeCommun.Name = "lblArmeCommun";
             this.lblArmeCommun.Size = new System.Drawing.Size(120, 22);
             this.lblArmeCommun.TabIndex = 8;

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using UserControlPlanetes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 
 namespace SAE24
 {
@@ -21,7 +22,6 @@ namespace SAE24
         {
             InitializeComponent();
         }
-        bool filtreCouleur = false;
         private void FrmTableauDeBord_Load(object sender, EventArgs e)
         {
             RemplissageDS();
@@ -178,7 +178,8 @@ namespace SAE24
 
         private void InfosEspeces()
         {
-            // Mise à jour
+            // Préparation du panel pour la recherche des espèces
+            
             pnlEspeces.Controls.Clear();
             pnlEspeces.Visible = false;
             grpEspeces.Visible = false;
@@ -186,117 +187,115 @@ namespace SAE24
             pnlEnnemis.Visible = false;
             rdbAllies.Checked = false;
             rdbEnnemis.Checked = false;
+
+            // Initialisation des paramètres de placement du UserControl
             Int32 top = 0;
             Int32 left = 0;
 
+            // Initialisation des éléments pour la recherche (avec ou sans filtre)
             DataRow[] tab;
             DataTable dt;
             bool filtreEstPresent = false;
+            bool resultatExiste = true;
 
-            if (filtreCouleur)
+            // S'il y a un filtre à appliquer, on prend ce qui est indiqué dans la combobox pour créer un filtr
+            if (ckCouleur.Checked)
             {
                 string filtre = "couleur = '" + cboCouleur.SelectedValue + "'";
                 tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
-                
+                // on copie la table filtrée dans une DataTable
                 dt = tab.CopyToDataTable();
-                
-                dt.TableName = "Filtre";
-                //MessageBox.Show(dt.TableName);
-                //MesDatas.DsGlobal.Tables.Add(dt);
-
-                // Création de relations pour cette nouvelle table
-                // id (Espece) <-> idEspece (Habiter)
-                /*
-                ForeignKeyConstraint FK_FiltreEspece = new ForeignKeyConstraint("FK_Filtre_Habiter", MesDatas.DsGlobal.Tables["Filtre"].Columns["id"], MesDatas.DsGlobal.Tables["Habiter"].Columns["idEspece"]);
-                MesDatas.DsGlobal.Tables["Habiter"].Constraints.Add(FK_FiltreEspece);
-                */
-                filtreEstPresent = true;
-            }
-            else
-            {
-                MessageBox.Show("test");
-                dt = MesDatas.DsGlobal.Tables["Espece"];
-                
-                
-
-            }
-            foreach (DataRow r in dt.Rows)
-            {
-                //MessageBox.Show(r["nom"].ToString());
-                // Ajout des informations pour toutes les espèces (générales)
-                // Ajout du lien de l'image correspondant à l'espèce
-                string nomImageEspece = "";
-
-                // Ajout du nom de l'espèce
-                string nomEspece = r["nom"].ToString();
-
-                // Ajout de sa couleur
-                string couleur = r["couleur"].ToString();
-
-                // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
-                List<string> listePlanetes = new List<string>();
-
-                if (filtreEstPresent)
+                // Si la recherche spécifiée ne marche pas, on l'indique
+                if (dt.Rows.Count == 0)
                 {
-                    DataTable planete = MesDatas.DsGlobal.Tables["Habiter"];
-                    // Planete
-                    //DataRow dr = planete.Rows[1];
-                    
-                    //MessageBox.Show(dr[1] + " - " + r["id"]);
-                    
-                    
-                    foreach (DataRow dr in planete.Rows)
-                    {
-                        //MessageBox.Show(r["id"] + " - " + dr[1]);
-                        if (dr[1].ToString() == r["id"].ToString())
-                        {
-                            listePlanetes.Add(dr[0].ToString());
-                        }
-                    }
-                    
-                    
-
+                    resultatExiste = false;
                 }
                 else
                 {
+                    dt.TableName = "Filtre";
+                }
+                filtreEstPresent = true;
+            }
+            // Sinon on récupère simplement les données directements depuis le DataSet local
+            else
+            {
+                dt = MesDatas.DsGlobal.Tables["Espece"];
+            }
 
+            // Si la recherche spécifiée ne marche pas, on l'indique
+            if (!resultatExiste)
+            {
+                Label error = afficherMessageErreurEspece();
+                pnlEspeces.Controls.Add(error);
+            }
+            else
+            {
+                foreach (DataRow r in dt.Rows)
+                {
 
-                    DataRow[] planete = r.GetChildRows("FK_Espece_Habiter");
+                    // Ajout des informations pour toutes les espèces (générales)
+                    // Ajout du lien de l'image correspondant à l'espèce
+                    string nomImageEspece = "";
 
-                    foreach (DataRow dr in planete)
+                    // Ajout du nom de l'espèce
+                    string nomEspece = r["nom"].ToString();
+
+                    // Ajout de sa couleur
+                    string couleur = r["couleur"].ToString();
+
+                    // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
+                    List<string> listePlanetes = new List<string>();
+
+                    // Si un filtre est présent, on traite la sélection des planètes différemment comme on n'a pas de relations avec la table filtrée
+                    if (filtreEstPresent)
                     {
-                        if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                        // On parcourt la table Habiter
+                        DataTable planete = MesDatas.DsGlobal.Tables["Habiter"];
+
+                        foreach (DataRow dr in planete.Rows)
                         {
-                            listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                            // Si cela correspond à l'élément présent dans le filtre, on le rajoute
+                            if (dr[1].ToString() == r["id"].ToString())
+                            {
+                                listePlanetes.Add(dr[0].ToString());
+                            }
                         }
-
                     }
-                }
-                // test du UserControl
-                // Création de l'UserControl en le surchargeant); 
-                UserControlEspeces u = new UserControlEspeces(nomImageEspece, nomEspece, couleur, listePlanetes);
+                    // Sinon, on traite l'affichage des planètes normalement :
+                    else
+                    {
+                        // On parcourt les planètes et on les affiche toutes en les reliant aux bonnes espèces
+                        DataRow[] planete = r.GetChildRows("FK_Espece_Habiter");
+
+                        foreach (DataRow dr in planete)
+                        {
+                            if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                            {
+                                listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                            }
+
+                        }
+                    }
+
+                    // Création de l'UserControl en le surchargeant 
+                    UserControlEspeces u = new UserControlEspeces(nomImageEspece, nomEspece, couleur, listePlanetes);
 
 
-                // Affichage des UserControl les uns en-dessous des autres
-                u.Top = top;
-                u.Left = left;
+                    // Affichage des UserControl les uns en-dessous des autres
+                    u.Top = top;
+                    u.Left = left;
 
-                left += u.Width;
+                    left += u.Width;
 
-                if (left > pnlEspeces.Width)
-                {
-                    top += u.Height;
-                    left = 0;
-                }
+                    if (left > pnlEspeces.Width)
+                    {
+                        top += u.Height;
+                        left = 0;
+                    }
 
 
-                // Ajout de l'UserControl dans le panel du tableau de bord
-                pnlEspeces.Controls.Add(u);
-
-                // Supprimer la table temporaire des filtres si nécessaire
-                if (filtreEstPresent)
-                {
-                    
+                    // Ajout de l'UserControl dans le panel du tableau de bord
+                    pnlEspeces.Controls.Add(u);
                 }
             }
         }
@@ -456,194 +455,377 @@ namespace SAE24
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            // Décoche les radioButton
-            filtreCouleur = false;
-            foreach (RadioButton rdb in grpEspeces.Controls.OfType<RadioButton>())
-            {
-                rdbAllies.Checked = false;
-                rdbEnnemis.Checked = false;
-            }
+            /*
+                Permet de réinitialiser tous les éléments de recherche dans grpEspeces
+            */
+
+            // Décoche les CheckBoxes confirmant les filtres
+            ckNom.Checked = false;
+            ckCouleur.Checked = false;
+
+            // Décoche les RadioButtons précisant si l'espèce est alliée ou ennemie
+            rdbAllies.Checked = false;
+            rdbEnnemis.Checked = false;
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
-            // Vérifie
-            foreach (RadioButton rdb in grpEspeces.Controls.OfType<RadioButton>())
+            // Vérifie si un filtre par allié ou ennemi est réalisée ou non et agis en conséquence
+            if (rdbAllies.Checked)
             {
-                if (rdbAllies.Checked)
-                {
-                    pnlAllies.Visible = true;
-                    pnlEnnemis.Visible = false;
-                    pnlEspeces.Visible = false;
-                    InfoEspecesAlliees();
+                InfoEspecesAlliees();
+                pnlAllies.Visible = true;
+                pnlEnnemis.Visible = false;
+                pnlEspeces.Visible = false;
+                grpEspeces.Visible = true;
+            }
+            else if (rdbEnnemis.Checked)
+            {
+                InfoEspecesEnnemies();
+                pnlAllies.Visible = false;
+                pnlEnnemis.Visible = true;
+                pnlEspeces.Visible = false;
+                grpEspeces.Visible = true;
 
+            }
+            else
+            {
+                InfosEspeces();
+                pnlAllies.Visible = false;
+                pnlEnnemis.Visible = false;
+                pnlEspeces.Visible = true;
+                grpEspeces.Visible = true;
 
-                }
-                else if (rdbEnnemis.Checked)
-                {
-                    pnlAllies.Visible = false;
-                    pnlEnnemis.Visible = true;
-                    pnlEspeces.Visible = false;
-                    InfoEspecesEnnemies();
-                }
-                else
-                {
-                    //VerifContenuComboBoxes();
-                    InfosEspeces();
-                    pnlAllies.Visible = false;
-                    pnlEnnemis.Visible = false;
-                    pnlEspeces.Visible = true;
-                    grpEspeces.Visible = true;
-                    
-                }
             }
         }
 
         private void InfoEspecesAlliees()
         {
+            
+            // Initialisation des éléments de départ et affichage propre des bons éléments
+            pnlAllies.Controls.Clear();
+            pnlEspeces.Visible = false;
+            grpEspeces.Visible = false;
+            pnlAllies.Visible = false;
+            pnlEnnemis.Visible = false;
             Int32 top = 0;
             Int32 left = 0;
+            DataRow[] tabTemp;
+            DataRow[] clone;
+            DataTable dt = new DataTable();
+            DataTable dtTemp;
+            bool filtreEstPresent = false;
+            bool resultatExiste = true;
 
-            foreach (DataRow r in MesDatas.DsGlobal.Tables["Allie"].Rows)
+            if (ckCouleur.Checked)
             {
-                //MessageBox.Show(r["idEspece"].ToString());
-                //MessageBox.Show(r["idEspece"].ToString() + " : " + r.GetParentRow("FK_Espece_Allie")[1].ToString());
+                // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
+                string filtre = "couleur = '" + cboCouleur.SelectedValue + "'";
+                tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+                dtTemp = tabTemp.CopyToDataTable();
+                dtTemp.TableName = "Filtre";
 
-                //MessageBox.Show(r["nom"].ToString());
-                // Ajout des informations pour toutes les espèces (générales)
-                // Ajout du lien de l'image correspondant à l'espèce
-                string degreBienveillance = r["degreBienveillance"].ToString();
-                string instrument = r["instrumentMusique"].ToString();
-                string datePremierContact = r["datePremierContact"].ToString();
-
-                string nomImageEspece = "";
-
-                // Ajout du nom de l'espèce
-                string nomEspece = r.GetParentRow("FK_Espece_Allie")[1].ToString();
-
-                // Ajout de sa couleur
-                string couleur = r.GetParentRow("FK_Espece_Allie")[2].ToString();
-
-                // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
-                List<string> listePlanetes = new List<string>();
-
-                DataRow[] planetes = r.GetParentRow("FK_Espece_Allie").GetChildRows("FK_Espece_Habiter");
-
-                foreach (DataRow dr in planetes)
+                // Parcours des espèces alliées : on vérifie si les espèces filtrées par couleur sont des alliés ou pas
+                string filtre2 = "";
+                int nbEspeces = 0;
+                foreach (DataRow dr in MesDatas.DsGlobal.Tables["Allie"].Rows)
                 {
-                    if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                    foreach (DataRow d in dtTemp.Rows)
                     {
-                        listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                        // Si les espèces alliées sont de la bonne couleur, on les rajoute dans le filtre
+                        if (dr[0].ToString() == d[0].ToString())
+                        {
+                            // Faire un filtre ne contenant que cette espèce
+                            // Il peut y avoir plusieurs espèces ayant cette couleur, d'où l'utilisatino du 'OR' pour le filtre
+                            filtre2 += "idEspece = " + d[0] + " OR ";
+                            nbEspeces++;
+                        }
+                    }
+                    
+
+                }
+                // Si aucune espèce ne correspond à la recherche spécifiée, on l'indique
+                if (nbEspeces == 0)
+                {
+                    resultatExiste = false;
+                }
+                else
+                {
+                    // On enlève le dernier 'Or' de trop pour avoir un filtre fonctionnel
+                    string filtreFinal = filtre2.Remove(filtre2.Length - 4);
+                    // On place ce filtre final dans une table 'clone' qui va être copiée dans la DataTable
+                    clone = MesDatas.DsGlobal.Tables["Allie"].Select(filtreFinal);
+                    dt = clone.CopyToDataTable();
+                    filtreEstPresent = true;
+                }
+                
+            }
+            else
+            {
+                // S'il n'y a pas de filtre, on parcourt simplement les éléments de la table Allie
+                dt = MesDatas.DsGlobal.Tables["Allie"];
+            }
+
+            // Si aucune espèce ne correspond à la recherche spécifiée, on l'indique
+            if (!resultatExiste)
+            {
+                Label error = afficherMessageErreurEspece();
+                pnlAllies.Controls.Add(error);
+            }
+            // Sinon le reste se passe comme sur des roulettes ^_^
+            else
+            {
+                foreach (DataRow r in dt.Rows)
+                {
+                    // Affichage des premiers éléments de base présents directement dans la table Allie
+                    string degreBienveillance = r["degreBienveillance"].ToString();
+                    string instrument = r["instrumentMusique"].ToString();
+                    string datePremierContact = r["datePremierContact"].ToString();
+                    List<string> listePlanetes = new List<string>();
+
+                    string nomImageEspece = "";
+
+                    string nomEspece = "";
+                    string couleur = "";
+
+                    // Pour les éléments qui ne sont pas dans la table Allie, on vérifie si on utilise un filtre ou pas
+                    // En effet, on ne parcourt pas les données de la même façon :
+                    // par comparaison des tables Allie et Espece en parcourant cette dernière...
+                    if (filtreEstPresent)
+                    {
+                        // Recherche du nom et de la couleur de l'espèce pour les afficher
+                        foreach (DataRow dr in MesDatas.DsGlobal.Tables["Espece"].Rows)
+                        {
+                            if (dr[0].ToString() == r[0].ToString())
+                            {
+                                nomEspece = dr[1].ToString();
+                                couleur = dr[2].ToString();
+                            }
+                        }
+
+                        // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
+                        DataTable planete = MesDatas.DsGlobal.Tables["Habiter"];
+
+                        foreach (DataRow dr in planete.Rows)
+                        {
+
+                            if (dr[1].ToString() == r["idEspece"].ToString())
+                            {
+                                listePlanetes.Add(dr[0].ToString());
+                            }
+                        }
+                    }
+                    // ...ou par relation de clé étrangère définie dans AjoutRelation()
+                    else
+                    {
+                        // Ajout du nom de l'espèce
+                        nomEspece = r.GetParentRow("FK_Espece_Allie")[1].ToString();
+
+                        // Ajout de sa couleur
+                        couleur = r.GetParentRow("FK_Espece_Allie")[2].ToString();
+
+                        // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
+
+                        DataRow[] planetes = r.GetParentRow("FK_Espece_Allie").GetChildRows("FK_Espece_Habiter");
+
+                        foreach (DataRow dr in planetes)
+                        {
+                            if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                            {
+                                listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                            }
+
+                        }
                     }
 
+                    // test du UserControl
+                    // Création de l'UserControl en le surchargeant); 
+                    UserControlEspecesAlliees u = new UserControlEspecesAlliees(nomImageEspece, couleur, nomEspece, degreBienveillance, listePlanetes, datePremierContact, instrument);
+
+
+                    // Affichage des UserControl les uns en-dessous des autres
+                    u.Top = top;
+                    u.Left = left;
+
+                    left += u.Width;
+
+                    if (left > pnlAllies.Width)
+                    {
+                        top += u.Height;
+                        left = 0;
+                    }
+
+                    // Ajout de l'UserControl dans le panel du tableau de bord
+                    pnlAllies.Controls.Add(u);
+
                 }
-
-                // test du UserControl
-                // Création de l'UserControl en le surchargeant); 
-                UserControlEspecesAlliees u = new UserControlEspecesAlliees(nomImageEspece, couleur, nomEspece, degreBienveillance, listePlanetes, datePremierContact, instrument); 
-
-
-                // Affichage des UserControl les uns en-dessous des autres
-                u.Top = top;
-                u.Left = left;
-
-                left += u.Width;
-
-                if (left > pnlAllies.Width)
-                {
-                    top += u.Height;
-                    left = 0;
-                }
-
-                // Ajout de l'UserControl dans le panel du tableau de bord
-                pnlAllies.Controls.Add(u);
-
             }
         }
 
         private void InfoEspecesEnnemies()
         {
+            // Initialisation des éléments de départ et affichage propre des bons éléments
+            pnlEnnemis.Controls.Clear();
+            pnlEspeces.Visible = false;
+            grpEspeces.Visible = false;
+            pnlAllies.Visible = false;
+            pnlEnnemis.Visible = false;
             Int32 top = 0;
             Int32 left = 0;
-            DataRow[] tab;
-            DataTable dt = MesDatas.DsGlobal.Tables["Ennemi"];
-            /*
-            if (filtreCouleur)
+            DataRow[] tabTemp;
+            DataRow[] clone;
+            DataTable dt = new DataTable();
+            DataTable dtTemp;
+            bool filtreEstPresent = false;
+            bool resultatExiste = true;
+
+            if (ckCouleur.Checked)
             {
-                string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
-                tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
-                dt = tab.CopyToDataTable();
-                //MesDatas.DsGlobal.Tables.Add(dt);
-                //filtreCouleur = false;
+                // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
+                string filtre = "couleur = '" + cboCouleur.SelectedValue + "'";
+                tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+                dtTemp = tabTemp.CopyToDataTable();
+                dtTemp.TableName = "Filtre";
+
+                // Parcours des espèces alliées : on vérifie si les espèces filtrées par couleur sont des alliés ou pas
+                string filtre2 = "";
+                int nbEspeces = 0;
+
+                foreach (DataRow dr in MesDatas.DsGlobal.Tables["Ennemi"].Rows)
+                {
+                    foreach (DataRow d in dtTemp.Rows)
+                    {
+                        // Si les espèces alliées sont de la bonne couleur, on les rajoute dans le filtre
+                        if (dr[0].ToString() == d[0].ToString())
+                        {
+                            // Faire un filtre ne contenant que cette espèce
+                            // Il peut y avoir plusieurs espèces ayant cette couleur, d'où l'utilisatino du 'OR' pour le filtre
+                            filtre2 += "idEspece = " + d[0] + " OR ";
+                            nbEspeces++;
+                        }
+                    }
+
+
+                }
+                // Si aucune espèce correspondant au critère(s) de recherche n'a été trouvé, on l'indique
+                if (nbEspeces == 0)
+                {
+                    resultatExiste = false;
+                }
+                else
+                {
+                    // On enlève le dernier 'Or' de trop pour avoir un filtre fonctionnel
+                    string filtreFinal = filtre2.Remove(filtre2.Length - 4);
+                    // On place ce filtre final dans une table 'clone' qui va être copiée dans la DataTable
+                    clone = MesDatas.DsGlobal.Tables["Ennemi"].Select(filtreFinal);
+                    dt = clone.CopyToDataTable();
+                    filtreEstPresent = true;
+                }
+                
             }
             else
             {
+                // S'il n'y a pas de filtre, on parcourt simplement les éléments de la table Allie
                 dt = MesDatas.DsGlobal.Tables["Ennemi"];
             }
-            */
-            foreach (DataRow r in dt.Rows)
+
+            if (!resultatExiste)
             {
-                //MessageBox.Show(r["idEspece"].ToString());
-                //MessageBox.Show(r["idEspece"].ToString() + " : " + r.GetParentRow("FK_Espece_Allie")[1].ToString());
+                Label error = afficherMessageErreurEspece();
+                pnlEnnemis.Controls.Add(error);
+            }
+            else
+            {
 
-                //MessageBox.Show(r["nom"].ToString());
-                // Ajout des informations pour toutes les espèces (générales)
-                // Ajout du lien de l'image correspondant à l'espèce
-                string degreAgressivite = r["degreAgressivite"].ToString();
-                string arme = r["typeArme"].ToString();
 
-                string nomImageEspece = "";
-
-                // Ajout du nom de l'espèce
-                string nomEspece = r.GetParentRow("FK_Espece_Ennemi")[1].ToString();
-
-                // Ajout de sa couleur
-                string couleur = r.GetParentRow("FK_Espece_Ennemi")[2].ToString();
-
-                // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
-                List<string> listePlanetes = new List<string>();
-
-                DataRow[] planetes = r.GetParentRow("FK_Espece_Ennemi").GetChildRows("FK_Espece_Habiter");
-
-                foreach (DataRow dr in planetes)
+                foreach (DataRow r in dt.Rows)
                 {
-                    if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                    // Affichage des premiers éléments de base présents directement dans la table Allie
+                    string degreAgressivite = r["degreAgressivite"].ToString();
+                    string arme = r["typeArme"].ToString();
+
+                    string nomImageEspece = "";
+
+                    string nomEspece = "";
+                    string couleur = "";
+
+                    List<string> listePlanetes = new List<string>();
+
+                    // Pour les éléments qui ne sont pas dans la table Allie, on vérifie si on utilise un filtre ou pas
+                    // En effet, on ne parcourt pas les données de la même façon :
+                    // par comparaison des tables Ennemi et Espece en parcourant cette dernière...
+                    if (filtreEstPresent)
                     {
-                        listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                        // Recherche du nom et de la couleur de l'espèce pour les afficher
+                        foreach (DataRow dr in MesDatas.DsGlobal.Tables["Espece"].Rows)
+                        {
+                            if (dr[0].ToString() == r[0].ToString())
+                            {
+                                nomEspece = dr[1].ToString();
+                                couleur = dr[2].ToString();
+                            }
+                        }
+
+                        // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
+                        DataTable planete = MesDatas.DsGlobal.Tables["Habiter"];
+
+                        foreach (DataRow dr in planete.Rows)
+                        {
+
+                            if (dr[1].ToString() == r["idEspece"].ToString())
+                            {
+                                listePlanetes.Add(dr[0].ToString());
+                            }
+                        }
+                    }
+                    // ...ou par relation de clé étrangère définie dans AjoutRelation()
+                    else
+                    {
+                        // Ajout du nom de l'espèce
+                        nomEspece = r.GetParentRow("FK_Espece_Ennemi")[1].ToString();
+
+                        // Ajout de sa couleur
+                        couleur = r.GetParentRow("FK_Espece_Ennemi")[2].ToString();
+
+                        // Liste de la (des) planète(s) sur laquelle (lesquelles) l'espèce vit
+
+                        DataRow[] planetes = r.GetParentRow("FK_Espece_Ennemi").GetChildRows("FK_Espece_Habiter");
+
+                        foreach (DataRow dr in planetes)
+                        {
+                            if (dr.GetParentRow("FK_Planete_Habiter")[0] != null)
+                            {
+                                listePlanetes.Add(dr.GetParentRow("FK_Planete_Habiter")[0].ToString());
+                            }
+
+                        }
                     }
 
+                    // Création de l'UserControl en le surchargeant); 
+                    UserControlEspecesEnnemies u = new UserControlEspecesEnnemies(nomImageEspece, couleur, nomEspece, listePlanetes, degreAgressivite, arme);
+
+
+                    // Affichage des UserControl les uns en-dessous des autres
+                    u.Top = top;
+                    u.Left = left;
+
+                    left += u.Width;
+
+                    if (left > pnlEnnemis.Width)
+                    {
+                        top += u.Height;
+                        left = 0;
+                    }
+
+
+                    // Ajout de l'UserControl dans le panel du tableau de bord
+                    pnlEnnemis.Controls.Add(u);
+
+
                 }
-
-                // test du UserControl
-                // Création de l'UserControl en le surchargeant); 
-                UserControlEspecesEnnemies u = new UserControlEspecesEnnemies(nomImageEspece, couleur, nomEspece, listePlanetes, degreAgressivite, arme);
-
-
-                // Affichage des UserControl les uns en-dessous des autres
-                u.Top = top;
-                u.Left = left;
-
-                left += u.Width;
-
-                if (left > pnlEnnemis.Width)
-                {
-                    top += u.Height;
-                    left = 0;
-                }
-
-
-                // Ajout de l'UserControl dans le panel du tableau de bord
-                pnlEnnemis.Controls.Add(u);
-                
-
             }
         }
 
-        private void Filtre()
-        {
-            string filtre = "couleur = '" + cboCouleur.SelectedItem + "'";
-            DataRow[] tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
-        }
 
         private void ChargementComboBoxes()
         {
@@ -675,32 +857,18 @@ namespace SAE24
             cboNom.DisplayMember = "nom";
             cboNom.ValueMember = "nom";
         }
-        
-        private void VerifContenuComboBoxes()
-        {
-            // Parcours des combobox
-            
-            foreach (System.Windows.Forms.ComboBox cbo in grpEspeces.Controls.OfType<System.Windows.Forms.ComboBox>())
-            {
-                MessageBox.Show(filtreCouleur.ToString());
-                DataRow[] tab;
-                DataTable dt;
-                if (filtreCouleur == true)
-                {
-                    string filtre = "couleur = '" + cboCouleur.SelectedValue + "'";
-                    tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
-                    dt = tab.CopyToDataTable();
-                    MesDatas.DsGlobal.Tables.Add(dt);
-                    //filtreCouleur = false;
-                }
-                else
-                {
-                    dt = MesDatas.DsGlobal.Tables["Espece"];
-                }
 
-            }
-            MessageBox.Show("Test : " + cboCouleur.Name + " : " + cboCouleur.SelectedValue);
-            
+        private Label afficherMessageErreurEspece()
+        {
+            /*
+             * Renvoie un label contenant un message d'erreur si la recherche d'espèce n'est pas fructueuse
+            */
+            Label errorEspece = new Label();
+            errorEspece.Text = "Aucun résultat ne correspond à votre recherche :( ";
+            errorEspece.Size = new Size(200, 150);
+            errorEspece.Location = new Point(pnlEnnemis.Width / 2 - 50, pnlEnnemis.Height / 2);
+            pnlEnnemis.Controls.Add(errorEspece);
+            return errorEspece;
         }
 
         private void cboNom_SelectedIndexChanged(object sender, EventArgs e)
@@ -715,7 +883,12 @@ namespace SAE24
 
         private void cboCouleur_SelectedValueChanged(object sender, EventArgs e)
         {
-            filtreCouleur = true;
+            
+        }
+
+        private void ckCouleur_CheckedChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

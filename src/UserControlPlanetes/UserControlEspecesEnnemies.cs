@@ -53,6 +53,7 @@ namespace UserControlPlanetes
             {
                 lblOrigine.Text = "Origine inconnue";
                 lblOrigine.ForeColor = Color.Red;
+                lblNbPlanete.Visible = false;
             }
 
             // Ajout de l'image pour l'espèce ennemie
