@@ -194,24 +194,41 @@ namespace SAE24
 
             // Initialisation des éléments pour la recherche (avec ou sans filtre)
             DataRow[] tab;
-            DataTable dt;
+            DataTable dt = new DataTable();
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            // S'il y a un filtre à appliquer, on prend ce qui est indiqué dans la combobox pour créer un filtr
-            if (ckCouleur.Checked)
+            // S'il y a un filtre à appliquer, on prend ce qui est indiqué dans la combobox et/ou dans la Textbox pour créer un filtr
+            if (ckCouleur.Checked || txtNomEspece.Text != string.Empty)
             {
-                string filtre = "couleur = '" + cboCouleur.SelectedValue + "'";
+                // On ajuste le filtre en fonction des indications de recherche
+                string filtre = "";
+                // Pour la couleur
+                if (ckCouleur.Checked)
+                {
+                    filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
+                }
+                // Si les deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
+                if (ckCouleur.Checked && txtNomEspece.Text != string.Empty)
+                {
+                    filtre += " and ";
+                }
+                // Pour le nom
+                if (txtNomEspece.Text != string.Empty)
+                {
+                    filtre += "nom like '" + txtNomEspece.Text + "%'";
+                }
                 tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
-                // on copie la table filtrée dans une DataTable
-                dt = tab.CopyToDataTable();
                 // Si la recherche spécifiée ne marche pas, on l'indique
-                if (dt.Rows.Count == 0)
+                if (tab.Length == 0)
                 {
                     resultatExiste = false;
-                }
+                }             
+                // Sinon on continue
                 else
                 {
+                    // on copie la table filtrée dans une DataTable
+                    dt = tab.CopyToDataTable();
                     dt.TableName = "Filtre";
                 }
                 filtreEstPresent = true;
@@ -518,47 +535,73 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            if (ckCouleur.Checked)
+            if (ckCouleur.Checked || txtNomEspece.Text != string.Empty)
             {
                 // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
-                string filtre = "couleur = '" + cboCouleur.SelectedValue + "'";
-                tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
-                dtTemp = tabTemp.CopyToDataTable();
-                dtTemp.TableName = "Filtre";
-
-                // Parcours des espèces alliées : on vérifie si les espèces filtrées par couleur sont des alliés ou pas
-                string filtre2 = "";
-                int nbEspeces = 0;
-                foreach (DataRow dr in MesDatas.DsGlobal.Tables["Allie"].Rows)
+                // On crée le filtre au fur et à mesure
+                string filtre = "";
+                // Pour la couleur
+                if (ckCouleur.Checked)
                 {
-                    foreach (DataRow d in dtTemp.Rows)
-                    {
-                        // Si les espèces alliées sont de la bonne couleur, on les rajoute dans le filtre
-                        if (dr[0].ToString() == d[0].ToString())
-                        {
-                            // Faire un filtre ne contenant que cette espèce
-                            // Il peut y avoir plusieurs espèces ayant cette couleur, d'où l'utilisatino du 'OR' pour le filtre
-                            filtre2 += "idEspece = " + d[0] + " OR ";
-                            nbEspeces++;
-                        }
-                    }
                     
-
+                    filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
-                // Si aucune espèce ne correspond à la recherche spécifiée, on l'indique
-                if (nbEspeces == 0)
+                // Si les deux filtres sont sélectionnés
+                if (ckCouleur.Checked && txtNomEspece.Text != string.Empty)
+                {
+                    filtre += " and ";
+                }
+                // Pour le nom
+                if (txtNomEspece.Text != string.Empty)
+                {
+                    filtre += "nom like '" + txtNomEspece.Text + "%'";
+                }
+                tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+                // Si le filtre ne correspond à aucune espèce
+                if (tabTemp.Length == 0)
                 {
                     resultatExiste = false;
                 }
                 else
                 {
-                    // On enlève le dernier 'Or' de trop pour avoir un filtre fonctionnel
-                    string filtreFinal = filtre2.Remove(filtre2.Length - 4);
-                    // On place ce filtre final dans une table 'clone' qui va être copiée dans la DataTable
-                    clone = MesDatas.DsGlobal.Tables["Allie"].Select(filtreFinal);
-                    dt = clone.CopyToDataTable();
-                    filtreEstPresent = true;
+                    dtTemp = tabTemp.CopyToDataTable();
+                    dtTemp.TableName = "Filtre";
+
+                    // Parcours des espèces alliées : on vérifie si les espèces filtrées sont des alliés ou pas
+                    string filtre2 = "";
+                    int nbEspeces = 0;
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Allie"].Rows)
+                    {
+                        foreach (DataRow d in dtTemp.Rows)
+                        {
+                            // Si les espèces alliées sont de la bonne couleur, on les rajoute dans le filtre
+                            if (dr[0].ToString() == d[0].ToString())
+                            {
+                                // Faire un filtre ne contenant que cette espèce
+                                // Il peut y avoir plusieurs espèces ayant cette couleur, d'où l'utilisatino du 'OR' pour le filtre
+                                filtre2 += "idEspece = " + d[0] + " OR ";
+                                nbEspeces++;
+                            }
+                        }
+
+
+                    }
+                    // Si aucune espèce ne correspond à la recherche spécifiée, on l'indique
+                    if (nbEspeces == 0)
+                    {
+                        resultatExiste = false;
+                    }
+                    else
+                    {
+                        // On enlève le dernier 'Or' de trop pour avoir un filtre fonctionnel
+                        string filtreFinal = filtre2.Remove(filtre2.Length - 4);
+                        // On place ce filtre final dans une table 'clone' qui va être copiée dans la DataTable
+                        clone = MesDatas.DsGlobal.Tables["Allie"].Select(filtreFinal);
+                        dt = clone.CopyToDataTable();
+                        filtreEstPresent = true;
+                    }
                 }
+                
                 
             }
             else
@@ -680,47 +723,74 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            if (ckCouleur.Checked)
+            if (ckCouleur.Checked || txtNomEspece.Text != string.Empty)
             {
                 // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
-                string filtre = "couleur = '" + cboCouleur.SelectedValue + "'";
-                tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
-                dtTemp = tabTemp.CopyToDataTable();
-                dtTemp.TableName = "Filtre";
-
-                // Parcours des espèces alliées : on vérifie si les espèces filtrées par couleur sont des alliés ou pas
-                string filtre2 = "";
-                int nbEspeces = 0;
-
-                foreach (DataRow dr in MesDatas.DsGlobal.Tables["Ennemi"].Rows)
+                // On crée le filtre au fur et à mesure
+                string filtre = "";
+                // Pour la couleur
+                if (ckCouleur.Checked)
                 {
-                    foreach (DataRow d in dtTemp.Rows)
-                    {
-                        // Si les espèces alliées sont de la bonne couleur, on les rajoute dans le filtre
-                        if (dr[0].ToString() == d[0].ToString())
-                        {
-                            // Faire un filtre ne contenant que cette espèce
-                            // Il peut y avoir plusieurs espèces ayant cette couleur, d'où l'utilisatino du 'OR' pour le filtre
-                            filtre2 += "idEspece = " + d[0] + " OR ";
-                            nbEspeces++;
-                        }
-                    }
 
-
+                    filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
-                // Si aucune espèce correspondant au critère(s) de recherche n'a été trouvé, on l'indique
-                if (nbEspeces == 0)
+                // Si les deux filtres sont sélectionnés
+                if (ckCouleur.Checked && txtNomEspece.Text != string.Empty)
+                {
+                    filtre += " and ";
+                }
+                // Pour le nom
+                if (txtNomEspece.Text != string.Empty)
+                {
+                    filtre += "nom like '" + txtNomEspece.Text + "%'";
+                }
+                tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+                // Si le filtre ne correspond à aucune espèce
+                if (tabTemp.Length == 0)
                 {
                     resultatExiste = false;
                 }
                 else
                 {
-                    // On enlève le dernier 'Or' de trop pour avoir un filtre fonctionnel
-                    string filtreFinal = filtre2.Remove(filtre2.Length - 4);
-                    // On place ce filtre final dans une table 'clone' qui va être copiée dans la DataTable
-                    clone = MesDatas.DsGlobal.Tables["Ennemi"].Select(filtreFinal);
-                    dt = clone.CopyToDataTable();
-                    filtreEstPresent = true;
+                    // Sinon on continue
+
+                    dtTemp = tabTemp.CopyToDataTable();
+                    dtTemp.TableName = "Filtre";
+
+                    // Parcours des espèces alliées : on vérifie si les espèces filtrées par couleur sont des alliés ou pas
+                    string filtre2 = "";
+                    int nbEspeces = 0;
+
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Ennemi"].Rows)
+                    {
+                        foreach (DataRow d in dtTemp.Rows)
+                        {
+                            // Si les espèces alliées sont de la bonne couleur, on les rajoute dans le filtre
+                            if (dr[0].ToString() == d[0].ToString())
+                            {
+                                // Faire un filtre ne contenant que cette espèce
+                                // Il peut y avoir plusieurs espèces ayant cette couleur, d'où l'utilisatino du 'OR' pour le filtre
+                                filtre2 += "idEspece = " + d[0] + " OR ";
+                                nbEspeces++;
+                            }
+                        }
+
+
+                    }
+                    // Si aucune espèce correspondant au critère(s) de recherche n'a été trouvé, on l'indique
+                    if (nbEspeces == 0)
+                    {
+                        resultatExiste = false;
+                    }
+                    else
+                    {
+                        // On enlève le dernier 'Or' de trop pour avoir un filtre fonctionnel
+                        string filtreFinal = filtre2.Remove(filtre2.Length - 4);
+                        // On place ce filtre final dans une table 'clone' qui va être copiée dans la DataTable
+                        clone = MesDatas.DsGlobal.Tables["Ennemi"].Select(filtreFinal);
+                        dt = clone.CopyToDataTable();
+                        filtreEstPresent = true;
+                    }
                 }
                 
             }
@@ -853,10 +923,6 @@ namespace SAE24
             cboCouleur.DisplayMember = "couleur";
             cboCouleur.ValueMember = "couleur";
 
-            // TextBox txtNomEspece
-            txtNomEspece.Text = "Nom de l'espèce...";
-
-
         }
 
         private Label afficherMessageErreurEspece()
@@ -918,7 +984,7 @@ namespace SAE24
 
         private void txtNomEspece_MouseClick(object sender, MouseEventArgs e)
         {
-            txtNomEspece.Text = string.Empty;
+
         }
     }
 }

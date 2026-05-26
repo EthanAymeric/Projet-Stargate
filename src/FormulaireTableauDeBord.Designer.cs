@@ -46,6 +46,7 @@
             this.pnlAllies = new System.Windows.Forms.Panel();
             this.pnlEnnemis = new System.Windows.Forms.Panel();
             this.txtNomEspece = new System.Windows.Forms.TextBox();
+            this.lblIndicationNom = new System.Windows.Forms.Label();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.SuspendLayout();
@@ -136,6 +137,7 @@
             // 
             // grpEspeces
             // 
+            this.grpEspeces.Controls.Add(this.lblIndicationNom);
             this.grpEspeces.Controls.Add(this.txtNomEspece);
             this.grpEspeces.Controls.Add(this.ckCouleur);
             this.grpEspeces.Controls.Add(this.cboCouleur);
@@ -234,12 +236,21 @@
             // 
             // txtNomEspece
             // 
-            this.txtNomEspece.Location = new System.Drawing.Point(229, 22);
+            this.txtNomEspece.Location = new System.Drawing.Point(229, 25);
             this.txtNomEspece.Name = "txtNomEspece";
             this.txtNomEspece.Size = new System.Drawing.Size(182, 26);
             this.txtNomEspece.TabIndex = 7;
             this.txtNomEspece.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtNomEspece_MouseClick);
             this.txtNomEspece.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomEspece_KeyPress);
+            // 
+            // lblIndicationNom
+            // 
+            this.lblIndicationNom.AutoSize = true;
+            this.lblIndicationNom.Location = new System.Drawing.Point(430, 26);
+            this.lblIndicationNom.Name = "lblIndicationNom";
+            this.lblIndicationNom.Size = new System.Drawing.Size(210, 20);
+            this.lblIndicationNom.TabIndex = 8;
+            this.lblIndicationNom.Text = "Nom de l\'espèce recherchée";
             // 
             // FrmTableauDeBord
             // 
@@ -288,6 +299,7 @@
         private System.Windows.Forms.ComboBox cboCouleur;
         private System.Windows.Forms.CheckBox ckCouleur;
         private System.Windows.Forms.TextBox txtNomEspece;
+        private System.Windows.Forms.Label lblIndicationNom;
     }
 }
 
