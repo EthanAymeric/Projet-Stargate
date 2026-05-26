@@ -90,6 +90,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlMessageErreur.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlMessageErreur.Designer.cs">
+      <DependentUpon>UserControlMessageErreur.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlPlanetes\Properties\AssemblyInfo.cs" />
     <Compile Include="UserControlPlanetes\UserControl1.cs">
       <SubType>UserControl</SubType>
@@ -139,6 +145,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControlMessageErreur.resx">
+      <DependentUpon>UserControlMessageErreur.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlPlanetes\UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </EmbeddedResource>

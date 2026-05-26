@@ -242,7 +242,7 @@ namespace SAE24
             // Si la recherche spécifiée ne marche pas, on l'indique
             if (!resultatExiste)
             {
-                Label error = afficherMessageErreurEspece();
+                UserControlMessageErreur error = new UserControlMessageErreur();
                 pnlEspeces.Controls.Add(error);
             }
             else
@@ -613,7 +613,7 @@ namespace SAE24
             // Si aucune espèce ne correspond à la recherche spécifiée, on l'indique
             if (!resultatExiste)
             {
-                Label error = afficherMessageErreurEspece();
+                UserControlMessageErreur error = new UserControlMessageErreur();
                 pnlAllies.Controls.Add(error);
             }
             // Sinon le reste se passe comme sur des roulettes ^_^
@@ -802,7 +802,7 @@ namespace SAE24
 
             if (!resultatExiste)
             {
-                Label error = afficherMessageErreurEspece();
+                UserControlMessageErreur error = new UserControlMessageErreur();
                 pnlEnnemis.Controls.Add(error);
             }
             else
@@ -923,19 +923,6 @@ namespace SAE24
             cboCouleur.DisplayMember = "couleur";
             cboCouleur.ValueMember = "couleur";
 
-        }
-
-        private Label afficherMessageErreurEspece()
-        {
-            /*
-             * Renvoie un label contenant un message d'erreur si la recherche d'espèce n'est pas fructueuse
-            */
-            Label errorEspece = new Label();
-            errorEspece.Text = "Aucun résultat ne correspond à votre recherche :( ";
-            errorEspece.Size = new Size(200, 150);
-            errorEspece.Location = new Point(pnlEnnemis.Width / 2 - 50, pnlEnnemis.Height / 2);
-            pnlEnnemis.Controls.Add(errorEspece);
-            return errorEspece;
         }
 
         private void cboNom_SelectedIndexChanged(object sender, EventArgs e)
