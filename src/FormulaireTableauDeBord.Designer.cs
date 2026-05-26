@@ -38,7 +38,6 @@
             this.pnlEspeces = new System.Windows.Forms.Panel();
             this.grpEspeces = new System.Windows.Forms.GroupBox();
             this.ckCouleur = new System.Windows.Forms.CheckBox();
-            this.cboNom = new System.Windows.Forms.ComboBox();
             this.cboCouleur = new System.Windows.Forms.ComboBox();
             this.btnRecherche = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
@@ -46,7 +45,7 @@
             this.rdbAllies = new System.Windows.Forms.RadioButton();
             this.pnlAllies = new System.Windows.Forms.Panel();
             this.pnlEnnemis = new System.Windows.Forms.Panel();
-            this.ckNom = new System.Windows.Forms.CheckBox();
+            this.txtNomEspece = new System.Windows.Forms.TextBox();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.SuspendLayout();
@@ -137,9 +136,8 @@
             // 
             // grpEspeces
             // 
-            this.grpEspeces.Controls.Add(this.ckNom);
+            this.grpEspeces.Controls.Add(this.txtNomEspece);
             this.grpEspeces.Controls.Add(this.ckCouleur);
-            this.grpEspeces.Controls.Add(this.cboNom);
             this.grpEspeces.Controls.Add(this.cboCouleur);
             this.grpEspeces.Controls.Add(this.btnRecherche);
             this.grpEspeces.Controls.Add(this.btnReset);
@@ -162,16 +160,6 @@
             this.ckCouleur.Text = "Appliquer la couleur dans la recherche";
             this.ckCouleur.UseVisualStyleBackColor = true;
             this.ckCouleur.CheckedChanged += new System.EventHandler(this.ckCouleur_CheckedChanged);
-            // 
-            // cboNom
-            // 
-            this.cboNom.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboNom.FormattingEnabled = true;
-            this.cboNom.Location = new System.Drawing.Point(229, 17);
-            this.cboNom.Name = "cboNom";
-            this.cboNom.Size = new System.Drawing.Size(182, 28);
-            this.cboNom.TabIndex = 5;
-            this.cboNom.SelectedIndexChanged += new System.EventHandler(this.cboNom_SelectedIndexChanged);
             // 
             // cboCouleur
             // 
@@ -244,15 +232,14 @@
             this.pnlEnnemis.Size = new System.Drawing.Size(872, 348);
             this.pnlEnnemis.TabIndex = 9;
             // 
-            // ckNom
+            // txtNomEspece
             // 
-            this.ckNom.AutoSize = true;
-            this.ckNom.Location = new System.Drawing.Point(430, 21);
-            this.ckNom.Name = "ckNom";
-            this.ckNom.Size = new System.Drawing.Size(283, 24);
-            this.ckNom.TabIndex = 7;
-            this.ckNom.Text = "Appliquer le nom dans la recherche";
-            this.ckNom.UseVisualStyleBackColor = true;
+            this.txtNomEspece.Location = new System.Drawing.Point(229, 22);
+            this.txtNomEspece.Name = "txtNomEspece";
+            this.txtNomEspece.Size = new System.Drawing.Size(182, 26);
+            this.txtNomEspece.TabIndex = 7;
+            this.txtNomEspece.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtNomEspece_MouseClick);
+            this.txtNomEspece.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomEspece_KeyPress);
             // 
             // FrmTableauDeBord
             // 
@@ -299,9 +286,8 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnRecherche;
         private System.Windows.Forms.ComboBox cboCouleur;
-        private System.Windows.Forms.ComboBox cboNom;
         private System.Windows.Forms.CheckBox ckCouleur;
-        private System.Windows.Forms.CheckBox ckNom;
+        private System.Windows.Forms.TextBox txtNomEspece;
     }
 }
 

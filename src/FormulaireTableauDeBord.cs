@@ -28,7 +28,7 @@ namespace SAE24
             AjoutRelation();
             InfosPlanetes();
             InfosEspeces();
-            ChargementComboBoxes();
+            ChargementElementsGrpEspeces();
         }
 
         private void UpdateDataSet()
@@ -459,9 +459,10 @@ namespace SAE24
                 Permet de réinitialiser tous les éléments de recherche dans grpEspeces
             */
 
-            // Décoche les CheckBoxes confirmant les filtres
-            ckNom.Checked = false;
+            // Décoche la CheckBox confirmant le filtre de couleur
             ckCouleur.Checked = false;
+            // Vide le textBox de recherche en fonction du nom
+            txtNomEspece.ResetText();
 
             // Décoche les RadioButtons précisant si l'espèce est alliée ou ennemie
             rdbAllies.Checked = false;
@@ -827,7 +828,7 @@ namespace SAE24
         }
 
 
-        private void ChargementComboBoxes()
+        private void ChargementElementsGrpEspeces()
         {
             // ComboBox Couleur
             co = Connexion.Connec;
@@ -852,10 +853,10 @@ namespace SAE24
             cboCouleur.DisplayMember = "couleur";
             cboCouleur.ValueMember = "couleur";
 
-            // ComboBox Nom
-            cboNom.DataSource = MesDatas.DsGlobal.Tables["Espece"];
-            cboNom.DisplayMember = "nom";
-            cboNom.ValueMember = "nom";
+            // TextBox txtNomEspece
+            txtNomEspece.Text = "Nom de l'espèce...";
+
+
         }
 
         private Label afficherMessageErreurEspece()
@@ -889,6 +890,35 @@ namespace SAE24
         private void ckCouleur_CheckedChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void txtNomEspece_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Interdire l'entrée de caractères autres que des lettres
+            if (!char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+
+            // Autoriser certaines touches particulières :
+
+            // Entrée ou Tab : Focus sur le bouton de recherche
+            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
+            {
+                e.Handled = false;
+                btnRecherche.Focus();
+            }
+
+            // Back/Delete : Pour supprimer des caractères
+            if (e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete)
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void txtNomEspece_MouseClick(object sender, MouseEventArgs e)
+        {
+            txtNomEspece.Text = string.Empty;
         }
     }
 }
