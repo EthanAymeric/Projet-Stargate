@@ -252,7 +252,7 @@ namespace SAE24
 
                     // Ajout des informations pour toutes les espèces (générales)
                     // Ajout du lien de l'image correspondant à l'espèce
-                    string nomImageEspece = "";
+                    string nomImageEspece = $"../../Images/Especes/{r["nom"]}.png";
 
                     // Ajout du nom de l'espèce
                     string nomEspece = r["nom"].ToString();
@@ -674,7 +674,18 @@ namespace SAE24
                     string datePremierContact = r["datePremierContact"].ToString();
                     List<string> listePlanetes = new List<string>();
 
+                    // Initialisation de l'image
+                    // Affiche le nom de l'image en fonction de l'id définissant chaque espèce
                     string nomImageEspece = "";
+
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Espece"].Rows)
+                    {
+                        if (dr[0].ToString() == r[0].ToString())
+                        {
+                            nomImageEspece = $"../../Images/Especes/{dr[1]}.png";
+                        }
+                    }
+                    
 
                     string nomEspece = "";
                     string couleur = "";
@@ -862,7 +873,18 @@ namespace SAE24
                     string degreAgressivite = r["degreAgressivite"].ToString();
                     string arme = r["typeArme"].ToString();
 
+
+                    // Initialisation de l'image
+                    // Affiche le nom de l'image en fonction de l'id définissant chaque espèce
                     string nomImageEspece = "";
+
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Espece"].Rows)
+                    {
+                        if (dr[0].ToString() == r[0].ToString())
+                        {
+                            nomImageEspece = $"../../Images/Especes/{dr[1]}.png";
+                        }
+                    }
 
                     string nomEspece = "";
                     string couleur = "";
