@@ -17,41 +17,86 @@ namespace UserControlPlanetes
             InitializeComponent();
         }
 
-        public UserControlEspeces(string nomImageEspece, string nomEspece, string couleur, List<string> planeteOrigine)
+        public UserControlEspeces(string nomImageEspece, string nomEspece, string couleur, List<string> planeteOrigine, string camp)
         {
             InitializeComponent();
 
             // Initialisation des différents labels composants la fiche de présentation générale des espèces
             lblNomEspece.Text = nomEspece;
             lblCouleur.Text = "Couleur : " + couleur;
+            lblCamp.Text = camp;
+
+            // Mettre le nom de l'espèce de la même couleur que la sienne
+            Color afficher = Color.FromName("Black");
+            if (couleur == "Orange")
+            {
+                afficher = Color.FromName(couleur);
+            }
+
+            if (couleur == "Violet")
+            {
+                afficher = Color.FromName("Purple");
+            }
+
+            if (couleur == "Rose")
+            {
+                afficher = Color.FromName("HotPink");
+            }
+
+            if (couleur == "Pourpre")
+            {
+                afficher = Color.FromName("Maroon");
+            }
+
+            if (couleur == "Bleu")
+            {
+                afficher = Color.FromName("DarkBlue");
+            }
+
+            if (couleur == "Gris")
+            {
+                afficher = Color.FromName("Gray");
+            }
+
+            if (couleur == "Vert")
+            {
+                afficher = Color.FromName("Green");
+            }
+
+            if (couleur == "Marron")
+            {
+                afficher = Color.FromName("SaddleBrown");
+            }
+
+            // Mettre
+            lblNomEspece.ForeColor = afficher;
 
             // Vérification spéciale pour l'affichage de la/des planète(s) d'origine
             // Si cette(ces) dernière(s) existe(nt), on l'(les) affiche(nt)
-            if (planeteOrigine.Count != 0)
+            if (planeteOrigine.Count == 0)
             {
-                // S'il n'y a qu'une seule planète, on n'affiche que celle-là
-                if (planeteOrigine.Count == 1)
-                {
-                    lblOrigine.Text = planeteOrigine[0];
-                }
-                // Sinon, on les affiche toutes les unes après les autres
-                else
-                {
-                    lblNbPlanete.Text = "Planètes d'origine : ";
-
-                    string texte = "";
-                    for (int i = 0; i < planeteOrigine.Count-1; i++)
-                    {
-                        texte += planeteOrigine[i] + "/";   // Affichage des éléments de la liste avec la virgule
-                    }
-                    texte += planeteOrigine[planeteOrigine.Count];  // Affichage du dernier élément de la liste SANS la virgule
-                }
-            }
-            // Sinon, on affiche "Origine inconnue" et on change la couleur du texte
-            else 
-            {
+                // Sinon, on affiche "Origine inconnue" et on change la couleur du texte
                 lblOrigine.Text = "Origine inconnue";
                 lblOrigine.ForeColor = Color.Red;
+                lblNbPlanete.Visible = false;
+            }
+
+            // S'il n'y a qu'une seule planète, on n'affiche que celle-là
+            else if (planeteOrigine.Count == 1)
+            {
+                lblOrigine.Text = planeteOrigine[0];
+            }
+            // Sinon, on les affiche toutes les unes après les autres
+            else
+            {
+                lblNbPlanete.Text = "Planètes d'origine : ";
+
+                string texte = "";
+                foreach(string planete in planeteOrigine)
+                {
+                    texte += planete + "/";
+                }
+                lblOrigine.Text = texte.Remove(texte.Length-1);
             }
 
             // Ajout de l'image pour l'espèce

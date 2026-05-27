@@ -38,6 +38,7 @@
             this.lblInstrument = new System.Windows.Forms.Label();
             this.lblNbPlanete = new System.Windows.Forms.Label();
             this.lblCouleur = new System.Windows.Forms.Label();
+            this.lblInstrumentCommun = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbEspeceAlliee)).BeginInit();
             this.SuspendLayout();
             // 
@@ -63,7 +64,7 @@
             // 
             this.lblDegreBienveillance.AutoSize = true;
             this.lblDegreBienveillance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDegreBienveillance.Location = new System.Drawing.Point(242, 381);
+            this.lblDegreBienveillance.Location = new System.Drawing.Point(253, 381);
             this.lblDegreBienveillance.Name = "lblDegreBienveillance";
             this.lblDegreBienveillance.Size = new System.Drawing.Size(78, 22);
             this.lblDegreBienveillance.TabIndex = 2;
@@ -113,7 +114,7 @@
             // 
             this.lblInstrument.AutoSize = true;
             this.lblInstrument.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInstrument.Location = new System.Drawing.Point(42, 476);
+            this.lblInstrument.Location = new System.Drawing.Point(42, 496);
             this.lblInstrument.Name = "lblInstrument";
             this.lblInstrument.Size = new System.Drawing.Size(115, 22);
             this.lblInstrument.TabIndex = 7;
@@ -139,10 +140,21 @@
             this.lblCouleur.TabIndex = 9;
             this.lblCouleur.Text = "<couleur>";
             // 
+            // lblInstrumentCommun
+            // 
+            this.lblInstrumentCommun.AutoSize = true;
+            this.lblInstrumentCommun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInstrumentCommun.Location = new System.Drawing.Point(42, 474);
+            this.lblInstrumentCommun.Name = "lblInstrumentCommun";
+            this.lblInstrumentCommun.Size = new System.Drawing.Size(249, 22);
+            this.lblInstrumentCommun.TabIndex = 10;
+            this.lblInstrumentCommun.Text = "Instrument de musique favori :";
+            // 
             // UserControlEspecesAlliees
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblInstrumentCommun);
             this.Controls.Add(this.lblCouleur);
             this.Controls.Add(this.lblNbPlanete);
             this.Controls.Add(this.lblInstrument);
@@ -154,7 +166,7 @@
             this.Controls.Add(this.lblNomEspeceAlliee);
             this.Controls.Add(this.pbEspeceAlliee);
             this.Name = "UserControlEspecesAlliees";
-            this.Size = new System.Drawing.Size(370, 519);
+            this.Size = new System.Drawing.Size(354, 538);
             this.Load += new System.EventHandler(this.UserControlEspecesAlliees_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbEspeceAlliee)).EndInit();
             this.ResumeLayout(false);
@@ -174,5 +186,6 @@
         private System.Windows.Forms.Label lblInstrument;
         private System.Windows.Forms.Label lblNbPlanete;
         private System.Windows.Forms.Label lblCouleur;
+        private System.Windows.Forms.Label lblInstrumentCommun;
     }
 }

@@ -28,6 +28,46 @@ namespace UserControlPlanetes
             lblDatePremierContact.Text = premierContact;
             lblCouleur.Text = "Couleur : " + couleur;
 
+            // Mettre le nom de l'espèce de la même couleur que la sienne
+            Color afficher = Color.FromName("Black");
+            if (couleur == "Orange" || couleur == "Violet")
+            {
+                afficher = Color.FromName(couleur);
+            }
+
+            if (couleur == "Rose")
+            {
+                afficher = Color.FromName("HotPink");
+            }
+
+            if (couleur == "Pourpre")
+            {
+                afficher = Color.FromName("Maroon");
+            }
+
+            if (couleur == "Bleu")
+            {
+                afficher = Color.FromName("DarkBlue");
+            }
+
+            if (couleur == "Gris")
+            {
+                afficher = Color.FromName("Gray");
+            }
+
+            if (couleur == "Vert")
+            {
+                afficher = Color.FromName("Green");
+            }
+
+            if (couleur == "Marron")
+            {
+                afficher = Color.FromName("SaddleBrown");
+            }
+
+            // Mettre
+            lblNomEspeceAlliee.ForeColor = afficher;
+
             // Vérification spéciale pour l'affichage de la/des planète(s) d'origine
             // Si cette(ces) dernière(s) existe(nt), on l'(les) affiche(nt)
             if (planeteOrigine.Count != 0)
@@ -43,11 +83,11 @@ namespace UserControlPlanetes
                     lblNbPlanete.Text = "Planètes d'origine : ";
 
                     string texte = "";
-                    for (int i = 0; i < planeteOrigine.Count - 1; i++)
+                    foreach (string planete in planeteOrigine)
                     {
-                        texte += planeteOrigine[i] + ", ";   // Affichage des éléments de la liste avec la virgule
+                        texte += planete + "/";
                     }
-                    texte += planeteOrigine[planeteOrigine.Count];  // Affichage du dernier élément de la liste SANS la virgule
+                    lblOrigine.Text = texte.Remove(texte.Length - 1);
                 }
             }
             // Sinon, on affiche "Origine inconnue" et on change la couleur du texte
@@ -55,6 +95,7 @@ namespace UserControlPlanetes
             {
                 lblOrigine.Text = "Origine inconnue";
                 lblOrigine.ForeColor = Color.Red;
+                lblNbPlanete.Visible = false;
             }
 
             // Ajout de l'image pour l'espèce

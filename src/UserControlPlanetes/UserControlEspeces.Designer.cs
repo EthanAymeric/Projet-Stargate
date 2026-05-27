@@ -33,14 +33,16 @@
             this.lblOrigine = new System.Windows.Forms.Label();
             this.lblCouleur = new System.Windows.Forms.Label();
             this.lblNbPlanete = new System.Windows.Forms.Label();
+            this.lblCamp = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbEspece)).BeginInit();
             this.SuspendLayout();
             // 
             // pbEspece
             // 
-            this.pbEspece.Location = new System.Drawing.Point(54, 28);
+            this.pbEspece.Location = new System.Drawing.Point(25, 13);
+            this.pbEspece.Margin = new System.Windows.Forms.Padding(4);
             this.pbEspece.Name = "pbEspece";
-            this.pbEspece.Size = new System.Drawing.Size(236, 225);
+            this.pbEspece.Size = new System.Drawing.Size(132, 122);
             this.pbEspece.TabIndex = 0;
             this.pbEspece.TabStop = false;
             // 
@@ -48,7 +50,8 @@
             // 
             this.lblNomEspece.AutoSize = true;
             this.lblNomEspece.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomEspece.Location = new System.Drawing.Point(47, 272);
+            this.lblNomEspece.Location = new System.Drawing.Point(18, 150);
+            this.lblNomEspece.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNomEspece.Name = "lblNomEspece";
             this.lblNomEspece.Size = new System.Drawing.Size(118, 37);
             this.lblNomEspece.TabIndex = 1;
@@ -59,7 +62,8 @@
             // 
             this.lblOrigine.AutoSize = true;
             this.lblOrigine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrigine.Location = new System.Drawing.Point(50, 346);
+            this.lblOrigine.Location = new System.Drawing.Point(21, 231);
+            this.lblOrigine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrigine.Name = "lblOrigine";
             this.lblOrigine.Size = new System.Drawing.Size(247, 22);
             this.lblOrigine.TabIndex = 2;
@@ -69,7 +73,8 @@
             // 
             this.lblCouleur.AutoSize = true;
             this.lblCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCouleur.Location = new System.Drawing.Point(50, 394);
+            this.lblCouleur.Location = new System.Drawing.Point(21, 253);
+            this.lblCouleur.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCouleur.Name = "lblCouleur";
             this.lblCouleur.Size = new System.Drawing.Size(91, 22);
             this.lblCouleur.TabIndex = 3;
@@ -79,23 +84,38 @@
             // 
             this.lblNbPlanete.AutoSize = true;
             this.lblNbPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNbPlanete.Location = new System.Drawing.Point(50, 313);
+            this.lblNbPlanete.Location = new System.Drawing.Point(21, 209);
+            this.lblNbPlanete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNbPlanete.Name = "lblNbPlanete";
             this.lblNbPlanete.Size = new System.Drawing.Size(154, 22);
             this.lblNbPlanete.TabIndex = 4;
             this.lblNbPlanete.Text = "Planète d\'origine :";
             // 
+            // lblCamp
+            // 
+            this.lblCamp.AutoSize = true;
+            this.lblCamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCamp.Location = new System.Drawing.Point(21, 187);
+            this.lblCamp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCamp.Name = "lblCamp";
+            this.lblCamp.Size = new System.Drawing.Size(75, 22);
+            this.lblCamp.TabIndex = 5;
+            this.lblCamp.Text = "<camp>";
+            // 
             // UserControlEspeces
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblCamp);
             this.Controls.Add(this.lblNbPlanete);
             this.Controls.Add(this.lblCouleur);
             this.Controls.Add(this.lblOrigine);
             this.Controls.Add(this.lblNomEspece);
             this.Controls.Add(this.pbEspece);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlEspeces";
-            this.Size = new System.Drawing.Size(350, 466);
+            this.Size = new System.Drawing.Size(241, 295);
             this.Load += new System.EventHandler(this.UserControlEspeces_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbEspece)).EndInit();
             this.ResumeLayout(false);
@@ -110,5 +130,6 @@
         private System.Windows.Forms.Label lblOrigine;
         private System.Windows.Forms.Label lblCouleur;
         private System.Windows.Forms.Label lblNbPlanete;
+        private System.Windows.Forms.Label lblCamp;
     }
 }
