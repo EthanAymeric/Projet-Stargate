@@ -294,8 +294,32 @@ namespace SAE24
                         }
                     }
 
+                    // Sélection du camp de l'espèce
+                    // Par défaut, il est neutre (ni allié, ni ennemi)
+                    string camp = "Neutre";
+
+                    // Si c'est un allié...
+                    foreach(DataRow allie in MesDatas.DsGlobal.Tables["Allie"].Rows)
+                    {
+                        // ...on parcourt la table concernée et on le précise dans camp
+                        if (r["id"].ToString() == allie[0].ToString())
+                        {
+                            camp = "Allié";
+                        }
+                    }
+
+                    // Si c'est un ennemi...
+                    foreach (DataRow ennemi in MesDatas.DsGlobal.Tables["Ennemi"].Rows)
+                    {
+                        // ...on parcourt la table concernée et on le précise dans camp
+                        if (r["id"].ToString() == ennemi[0].ToString())
+                        {
+                            camp = "Ennemi";
+                        }
+                    }
+
                     // Création de l'UserControl en le surchargeant 
-                    UserControlEspeces u = new UserControlEspeces(nomImageEspece, nomEspece, couleur, listePlanetes);
+                    UserControlEspeces u = new UserControlEspeces(nomImageEspece, nomEspece, couleur, listePlanetes, camp);
 
 
                     // Affichage des UserControl les uns en-dessous des autres
@@ -422,7 +446,7 @@ namespace SAE24
                         // Si les espèces indiquées sur les planètes sont alliées, on l'indique
                         if (allie[0].ToString() == dr[1].ToString())
                         {
-                            texte += " - Alliés";
+                            texte += "  |  Alliés";
                         }
                     }
 
@@ -431,7 +455,7 @@ namespace SAE24
                         // Si les espèces indiquées sur les planètes sont ennemies, on l'indique
                         if (ennemi[0].ToString() == dr[1].ToString())
                         {
-                            texte += " - Ennemis";
+                            texte += "  |  Ennemis";
                         }
                     }
 

@@ -26,6 +26,7 @@ namespace UserControlPlanetes
             if (temp == "")
             {
                 lblTemp.Text = "Température inconnue";
+                lblTemp.ForeColor = Color.FromName("Red");
             }
             else
             {
@@ -35,6 +36,7 @@ namespace UserControlPlanetes
             if (gravite == "")
             {
                 lblGraviteValue.Text = "Inconnue";
+                lblGraviteValue.ForeColor = Color.FromName("Red");
             }
             else
             {
@@ -49,6 +51,9 @@ namespace UserControlPlanetes
             if (presenceDatabaz == "1")
             {
                 lblPresenceDatabaz.Text = "Présence de Databaz";
+                // Mettre en gras
+                lblPresenceDatabaz.Font = new Font(this.Font, FontStyle.Bold);
+                lblPresenceDatabaz.ForeColor = Color.FromName("GoldenRod");
             }
             else
             {
@@ -67,6 +72,7 @@ namespace UserControlPlanetes
             else if (especesPresentes.Count() == 0)
             {
                 lblEspecesCommun.Text = "Absence d'espèces connues";
+                lblEspecesCommun.ForeColor = Color.FromName("Red");
                 lblEspecesValue.Visible = false;
             }
             // Sinon, on parcourt et on affiche toutes les espèces
@@ -91,6 +97,7 @@ namespace UserControlPlanetes
             else if (missionsRealisees.Count() == 0)
             {
                 lblMissionsCommun.Text = "Aucune mission réalisée";
+                lblMissionsCommun.ForeColor = Color.FromName("Red");
                 lblMissionsValue.Visible = false;
             }
             // Sinon, on parcourt et on affiche toutes les espèces

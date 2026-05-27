@@ -26,6 +26,46 @@ namespace UserControlPlanetes
             lblAgressivite.Text = degreAggressivite;
             lblCouleur.Text = couleur;
 
+            // Mettre le nom de l'espèce de la même couleur que la sienne
+            Color afficher = Color.FromName("Black");
+            if (couleur == "Orange" || couleur == "Violet")
+            {
+                afficher = Color.FromName(couleur);
+            }
+
+            if (couleur == "Rose")
+            {
+                afficher = Color.FromName("HotPink");
+            }
+
+            if (couleur == "Pourpre")
+            {
+                afficher = Color.FromName("Maroon");
+            }
+
+            if (couleur == "Bleu")
+            {
+                afficher = Color.FromName("DarkBlue");
+            }
+
+            if (couleur == "Gris")
+            {
+                afficher = Color.FromName("Gray");
+            }
+
+            if (couleur == "Vert")
+            {
+                afficher = Color.FromName("Green");
+            }
+
+            if (couleur == "Marron")
+            {
+                afficher = Color.FromName("SaddleBrown");
+            }
+
+            // Mettre
+            lblNomEspeceEnnemie.ForeColor = afficher;
+
             // Vérification spéciale pour l'affichage de la/des planète(s) d'origine
             // Si cette(ces) dernière(s) existe(nt), on l'(les) affiche(nt)
             if (planeteOrigine.Count != 0)
