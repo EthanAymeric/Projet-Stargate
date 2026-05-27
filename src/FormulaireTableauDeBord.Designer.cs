@@ -37,6 +37,8 @@
             this.pnlPlanetes = new System.Windows.Forms.Panel();
             this.pnlEspeces = new System.Windows.Forms.Panel();
             this.grpEspeces = new System.Windows.Forms.GroupBox();
+            this.lblIndicationNom = new System.Windows.Forms.Label();
+            this.txtNomEspece = new System.Windows.Forms.TextBox();
             this.ckCouleur = new System.Windows.Forms.CheckBox();
             this.cboCouleur = new System.Windows.Forms.ComboBox();
             this.btnRecherche = new System.Windows.Forms.Button();
@@ -45,18 +47,16 @@
             this.rdbAllies = new System.Windows.Forms.RadioButton();
             this.pnlAllies = new System.Windows.Forms.Panel();
             this.pnlEnnemis = new System.Windows.Forms.Panel();
-            this.txtNomEspece = new System.Windows.Forms.TextBox();
-            this.lblIndicationNom = new System.Windows.Forms.Label();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnTDB
             // 
-            this.btnTDB.Location = new System.Drawing.Point(15, 489);
+            this.btnTDB.Location = new System.Drawing.Point(67, 591);
             this.btnTDB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnTDB.Name = "btnTDB";
-            this.btnTDB.Size = new System.Drawing.Size(182, 58);
+            this.btnTDB.Size = new System.Drawing.Size(217, 66);
             this.btnTDB.TabIndex = 1;
             this.btnTDB.Text = "Tableau de bord";
             this.btnTDB.UseVisualStyleBackColor = true;
@@ -65,10 +65,10 @@
             // 
             // btnNouvelleMission
             // 
-            this.btnNouvelleMission.Location = new System.Drawing.Point(244, 489);
+            this.btnNouvelleMission.Location = new System.Drawing.Point(296, 591);
             this.btnNouvelleMission.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
-            this.btnNouvelleMission.Size = new System.Drawing.Size(182, 58);
+            this.btnNouvelleMission.Size = new System.Drawing.Size(217, 66);
             this.btnNouvelleMission.TabIndex = 2;
             this.btnNouvelleMission.Text = "Nouvelle Mission";
             this.btnNouvelleMission.UseVisualStyleBackColor = true;
@@ -77,10 +77,10 @@
             // 
             // btnRaces
             // 
-            this.btnRaces.Location = new System.Drawing.Point(470, 489);
+            this.btnRaces.Location = new System.Drawing.Point(522, 591);
             this.btnRaces.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnRaces.Name = "btnRaces";
-            this.btnRaces.Size = new System.Drawing.Size(182, 58);
+            this.btnRaces.Size = new System.Drawing.Size(217, 66);
             this.btnRaces.TabIndex = 3;
             this.btnRaces.Text = "Decouverte des races";
             this.btnRaces.UseVisualStyleBackColor = true;
@@ -89,10 +89,10 @@
             // 
             // btnPlanetes
             // 
-            this.btnPlanetes.Location = new System.Drawing.Point(704, 489);
+            this.btnPlanetes.Location = new System.Drawing.Point(756, 591);
             this.btnPlanetes.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnPlanetes.Name = "btnPlanetes";
-            this.btnPlanetes.Size = new System.Drawing.Size(182, 58);
+            this.btnPlanetes.Size = new System.Drawing.Size(217, 66);
             this.btnPlanetes.TabIndex = 4;
             this.btnPlanetes.Text = "Infos des planètes";
             this.btnPlanetes.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@
             this.pnlTDB.Location = new System.Drawing.Point(15, 15);
             this.pnlTDB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlTDB.Name = "pnlTDB";
-            this.pnlTDB.Size = new System.Drawing.Size(872, 466);
+            this.pnlTDB.Size = new System.Drawing.Size(1050, 567);
             this.pnlTDB.TabIndex = 5;
             // 
             // pbChargement
@@ -123,7 +123,7 @@
             this.pnlPlanetes.Location = new System.Drawing.Point(15, 15);
             this.pnlPlanetes.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlPlanetes.Name = "pnlPlanetes";
-            this.pnlPlanetes.Size = new System.Drawing.Size(872, 466);
+            this.pnlPlanetes.Size = new System.Drawing.Size(1050, 567);
             this.pnlPlanetes.TabIndex = 6;
             // 
             // pnlEspeces
@@ -132,7 +132,7 @@
             this.pnlEspeces.Location = new System.Drawing.Point(15, 15);
             this.pnlEspeces.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlEspeces.Name = "pnlEspeces";
-            this.pnlEspeces.Size = new System.Drawing.Size(872, 348);
+            this.pnlEspeces.Size = new System.Drawing.Size(1050, 383);
             this.pnlEspeces.TabIndex = 7;
             // 
             // grpEspeces
@@ -145,17 +145,36 @@
             this.grpEspeces.Controls.Add(this.btnReset);
             this.grpEspeces.Controls.Add(this.rdbEnnemis);
             this.grpEspeces.Controls.Add(this.rdbAllies);
-            this.grpEspeces.Location = new System.Drawing.Point(15, 368);
+            this.grpEspeces.Location = new System.Drawing.Point(15, 392);
             this.grpEspeces.Name = "grpEspeces";
-            this.grpEspeces.Size = new System.Drawing.Size(869, 114);
+            this.grpEspeces.Size = new System.Drawing.Size(1047, 191);
             this.grpEspeces.TabIndex = 0;
             this.grpEspeces.TabStop = false;
             this.grpEspeces.Text = "Recherche d\'espèces";
             // 
+            // lblIndicationNom
+            // 
+            this.lblIndicationNom.AutoSize = true;
+            this.lblIndicationNom.Location = new System.Drawing.Point(504, 51);
+            this.lblIndicationNom.Name = "lblIndicationNom";
+            this.lblIndicationNom.Size = new System.Drawing.Size(210, 20);
+            this.lblIndicationNom.TabIndex = 8;
+            this.lblIndicationNom.Text = "Nom de l\'espèce recherchée";
+            // 
+            // txtNomEspece
+            // 
+            this.txtNomEspece.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomEspece.Location = new System.Drawing.Point(276, 44);
+            this.txtNomEspece.Name = "txtNomEspece";
+            this.txtNomEspece.Size = new System.Drawing.Size(222, 30);
+            this.txtNomEspece.TabIndex = 7;
+            this.txtNomEspece.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtNomEspece_MouseClick);
+            this.txtNomEspece.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomEspece_KeyPress);
+            // 
             // ckCouleur
             // 
             this.ckCouleur.AutoSize = true;
-            this.ckCouleur.Location = new System.Drawing.Point(430, 69);
+            this.ckCouleur.Location = new System.Drawing.Point(507, 150);
             this.ckCouleur.Name = "ckCouleur";
             this.ckCouleur.Size = new System.Drawing.Size(304, 24);
             this.ckCouleur.TabIndex = 6;
@@ -166,19 +185,20 @@
             // cboCouleur
             // 
             this.cboCouleur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCouleur.FormattingEnabled = true;
-            this.cboCouleur.Location = new System.Drawing.Point(229, 67);
+            this.cboCouleur.Location = new System.Drawing.Point(276, 145);
             this.cboCouleur.Name = "cboCouleur";
-            this.cboCouleur.Size = new System.Drawing.Size(182, 28);
+            this.cboCouleur.Size = new System.Drawing.Size(222, 33);
             this.cboCouleur.TabIndex = 4;
             this.cboCouleur.SelectedIndexChanged += new System.EventHandler(this.cboCouleur_SelectedIndexChanged);
             this.cboCouleur.SelectedValueChanged += new System.EventHandler(this.cboCouleur_SelectedValueChanged);
             // 
             // btnRecherche
             // 
-            this.btnRecherche.Location = new System.Drawing.Point(756, 17);
+            this.btnRecherche.Location = new System.Drawing.Point(869, 37);
             this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(107, 32);
+            this.btnRecherche.Size = new System.Drawing.Size(157, 48);
             this.btnRecherche.TabIndex = 3;
             this.btnRecherche.Text = "Recherche";
             this.btnRecherche.UseVisualStyleBackColor = true;
@@ -186,9 +206,9 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(756, 60);
+            this.btnReset.Location = new System.Drawing.Point(869, 126);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(107, 32);
+            this.btnReset.Size = new System.Drawing.Size(157, 52);
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -197,9 +217,10 @@
             // rdbEnnemis
             // 
             this.rdbEnnemis.AutoSize = true;
-            this.rdbEnnemis.Location = new System.Drawing.Point(6, 68);
+            this.rdbEnnemis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbEnnemis.Location = new System.Drawing.Point(24, 145);
             this.rdbEnnemis.Name = "rdbEnnemis";
-            this.rdbEnnemis.Size = new System.Drawing.Size(171, 24);
+            this.rdbEnnemis.Size = new System.Drawing.Size(205, 29);
             this.rdbEnnemis.TabIndex = 1;
             this.rdbEnnemis.TabStop = true;
             this.rdbEnnemis.Text = "Espèces Ennemies";
@@ -208,9 +229,10 @@
             // rdbAllies
             // 
             this.rdbAllies.AutoSize = true;
-            this.rdbAllies.Location = new System.Drawing.Point(6, 25);
+            this.rdbAllies.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbAllies.Location = new System.Drawing.Point(24, 49);
             this.rdbAllies.Name = "rdbAllies";
-            this.rdbAllies.Size = new System.Drawing.Size(146, 24);
+            this.rdbAllies.Size = new System.Drawing.Size(176, 29);
             this.rdbAllies.TabIndex = 0;
             this.rdbAllies.TabStop = true;
             this.rdbAllies.Text = "Espèces Alliées";
@@ -222,7 +244,7 @@
             this.pnlAllies.Location = new System.Drawing.Point(15, 15);
             this.pnlAllies.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlAllies.Name = "pnlAllies";
-            this.pnlAllies.Size = new System.Drawing.Size(872, 348);
+            this.pnlAllies.Size = new System.Drawing.Size(1050, 383);
             this.pnlAllies.TabIndex = 8;
             // 
             // pnlEnnemis
@@ -231,32 +253,14 @@
             this.pnlEnnemis.Location = new System.Drawing.Point(15, 15);
             this.pnlEnnemis.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlEnnemis.Name = "pnlEnnemis";
-            this.pnlEnnemis.Size = new System.Drawing.Size(872, 348);
+            this.pnlEnnemis.Size = new System.Drawing.Size(1050, 383);
             this.pnlEnnemis.TabIndex = 9;
-            // 
-            // txtNomEspece
-            // 
-            this.txtNomEspece.Location = new System.Drawing.Point(229, 25);
-            this.txtNomEspece.Name = "txtNomEspece";
-            this.txtNomEspece.Size = new System.Drawing.Size(182, 26);
-            this.txtNomEspece.TabIndex = 7;
-            this.txtNomEspece.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtNomEspece_MouseClick);
-            this.txtNomEspece.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomEspece_KeyPress);
-            // 
-            // lblIndicationNom
-            // 
-            this.lblIndicationNom.AutoSize = true;
-            this.lblIndicationNom.Location = new System.Drawing.Point(430, 26);
-            this.lblIndicationNom.Name = "lblIndicationNom";
-            this.lblIndicationNom.Size = new System.Drawing.Size(210, 20);
-            this.lblIndicationNom.TabIndex = 8;
-            this.lblIndicationNom.Text = "Nom de l\'espèce recherchée";
             // 
             // FrmTableauDeBord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 562);
+            this.ClientSize = new System.Drawing.Size(1074, 692);
             this.Controls.Add(this.grpEspeces);
             this.Controls.Add(this.pnlEnnemis);
             this.Controls.Add(this.pnlAllies);
