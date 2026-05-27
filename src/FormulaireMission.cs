@@ -218,7 +218,7 @@ namespace SAE24
                 DataRow idEspece = capture.GetParentRow("FK_Espece_Capturer");
                 DataRow[] objectifCapture = missionActuelle.GetChildRows("FK_Mission_ObjectifCapture");
                 newCapture[0] = idEspece["nom"];
-                Int32 objectif = 0;
+                Int32 objectif = 1;
                 foreach (DataRow r in objectifCapture)
                 {
                     if (r["idEspeceEnnemi"].ToString() == capture["idEspeceEnnemi"].ToString())
@@ -462,18 +462,108 @@ namespace SAE24
                     ajoutContact();
                     break;
                 case "2":
-                    ;
+                    AjoutDepense();
                     break;
                 case "3":
-                    ;
+                    AjoutEvent();
                     break;
                 case "4":
-                    ;
+                    AjoutCapture();
                     break;
                 default:
                     MessageBox.Show("Une erreur est survenue");
                     break;
             }
+        }
+        
+        public void AjoutEvent()
+        {
+
+        }
+
+        public void AjoutCapture()
+        {
+            SQLiteConnection co = Connexion.Connec;
+
+            try
+            {
+                string nomPlanete = missionActuelle[0].ToString();
+                string numeroMission = missionActuelle[1].ToString();
+                string id = cboCapture.SelectedValue.ToString();
+                int nombre = Convert.ToInt32(txtNombre.Text);
+
+                string verifRequest = $"SELECT Count(idEspeceEnnemi) FROM Capturer WHERE idEspeceEnnemi = '{id}'";
+                SQLiteCommand verifCmd = new SQLiteCommand(verifRequest, co);
+                int res = Convert.ToInt32(verifCmd.ExecuteScalar());
+
+                if (res == 0)
+                {
+                    string insertRequest = $"INSERT INTO Capturer(nomPlanete, numeroMission, idEspeceEnnemi, nombre) VALUES ('{nomPlanete}','{numeroMission}','{id}',{nombre})";
+
+                    SQLiteCommand cmd = new SQLiteCommand(insertRequest, co);
+                    int resInsert = cmd.ExecuteNonQuery();
+                    MessageBox.Show(resInsert.ToString());
+
+                    DataRow drNewCapture = captureMissionActuelle.NewRow();
+                    drNewCapture[0] = cboCapture.Text;
+                    if (MesDatas.DsGlobal.Tables["ObjectifCapture"].Select($"idEspeceEnnemi = {id}").Length == 0)
+                    {
+                        drNewCapture[1] = 1;
+                    }
+                    else
+                    {
+                        drNewCapture[1] = MesDatas.DsGlobal.Tables["ObjectifCapture"].Select($"idEspeceEnnemi = {id}")[0][3];
+                    }
+                    drNewCapture[2] = nombre;
+                    drNewCapture[3] = Convert.ToInt32(nombre) * 100 / Convert.ToInt32(drNewCapture[1]);
+                    captureMissionActuelle.Rows.Add(drNewCapture);
+                }
+                else
+                {
+                    string request = $"UPDATE Capturer SET nombre = nombre + {nombre} WHERE nomPlanete = '{nomPlanete}' AND numeroMission = '{numeroMission}' AND idEspeceEnnemi = '{id}'";
+                    SQLiteCommand cmd = new SQLiteCommand(request, co);
+                    int resUpdate = cmd.ExecuteNonQuery();
+                    DataRow drCapture = captureMissionActuelle.Select($"[Nom de l'espèce] = '{cboCapture.Text}'")[0];
+                    drCapture[2] = (Convert.ToInt32(drCapture[2]) + nombre).ToString();
+                    drCapture[3] = Convert.ToInt32(drCapture[2]) * 100 / Convert.ToInt32(drCapture[1]);
+                }
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            finally { Connexion.FermerConnexion(); }
+        }
+
+
+        public void AjoutDepense()
+        {
+            SQLiteConnection co = Connexion.Connec;
+
+            try
+            {
+                string nomPlanete = missionActuelle[0].ToString();
+                string numeroMission = missionActuelle[1].ToString();
+                int id = Convert.ToInt32(depenseMissionActuelle.Compute("max([N°])",string.Empty)) + 1;
+                string date = dtpDateDepense.Value.ToString("yyyy-MM-dd");
+                string montant = txtMontantDepense.Text;
+                string motif = rtxtMotifDepense.Text;
+                string idTypeDepense = cboTypeDepense.SelectedValue.ToString();
+
+                string request = $"INSERT INTO Depense(nomPlanete, numeroMission, id, dateD, montant, motif, idTypeDepense) VALUES ('{nomPlanete}','{numeroMission}','{id}','{date}','{montant}','{motif}','{idTypeDepense}')";
+
+                SQLiteCommand cmd = new SQLiteCommand(request, co);
+                int res = cmd.ExecuteNonQuery();
+                MessageBox.Show(res.ToString());
+                DataRow dr = depenseMissionActuelle.NewRow();
+                dr[0] = id;
+                dr[1] = date;
+                dr[2] = motif;
+                dr[3] = montant;
+                dr[4] = MesDatas.DsGlobal.Tables["TypeDepense"].Select($"id = {idTypeDepense}")[0][1];
+                depenseMissionActuelle.Rows.Add(dr);
+
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+            finally { Connexion.FermerConnexion(); }
         }
 
         public void ajoutContact()
