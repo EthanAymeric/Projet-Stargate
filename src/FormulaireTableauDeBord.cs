@@ -413,7 +413,30 @@ namespace SAE24
 
                 foreach (DataRow dr in espece)
                 {
-                    listeEspeces.Add(dr.GetParentRow("FK_Espece_Habiter")[1].ToString());
+                    // Initialisation du texte pour les espèces
+                    string texte = dr.GetParentRow("FK_Espece_Habiter")[1].ToString();
+
+                    // Vérification du camp de chaque espèce
+                    foreach (DataRow allie in MesDatas.DsGlobal.Tables["Allie"].Rows)
+                    {
+                        // Si les espèces indiquées sur les planètes sont alliées, on l'indique
+                        if (allie[0].ToString() == dr[1].ToString())
+                        {
+                            texte += " - Alliés";
+                        }
+                    }
+
+                    foreach (DataRow ennemi in MesDatas.DsGlobal.Tables["Ennemi"].Rows)
+                    {
+                        // Si les espèces indiquées sur les planètes sont ennemies, on l'indique
+                        if (ennemi[0].ToString() == dr[1].ToString())
+                        {
+                            texte += " - Ennemis";
+                        }
+                    }
+
+                    // Ajout dans la liste Espèces
+                    listeEspeces.Add(texte);
                     //MessageBox.Show(dr.GetParentRow("FK_Espece_Habiter")[1].ToString() + " : " + listeEspeces.Contains(dr.GetParentRow("FK_Espece_Habiter")[1].ToString()).ToString());
                     listePourcentageEspece.Add(dr[2].ToString());
                 }
