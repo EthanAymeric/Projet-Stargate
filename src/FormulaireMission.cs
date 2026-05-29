@@ -478,7 +478,28 @@ namespace SAE24
         
         public void AjoutEvent()
         {
+            SQLiteConnection co = Connexion.Connec;
 
+            try
+            {
+                string date = dtpDateEvent.Value.ToString("yyyy-MM-dd");
+                string commentaire = rtxtCommentaire.Text;
+                string request = $"INSERT INTO JournalDeBord(nomPlanete, numero, dateJ, commentaires) VALUES ('{missionActuelle["nomPlanete"].ToString()}','{missionActuelle["numero"].ToString()}','{date}','{commentaire}')";
+                MessageBox.Show(request);
+                SQLiteCommand cmd = new SQLiteCommand(request,co);
+                int res = cmd.ExecuteNonQuery();
+                MessageBox.Show(res.ToString());
+
+
+                DataRow eventRow = MesDatas.DsGlobal.Tables["JournalDeBord"].NewRow();
+                eventRow[0] = missionActuelle["nomPlanete"];
+                eventRow[1] = missionActuelle["numero"];
+                eventRow[2] = date;
+                eventRow[3] = commentaire;
+                MesDatas.DsGlobal.Tables["JournalDeBord"].Rows.Add(eventRow);
+
+            } catch (Exception ex) { MessageBox.Show(ex.Message); }
+            finally { Connexion.FermerConnexion(); }
         }
 
         public void AjoutCapture()
@@ -490,7 +511,7 @@ namespace SAE24
                 string nomPlanete = missionActuelle[0].ToString();
                 string numeroMission = missionActuelle[1].ToString();
                 string id = cboCapture.SelectedValue.ToString();
-                int nombre = Convert.ToInt32(txtNombre.Text);
+                int nombre = Convert.ToInt32(txtNombre.Text.Replace("'","''"));
 
                 string verifRequest = $"SELECT Count(idEspeceEnnemi) FROM Capturer WHERE idEspeceEnnemi = '{id}'";
                 SQLiteCommand verifCmd = new SQLiteCommand(verifRequest, co);
@@ -544,8 +565,8 @@ namespace SAE24
                 string numeroMission = missionActuelle[1].ToString();
                 int id = Convert.ToInt32(depenseMissionActuelle.Compute("max([N°])",string.Empty)) + 1;
                 string date = dtpDateDepense.Value.ToString("yyyy-MM-dd");
-                string montant = txtMontantDepense.Text;
-                string motif = rtxtMotifDepense.Text;
+                string montant = txtMontantDepense.Text.Replace("'","''");
+                string motif = rtxtMotifDepense.Text.Replace("'","''");
                 string idTypeDepense = cboTypeDepense.SelectedValue.ToString();
 
                 string request = $"INSERT INTO Depense(nomPlanete, numeroMission, id, dateD, montant, motif, idTypeDepense) VALUES ('{nomPlanete}','{numeroMission}','{id}','{date}','{montant}','{motif}','{idTypeDepense}')";

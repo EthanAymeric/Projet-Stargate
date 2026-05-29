@@ -187,31 +187,5 @@ namespace SAE24
 
         }
 
-        private void FrmTableauDeBord_Shown(object sender, EventArgs e)
-        {
-            //Chargement();
-            foreach (Button b in Controls.OfType<Button>())
-            {
-                b.Visible = true;
-            }
-            pbChargement.Visible = false;
-        }
-
-        private void Chargement()
-        {
-            pbChargement.Value = 0;
-            System.Threading.Thread.Sleep(1000);
-            pbChargement.Value = 13;
-            System.Threading.Thread.Sleep(1500);
-            pbChargement.Value = 21;
-            System.Threading.Thread.Sleep(500);
-            pbChargement.Value = 34;
-            System.Threading.Thread.Sleep(250);
-            pbChargement.Value = 55;
-            System.Threading.Thread.Sleep(1000);
-            pbChargement.Value = 89;
-            System.Threading.Thread.Sleep(500);
-            pbChargement.Value = 100;
-        }
     }
 }
