@@ -200,17 +200,17 @@ namespace SAE24
             bool resultatExiste = true;
 
             // S'il y a un filtre à appliquer, on prend ce qui est indiqué dans les combobox et/ou dans la Textbox pour créer un filtre
-            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty || cboPlanete.SelectedIndex != 0)
+            if (cboCouleur.SelectedIndex > 0 || txtNomEspece.Text != string.Empty || cboPlanete.SelectedIndex > 0)
             {
                 // On ajuste le filtre en fonction des indications de recherche
                 string filtre = "";
                 // Pour la couleur
-                if (cboCouleur.SelectedIndex > 0)
+                if (cboCouleur.SelectedIndex != 0)
                 {
                     filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
                 // Si deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
-                if ((cboCouleur.SelectedIndex > 0 && txtNomEspece.Text != string.Empty) || (cboCouleur.SelectedIndex > 0 && cboPlanete.SelectedIndex != 0) || (cboPlanete.SelectedIndex != 0 && txtNomEspece.Text != string.Empty))
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty) || (cboCouleur.SelectedIndex > 0 && cboPlanete.SelectedIndex != 0))
                 {
                     filtre += " and ";
                 }
@@ -220,16 +220,16 @@ namespace SAE24
                     filtre += "nom like '" + txtNomEspece.Text + "%'";
                 }
 
-                // Si les trois filtres sont choisis
-                if (cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty && cboPlanete.SelectedIndex != 0)
+                // Si les trois filtres sont choisis ou si UNIQUEMENT les deux filtres Nom et Planete sont choisi
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty && cboPlanete.SelectedIndex != 0) || (cboPlanete.SelectedIndex != 0 && txtNomEspece.Text != string.Empty))
                 {
                     filtre += " and ";
                 }
                 // pour la planète
                 if (cboPlanete.SelectedIndex != 0)
                 {
-                    MessageBox.Show("test");
-                    string temp = filtre;
+                    
+                    string temp = filtre + "(";
                     foreach (DataRow dr in MesDatas.DsGlobal.Tables["Habiter"].Rows)
                     {
                         if (cboPlanete.SelectedValue != null && cboPlanete.SelectedValue.ToString() == dr[0].ToString())
@@ -239,9 +239,10 @@ namespace SAE24
                     }
                     // on enlève le and de trop
                     
-                    if (temp != filtre)
+                    if (temp != (filtre + "("))
                     {
                         filtre = temp.Remove(temp.Length - 3);
+                        filtre += ")";
                     }
                     else
                     {
@@ -254,8 +255,8 @@ namespace SAE24
                     string texte = filtre;
                     filtre = texte.Remove(texte.Length - 5);
                 }
-
                 MessageBox.Show(filtre);
+
                 tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
 
                 // Si la recherche spécifiée ne marche pas, on l'indique
@@ -623,19 +624,17 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty)
+            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty || cboPlanete.SelectedIndex != 0)
             {
-                // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
-                // On crée le filtre au fur et à mesure
+                // On ajuste le filtre en fonction des indications de recherche
                 string filtre = "";
                 // Pour la couleur
-                if (cboCouleur.SelectedIndex != 0)
+                if (cboCouleur.SelectedIndex > 0)
                 {
-                    
                     filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
-                // Si les deux filtres sont sélectionnés
-                if (cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty)
+                // Si deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty) || (cboCouleur.SelectedIndex > 0 && cboPlanete.SelectedIndex != 0))
                 {
                     filtre += " and ";
                 }
@@ -644,6 +643,43 @@ namespace SAE24
                 {
                     filtre += "nom like '" + txtNomEspece.Text + "%'";
                 }
+
+                // Si les trois filtres sont choisis ou si UNIQUEMENT les deux filtres Nom et Planete sont choisi
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty && cboPlanete.SelectedIndex != 0) || (cboPlanete.SelectedIndex != 0 && txtNomEspece.Text != string.Empty))
+                {
+                    filtre += " and ";
+                }
+                // pour la planète
+                if (cboPlanete.SelectedIndex != 0)
+                {
+                    string temp = filtre + "(";
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Habiter"].Rows)
+                    {
+                        if (cboPlanete.SelectedValue != null && cboPlanete.SelectedValue.ToString() == dr[0].ToString())
+                        {
+                            temp += "id = " + dr[1] + " or ";
+                        }
+                    }
+                    // on enlève le and de trop
+
+                    if (temp != (filtre + "("))
+                    {
+                        filtre = temp.Remove(temp.Length - 3);
+                        filtre += ")";
+                    }
+                    else
+                    {
+                        resultatExiste = false;
+                    }
+
+                }
+                if (cboCouleur.SelectedIndex > 0 && cboCouleur.SelectedIndex != 0 && !resultatExiste)
+                {
+                    string texte = filtre;
+                    filtre = texte.Remove(texte.Length - 5);
+                }
+
+                MessageBox.Show(filtre);
                 tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
                 // Si le filtre ne correspond à aucune espèce
                 if (tabTemp.Length == 0)
@@ -822,19 +858,17 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty)
+            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty || cboPlanete.SelectedIndex != 0)
             {
-                // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
-                // On crée le filtre au fur et à mesure
+                // On ajuste le filtre en fonction des indications de recherche
                 string filtre = "";
                 // Pour la couleur
-                if (cboCouleur.SelectedIndex != 0)
+                if (cboCouleur.SelectedIndex > 0)
                 {
-
                     filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
-                // Si les deux filtres sont sélectionnés
-                if (cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty)
+                // Si deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty) || (cboCouleur.SelectedIndex > 0 && cboPlanete.SelectedIndex != 0))
                 {
                     filtre += " and ";
                 }
@@ -843,6 +877,42 @@ namespace SAE24
                 {
                     filtre += "nom like '" + txtNomEspece.Text + "%'";
                 }
+
+                // Si les trois filtres sont choisis ou si UNIQUEMENT les deux filtres Nom et Planete sont choisi
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty && cboPlanete.SelectedIndex != 0) || (cboPlanete.SelectedIndex != 0 && txtNomEspece.Text != string.Empty))
+                {
+                    filtre += " and ";
+                }
+                // pour la planète
+                if (cboPlanete.SelectedIndex != 0)
+                {
+                    string temp = filtre + "(";
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Habiter"].Rows)
+                    {
+                        if (cboPlanete.SelectedValue != null && cboPlanete.SelectedValue.ToString() == dr[0].ToString())
+                        {
+                            temp += "id = " + dr[1] + " or ";
+                        }
+                    }
+                    // on enlève le and de trop
+
+                    if (temp != (filtre + "("))
+                    {
+                        filtre = temp.Remove(temp.Length - 3);
+                        filtre += ")";
+                    }
+                    else
+                    {
+                        resultatExiste = false;
+                    }
+
+                }
+                if (cboCouleur.SelectedIndex > 0 && cboCouleur.SelectedIndex != 0 && !resultatExiste)
+                {
+                    string texte = filtre;
+                    filtre = texte.Remove(texte.Length - 5);
+                }
+                MessageBox.Show(filtre);
                 tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
                 // Si le filtre ne correspond à aucune espèce
                 if (tabTemp.Length == 0)
