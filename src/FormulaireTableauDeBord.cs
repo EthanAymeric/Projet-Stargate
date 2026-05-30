@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -198,18 +199,18 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            // S'il y a un filtre à appliquer, on prend ce qui est indiqué dans la combobox et/ou dans la Textbox pour créer un filtr
-            if (ckCouleur.Checked || txtNomEspece.Text != string.Empty)
+            // S'il y a un filtre à appliquer, on prend ce qui est indiqué dans les combobox et/ou dans la Textbox pour créer un filtre
+            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty || cboPlanete.SelectedIndex != 0)
             {
                 // On ajuste le filtre en fonction des indications de recherche
                 string filtre = "";
                 // Pour la couleur
-                if (ckCouleur.Checked)
+                if (cboCouleur.SelectedIndex > 0)
                 {
                     filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
-                // Si les deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
-                if (ckCouleur.Checked && txtNomEspece.Text != string.Empty)
+                // Si deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
+                if ((cboCouleur.SelectedIndex > 0 && txtNomEspece.Text != string.Empty) || (cboCouleur.SelectedIndex > 0 && cboPlanete.SelectedIndex != 0) || (cboPlanete.SelectedIndex != 0 && txtNomEspece.Text != string.Empty))
                 {
                     filtre += " and ";
                 }
@@ -218,7 +219,45 @@ namespace SAE24
                 {
                     filtre += "nom like '" + txtNomEspece.Text + "%'";
                 }
+
+                // Si les trois filtres sont choisis
+                if (cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty && cboPlanete.SelectedIndex != 0)
+                {
+                    filtre += " and ";
+                }
+                // pour la planète
+                if (cboPlanete.SelectedIndex != 0)
+                {
+                    MessageBox.Show("test");
+                    string temp = filtre;
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Habiter"].Rows)
+                    {
+                        if (cboPlanete.SelectedValue != null && cboPlanete.SelectedValue.ToString() == dr[0].ToString())
+                        {
+                            temp += "id = " + dr[1] + " or ";
+                        }
+                    }
+                    // on enlève le and de trop
+                    
+                    if (temp != filtre)
+                    {
+                        filtre = temp.Remove(temp.Length - 3);
+                    }
+                    else
+                    {
+                        resultatExiste = false;
+                    }
+
+                }
+                if (cboCouleur.SelectedIndex > 0 && cboCouleur.SelectedIndex != 0 && !resultatExiste) 
+                {
+                    string texte = filtre;
+                    filtre = texte.Remove(texte.Length - 5);
+                }
+
+                MessageBox.Show(filtre);
                 tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+
                 // Si la recherche spécifiée ne marche pas, on l'indique
                 if (tab.Length == 0)
                 {
@@ -523,8 +562,10 @@ namespace SAE24
                 Permet de réinitialiser tous les éléments de recherche dans grpEspeces
             */
 
-            // Décoche la CheckBox confirmant le filtre de couleur
-            ckCouleur.Checked = false;
+            // Réinitialise les comboboxes
+            cboCouleur.SelectedIndex = 0;
+            cboPlanete.SelectedIndex = 0;
+
             // Vide le textBox de recherche en fonction du nom
             txtNomEspece.ResetText();
 
@@ -582,19 +623,19 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            if (ckCouleur.Checked || txtNomEspece.Text != string.Empty)
+            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty)
             {
                 // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
                 // On crée le filtre au fur et à mesure
                 string filtre = "";
                 // Pour la couleur
-                if (ckCouleur.Checked)
+                if (cboCouleur.SelectedIndex != 0)
                 {
                     
                     filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
                 // Si les deux filtres sont sélectionnés
-                if (ckCouleur.Checked && txtNomEspece.Text != string.Empty)
+                if (cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty)
                 {
                     filtre += " and ";
                 }
@@ -781,19 +822,19 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            if (ckCouleur.Checked || txtNomEspece.Text != string.Empty)
+            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty)
             {
                 // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
                 // On crée le filtre au fur et à mesure
                 string filtre = "";
                 // Pour la couleur
-                if (ckCouleur.Checked)
+                if (cboCouleur.SelectedIndex != 0)
                 {
 
                     filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
                 // Si les deux filtres sont sélectionnés
-                if (ckCouleur.Checked && txtNomEspece.Text != string.Empty)
+                if (cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty)
                 {
                     filtre += " and ";
                 }
@@ -979,6 +1020,12 @@ namespace SAE24
                 SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
                 da.Fill(MesDatas.DsGlobal, "Couleur");
 
+                // ComboBox Planete
+                string request2 = @"select nom from Planete";
+                SQLiteCommand cmd2 = new SQLiteCommand(request2, co);
+                SQLiteDataAdapter da2 = new SQLiteDataAdapter(cmd2);
+                da2.Fill(MesDatas.DsGlobal, "RecherchePlanete");
+
             }
             catch (Exception ex)
             {
@@ -988,9 +1035,26 @@ namespace SAE24
             {
                 Connexion.FermerConnexion();
             }
+            // Rajout d'une valeur Toutes pour les espèces
+            DataRow row = MesDatas.DsGlobal.Tables["Couleur"].NewRow();
+            row["couleur"] = "Toutes";
+
+            MesDatas.DsGlobal.Tables["Couleur"].Rows.InsertAt(row, 0);
+
+            // Rajout d'une valeur Toutes pour les planètes
+            DataRow row2 = MesDatas.DsGlobal.Tables["RecherchePlanete"].NewRow();
+            row2["nom"] = "Toutes";
+
+            MesDatas.DsGlobal.Tables["RecherchePlanete"].Rows.InsertAt(row2, 0);
+
+            // Remplissage des Comboboxes
             cboCouleur.DataSource = MesDatas.DsGlobal.Tables["Couleur"];
             cboCouleur.DisplayMember = "couleur";
             cboCouleur.ValueMember = "couleur";
+
+            cboPlanete.DataSource = MesDatas.DsGlobal.Tables["RecherchePlanete"];
+            cboPlanete.DisplayMember = "nom";
+            cboPlanete.ValueMember = "nom";
 
         }
 
@@ -1039,6 +1103,11 @@ namespace SAE24
         }
 
         private void txtNomEspece_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void lblIndicationPlanete_Click(object sender, EventArgs e)
         {
 
         }
