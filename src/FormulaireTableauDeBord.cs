@@ -19,6 +19,10 @@ namespace SAE24
     public partial class FrmTableauDeBord : Form
     {
         SQLiteConnection co;
+
+        // initialisation d'un booleen qui vérifie si on est bien sur le bouton de rechrche d'espèce avant de filtrer directement par combobox pour éviter un affichage directement au chragement du form
+        // on le met à faux pour tous les boutons, sauf celui de la recherche d'espèces pour permettre la recherche directement en sélectionnant la valeur dans la combobox
+        bool estSurEspece = false;
         public FrmTableauDeBord()
         {
             InitializeComponent();
@@ -145,6 +149,8 @@ namespace SAE24
             grpEspeces.Visible = false;
 
             ActualisationTDB();
+
+            estSurEspece = false;
         }
 
         private void btnNouvelleMission_Click(object sender, EventArgs e)
@@ -155,6 +161,8 @@ namespace SAE24
                 AjoutRelation();
                 ActualisationTDB();
             }
+
+            estSurEspece = false;
         }
 
         private void btnRaces_Click(object sender, EventArgs e)
@@ -165,6 +173,8 @@ namespace SAE24
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = true;
+            // On peut mettre ce vérificateur à true pour checker l'état des combobox dès qu'il change
+            estSurEspece = true;
         }
 
         private void btnPlanetes_Click(object sender, EventArgs e)
@@ -175,6 +185,8 @@ namespace SAE24
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = false;
+
+            estSurEspece = false;
         }
 
         private void InfosEspeces()
@@ -255,7 +267,6 @@ namespace SAE24
                     string texte = filtre;
                     filtre = texte.Remove(texte.Length - 5);
                 }
-                MessageBox.Show(filtre);
 
                 tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
 
@@ -564,8 +575,10 @@ namespace SAE24
             */
 
             // Réinitialise les comboboxes
+            //estSurEspece = false;
             cboCouleur.SelectedIndex = 0;
             cboPlanete.SelectedIndex = 0;
+            //estSurEspece = true;
 
             // Vide le textBox de recherche en fonction du nom
             txtNomEspece.ResetText();
@@ -573,11 +586,21 @@ namespace SAE24
             // Décoche les RadioButtons précisant si l'espèce est alliée ou ennemie
             rdbAllies.Checked = false;
             rdbEnnemis.Checked = false;
+
+            // Afficher toutes les espèces par défaut
+            afficherFiltre();
+
+            
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
             // Vérifie si un filtre par allié ou ennemi est réalisée ou non et agis en conséquence
+            afficherFiltre();
+        }
+
+        private void afficherFiltre()
+        {
             if (rdbAllies.Checked)
             {
                 InfoEspecesAlliees();
@@ -678,8 +701,7 @@ namespace SAE24
                     string texte = filtre;
                     filtre = texte.Remove(texte.Length - 5);
                 }
-
-                MessageBox.Show(filtre);
+                
                 tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
                 // Si le filtre ne correspond à aucune espèce
                 if (tabTemp.Length == 0)
@@ -912,7 +934,7 @@ namespace SAE24
                     string texte = filtre;
                     filtre = texte.Remove(texte.Length - 5);
                 }
-                MessageBox.Show(filtre);
+
                 tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
                 // Si le filtre ne correspond à aucune espèce
                 if (tabTemp.Length == 0)
@@ -1126,6 +1148,9 @@ namespace SAE24
             cboPlanete.DisplayMember = "nom";
             cboPlanete.ValueMember = "nom";
 
+            rdbAllies.Checked = false;
+            rdbEnnemis.Checked = false;
+
         }
 
         private void cboNom_SelectedIndexChanged(object sender, EventArgs e)
@@ -1135,12 +1160,15 @@ namespace SAE24
 
         private void cboCouleur_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+            if (estSurEspece)
+            {
+                afficherFiltre();
+            }
         }
 
         private void cboCouleur_SelectedValueChanged(object sender, EventArgs e)
         {
-            
+            //afficherFiltre();
         }
 
         private void ckCouleur_CheckedChanged(object sender, EventArgs e)
@@ -1180,6 +1208,14 @@ namespace SAE24
         private void lblIndicationPlanete_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cboPlanete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (estSurEspece)
+            {
+                afficherFiltre();
+            }
         }
     }
 }

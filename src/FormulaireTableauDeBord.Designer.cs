@@ -37,6 +37,9 @@
             this.pnlPlanetes = new System.Windows.Forms.Panel();
             this.pnlEspeces = new System.Windows.Forms.Panel();
             this.grpEspeces = new System.Windows.Forms.GroupBox();
+            this.lblIndicationCouleur = new System.Windows.Forms.Label();
+            this.lblIndicationPlanete = new System.Windows.Forms.Label();
+            this.cboPlanete = new System.Windows.Forms.ComboBox();
             this.lblIndicationNom = new System.Windows.Forms.Label();
             this.txtNomEspece = new System.Windows.Forms.TextBox();
             this.cboCouleur = new System.Windows.Forms.ComboBox();
@@ -46,9 +49,6 @@
             this.rdbAllies = new System.Windows.Forms.RadioButton();
             this.pnlAllies = new System.Windows.Forms.Panel();
             this.pnlEnnemis = new System.Windows.Forms.Panel();
-            this.cboPlanete = new System.Windows.Forms.ComboBox();
-            this.lblIndicationPlanete = new System.Windows.Forms.Label();
-            this.lblIndicationCouleur = new System.Windows.Forms.Label();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.SuspendLayout();
@@ -156,6 +156,38 @@
             this.grpEspeces.TabStop = false;
             this.grpEspeces.Text = "Recherche d\'espèces";
             // 
+            // lblIndicationCouleur
+            // 
+            this.lblIndicationCouleur.AutoSize = true;
+            this.lblIndicationCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndicationCouleur.Location = new System.Drawing.Point(504, 147);
+            this.lblIndicationCouleur.Name = "lblIndicationCouleur";
+            this.lblIndicationCouleur.Size = new System.Drawing.Size(81, 25);
+            this.lblIndicationCouleur.TabIndex = 11;
+            this.lblIndicationCouleur.Text = "Couleur";
+            // 
+            // lblIndicationPlanete
+            // 
+            this.lblIndicationPlanete.AutoSize = true;
+            this.lblIndicationPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIndicationPlanete.Location = new System.Drawing.Point(504, 98);
+            this.lblIndicationPlanete.Name = "lblIndicationPlanete";
+            this.lblIndicationPlanete.Size = new System.Drawing.Size(78, 25);
+            this.lblIndicationPlanete.TabIndex = 10;
+            this.lblIndicationPlanete.Text = "Planète";
+            this.lblIndicationPlanete.Click += new System.EventHandler(this.lblIndicationPlanete_Click);
+            // 
+            // cboPlanete
+            // 
+            this.cboPlanete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPlanete.FormattingEnabled = true;
+            this.cboPlanete.Location = new System.Drawing.Point(276, 95);
+            this.cboPlanete.Name = "cboPlanete";
+            this.cboPlanete.Size = new System.Drawing.Size(222, 33);
+            this.cboPlanete.TabIndex = 9;
+            this.cboPlanete.SelectedIndexChanged += new System.EventHandler(this.cboPlanete_SelectedIndexChanged);
+            // 
             // lblIndicationNom
             // 
             this.lblIndicationNom.AutoSize = true;
@@ -249,37 +281,6 @@
             this.pnlEnnemis.Name = "pnlEnnemis";
             this.pnlEnnemis.Size = new System.Drawing.Size(1050, 383);
             this.pnlEnnemis.TabIndex = 9;
-            // 
-            // cboPlanete
-            // 
-            this.cboPlanete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboPlanete.FormattingEnabled = true;
-            this.cboPlanete.Location = new System.Drawing.Point(276, 95);
-            this.cboPlanete.Name = "cboPlanete";
-            this.cboPlanete.Size = new System.Drawing.Size(222, 33);
-            this.cboPlanete.TabIndex = 9;
-            // 
-            // lblIndicationPlanete
-            // 
-            this.lblIndicationPlanete.AutoSize = true;
-            this.lblIndicationPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationPlanete.Location = new System.Drawing.Point(504, 98);
-            this.lblIndicationPlanete.Name = "lblIndicationPlanete";
-            this.lblIndicationPlanete.Size = new System.Drawing.Size(78, 25);
-            this.lblIndicationPlanete.TabIndex = 10;
-            this.lblIndicationPlanete.Text = "Planète";
-            this.lblIndicationPlanete.Click += new System.EventHandler(this.lblIndicationPlanete_Click);
-            // 
-            // lblIndicationCouleur
-            // 
-            this.lblIndicationCouleur.AutoSize = true;
-            this.lblIndicationCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationCouleur.Location = new System.Drawing.Point(504, 147);
-            this.lblIndicationCouleur.Name = "lblIndicationCouleur";
-            this.lblIndicationCouleur.Size = new System.Drawing.Size(81, 25);
-            this.lblIndicationCouleur.TabIndex = 11;
-            this.lblIndicationCouleur.Text = "Couleur";
             // 
             // FrmTableauDeBord
             // 
