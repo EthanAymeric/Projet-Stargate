@@ -35,16 +35,16 @@
             // 
             // pbErreur
             // 
-            this.pbErreur.Location = new System.Drawing.Point(146, 18);
+            this.pbErreur.Location = new System.Drawing.Point(88, 3);
             this.pbErreur.Name = "pbErreur";
-            this.pbErreur.Size = new System.Drawing.Size(328, 168);
+            this.pbErreur.Size = new System.Drawing.Size(293, 140);
             this.pbErreur.TabIndex = 0;
             this.pbErreur.TabStop = false;
             // 
             // lblMessage
             // 
             this.lblMessage.AutoSize = true;
-            this.lblMessage.Location = new System.Drawing.Point(67, 185);
+            this.lblMessage.Location = new System.Drawing.Point(3, 146);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(73, 32);
             this.lblMessage.TabIndex = 1;
@@ -60,7 +60,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
             this.Name = "UserControlMessageErreur";
-            this.Size = new System.Drawing.Size(608, 253);
+            this.Size = new System.Drawing.Size(475, 253);
             ((System.ComponentModel.ISupportInitialize)(this.pbErreur)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

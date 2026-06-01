@@ -574,23 +574,17 @@ namespace SAE24
                 Permet de réinitialiser tous les éléments de recherche dans grpEspeces
             */
 
-            // Réinitialise les comboboxes
-            //estSurEspece = false;
-            cboCouleur.SelectedIndex = 0;
-            cboPlanete.SelectedIndex = 0;
-            //estSurEspece = true;
-
             // Vide le textBox de recherche en fonction du nom
-            txtNomEspece.ResetText();
+            txtNomEspece.Clear();
 
             // Décoche les RadioButtons précisant si l'espèce est alliée ou ennemie
             rdbAllies.Checked = false;
             rdbEnnemis.Checked = false;
 
-            // Afficher toutes les espèces par défaut
-            afficherFiltre();
+            // Réinitialise les comboboxes
+            cboCouleur.SelectedIndex = 0;
+            cboPlanete.SelectedIndex = 0;
 
-            
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)

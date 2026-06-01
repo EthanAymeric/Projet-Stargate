@@ -131,10 +131,10 @@
             // pnlEspeces
             // 
             this.pnlEspeces.AutoScroll = true;
-            this.pnlEspeces.Location = new System.Drawing.Point(15, 15);
+            this.pnlEspeces.Location = new System.Drawing.Point(359, 15);
             this.pnlEspeces.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlEspeces.Name = "pnlEspeces";
-            this.pnlEspeces.Size = new System.Drawing.Size(1050, 383);
+            this.pnlEspeces.Size = new System.Drawing.Size(706, 568);
             this.pnlEspeces.TabIndex = 7;
             // 
             // grpEspeces
@@ -149,9 +149,9 @@
             this.grpEspeces.Controls.Add(this.btnReset);
             this.grpEspeces.Controls.Add(this.rdbEnnemis);
             this.grpEspeces.Controls.Add(this.rdbAllies);
-            this.grpEspeces.Location = new System.Drawing.Point(15, 392);
+            this.grpEspeces.Location = new System.Drawing.Point(12, 18);
             this.grpEspeces.Name = "grpEspeces";
-            this.grpEspeces.Size = new System.Drawing.Size(1047, 191);
+            this.grpEspeces.Size = new System.Drawing.Size(341, 565);
             this.grpEspeces.TabIndex = 0;
             this.grpEspeces.TabStop = false;
             this.grpEspeces.Text = "Recherche d\'espèces";
@@ -160,7 +160,7 @@
             // 
             this.lblIndicationCouleur.AutoSize = true;
             this.lblIndicationCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationCouleur.Location = new System.Drawing.Point(504, 147);
+            this.lblIndicationCouleur.Location = new System.Drawing.Point(252, 242);
             this.lblIndicationCouleur.Name = "lblIndicationCouleur";
             this.lblIndicationCouleur.Size = new System.Drawing.Size(81, 25);
             this.lblIndicationCouleur.TabIndex = 11;
@@ -170,7 +170,7 @@
             // 
             this.lblIndicationPlanete.AutoSize = true;
             this.lblIndicationPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationPlanete.Location = new System.Drawing.Point(504, 98);
+            this.lblIndicationPlanete.Location = new System.Drawing.Point(252, 193);
             this.lblIndicationPlanete.Name = "lblIndicationPlanete";
             this.lblIndicationPlanete.Size = new System.Drawing.Size(78, 25);
             this.lblIndicationPlanete.TabIndex = 10;
@@ -182,7 +182,7 @@
             this.cboPlanete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPlanete.FormattingEnabled = true;
-            this.cboPlanete.Location = new System.Drawing.Point(276, 95);
+            this.cboPlanete.Location = new System.Drawing.Point(24, 190);
             this.cboPlanete.Name = "cboPlanete";
             this.cboPlanete.Size = new System.Drawing.Size(222, 33);
             this.cboPlanete.TabIndex = 9;
@@ -192,7 +192,7 @@
             // 
             this.lblIndicationNom.AutoSize = true;
             this.lblIndicationNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationNom.Location = new System.Drawing.Point(504, 47);
+            this.lblIndicationNom.Location = new System.Drawing.Point(252, 142);
             this.lblIndicationNom.Name = "lblIndicationNom";
             this.lblIndicationNom.Size = new System.Drawing.Size(53, 25);
             this.lblIndicationNom.TabIndex = 8;
@@ -201,7 +201,7 @@
             // txtNomEspece
             // 
             this.txtNomEspece.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomEspece.Location = new System.Drawing.Point(276, 47);
+            this.txtNomEspece.Location = new System.Drawing.Point(24, 142);
             this.txtNomEspece.Name = "txtNomEspece";
             this.txtNomEspece.Size = new System.Drawing.Size(222, 30);
             this.txtNomEspece.TabIndex = 7;
@@ -213,7 +213,7 @@
             this.cboCouleur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCouleur.FormattingEnabled = true;
-            this.cboCouleur.Location = new System.Drawing.Point(276, 145);
+            this.cboCouleur.Location = new System.Drawing.Point(24, 240);
             this.cboCouleur.Name = "cboCouleur";
             this.cboCouleur.Size = new System.Drawing.Size(222, 33);
             this.cboCouleur.TabIndex = 4;
@@ -222,9 +222,9 @@
             // 
             // btnRecherche
             // 
-            this.btnRecherche.Location = new System.Drawing.Point(869, 37);
+            this.btnRecherche.Location = new System.Drawing.Point(42, 345);
             this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(157, 48);
+            this.btnRecherche.Size = new System.Drawing.Size(240, 69);
             this.btnRecherche.TabIndex = 3;
             this.btnRecherche.Text = "Recherche";
             this.btnRecherche.UseVisualStyleBackColor = true;
@@ -232,9 +232,9 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(869, 126);
+            this.btnReset.Location = new System.Drawing.Point(42, 450);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(157, 52);
+            this.btnReset.Size = new System.Drawing.Size(240, 69);
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -244,7 +244,7 @@
             // 
             this.rdbEnnemis.AutoSize = true;
             this.rdbEnnemis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbEnnemis.Location = new System.Drawing.Point(24, 145);
+            this.rdbEnnemis.Location = new System.Drawing.Point(24, 84);
             this.rdbEnnemis.Name = "rdbEnnemis";
             this.rdbEnnemis.Size = new System.Drawing.Size(205, 29);
             this.rdbEnnemis.TabIndex = 1;
@@ -267,19 +267,19 @@
             // pnlAllies
             // 
             this.pnlAllies.AutoScroll = true;
-            this.pnlAllies.Location = new System.Drawing.Point(15, 15);
+            this.pnlAllies.Location = new System.Drawing.Point(359, 15);
             this.pnlAllies.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlAllies.Name = "pnlAllies";
-            this.pnlAllies.Size = new System.Drawing.Size(1050, 383);
+            this.pnlAllies.Size = new System.Drawing.Size(706, 568);
             this.pnlAllies.TabIndex = 8;
             // 
             // pnlEnnemis
             // 
             this.pnlEnnemis.AutoScroll = true;
-            this.pnlEnnemis.Location = new System.Drawing.Point(15, 15);
+            this.pnlEnnemis.Location = new System.Drawing.Point(359, 15);
             this.pnlEnnemis.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlEnnemis.Name = "pnlEnnemis";
-            this.pnlEnnemis.Size = new System.Drawing.Size(1050, 383);
+            this.pnlEnnemis.Size = new System.Drawing.Size(706, 568);
             this.pnlEnnemis.TabIndex = 9;
             // 
             // FrmTableauDeBord
