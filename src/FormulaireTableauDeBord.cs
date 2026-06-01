@@ -25,6 +25,13 @@ namespace SAE24
             RemplissageDS();
             AjoutRelation();
             ModifDate();
+            BackColor = Couleur.getBackground;
+            ForeColor = Couleur.getText;
+            foreach (Control c in Controls)
+            {
+                UpdateColorControls(c);
+            }
+            
         }
 
         private void UpdateDataSet()
@@ -132,7 +139,6 @@ namespace SAE24
         }
         private void ActualisationTDB()
         {
-            int top = 20, left = 20;
             foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Rows)
             {
                 string nomMission = r["NomPlanete"].ToString() + r["numero"].ToString();
@@ -147,12 +153,8 @@ namespace SAE24
 
 
                 MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
-                mr.Top = top;
-                mr.Left = left;
                 mr.afficher += AfficherResume;
                 pnlTDB.Controls.Add(mr);
-
-                top += mr.Height + 20;
             }
         }
 
@@ -187,5 +189,38 @@ namespace SAE24
 
         }
 
+        private void btnSwitchTheme_Click(object sender, EventArgs e)
+        {
+            Couleur.SwitchTheme();
+            BackColor = Couleur.getBackground;
+            ForeColor = Couleur.getText;
+            foreach (Control c in Controls)
+            {
+                UpdateColorControls(c);
+            }
+
+        }
+
+        private void UpdateColorControls(Control c)
+        {
+            if(c is Label)
+            {
+                c.ForeColor = Couleur.getText;
+            }
+            if(c is Button)
+            {
+                c.BackColor = Couleur.getButton;
+                c.ForeColor = Couleur.getText;
+            }
+            if(c is MissionResume)
+            {
+                MissionResume mr = (MissionResume)c;
+                mr.UpdateColors();
+            }
+            foreach(Control subControl in c.Controls)
+            {
+                UpdateColorControls(subControl);
+            }
+        }
     }
 }

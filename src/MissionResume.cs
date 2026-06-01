@@ -29,6 +29,7 @@ namespace SAE24
         public MissionResume(string nomMission, string dateDeb, string duree, string chef)
         {
             InitializeComponent();
+            UpdateColors();
             lblNomMission.Text = nomMission;
             lblDateDeb.Text = dateDeb;
             lblDuree.Text = $"{duree} Jours";
@@ -39,6 +40,13 @@ namespace SAE24
             lblChef.Visible = true;
             string nomPlanete = nomMission.Substring(0, nomMission.Length - 1);
             pbPlanete.Image = Image.FromFile($"../../Images/Planetes/{nomPlanete}.png");
+            if (DateTime.Parse(dateDeb).Add(new System.TimeSpan(Convert.ToInt32(duree), 0, 0, 0)) > DateTime.Now)
+            {
+                lblStatus.Text = "En Cours";
+            } else if (DateTime.Parse(dateDeb).Add(new System.TimeSpan(Convert.ToInt32(duree), 0, 0, 0)) < DateTime.Now)
+            {
+                lblStatus.Text = "Achevée";
+            }
         }
 
         public string GetMission{
@@ -50,12 +58,26 @@ namespace SAE24
 
         private void MissionResume_MouseEnter(object sender, EventArgs e)
         {
-            BackColor = Color.LightGray;
+            BackColor = Couleur.getButtonHover;
+            foreach (Control c in Controls.OfType<Label>())
+            {
+                c.BackColor = Couleur.getButtonHover;
+            }
         }
 
         private void MissionResume_MouseLeave(object sender, EventArgs e)
         {
-            BackColor = Color.White;
+            UpdateColors();
+        }
+
+        public void UpdateColors()
+        {
+            this.BackColor = Couleur.getButton;
+            foreach (Control c in Controls)
+            {
+                c.ForeColor = Couleur.getText;
+                c.BackColor = Couleur.getButton;
+            }
         }
     }
 }

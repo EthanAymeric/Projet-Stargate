@@ -33,7 +33,7 @@
             this.lblDateDeb = new System.Windows.Forms.Label();
             this.lblDuree = new System.Windows.Forms.Label();
             this.lblChef = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPlanete)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,9 +52,10 @@
             // lblNomMission
             // 
             this.lblNomMission.AutoSize = true;
-            this.lblNomMission.Location = new System.Drawing.Point(676, 83);
+            this.lblNomMission.Font = new System.Drawing.Font("Cascadia Code", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblNomMission.Location = new System.Drawing.Point(291, 29);
             this.lblNomMission.Name = "lblNomMission";
-            this.lblNomMission.Size = new System.Drawing.Size(44, 16);
+            this.lblNomMission.Size = new System.Drawing.Size(146, 46);
             this.lblNomMission.TabIndex = 1;
             this.lblNomMission.Text = "label1";
             this.lblNomMission.Visible = false;
@@ -65,9 +66,10 @@
             // lblDateDeb
             // 
             this.lblDateDeb.AutoSize = true;
-            this.lblDateDeb.Location = new System.Drawing.Point(676, 123);
+            this.lblDateDeb.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblDateDeb.Location = new System.Drawing.Point(293, 98);
             this.lblDateDeb.Name = "lblDateDeb";
-            this.lblDateDeb.Size = new System.Drawing.Size(44, 16);
+            this.lblDateDeb.Size = new System.Drawing.Size(105, 33);
             this.lblDateDeb.TabIndex = 2;
             this.lblDateDeb.Text = "label1";
             this.lblDateDeb.Visible = false;
@@ -78,9 +80,10 @@
             // lblDuree
             // 
             this.lblDuree.AutoSize = true;
-            this.lblDuree.Location = new System.Drawing.Point(828, 123);
+            this.lblDuree.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblDuree.Location = new System.Drawing.Point(663, 98);
             this.lblDuree.Name = "lblDuree";
-            this.lblDuree.Size = new System.Drawing.Size(44, 16);
+            this.lblDuree.Size = new System.Drawing.Size(105, 33);
             this.lblDuree.TabIndex = 3;
             this.lblDuree.Text = "label1";
             this.lblDuree.Visible = false;
@@ -91,9 +94,10 @@
             // lblChef
             // 
             this.lblChef.AutoSize = true;
-            this.lblChef.Location = new System.Drawing.Point(676, 164);
+            this.lblChef.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblChef.Location = new System.Drawing.Point(293, 156);
             this.lblChef.Name = "lblChef";
-            this.lblChef.Size = new System.Drawing.Size(44, 16);
+            this.lblChef.Size = new System.Drawing.Size(105, 33);
             this.lblChef.TabIndex = 4;
             this.lblChef.Text = "label1";
             this.lblChef.Visible = false;
@@ -101,25 +105,22 @@
             this.lblChef.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
             this.lblChef.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);
             // 
-            // label4
+            // lblStatus
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(828, 164);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 16);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "label1";
-            this.label4.Visible = false;
-            this.label4.Click += new System.EventHandler(this.AfficherResume_Click);
-            this.label4.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
-            this.label4.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblStatus.Location = new System.Drawing.Point(1035, 59);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(63, 20);
+            this.lblStatus.TabIndex = 5;
+            this.lblStatus.Text = "label1";
             // 
             // MissionResume
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblChef);
             this.Controls.Add(this.lblDuree);
             this.Controls.Add(this.lblDateDeb);
@@ -143,6 +144,6 @@
         private System.Windows.Forms.Label lblDateDeb;
         private System.Windows.Forms.Label lblDuree;
         private System.Windows.Forms.Label lblChef;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblStatus;
     }
 }
