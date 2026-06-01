@@ -49,13 +49,15 @@
             this.rdbAllies = new System.Windows.Forms.RadioButton();
             this.pnlAllies = new System.Windows.Forms.Panel();
             this.pnlEnnemis = new System.Windows.Forms.Panel();
+            this.btnStats = new System.Windows.Forms.Button();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnTDB
             // 
-            this.btnTDB.Location = new System.Drawing.Point(67, 591);
+            this.btnTDB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTDB.Location = new System.Drawing.Point(49, 221);
             this.btnTDB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnTDB.Name = "btnTDB";
             this.btnTDB.Size = new System.Drawing.Size(217, 66);
@@ -67,7 +69,8 @@
             // 
             // btnNouvelleMission
             // 
-            this.btnNouvelleMission.Location = new System.Drawing.Point(296, 591);
+            this.btnNouvelleMission.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNouvelleMission.Location = new System.Drawing.Point(49, 776);
             this.btnNouvelleMission.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
             this.btnNouvelleMission.Size = new System.Drawing.Size(217, 66);
@@ -79,7 +82,8 @@
             // 
             // btnRaces
             // 
-            this.btnRaces.Location = new System.Drawing.Point(522, 591);
+            this.btnRaces.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRaces.Location = new System.Drawing.Point(49, 363);
             this.btnRaces.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnRaces.Name = "btnRaces";
             this.btnRaces.Size = new System.Drawing.Size(217, 66);
@@ -91,7 +95,8 @@
             // 
             // btnPlanetes
             // 
-            this.btnPlanetes.Location = new System.Drawing.Point(756, 591);
+            this.btnPlanetes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPlanetes.Location = new System.Drawing.Point(49, 496);
             this.btnPlanetes.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.btnPlanetes.Name = "btnPlanetes";
             this.btnPlanetes.Size = new System.Drawing.Size(217, 66);
@@ -105,10 +110,10 @@
             // 
             this.pnlTDB.AutoScroll = true;
             this.pnlTDB.Controls.Add(this.pbChargement);
-            this.pnlTDB.Location = new System.Drawing.Point(15, 15);
+            this.pnlTDB.Location = new System.Drawing.Point(334, 218);
             this.pnlTDB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlTDB.Name = "pnlTDB";
-            this.pnlTDB.Size = new System.Drawing.Size(1050, 567);
+            this.pnlTDB.Size = new System.Drawing.Size(1425, 734);
             this.pnlTDB.TabIndex = 5;
             // 
             // pbChargement
@@ -122,19 +127,19 @@
             // pnlPlanetes
             // 
             this.pnlPlanetes.AutoScroll = true;
-            this.pnlPlanetes.Location = new System.Drawing.Point(15, 15);
+            this.pnlPlanetes.Location = new System.Drawing.Point(334, 218);
             this.pnlPlanetes.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlPlanetes.Name = "pnlPlanetes";
-            this.pnlPlanetes.Size = new System.Drawing.Size(1050, 567);
+            this.pnlPlanetes.Size = new System.Drawing.Size(1425, 734);
             this.pnlPlanetes.TabIndex = 6;
             // 
             // pnlEspeces
             // 
             this.pnlEspeces.AutoScroll = true;
-            this.pnlEspeces.Location = new System.Drawing.Point(359, 15);
+            this.pnlEspeces.Location = new System.Drawing.Point(678, 218);
             this.pnlEspeces.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlEspeces.Name = "pnlEspeces";
-            this.pnlEspeces.Size = new System.Drawing.Size(706, 568);
+            this.pnlEspeces.Size = new System.Drawing.Size(1081, 734);
             this.pnlEspeces.TabIndex = 7;
             // 
             // grpEspeces
@@ -149,9 +154,9 @@
             this.grpEspeces.Controls.Add(this.btnReset);
             this.grpEspeces.Controls.Add(this.rdbEnnemis);
             this.grpEspeces.Controls.Add(this.rdbAllies);
-            this.grpEspeces.Location = new System.Drawing.Point(12, 18);
+            this.grpEspeces.Location = new System.Drawing.Point(331, 221);
             this.grpEspeces.Name = "grpEspeces";
-            this.grpEspeces.Size = new System.Drawing.Size(341, 565);
+            this.grpEspeces.Size = new System.Drawing.Size(335, 731);
             this.grpEspeces.TabIndex = 0;
             this.grpEspeces.TabStop = false;
             this.grpEspeces.Text = "Recherche d\'espèces";
@@ -179,6 +184,7 @@
             // 
             // cboPlanete
             // 
+            this.cboPlanete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboPlanete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPlanete.FormattingEnabled = true;
@@ -210,6 +216,7 @@
             // 
             // cboCouleur
             // 
+            this.cboCouleur.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboCouleur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCouleur.FormattingEnabled = true;
@@ -222,6 +229,7 @@
             // 
             // btnRecherche
             // 
+            this.btnRecherche.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRecherche.Location = new System.Drawing.Point(42, 345);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(240, 69);
@@ -232,6 +240,7 @@
             // 
             // btnReset
             // 
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReset.Location = new System.Drawing.Point(42, 450);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(240, 69);
@@ -243,6 +252,7 @@
             // rdbEnnemis
             // 
             this.rdbEnnemis.AutoSize = true;
+            this.rdbEnnemis.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbEnnemis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbEnnemis.Location = new System.Drawing.Point(24, 84);
             this.rdbEnnemis.Name = "rdbEnnemis";
@@ -255,6 +265,7 @@
             // rdbAllies
             // 
             this.rdbAllies.AutoSize = true;
+            this.rdbAllies.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbAllies.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rdbAllies.Location = new System.Drawing.Point(24, 49);
             this.rdbAllies.Name = "rdbAllies";
@@ -267,26 +278,40 @@
             // pnlAllies
             // 
             this.pnlAllies.AutoScroll = true;
-            this.pnlAllies.Location = new System.Drawing.Point(359, 15);
+            this.pnlAllies.Location = new System.Drawing.Point(678, 218);
             this.pnlAllies.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlAllies.Name = "pnlAllies";
-            this.pnlAllies.Size = new System.Drawing.Size(706, 568);
+            this.pnlAllies.Size = new System.Drawing.Size(1081, 734);
             this.pnlAllies.TabIndex = 8;
             // 
             // pnlEnnemis
             // 
             this.pnlEnnemis.AutoScroll = true;
-            this.pnlEnnemis.Location = new System.Drawing.Point(359, 15);
+            this.pnlEnnemis.Location = new System.Drawing.Point(678, 218);
             this.pnlEnnemis.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlEnnemis.Name = "pnlEnnemis";
-            this.pnlEnnemis.Size = new System.Drawing.Size(706, 568);
+            this.pnlEnnemis.Size = new System.Drawing.Size(1081, 734);
             this.pnlEnnemis.TabIndex = 9;
+            // 
+            // btnStats
+            // 
+            this.btnStats.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStats.Location = new System.Drawing.Point(49, 623);
+            this.btnStats.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnStats.Name = "btnStats";
+            this.btnStats.Size = new System.Drawing.Size(217, 66);
+            this.btnStats.TabIndex = 10;
+            this.btnStats.Text = "Statistiques";
+            this.btnStats.UseVisualStyleBackColor = true;
+            this.btnStats.Visible = false;
             // 
             // FrmTableauDeBord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1074, 692);
+            this.ClientSize = new System.Drawing.Size(1878, 1044);
+            this.Controls.Add(this.btnNouvelleMission);
+            this.Controls.Add(this.btnStats);
             this.Controls.Add(this.grpEspeces);
             this.Controls.Add(this.pnlEnnemis);
             this.Controls.Add(this.pnlAllies);
@@ -295,7 +320,6 @@
             this.Controls.Add(this.pnlTDB);
             this.Controls.Add(this.btnPlanetes);
             this.Controls.Add(this.btnRaces);
-            this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.btnTDB);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FrmTableauDeBord";
@@ -332,6 +356,7 @@
         private System.Windows.Forms.Label lblIndicationPlanete;
         private System.Windows.Forms.ComboBox cboPlanete;
         private System.Windows.Forms.Label lblIndicationCouleur;
+        private System.Windows.Forms.Button btnStats;
     }
 }
 
