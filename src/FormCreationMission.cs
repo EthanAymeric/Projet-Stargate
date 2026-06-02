@@ -18,8 +18,8 @@ namespace SAE24
 {
     public partial class FormCreationMission : Form
     {
-        private int nbMembres;
-        private List<int> membresCoches = new List<int>();
+        private int nbMembres, membresRestants;
+        // private List<int> membresCoches = new List<int>();
         private string planete;
         private int numeroMission;
 
@@ -174,6 +174,7 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
             planete = comboBoxPlanete.SelectedItem.ToString();
             numeroMission = nbMissionsPlanete(planete) + 1;
             this.nbMembres = trackBarNbMembres.Value;
+            this.membresRestants = this.nbMembres;
             string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
             string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
             string matriculeChef = comboBoxChef.SelectedValue.ToString();
@@ -246,6 +247,8 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
 
         private void checkedListBoxMembres_ItemCheck(object sender, ItemCheckEventArgs e)
         {
+            errorProvider.SetError(checkedListBoxMembres, "");
+
             // Nombre actuellement cochés
             int checkedCount = checkedListBoxMembres.CheckedItems.Count;
 
@@ -265,8 +268,8 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
             // Mise à jour du label après la modification
             BeginInvoke(new Action(() =>
             {
-                int restants = this.nbMembres - checkedListBoxMembres.CheckedItems.Count;
-                labelMembresRestants.Text = $"{restants} restant(s)";
+                membresRestants = this.nbMembres - checkedListBoxMembres.CheckedItems.Count;
+                labelMembresRestants.Text = $"{membresRestants} restant(s)";
             }));
         }
 
@@ -331,8 +334,13 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
             }
         }
 
-        private void buttonValiderMembres_Click(object sender, EventArgs e)
+        private void buttonValiderCapturesMembres_Click(object sender, EventArgs e)
         {
+            if (membresRestants != 0) {
+                errorProvider.SetError(checkedListBoxMembres, "Le nombre de membres requis doit être sélectionné");
+                return;
+            }
+
             foreach (KeyValuePair<string, string> item in checkedListBoxMembres.CheckedItems)
             {
                 string matricule = item.Value.ToString();
@@ -348,7 +356,34 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
                 cmd.ExecuteNonQuery();
             }
 
-            MessageBox.Show("Membre(s) Ajouté(s)");
+            foreach (string item in listBoxCaptures.Items)
+            {
+                string[] parties = item.Split('\t');
+
+                SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
+                cmd.CommandText = $@"SELECT id FROM Espece WHERE lower(nom) = lower('{parties[0]}')";
+                int idEspece = Convert.ToInt32(cmd.ExecuteScalar());
+                int nombre = int.Parse(parties[1]);
+
+                cmd = new SQLiteCommand(Connexion.Connec);
+
+                cmd.CommandText = @"
+                    INSERT OR IGNORE INTO Capturer
+                    (nomPlanete, numeroMission, idEspeceEnnemi, nombre)
+                    VALUES
+                    (@planete, @mission, @espece, @nombre)";
+
+                cmd.Parameters.AddWithValue("@planete", planete);
+                cmd.Parameters.AddWithValue("@mission", numeroMission);
+                cmd.Parameters.AddWithValue("@espece", idEspece);
+                cmd.Parameters.AddWithValue("@nombre", nombre);
+
+                cmd.ExecuteNonQuery();
+            }
+
+            MessageBox.Show("Membre(s) et objectif(s) de capture(s) ajoutés");
+
+            this.Close();
         }
     }
 }
