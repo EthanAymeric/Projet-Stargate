@@ -20,6 +20,9 @@ namespace SAE24
     {
         private int nbMembres;
         private List<int> membresCoches = new List<int>();
+        private string planete;
+        private int numeroMission;
+
         public FormCreationMission()
         {
             InitializeComponent();
@@ -168,8 +171,8 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
                 return;
             }
 
-            string planete = comboBoxPlanete.SelectedItem.ToString();
-            int num = nbMissionsPlanete(planete) + 1;
+            planete = comboBoxPlanete.SelectedItem.ToString();
+            numeroMission = nbMissionsPlanete(planete) + 1;
             this.nbMembres = trackBarNbMembres.Value;
             string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
             string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
@@ -181,7 +184,7 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
 
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = $@"insert into Mission (nomPlanete, numero, nbMembreRequis, dateDepart, dateRetour, matriculeChef, feuilleDeRoute, objectifDatabaz, budget) 
-values ('{planete}', {num}, {nbMembres}, '{depart}', '{retour}', '{matriculeChef}', '{feuille}', {databaz}, {budget})";
+values ('{planete}', {numeroMission}, {nbMembres}, '{depart}', '{retour}', '{matriculeChef}', '{feuille}', {databaz}, {budget})";
 
             if (cmd.ExecuteNonQuery() == 1) {
                 groupBox.Visible = true;
@@ -326,6 +329,26 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
             {
                 listBoxCaptures.Items.RemoveAt(listBoxCaptures.SelectedIndex);
             }
+        }
+
+        private void buttonValiderMembres_Click(object sender, EventArgs e)
+        {
+            foreach (KeyValuePair<string, string> item in checkedListBoxMembres.CheckedItems)
+            {
+                string matricule = item.Value.ToString();
+
+                SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
+                cmd.CommandText = $@"INSERT INTO Composer (nomPlanete, numeroMission, matriculeMembre) 
+                                    SELECT '{planete}', {numeroMission}, '{matricule}'
+                                    WHERE NOT EXISTS (
+                                        SELECT 1 FROM Composer WHERE nomPlanete = '{planete}'
+                                        AND numeroMission = {numeroMission}
+                                        AND matriculeMembre = '{matricule}')";
+
+                cmd.ExecuteNonQuery();
+            }
+
+            MessageBox.Show("Membre(s) Ajouté(s)");
         }
     }
 }

@@ -316,6 +316,7 @@
             this.buttonValiderMembres.TabIndex = 7;
             this.buttonValiderMembres.Text = "Valider";
             this.buttonValiderMembres.UseVisualStyleBackColor = true;
+            this.buttonValiderMembres.Click += new System.EventHandler(this.buttonValiderMembres_Click);
             // 
             // listBoxCaptures
             // 
