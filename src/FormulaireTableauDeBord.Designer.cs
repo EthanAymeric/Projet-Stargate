@@ -111,6 +111,7 @@
             // btnSwitchTheme
             // 
             this.btnSwitchTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
+            this.btnSwitchTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSwitchTheme.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnSwitchTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnSwitchTheme.Location = new System.Drawing.Point(1796, 12);

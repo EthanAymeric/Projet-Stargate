@@ -29,8 +29,14 @@ namespace SAE24
         {
             InitializeComponent();
             missionActuelle = MesDatas.DsGlobal.Tables["Mission"].Select($"nomPlanete = '{idMission.Substring(0, idMission.Length - 1)}' AND numero = '{idMission.Substring(idMission.Length - 1, 1)}'")[0];
-            missionPB1.SetImage = idMission.Substring(0, idMission.Length - 1);
-            missionPB1.SetText = idMission;
+            pbPlanete.Image = Image.FromFile($"../../Images/Planetes/{idMission.Substring(0, idMission.Length - 1)}.png");
+            lblNomMission.Text = idMission;
+            BackColor = Couleur.getBackground;
+            ForeColor = Couleur.getText;
+            foreach (Control c in Controls)
+            {
+                UpdateColorControls(c);
+            }
         }
 
         private void RemplissageMembre()
@@ -619,6 +625,49 @@ namespace SAE24
             finally
             {
                 Connexion.FermerConnexion();
+            }
+        }
+
+        private void UpdateColorControls(Control c)
+        {
+
+            if (c is Label)
+            {
+                c.ForeColor = Couleur.getText;
+            }
+            else if (c is DataGridView)
+            {
+                DataGridView dgv = (DataGridView)c;
+                dgv.RowHeadersDefaultCellStyle.BackColor = Couleur.getButton;
+                dgv.RowHeadersDefaultCellStyle.ForeColor = Couleur.getText;
+                dgv.RowHeadersDefaultCellStyle.SelectionBackColor = Couleur.getButtonHover;
+                dgv.RowHeadersDefaultCellStyle.SelectionForeColor = Couleur.getText;
+                dgv.ForeColor = Couleur.getText;
+                dgv.BackgroundColor = Couleur.getBackground;
+                dgv.DefaultCellStyle.BackColor = Couleur.getButton;
+                dgv.DefaultCellStyle.ForeColor = Couleur.getText;
+                dgv.DefaultCellStyle.SelectionBackColor = Couleur.getButtonHover;
+                dgv.DefaultCellStyle.SelectionForeColor = Couleur.getText;
+                dgv.ColumnHeadersDefaultCellStyle.BackColor = Couleur.getButtonHover;
+                dgv.ColumnHeadersDefaultCellStyle.ForeColor = Couleur.getText;
+            }
+            else if (c is Button)
+            {
+                c.BackColor = Couleur.getButton;
+                c.ForeColor = Couleur.getText;
+            }
+            else if (c is MissionResume)
+            {
+                MissionResume mr = (MissionResume)c;
+                mr.UpdateColors();
+            } else
+            {
+                c.BackColor = Couleur.getBackground;
+                c.ForeColor = Couleur.getText;
+            }
+            foreach (Control subControl in c.Controls)
+            {
+                UpdateColorControls(subControl);
             }
         }
     }
