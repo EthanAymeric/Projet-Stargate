@@ -224,6 +224,21 @@ ORDER BY me.nom, me.prenom;";
             checkedListBoxMembres.ValueMember = "Value";
 
             labelMembresRestants.Text = nbMembres + " restant(s)";
+
+            cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = $@"SELECT DISTINCT es.nom
+FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
+
+            List<string> r = new List<string>();
+            reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                r.Add(reader.GetString(0));
+            }
+
+            comboBoxEnnemis.DataSource = new BindingSource(r, null);
+            comboBoxEnnemis.DisplayMember = "Key";
         }
 
         private void checkedListBoxMembres_ItemCheck(object sender, ItemCheckEventArgs e)
@@ -250,6 +265,67 @@ ORDER BY me.nom, me.prenom;";
                 int restants = this.nbMembres - checkedListBoxMembres.CheckedItems.Count;
                 labelMembresRestants.Text = $"{restants} restant(s)";
             }));
+        }
+
+        private void textBoxNbCaptures_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            errorProvider.SetError(textBoxNbCaptures, "");
+            e.Handled = !(char.IsDigit(e.KeyChar) || e.KeyChar == (char)Keys.Back);
+        }
+
+        private void buttonAjouterCapture_Click(object sender, EventArgs e)
+        {
+            bool erreur = false;
+            if (comboBoxEnnemis.SelectedIndex == -1)
+            {
+                errorProvider.SetError(comboBoxEnnemis, "Une espèce ennemie doit être sélectionnée");
+                erreur = true;
+            }
+            if (textBoxNbCaptures.Text == "" || Convert.ToInt32(textBoxNbCaptures.Text) == 0)
+            {
+                errorProvider.SetError(textBoxNbCaptures, "Un nombre d'ennemis supérieur à 0 doit être saisi");
+                erreur = true;
+            }
+            if (erreur) return;
+
+            bool trouve = false;
+            string espece = comboBoxEnnemis.SelectedItem.ToString();
+            int nbCaptures = int.Parse(textBoxNbCaptures.Text);
+
+            for (int i = 0; i < listBoxCaptures.Items.Count; i++)
+            {
+                string ligne = listBoxCaptures.Items[i].ToString();
+
+                string[] parties = ligne.Split('\t');
+
+                if (parties.Length >= 2 && parties[0] == espece)
+                {
+                    int ancienNb = int.Parse(parties[1]);
+                    int nouveauNb = ancienNb + nbCaptures;
+
+                    listBoxCaptures.Items[i] = $"{espece}\t{nouveauNb}";
+                    trouve = true;
+                    break;
+                }
+            }
+
+            if (!trouve)
+            {
+                listBoxCaptures.Items.Add($"{espece}\t{nbCaptures}");
+            }
+        }
+
+        private void comboBoxEnnemis_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            errorProvider.SetError(comboBoxEnnemis, "");
+        }
+
+        private void listBoxCaptures_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete && listBoxCaptures.SelectedIndex != -1)
+            {
+                listBoxCaptures.Items.RemoveAt(listBoxCaptures.SelectedIndex);
+            }
         }
     }
 }

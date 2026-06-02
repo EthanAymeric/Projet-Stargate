@@ -54,9 +54,15 @@
             this.comboBoxChef = new System.Windows.Forms.ComboBox();
             this.labelChef = new System.Windows.Forms.Label();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.textBoxNbCaptures = new System.Windows.Forms.TextBox();
+            this.buttonValiderMembres = new System.Windows.Forms.Button();
+            this.listBoxCaptures = new System.Windows.Forms.ListBox();
+            this.comboBoxEnnemis = new System.Windows.Forms.ComboBox();
+            this.labelObjectifCaptures = new System.Windows.Forms.Label();
             this.labelMembresRestants = new System.Windows.Forms.Label();
             this.checkedListBoxMembres = new System.Windows.Forms.CheckedListBox();
             this.labelAjoutMembres = new System.Windows.Forms.Label();
+            this.buttonAjouterCapture = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.groupBox.SuspendLayout();
@@ -188,8 +194,9 @@
             this.labelMembres.AutoSize = true;
             this.labelMembres.Location = new System.Drawing.Point(1293, 30);
             this.labelMembres.Name = "labelMembres";
-            this.labelMembres.Size = new System.Drawing.Size(0, 26);
+            this.labelMembres.Size = new System.Drawing.Size(24, 26);
             this.labelMembres.TabIndex = 15;
+            this.labelMembres.Text = "1";
             // 
             // labelDatabaz
             // 
@@ -277,6 +284,12 @@
             // 
             // groupBox
             // 
+            this.groupBox.Controls.Add(this.buttonAjouterCapture);
+            this.groupBox.Controls.Add(this.textBoxNbCaptures);
+            this.groupBox.Controls.Add(this.buttonValiderMembres);
+            this.groupBox.Controls.Add(this.listBoxCaptures);
+            this.groupBox.Controls.Add(this.comboBoxEnnemis);
+            this.groupBox.Controls.Add(this.labelObjectifCaptures);
             this.groupBox.Controls.Add(this.labelMembresRestants);
             this.groupBox.Controls.Add(this.checkedListBoxMembres);
             this.groupBox.Controls.Add(this.labelAjoutMembres);
@@ -286,6 +299,52 @@
             this.groupBox.TabIndex = 25;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Objectifs et Membres";
+            // 
+            // textBoxNbCaptures
+            // 
+            this.textBoxNbCaptures.Location = new System.Drawing.Point(1013, 81);
+            this.textBoxNbCaptures.Name = "textBoxNbCaptures";
+            this.textBoxNbCaptures.Size = new System.Drawing.Size(56, 32);
+            this.textBoxNbCaptures.TabIndex = 8;
+            this.textBoxNbCaptures.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNbCaptures_KeyPress);
+            // 
+            // buttonValiderMembres
+            // 
+            this.buttonValiderMembres.Location = new System.Drawing.Point(528, 422);
+            this.buttonValiderMembres.Name = "buttonValiderMembres";
+            this.buttonValiderMembres.Size = new System.Drawing.Size(122, 42);
+            this.buttonValiderMembres.TabIndex = 7;
+            this.buttonValiderMembres.Text = "Valider";
+            this.buttonValiderMembres.UseVisualStyleBackColor = true;
+            // 
+            // listBoxCaptures
+            // 
+            this.listBoxCaptures.FormattingEnabled = true;
+            this.listBoxCaptures.ItemHeight = 26;
+            this.listBoxCaptures.Location = new System.Drawing.Point(723, 135);
+            this.listBoxCaptures.Name = "listBoxCaptures";
+            this.listBoxCaptures.Size = new System.Drawing.Size(544, 264);
+            this.listBoxCaptures.TabIndex = 6;
+            this.listBoxCaptures.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxCaptures_KeyDown);
+            // 
+            // comboBoxEnnemis
+            // 
+            this.comboBoxEnnemis.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxEnnemis.FormattingEnabled = true;
+            this.comboBoxEnnemis.Location = new System.Drawing.Point(723, 79);
+            this.comboBoxEnnemis.Name = "comboBoxEnnemis";
+            this.comboBoxEnnemis.Size = new System.Drawing.Size(272, 34);
+            this.comboBoxEnnemis.TabIndex = 4;
+            this.comboBoxEnnemis.SelectedIndexChanged += new System.EventHandler(this.comboBoxEnnemis_SelectedIndexChanged);
+            // 
+            // labelObjectifCaptures
+            // 
+            this.labelObjectifCaptures.AutoSize = true;
+            this.labelObjectifCaptures.Location = new System.Drawing.Point(718, 34);
+            this.labelObjectifCaptures.Name = "labelObjectifCaptures";
+            this.labelObjectifCaptures.Size = new System.Drawing.Size(205, 26);
+            this.labelObjectifCaptures.TabIndex = 3;
+            this.labelObjectifCaptures.Text = "Objectifs de capture";
             // 
             // labelMembresRestants
             // 
@@ -302,7 +361,7 @@
             this.checkedListBoxMembres.FormattingEnabled = true;
             this.checkedListBoxMembres.Location = new System.Drawing.Point(31, 76);
             this.checkedListBoxMembres.Name = "checkedListBoxMembres";
-            this.checkedListBoxMembres.Size = new System.Drawing.Size(619, 294);
+            this.checkedListBoxMembres.Size = new System.Drawing.Size(619, 323);
             this.checkedListBoxMembres.TabIndex = 1;
             this.checkedListBoxMembres.ThreeDCheckBoxes = true;
             this.checkedListBoxMembres.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxMembres_ItemCheck);
@@ -315,6 +374,16 @@
             this.labelAjoutMembres.Size = new System.Drawing.Size(190, 26);
             this.labelAjoutMembres.TabIndex = 0;
             this.labelAjoutMembres.Text = "Ajout de membres";
+            // 
+            // buttonAjouterCapture
+            // 
+            this.buttonAjouterCapture.Location = new System.Drawing.Point(1118, 74);
+            this.buttonAjouterCapture.Name = "buttonAjouterCapture";
+            this.buttonAjouterCapture.Size = new System.Drawing.Size(149, 37);
+            this.buttonAjouterCapture.TabIndex = 9;
+            this.buttonAjouterCapture.Text = "Ajouter";
+            this.buttonAjouterCapture.UseVisualStyleBackColor = true;
+            this.buttonAjouterCapture.Click += new System.EventHandler(this.buttonAjouterCapture_Click);
             // 
             // FormCreationMission
             // 
@@ -389,5 +458,11 @@
         private System.Windows.Forms.Label labelAjoutMembres;
         private System.Windows.Forms.CheckedListBox checkedListBoxMembres;
         private System.Windows.Forms.Label labelMembresRestants;
+        private System.Windows.Forms.ListBox listBoxCaptures;
+        private System.Windows.Forms.ComboBox comboBoxEnnemis;
+        private System.Windows.Forms.Label labelObjectifCaptures;
+        private System.Windows.Forms.TextBox textBoxNbCaptures;
+        private System.Windows.Forms.Button buttonValiderMembres;
+        private System.Windows.Forms.Button buttonAjouterCapture;
     }
 }
