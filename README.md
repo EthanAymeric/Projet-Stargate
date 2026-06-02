@@ -27,6 +27,7 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 - [x] Ajouter les membres de mission 
 - [x] Protéger les TextBox des injections SQL (String.Replace("'", "''");) et autres
 - [ ] Faire l'ajout de captures par transaction
+- [ ] Ajouter des missions 
 
 ## Organisation du dépôt 
 
