@@ -18,6 +18,8 @@ namespace SAE24
 {
     public partial class FormCreationMission : Form
     {
+        private int nbMembres;
+        private List<int> membresCoches = new List<int>();
         public FormCreationMission()
         {
             InitializeComponent();
@@ -168,7 +170,7 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
 
             string planete = comboBoxPlanete.SelectedItem.ToString();
             int num = nbMissionsPlanete(planete) + 1;
-            int nbMembres = trackBarNbMembres.Value;
+            this.nbMembres = trackBarNbMembres.Value;
             string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
             string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
             string matriculeChef = comboBoxChef.SelectedValue.ToString();
@@ -221,6 +223,33 @@ ORDER BY me.nom, me.prenom;";
             checkedListBoxMembres.DisplayMember = "Key";
             checkedListBoxMembres.ValueMember = "Value";
 
+            labelMembresRestants.Text = nbMembres + " restant(s)";
+        }
+
+        private void checkedListBoxMembres_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            // Nombre actuellement cochés
+            int checkedCount = checkedListBoxMembres.CheckedItems.Count;
+
+            // ItemCheck est déclenché avant la modification, on simule donc l'état futur.
+            if (e.NewValue == CheckState.Checked)
+                checkedCount++;
+            else if (e.NewValue == CheckState.Unchecked)
+                checkedCount--;
+
+            // Si on dépasse la limite, on annule le cochage
+            if (checkedCount > this.nbMembres)
+            {
+                e.NewValue = CheckState.Unchecked;
+                return;
+            }
+
+            // Mise à jour du label après la modification
+            BeginInvoke(new Action(() =>
+            {
+                int restants = this.nbMembres - checkedListBoxMembres.CheckedItems.Count;
+                labelMembresRestants.Text = $"{restants} restant(s)";
+            }));
         }
     }
 }

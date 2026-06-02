@@ -54,8 +54,9 @@
             this.comboBoxChef = new System.Windows.Forms.ComboBox();
             this.labelChef = new System.Windows.Forms.Label();
             this.groupBox = new System.Windows.Forms.GroupBox();
-            this.labelAjoutMembres = new System.Windows.Forms.Label();
+            this.labelMembresRestants = new System.Windows.Forms.Label();
             this.checkedListBoxMembres = new System.Windows.Forms.CheckedListBox();
+            this.labelAjoutMembres = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.groupBox.SuspendLayout();
@@ -64,7 +65,7 @@
             // labelPlanete
             // 
             this.labelPlanete.AutoSize = true;
-            this.labelPlanete.Location = new System.Drawing.Point(38, 66);
+            this.labelPlanete.Location = new System.Drawing.Point(12, 19);
             this.labelPlanete.Name = "labelPlanete";
             this.labelPlanete.Size = new System.Drawing.Size(229, 26);
             this.labelPlanete.TabIndex = 0;
@@ -74,7 +75,7 @@
             // 
             this.comboBoxPlanete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxPlanete.FormattingEnabled = true;
-            this.comboBoxPlanete.Location = new System.Drawing.Point(396, 63);
+            this.comboBoxPlanete.Location = new System.Drawing.Point(370, 16);
             this.comboBoxPlanete.Name = "comboBoxPlanete";
             this.comboBoxPlanete.Size = new System.Drawing.Size(291, 34);
             this.comboBoxPlanete.TabIndex = 1;
@@ -84,7 +85,7 @@
             // 
             this.labelNomMission.AutoSize = true;
             this.labelNomMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
-            this.labelNomMission.Location = new System.Drawing.Point(392, 113);
+            this.labelNomMission.Location = new System.Drawing.Point(366, 66);
             this.labelNomMission.Name = "labelNomMission";
             this.labelNomMission.Size = new System.Drawing.Size(182, 26);
             this.labelNomMission.TabIndex = 2;
@@ -93,7 +94,7 @@
             // labelDate
             // 
             this.labelDate.AutoSize = true;
-            this.labelDate.Location = new System.Drawing.Point(38, 169);
+            this.labelDate.Location = new System.Drawing.Point(12, 122);
             this.labelDate.Name = "labelDate";
             this.labelDate.Size = new System.Drawing.Size(206, 26);
             this.labelDate.TabIndex = 5;
@@ -102,7 +103,7 @@
             // dateTimePickerDepart
             // 
             this.dateTimePickerDepart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDepart.Location = new System.Drawing.Point(516, 169);
+            this.dateTimePickerDepart.Location = new System.Drawing.Point(490, 122);
             this.dateTimePickerDepart.Name = "dateTimePickerDepart";
             this.dateTimePickerDepart.Size = new System.Drawing.Size(171, 32);
             this.dateTimePickerDepart.TabIndex = 6;
@@ -111,7 +112,7 @@
             // dateTimePickerRetour
             // 
             this.dateTimePickerRetour.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerRetour.Location = new System.Drawing.Point(516, 218);
+            this.dateTimePickerRetour.Location = new System.Drawing.Point(490, 171);
             this.dateTimePickerRetour.Name = "dateTimePickerRetour";
             this.dateTimePickerRetour.Size = new System.Drawing.Size(171, 32);
             this.dateTimePickerRetour.TabIndex = 7;
@@ -120,7 +121,7 @@
             // labelDateDepart
             // 
             this.labelDateDepart.AutoSize = true;
-            this.labelDateDepart.Location = new System.Drawing.Point(391, 174);
+            this.labelDateDepart.Location = new System.Drawing.Point(365, 127);
             this.labelDateDepart.Name = "labelDateDepart";
             this.labelDateDepart.Size = new System.Drawing.Size(83, 26);
             this.labelDateDepart.TabIndex = 8;
@@ -129,7 +130,7 @@
             // labelDateRetour
             // 
             this.labelDateRetour.AutoSize = true;
-            this.labelDateRetour.Location = new System.Drawing.Point(391, 223);
+            this.labelDateRetour.Location = new System.Drawing.Point(365, 176);
             this.labelDateRetour.Name = "labelDateRetour";
             this.labelDateRetour.Size = new System.Drawing.Size(83, 26);
             this.labelDateRetour.TabIndex = 9;
@@ -138,7 +139,7 @@
             // labelDuree
             // 
             this.labelDuree.AutoSize = true;
-            this.labelDuree.Location = new System.Drawing.Point(391, 269);
+            this.labelDuree.Location = new System.Drawing.Point(365, 222);
             this.labelDuree.Name = "labelDuree";
             this.labelDuree.Size = new System.Drawing.Size(137, 26);
             this.labelDuree.TabIndex = 10;
@@ -147,7 +148,7 @@
             // labelFeuilleRoute
             // 
             this.labelFeuilleRoute.AutoSize = true;
-            this.labelFeuilleRoute.Location = new System.Drawing.Point(43, 382);
+            this.labelFeuilleRoute.Location = new System.Drawing.Point(17, 335);
             this.labelFeuilleRoute.Name = "labelFeuilleRoute";
             this.labelFeuilleRoute.Size = new System.Drawing.Size(192, 26);
             this.labelFeuilleRoute.TabIndex = 11;
@@ -155,7 +156,7 @@
             // 
             // richTextBoxFeuilleRoute
             // 
-            this.richTextBoxFeuilleRoute.Location = new System.Drawing.Point(396, 382);
+            this.richTextBoxFeuilleRoute.Location = new System.Drawing.Point(370, 335);
             this.richTextBoxFeuilleRoute.Name = "richTextBoxFeuilleRoute";
             this.richTextBoxFeuilleRoute.Size = new System.Drawing.Size(291, 168);
             this.richTextBoxFeuilleRoute.TabIndex = 12;
@@ -165,7 +166,7 @@
             // labelNbMembres
             // 
             this.labelNbMembres.AutoSize = true;
-            this.labelNbMembres.Location = new System.Drawing.Point(43, 590);
+            this.labelNbMembres.Location = new System.Drawing.Point(684, 16);
             this.labelNbMembres.Name = "labelNbMembres";
             this.labelNbMembres.Size = new System.Drawing.Size(314, 26);
             this.labelNbMembres.TabIndex = 13;
@@ -173,7 +174,7 @@
             // 
             // trackBarNbMembres
             // 
-            this.trackBarNbMembres.Location = new System.Drawing.Point(384, 590);
+            this.trackBarNbMembres.Location = new System.Drawing.Point(1025, 16);
             this.trackBarNbMembres.Minimum = 1;
             this.trackBarNbMembres.Name = "trackBarNbMembres";
             this.trackBarNbMembres.Size = new System.Drawing.Size(261, 69);
@@ -185,7 +186,7 @@
             // labelMembres
             // 
             this.labelMembres.AutoSize = true;
-            this.labelMembres.Location = new System.Drawing.Point(652, 604);
+            this.labelMembres.Location = new System.Drawing.Point(1293, 30);
             this.labelMembres.Name = "labelMembres";
             this.labelMembres.Size = new System.Drawing.Size(0, 26);
             this.labelMembres.TabIndex = 15;
@@ -193,7 +194,7 @@
             // labelDatabaz
             // 
             this.labelDatabaz.AutoSize = true;
-            this.labelDatabaz.Location = new System.Drawing.Point(48, 665);
+            this.labelDatabaz.Location = new System.Drawing.Point(689, 91);
             this.labelDatabaz.Name = "labelDatabaz";
             this.labelDatabaz.Size = new System.Drawing.Size(230, 26);
             this.labelDatabaz.TabIndex = 16;
@@ -201,7 +202,7 @@
             // 
             // textBoxDatabaz
             // 
-            this.textBoxDatabaz.Location = new System.Drawing.Point(397, 662);
+            this.textBoxDatabaz.Location = new System.Drawing.Point(1038, 88);
             this.textBoxDatabaz.Name = "textBoxDatabaz";
             this.textBoxDatabaz.Size = new System.Drawing.Size(141, 32);
             this.textBoxDatabaz.TabIndex = 17;
@@ -210,7 +211,7 @@
             // labelTonnes
             // 
             this.labelTonnes.AutoSize = true;
-            this.labelTonnes.Location = new System.Drawing.Point(561, 665);
+            this.labelTonnes.Location = new System.Drawing.Point(1202, 91);
             this.labelTonnes.Name = "labelTonnes";
             this.labelTonnes.Size = new System.Drawing.Size(77, 26);
             this.labelTonnes.TabIndex = 18;
@@ -218,7 +219,7 @@
             // 
             // buttonValider
             // 
-            this.buttonValider.Location = new System.Drawing.Point(516, 777);
+            this.buttonValider.Location = new System.Drawing.Point(1038, 202);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(143, 67);
             this.buttonValider.TabIndex = 19;
@@ -229,7 +230,7 @@
             // labelEuro
             // 
             this.labelEuro.AutoSize = true;
-            this.labelEuro.Location = new System.Drawing.Point(560, 716);
+            this.labelEuro.Location = new System.Drawing.Point(1201, 142);
             this.labelEuro.Name = "labelEuro";
             this.labelEuro.Size = new System.Drawing.Size(24, 26);
             this.labelEuro.TabIndex = 22;
@@ -237,7 +238,7 @@
             // 
             // textBoxBudget
             // 
-            this.textBoxBudget.Location = new System.Drawing.Point(396, 713);
+            this.textBoxBudget.Location = new System.Drawing.Point(1037, 139);
             this.textBoxBudget.Name = "textBoxBudget";
             this.textBoxBudget.Size = new System.Drawing.Size(141, 32);
             this.textBoxBudget.TabIndex = 21;
@@ -246,7 +247,7 @@
             // labelBudget
             // 
             this.labelBudget.AutoSize = true;
-            this.labelBudget.Location = new System.Drawing.Point(47, 716);
+            this.labelBudget.Location = new System.Drawing.Point(688, 142);
             this.labelBudget.Name = "labelBudget";
             this.labelBudget.Size = new System.Drawing.Size(112, 26);
             this.labelBudget.TabIndex = 20;
@@ -260,7 +261,7 @@
             // 
             this.comboBoxChef.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxChef.FormattingEnabled = true;
-            this.comboBoxChef.Location = new System.Drawing.Point(397, 315);
+            this.comboBoxChef.Location = new System.Drawing.Point(371, 268);
             this.comboBoxChef.Name = "comboBoxChef";
             this.comboBoxChef.Size = new System.Drawing.Size(291, 34);
             this.comboBoxChef.TabIndex = 24;
@@ -268,7 +269,7 @@
             // labelChef
             // 
             this.labelChef.AutoSize = true;
-            this.labelChef.Location = new System.Drawing.Point(39, 318);
+            this.labelChef.Location = new System.Drawing.Point(13, 271);
             this.labelChef.Name = "labelChef";
             this.labelChef.Size = new System.Drawing.Size(287, 26);
             this.labelChef.TabIndex = 23;
@@ -276,37 +277,50 @@
             // 
             // groupBox
             // 
+            this.groupBox.Controls.Add(this.labelMembresRestants);
             this.groupBox.Controls.Add(this.checkedListBoxMembres);
             this.groupBox.Controls.Add(this.labelAjoutMembres);
             this.groupBox.Location = new System.Drawing.Point(12, 12);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(706, 832);
+            this.groupBox.Size = new System.Drawing.Size(1316, 492);
             this.groupBox.TabIndex = 25;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Objectifs et Membres";
             // 
+            // labelMembresRestants
+            // 
+            this.labelMembresRestants.AutoSize = true;
+            this.labelMembresRestants.ForeColor = System.Drawing.Color.Crimson;
+            this.labelMembresRestants.Location = new System.Drawing.Point(523, 34);
+            this.labelMembresRestants.Name = "labelMembresRestants";
+            this.labelMembresRestants.Size = new System.Drawing.Size(127, 26);
+            this.labelMembresRestants.TabIndex = 2;
+            this.labelMembresRestants.Text = " 0 restant(s)";
+            // 
+            // checkedListBoxMembres
+            // 
+            this.checkedListBoxMembres.FormattingEnabled = true;
+            this.checkedListBoxMembres.Location = new System.Drawing.Point(31, 76);
+            this.checkedListBoxMembres.Name = "checkedListBoxMembres";
+            this.checkedListBoxMembres.Size = new System.Drawing.Size(619, 294);
+            this.checkedListBoxMembres.TabIndex = 1;
+            this.checkedListBoxMembres.ThreeDCheckBoxes = true;
+            this.checkedListBoxMembres.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBoxMembres_ItemCheck);
+            // 
             // labelAjoutMembres
             // 
             this.labelAjoutMembres.AutoSize = true;
-            this.labelAjoutMembres.Location = new System.Drawing.Point(31, 59);
+            this.labelAjoutMembres.Location = new System.Drawing.Point(31, 34);
             this.labelAjoutMembres.Name = "labelAjoutMembres";
             this.labelAjoutMembres.Size = new System.Drawing.Size(190, 26);
             this.labelAjoutMembres.TabIndex = 0;
             this.labelAjoutMembres.Text = "Ajout de membres";
             // 
-            // checkedListBoxMembres
-            // 
-            this.checkedListBoxMembres.FormattingEnabled = true;
-            this.checkedListBoxMembres.Location = new System.Drawing.Point(31, 101);
-            this.checkedListBoxMembres.Name = "checkedListBoxMembres";
-            this.checkedListBoxMembres.Size = new System.Drawing.Size(619, 294);
-            this.checkedListBoxMembres.TabIndex = 1;
-            // 
             // FormCreationMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 26F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(730, 852);
+            this.ClientSize = new System.Drawing.Size(1340, 516);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.comboBoxChef);
             this.Controls.Add(this.labelChef);
@@ -374,5 +388,6 @@
         private System.Windows.Forms.GroupBox groupBox;
         private System.Windows.Forms.Label labelAjoutMembres;
         private System.Windows.Forms.CheckedListBox checkedListBoxMembres;
+        private System.Windows.Forms.Label labelMembresRestants;
     }
 }
