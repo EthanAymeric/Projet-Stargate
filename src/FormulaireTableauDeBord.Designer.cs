@@ -50,6 +50,7 @@
             this.pnlAllies = new System.Windows.Forms.Panel();
             this.pnlEnnemis = new System.Windows.Forms.Panel();
             this.btnStats = new System.Windows.Forms.Button();
+            this.pnlStats = new System.Windows.Forms.Panel();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.SuspendLayout();
@@ -304,6 +305,16 @@
             this.btnStats.Text = "Statistiques";
             this.btnStats.UseVisualStyleBackColor = true;
             this.btnStats.Visible = false;
+            this.btnStats.Click += new System.EventHandler(this.btnStats_Click);
+            // 
+            // pnlStats
+            // 
+            this.pnlStats.AutoScroll = true;
+            this.pnlStats.Location = new System.Drawing.Point(334, 218);
+            this.pnlStats.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pnlStats.Name = "pnlStats";
+            this.pnlStats.Size = new System.Drawing.Size(1425, 734);
+            this.pnlStats.TabIndex = 7;
             // 
             // FrmTableauDeBord
             // 
@@ -313,6 +324,7 @@
             this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.btnStats);
             this.Controls.Add(this.grpEspeces);
+            this.Controls.Add(this.pnlStats);
             this.Controls.Add(this.pnlEnnemis);
             this.Controls.Add(this.pnlAllies);
             this.Controls.Add(this.pnlEspeces);
@@ -357,6 +369,7 @@
         private System.Windows.Forms.ComboBox cboPlanete;
         private System.Windows.Forms.Label lblIndicationCouleur;
         private System.Windows.Forms.Button btnStats;
+        private System.Windows.Forms.Panel pnlStats;
     }
 }
 

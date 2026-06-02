@@ -7,6 +7,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Net.Configuration;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -147,6 +148,7 @@ namespace SAE24
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = false;
+            pnlStats.Visible = false;
 
             ActualisationTDB();
 
@@ -173,6 +175,7 @@ namespace SAE24
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = true;
+            pnlStats.Visible = false;
             // On peut mettre ce vérificateur à true pour checker l'état des combobox dès qu'il change
             estSurEspece = true;
         }
@@ -185,6 +188,7 @@ namespace SAE24
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = false;
+            pnlStats.Visible = false;
 
             estSurEspece = false;
         }
@@ -1210,6 +1214,38 @@ namespace SAE24
             {
                 afficherFiltre();
             }
+        }
+
+        private void btnStats_Click(object sender, EventArgs e)
+        {
+            ChargementStats();
+
+            pnlEspeces.Visible = false;
+            grpEspeces.Visible = false;
+            pnlAllies.Visible = false;
+            pnlEnnemis.Visible = false;
+            pnlStats.Visible = true;
+
+            estSurEspece = false;
+
+            co = Connexion.Connec;
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally 
+            {
+                Connexion.FermerConnexion();
+            }
+        }
+
+        private void ChargementStats()
+        {
+
         }
     }
 }
