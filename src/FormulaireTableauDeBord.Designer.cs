@@ -51,8 +51,10 @@
             this.pnlEnnemis = new System.Windows.Forms.Panel();
             this.btnStats = new System.Windows.Forms.Button();
             this.pnlStats = new System.Windows.Forms.Panel();
+            this.cboStats1 = new System.Windows.Forms.ComboBox();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
+            this.pnlStats.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnTDB
@@ -310,11 +312,23 @@
             // pnlStats
             // 
             this.pnlStats.AutoScroll = true;
+            this.pnlStats.Controls.Add(this.cboStats1);
             this.pnlStats.Location = new System.Drawing.Point(334, 218);
             this.pnlStats.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.pnlStats.Name = "pnlStats";
             this.pnlStats.Size = new System.Drawing.Size(1425, 734);
             this.pnlStats.TabIndex = 7;
+            // 
+            // cboStats1
+            // 
+            this.cboStats1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStats1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboStats1.FormattingEnabled = true;
+            this.cboStats1.Location = new System.Drawing.Point(21, 405);
+            this.cboStats1.Name = "cboStats1";
+            this.cboStats1.Size = new System.Drawing.Size(358, 34);
+            this.cboStats1.TabIndex = 1;
+            this.cboStats1.SelectedIndexChanged += new System.EventHandler(this.cboStats1_SelectedIndexChanged);
             // 
             // FrmTableauDeBord
             // 
@@ -323,8 +337,8 @@
             this.ClientSize = new System.Drawing.Size(1878, 1044);
             this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.btnStats);
-            this.Controls.Add(this.grpEspeces);
             this.Controls.Add(this.pnlStats);
+            this.Controls.Add(this.grpEspeces);
             this.Controls.Add(this.pnlEnnemis);
             this.Controls.Add(this.pnlAllies);
             this.Controls.Add(this.pnlEspeces);
@@ -342,6 +356,7 @@
             this.pnlTDB.ResumeLayout(false);
             this.grpEspeces.ResumeLayout(false);
             this.grpEspeces.PerformLayout();
+            this.pnlStats.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -370,6 +385,7 @@
         private System.Windows.Forms.Label lblIndicationCouleur;
         private System.Windows.Forms.Button btnStats;
         private System.Windows.Forms.Panel pnlStats;
+        private System.Windows.Forms.ComboBox cboStats1;
     }
 }
 

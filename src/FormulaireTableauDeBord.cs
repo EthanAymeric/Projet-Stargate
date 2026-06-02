@@ -24,6 +24,9 @@ namespace SAE24
         // initialisation d'un booleen qui vérifie si on est bien sur le bouton de rechrche d'espèce avant de filtrer directement par combobox pour éviter un affichage directement au chragement du form
         // on le met à faux pour tous les boutons, sauf celui de la recherche d'espèces pour permettre la recherche directement en sélectionnant la valeur dans la combobox
         bool estSurEspece = false;
+
+        // vérification pour le filtre des statistiques afin de voir si on peut filtrer par nom ou pas
+        bool filtrePossible = false;
         public FrmTableauDeBord()
         {
             InitializeComponent();
@@ -201,6 +204,7 @@ namespace SAE24
             pnlEspeces.Visible = false;
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
+            pnlStats.Visible = false;
             pnlEnnemis.Visible = false;
             rdbAllies.Checked = false;
             rdbEnnemis.Checked = false;
@@ -636,6 +640,7 @@ namespace SAE24
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
+            pnlStats.Visible = false;
             Int32 top = 0;
             Int32 left = 0;
             DataRow[] tabTemp;
@@ -869,6 +874,7 @@ namespace SAE24
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
+            pnlStats.Visible = false;
             Int32 top = 0;
             Int32 left = 0;
             DataRow[] tabTemp;
@@ -1228,24 +1234,246 @@ namespace SAE24
 
             estSurEspece = false;
 
+            FiltrerListesMembresMemeMission();
+        }
+
+        private void ChargementStats()
+        {
+            int height = 200;
+            int width = 500;
+
+            int top = 300;
+            int left = cboStats1.Left;
+
+            // Chargement de la ComboBox Stats pour l'affichage des premières données statistiques
             co = Connexion.Connec;
             try
             {
+                // ComboBox Stats Membres
+                string request = @"select nom, matricule from Membre";
+                SQLiteCommand cmd = new SQLiteCommand(request, co);
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                da.Fill(MesDatas.DsGlobal, "ListeMembres");
+
+                // 2e requete
+                // Pour les missions comportant un équipage de plus de 10 personnes, indiquer la liste des dépenses effectuées, ainsi que les budgets initiaux et actuels
+                string req2 = @"select d.montant as Dépenses, d.motif as Type, m.budget as Budget
+                                from Depense d join Mission m
+                                on d.numeroMission = m.numero
+                                group by m.nbMembreRequis >= 10";
+                SQLiteCommand cmd2 = new SQLiteCommand(req2, co);
+                SQLiteDataAdapter da2 = new SQLiteDataAdapter(cmd2);
+                da2.Fill(MesDatas.DsGlobal, "DepensesDix");
+
+                DataGridView dgvStats2 = new DataGridView();
+                dgvStats2.DataSource = MesDatas.DsGlobal.Tables["DepensesDix"];
+
+                Label lblStats2 = new Label();
+                lblStats2.AutoSize = true;
+                lblStats2.Text = "Liste des dépenses effectuées et des budgets initiaux et actuels (pour les missions de plus de 10 personnes)";
+                lblStats2.Top = top;
+                lblStats2.Left = left;
+
+                pnlStats.Controls.Add(lblStats2);
+                top += 20;
+
+                dgvStats2.Top = top;
+                dgvStats2.Left = left;
+                dgvStats2.Height = height;
+                dgvStats2.Width = width;
+
+                //dgvStats2.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+
+                pnlStats.Controls.Add(dgvStats2);
+
+                // 3e requete
+                // Pour chaque planète, indiquer le nombre de missions qui y ont déjà eu lieu. Certaines planètes n’ont jamais fait l’objet de mission, elles devront néanmoins apparaître
+                string req3 = @"select p.nom as Planete, COALESCE(count(m.numero), 0) as [Nombre de missions]
+                                from Planete p 
+                                left join Mission m on p.nom = m.nomPlanete
+                                group by p.nom";
+                SQLiteCommand cmd3 = new SQLiteCommand(req3, co);
+                SQLiteDataAdapter da3 = new SQLiteDataAdapter(cmd3);
+                da3.Fill(MesDatas.DsGlobal, "ListePlaneteMissions");
+
+                DataGridView dgvStats3 = new DataGridView();
+                dgvStats3.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+
+                top += dgvStats2.Height + 20;
+                Label lblStats3 = new Label();
+                lblStats3.AutoSize = true;
+                lblStats3.Text = "Nombre de missions déjà effectuées pour chaque planète";
+                lblStats3.Top = top;
+                lblStats3.Left = left;
+                pnlStats.Controls.Add(lblStats3);
+                top += 20;
+
+                dgvStats3.Top = top;
+                dgvStats3.Left = left;
+                dgvStats3.Height = height;
+                dgvStats3.Width = width;
+
+                pnlStats.Controls.Add(dgvStats3);
+
+
+                // 4e requete
+                // Liste des dépenses (date, motif et montant concaténés dans une seule colonne intitulée « Dépenses les plus importantes »),
+                // nom de la mission et nom et prénom du chef de la mission, pour les dépenses les plus élevées de chaque mission. 
+                DataGridView dgvStats4 = new DataGridView();
+                //dgvStats4.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+
+                top += dgvStats3.Height + 20;
+                Label lblStats4 = new Label();
+                lblStats4.AutoSize = true;
+                lblStats4.Text = "Informations sur les dépenses les plus élevées de chaque mission";
+                lblStats4.Top = top;
+                lblStats4.Left = left;
+                pnlStats.Controls.Add(lblStats4);
+                top += 20;
+
+                dgvStats4.Top = top;
+                dgvStats4.Left = left;
+                dgvStats4.Height = height;
+                dgvStats4.Width = width;
+
+                pnlStats.Controls.Add(dgvStats4);
+
+                // 5e requete
+                // Quels sont les informateurs (nom de code, espèce d’origine, somme totale reçue) qui ont perçu le moins d’argent pendant une mission donnée ? 
+                DataGridView dgvStats5 = new DataGridView();
+                //dgvStats4.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+
+                top += dgvStats4.Height + 20;
+                Label lblStats5 = new Label();
+                lblStats5.AutoSize = true;
+                lblStats5.Text = "Informateurs qui ont perçu le moins d'argent pendant une mission donnée";
+                lblStats5.Top = top;
+                lblStats5.Left = left;
+                pnlStats.Controls.Add(lblStats5);
+                top += 20;
+
+                dgvStats5.Top = top;
+                dgvStats5.Left = left;
+                dgvStats5.Height = height;
+                dgvStats5.Width = width;
+
+                pnlStats.Controls.Add(dgvStats5);
 
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            finally 
+            finally
             {
                 Connexion.FermerConnexion();
             }
+
+            cboStats1.DataSource = MesDatas.DsGlobal.Tables["ListeMembres"];
+            cboStats1.DisplayMember = "nom";
+            cboStats1.ValueMember = "matricule";
+
         }
 
-        private void ChargementStats()
+        private void FiltrerListesMembresMemeMission()
         {
+            // Filtrer
+            // 1ère stats
+            // Liste de toutes les personnes (nom, prénom, type (militaire ou civil)) avec laquelle un membre (sélectionné dans une zone de liste) est déjà parti en mission
+            string filtre = "";
+            bool estCivil = false;
+            int height = 220;
+            int width = 500;
+            int left = cboStats1.Left;
+            int top = 25;
 
+            DataTable dt = new DataTable();
+            DataRow[] tab;
+
+            foreach (DataRow dr in MesDatas.DsGlobal.Tables["Composer"].Rows)
+            {
+                    DataRow membre = dr.GetParentRow("FK_Membre_Composer");
+                    // S'ils existent dans les missions et que leur matricule commence par C (que c'est des civils donc)
+                    if (membre != null)
+                    {
+                        if (membre["matricule"].ToString().StartsWith("C"))
+                        {
+                            estCivil = true;
+                        }
+                        // sinon c'est un militaire
+                        else if (membre["matricule"].ToString().StartsWith("M"))
+                        {
+                            estCivil = false;
+                        }
+
+                        if (membre["matricule"].ToString() == cboCouleur.SelectedValue.ToString())
+                        {
+                            filtre += "nom = '" + membre["nom"] +  "' and ";
+                        }
+                        string temp = filtre;
+                        if (filtre != string.Empty)
+                        {
+                            filtre = temp.Remove(temp.Length - 4);
+                        }
+                        //MessageBox.Show(filtre);
+                    }
+                    
+
+
+
+                //pnlStats.Controls.Add();
+                
+
+                /*
+                string nomMission = r["NomPlanete"].ToString() + r["numero"].ToString();
+                string strDateDepart = r["dateDepart"].ToString();
+                DateTime dateRetour = DateTime.Parse(r["dateRetour"].ToString());
+                DateTime dateDepart = DateTime.Parse(r["dateDepart"].ToString());
+                TimeSpan duree = dateRetour.Subtract(dateDepart);
+                string strDuree = duree.ToString("dd");
+                string grade = r.GetParentRow("FK_Militaire_Chef")[1].ToString();
+                string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
+                string chef = $"{identite} : {grade}";
+                
+
+                MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
+                mr.Top = top;
+                mr.Left = left;
+                pnlTDB.Controls.Add(mr);
+
+                top += mr.Height + 20;
+                */
+            }
+
+            tab = MesDatas.DsGlobal.Tables["Membre"].Select(filtre);
+            dt = tab.CopyToDataTable();
+            DataGridView dgvStats1 = new DataGridView();
+            dgvStats1.DataSource = dt;
+
+            dgvStats1.Height = height;
+            dgvStats1.Width = width;
+            dgvStats1.Left = left;
+            dgvStats1.Top = top;
+
+            filtrePossible = true;
+
+            pnlStats.Controls.Add(dgvStats1);
+
+            Label lblStat1 = new Label();
+            lblStat1.AutoSize = true;
+            lblStat1.Left = left;
+            lblStat1.Text = "Liste de toutes les personnes avec laquelle un membre est déjà parti en mission";
+
+            pnlStats.Controls.Add(lblStat1);
+        }
+
+        private void cboStats1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filtrePossible)
+            {
+                FiltrerListesMembresMemeMission();
+            }
+            
         }
     }
 }
