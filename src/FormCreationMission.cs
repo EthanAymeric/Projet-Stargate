@@ -62,7 +62,7 @@ namespace SAE24
             textBoxDatabaz.Text = String.Empty;
             textBoxNbCaptures.Text = String.Empty;
             trackBarNbMembres.Value = 1;
-            // labelMembres.Text = "1";
+            dateTimePickerDepart.MaxDate = DateTime.Today; // Pour éviter le crash lorsque la date de retour est avant aujourd'hui
             dateTimePickerDepart.Value = DateTime.Today;
             dateTimePickerRetour.Value = DateTime.Today;
 
