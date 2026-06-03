@@ -376,6 +376,10 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
                 e.Cancel = true;
                 MessageBox.Show("Les membres ainsi que les objectifs de captures doivent être renseignés");
             }
+            else
+            {
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
         private void buttonValiderCapturesMembres_Click(object sender, EventArgs e)
