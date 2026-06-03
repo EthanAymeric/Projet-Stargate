@@ -267,11 +267,13 @@
             // 
             // pnlTDB
             // 
+            this.pnlTDB.AutoScroll = true;
             this.pnlTDB.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.pnlTDB.Location = new System.Drawing.Point(268, 88);
             this.pnlTDB.Name = "pnlTDB";
             this.pnlTDB.Size = new System.Drawing.Size(1418, 783);
             this.pnlTDB.TabIndex = 0;
+            this.pnlTDB.WrapContents = false;
             // 
             // btnSwitchTheme
             // 

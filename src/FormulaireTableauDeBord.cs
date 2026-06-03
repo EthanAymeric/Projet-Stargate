@@ -221,12 +221,20 @@ namespace SAE24
 
         private void btnNouvelleMission_Click(object sender, EventArgs e)
         {
-            if (DialogResult == DialogResult.OK)
+            FormConnexion connexion = new FormConnexion();
+            FormCreationMission formCreationMission = new FormCreationMission();
+            connexion.ShowDialog();
+            if (connexion.DialogResult == DialogResult.OK)
+            {
+                formCreationMission.ShowDialog();
+            }
+            if (formCreationMission.DialogResult == DialogResult.OK)
             {
                 UpdateDataSet();
                 AjoutRelation();
                 ActualisationTDB();
             }
+
         }
 
         private void btnRaces_Click(object sender, EventArgs e)

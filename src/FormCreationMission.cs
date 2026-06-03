@@ -378,6 +378,12 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
             }
         }
 
+        private void buttonValiderRetourMenu_Click(object sender, EventArgs e)
+        {
+            // Marche pas :(
+            DialogResult = DialogResult.OK;
+        }
+
         private void buttonValiderCapturesMembres_Click(object sender, EventArgs e)
         {
             if (membresRestants != 0) {
