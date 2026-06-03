@@ -1198,10 +1198,12 @@ namespace SAE24
             }
 
             // Back/Delete : Pour supprimer des caractères
-            if (e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete)
+            if (e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete || e.KeyChar == '-') 
             {
                 e.Handled = false;
             }
+
+            
         }
 
         private void txtNomEspece_MouseClick(object sender, MouseEventArgs e)
