@@ -211,6 +211,7 @@
             // 
             this.textBoxDatabaz.Location = new System.Drawing.Point(1038, 88);
             this.textBoxDatabaz.Name = "textBoxDatabaz";
+            this.textBoxDatabaz.ShortcutsEnabled = false;
             this.textBoxDatabaz.Size = new System.Drawing.Size(141, 32);
             this.textBoxDatabaz.TabIndex = 17;
             this.textBoxDatabaz.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -247,6 +248,7 @@
             // 
             this.textBoxBudget.Location = new System.Drawing.Point(1037, 139);
             this.textBoxBudget.Name = "textBoxBudget";
+            this.textBoxBudget.ShortcutsEnabled = false;
             this.textBoxBudget.Size = new System.Drawing.Size(141, 32);
             this.textBoxBudget.TabIndex = 21;
             this.textBoxBudget.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -293,7 +295,7 @@
             this.groupBox.Controls.Add(this.labelMembresRestants);
             this.groupBox.Controls.Add(this.checkedListBoxMembres);
             this.groupBox.Controls.Add(this.labelAjoutMembres);
-            this.groupBox.Location = new System.Drawing.Point(12, 12);
+            this.groupBox.Location = new System.Drawing.Point(12, 11);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(1316, 492);
             this.groupBox.TabIndex = 25;
@@ -324,6 +326,7 @@
             // 
             this.textBoxNbCaptures.Location = new System.Drawing.Point(1013, 81);
             this.textBoxNbCaptures.Name = "textBoxNbCaptures";
+            this.textBoxNbCaptures.ShortcutsEnabled = false;
             this.textBoxNbCaptures.Size = new System.Drawing.Size(56, 32);
             this.textBoxNbCaptures.TabIndex = 8;
             this.textBoxNbCaptures.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxNbCaptures_KeyPress);
