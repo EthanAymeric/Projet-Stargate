@@ -28,7 +28,7 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 - [x] Protéger les TextBox des injections SQL (String.Replace("'", "''");) et autres
 - [x] Faire l'ajout de captures par transaction
 - [ ] Ajouter des missions 
-- [ ] Ne pas fermer la fenêtre lorsque la mission est créée mais reset la fenêtre pour pouvoir ajouter une nouvelle mission directement
+- [x] Ne pas fermer la fenêtre lorsque la mission est créée mais reset la fenêtre pour pouvoir ajouter une nouvelle mission directement
 
 ## Organisation du dépôt 
 

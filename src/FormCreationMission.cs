@@ -30,6 +30,11 @@ namespace SAE24
 
         private void FormCreationMission_Load(object sender, EventArgs e)
         {
+            load();
+        }
+
+        private void load()
+        {
             groupBox.Visible = false;
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = @"select nom from planete";
@@ -48,6 +53,24 @@ namespace SAE24
             trackBarNbMembres.Maximum = Convert.ToInt32(cmd.ExecuteScalar());
 
             Connexion.FermerConnexion();
+
+            // permet de rafraîchir le nom de la mission: trigger selectedIdexChanged sans que l'index déborde
+            comboBoxPlanete.SelectedIndex = (comboBoxPlanete.SelectedIndex + 1) % comboBoxPlanete.Items.Count; 
+            richTextBoxFeuilleRoute.Text = String.Empty;
+            textBoxBudget.Text = String.Empty;
+            textBoxDatabaz.Text = String.Empty;
+            textBoxNbCaptures.Text = String.Empty;
+            trackBarNbMembres.Value = 1;
+            // labelMembres.Text = "1";
+            dateTimePickerDepart.Value = DateTime.Today;
+            dateTimePickerRetour.Value = DateTime.Today;
+
+            for (int i = 0; i < checkedListBoxMembres.Items.Count; i++)
+            {
+                checkedListBoxMembres.SetItemChecked(i, false);
+            }
+
+            listBoxCaptures.Items.Clear();
         }
 
         private void reloadComboBoxChef()
@@ -396,7 +419,7 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
 
             MessageBox.Show("Membre(s) et objectif(s) de capture(s) ajoutés");
 
-            this.Close();
+            load(); // recommence l'ajout de mission (pour pouvoir en ajouter plusieurs sans se reconnecter)
         }
     }
 }
