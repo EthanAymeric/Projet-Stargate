@@ -17,14 +17,20 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 
 ## TO-DO list 
 
-- [x] Vérifier que chacun peut ouvrir le projet DOTNET 
-- [x] Ajouter base de données 
-- [x] Ajouter toutes les extensions (packages NUGGET)
-- [x] Organiser le dépôt git (workflow)
-- [ ] Se mettre d'accord sur les éléments à afficher pour chaque menu 
-- [ ] Choisir comment séparer les menus / morceaux de code 
-- [ ] Se répartir les tâches
-- [ ] Choisir un thème global et l'appliquer 
+- [x] Faire formulaire de login 
+- [x] Ajouter Admin à la bdd pour vérifier le login 
+- [x] Ajouter les éléments formulaire création 
+- [x] Générer un nom de mission 
+- [x] Blinder les saisies 
+- [x] Ne proposer que des chefs disponibles pendant la durée de la mission 
+- [x] changer nombre de membres requis pour le nombre de membres disponibles (max du slider)
+- [x] Ajouter les membres de mission 
+- [x] Protéger les TextBox des injections SQL (String.Replace("'", "''");) et autres
+- [x] Faire l'ajout de captures par transaction
+- [x] Ajouter des missions 
+- [x] Ne pas fermer la fenêtre lorsque la mission est créée mais reset la fenêtre pour pouvoir ajouter une nouvelle mission directement
+- [x] Empêcher de fermer la fenêtre avant que la partie 2 soit terminée 
+- [x] Compter le chef de mission comme membre (pour autoriser les missions à 1 membre)
 
 ## Organisation du dépôt 
 
@@ -130,8 +136,7 @@ pour les dépenses les plus élevées de chaque mission.
 - Quels sont les informateurs (nom de code, espèce d’origine, somme totale reçue) qui ont perçu
 le moins d’argent pendant une mission donnée ?
 
+=======
 ## Listes de questions 
 
-- [x] Volet récapitulatif des missions: Qu'entendez-vous par "mode déconnecté puis déconnecté" ? 
-- [x] Pour l'ajout d'informations concernant une mission sélectionnée, est-ce en mode connecté ou déconnecté ? 
 - [x] Est-ce que la totalité des membres sont soit civils soit militaires ? Est-ce que la totalité des espèces sont soit alliées soit ennemies ? 

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -57,6 +58,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />
+    <ItemGroup>
+    <Compile Include="Connexion.cs" />
+    <Compile Include="FormConnexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormConnexion.Designer.cs">
+      <DependentUpon>FormConnexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormCreationMission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormCreationMission.Designer.cs">
+      <DependentUpon>FormCreationMission.cs</DependentUpon>
+    </Compile>
     <Compile Include="Couleur.cs" />
     <Compile Include="FormulaireMission.cs">
       <SubType>Form</SubType>
@@ -146,8 +161,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Program.cs" />
     <EmbeddedResource Include="UserControlMessageErreur.resx">
       <DependentUpon>UserControlMessageErreur.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormConnexion.resx">
+      <DependentUpon>FormConnexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormCreationMission.resx">
+      <DependentUpon>FormCreationMission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlPlanetes\UserControl1.resx">
       <DependentUpon>UserControl1.cs</DependentUpon>
