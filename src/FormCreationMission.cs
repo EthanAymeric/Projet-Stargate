@@ -30,6 +30,11 @@ namespace SAE24
 
         private void FormCreationMission_Load(object sender, EventArgs e)
         {
+            load();
+        }
+
+        private void load()
+        {
             groupBox.Visible = false;
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = @"select nom from planete";
@@ -48,6 +53,24 @@ namespace SAE24
             trackBarNbMembres.Maximum = Convert.ToInt32(cmd.ExecuteScalar());
 
             Connexion.FermerConnexion();
+
+            // permet de rafraîchir le nom de la mission: trigger selectedIdexChanged sans que l'index déborde
+            comboBoxPlanete.SelectedIndex = (comboBoxPlanete.SelectedIndex + 1) % comboBoxPlanete.Items.Count; 
+            richTextBoxFeuilleRoute.Text = String.Empty;
+            textBoxBudget.Text = String.Empty;
+            textBoxDatabaz.Text = String.Empty;
+            textBoxNbCaptures.Text = String.Empty;
+            trackBarNbMembres.Value = 1;
+            // labelMembres.Text = "1";
+            dateTimePickerDepart.Value = DateTime.Today;
+            dateTimePickerRetour.Value = DateTime.Today;
+
+            for (int i = 0; i < checkedListBoxMembres.Items.Count; i++)
+            {
+                checkedListBoxMembres.SetItemChecked(i, false);
+            }
+
+            listBoxCaptures.Items.Clear();
         }
 
         private void reloadComboBoxChef()
@@ -356,34 +379,47 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
                 cmd.ExecuteNonQuery();
             }
 
-            foreach (string item in listBoxCaptures.Items)
+            SQLiteTransaction transaction = Connexion.Connec.BeginTransaction();
+
+            try
             {
-                string[] parties = item.Split('\t');
+                foreach (string item in listBoxCaptures.Items)
+                {
+                    string[] parties = item.Split('\t');
 
-                SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
-                cmd.CommandText = $@"SELECT id FROM Espece WHERE lower(nom) = lower('{parties[0]}')";
-                int idEspece = Convert.ToInt32(cmd.ExecuteScalar());
-                int nombre = int.Parse(parties[1]);
+                    SQLiteCommand cmdSelect = new SQLiteCommand(Connexion.Connec);
+                    cmdSelect.Transaction = transaction;
+                    cmdSelect.CommandText = $"SELECT id FROM Espece WHERE lower(nom) = lower('{parties[0]}')";
+                    int idEspece = Convert.ToInt32(cmdSelect.ExecuteScalar());
 
-                cmd = new SQLiteCommand(Connexion.Connec);
+                    int nombre = int.Parse(parties[1]);
 
-                cmd.CommandText = @"
-                    INSERT OR IGNORE INTO Capturer
-                    (nomPlanete, numeroMission, idEspeceEnnemi, nombre)
-                    VALUES
-                    (@planete, @mission, @espece, @nombre)";
+                    SQLiteCommand cmdInsert = new SQLiteCommand(Connexion.Connec);
+                    cmdInsert.Transaction = transaction;
+                    cmdInsert.CommandText = $@"
+                        INSERT OR IGNORE INTO Capturer
+                        (nomPlanete, numeroMission, idEspeceEnnemi, nombre)
+                        VALUES
+                        ('{planete}', {numeroMission}, {idEspece}, {nombre})";
 
-                cmd.Parameters.AddWithValue("@planete", planete);
-                cmd.Parameters.AddWithValue("@mission", numeroMission);
-                cmd.Parameters.AddWithValue("@espece", idEspece);
-                cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmdInsert.ExecuteNonQuery();
+                }
 
-                cmd.ExecuteNonQuery();
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                MessageBox.Show($"Erreur lors de l'insertion : {ex.Message}");
+            }
+            finally
+            {
+                transaction.Dispose();
             }
 
             MessageBox.Show("Membre(s) et objectif(s) de capture(s) ajoutés");
 
-            this.Close();
+            load(); // recommence l'ajout de mission (pour pouvoir en ajouter plusieurs sans se reconnecter)
         }
     }
 }
