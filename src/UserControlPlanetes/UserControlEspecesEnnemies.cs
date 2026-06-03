@@ -100,7 +100,7 @@ namespace UserControlPlanetes
             if (nomImageEnnemi != string.Empty)
             {
                 pbEspeceEnnemie.Image = Image.FromFile(nomImageEnnemi);
-                pbEspeceEnnemie.SizeMode = PictureBoxSizeMode.StretchImage;
+
             }
         }
 

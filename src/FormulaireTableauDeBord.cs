@@ -144,7 +144,8 @@ namespace SAE24
                 // nom (Planete) <-> nomPlanete (Mission)
                 MesDatas.DsGlobal.Relations.Add("FK_Planete_Mission", MesDatas.DsGlobal.Tables["Planete"].Columns["nom"], MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"]);
 
-		// Journal De Bord > Mission
+                // Journal De Bord > Mission
+                DataColumn[] journalDeBord = new DataColumn[] { MesDatas.DsGlobal.Tables["JournalDeBord"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["JournalDeBord"].Columns["numero"] };
                 MesDatas.DsGlobal.Relations.Add("FK_Mission_JournalDeBord", missionPK, journalDeBord);
 
                 // Contact > Mission
@@ -259,10 +260,6 @@ namespace SAE24
             pnlEnnemis.Visible = false;
             rdbAllies.Checked = false;
             rdbEnnemis.Checked = false;
-
-            // Initialisation des paramètres de placement du UserControl
-            Int32 top = 0;
-            Int32 left = 0;
 
             // Initialisation des éléments pour la recherche (avec ou sans filtre)
             DataRow[] tab;
@@ -394,19 +391,6 @@ namespace SAE24
                     UserControlEspeces u = new UserControlEspeces(nomImageEspece, nomEspece, couleur, listePlanetes, camp);
 
 
-                    // Affichage des UserControl les uns en-dessous des autres
-                    u.Top = top;
-                    u.Left = left;
-
-                    left += u.Width;
-
-                    if (left > pnlEspeces.Width)
-                    {
-                        top += u.Height;
-                        left = 0;
-                    }
-
-
                     // Ajout de l'UserControl dans le panel du tableau de bord
                     pnlEspeces.Controls.Add(u);
                 }
@@ -416,7 +400,6 @@ namespace SAE24
         private void InfosPlanetes()
         {
             pnlPlanetes.Visible = false;
-            Int32 top = 0;
 
             // Parcours de la table pour récupérer toutes les infos nécessaires
             foreach (DataRow r in MesDatas.DsGlobal.Tables["Planete"].Rows)
@@ -553,10 +536,6 @@ namespace SAE24
                 // Création de l'UserControl en le surchargeant
                 UserControlPlanete u = new UserControlPlanete(nomImagePlanete, nomImageTemp, nomPlanete, temp, gravite, presenceDatabaz, listeEspeces, listeMissions, listePourcentageEspece);
 
-                // Affichage des UserControl les uns en-dessous des autres
-                u.Top = top;
-                top += u.Height;
-
                 // Ajout de l'UserControl dans le panel du tableau de bord
                 pnlPlanetes.Controls.Add(u);
             }
@@ -564,7 +543,6 @@ namespace SAE24
 
         private void btnSwitchTheme_Click(object sender, EventArgs e)
         {
-            //Chargement();
             foreach (System.Windows.Forms.Button b in Controls.OfType<System.Windows.Forms.Button>())
             Couleur.SwitchTheme();
             btnSwitchTheme.Text = (btnSwitchTheme.Text == "Theme Sombre") ? "Theme Clair" : "Theme Sombre";
@@ -583,11 +561,12 @@ namespace SAE24
             {
                 c.ForeColor = Couleur.getText;
             }
-            if(c is Button)
+            if(c is System.Windows.Forms.Button)
             {
                 c.BackColor = Couleur.getButton;
                 c.ForeColor = Couleur.getText;
             }
+            
             if(c is MissionResume)
             {
                 MissionResume mr = (MissionResume)c;
@@ -655,8 +634,6 @@ namespace SAE24
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
-            Int32 top = 0;
-            Int32 left = 0;
             DataRow[] tabTemp;
             DataRow[] clone;
             DataTable dt = new DataTable();
@@ -825,19 +802,7 @@ namespace SAE24
                     // test du UserControl
                     // Création de l'UserControl en le surchargeant); 
                     UserControlEspecesAlliees u = new UserControlEspecesAlliees(nomImageEspece, couleur, nomEspece, degreBienveillance, listePlanetes, datePremierContact, instrument);
-
-
-                    // Affichage des UserControl les uns en-dessous des autres
-                    u.Top = top;
-                    u.Left = left;
-
-                    left += u.Width;
-
-                    if (left > pnlAllies.Width)
-                    {
-                        top += u.Height;
-                        left = 0;
-                    }
+                
 
                     // Ajout de l'UserControl dans le panel du tableau de bord
                     pnlAllies.Controls.Add(u);
@@ -854,8 +819,6 @@ namespace SAE24
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
-            Int32 top = 0;
-            Int32 left = 0;
             DataRow[] tabTemp;
             DataRow[] clone;
             DataTable dt = new DataTable();
@@ -1026,24 +989,8 @@ namespace SAE24
                     // Création de l'UserControl en le surchargeant); 
                     UserControlEspecesEnnemies u = new UserControlEspecesEnnemies(nomImageEspece, couleur, nomEspece, listePlanetes, degreAgressivite, arme);
 
-
-                    // Affichage des UserControl les uns en-dessous des autres
-                    u.Top = top;
-                    u.Left = left;
-
-                    left += u.Width;
-
-                    if (left > pnlEnnemis.Width)
-                    {
-                        top += u.Height;
-                        left = 0;
-                    }
-
-
                     // Ajout de l'UserControl dans le panel du tableau de bord
                     pnlEnnemis.Controls.Add(u);
-
-
                 }
             }
         }

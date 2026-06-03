@@ -42,59 +42,66 @@
             // 
             // pbEspeceEnnemie
             // 
-            this.pbEspeceEnnemie.Location = new System.Drawing.Point(54, 16);
+            this.pbEspeceEnnemie.Location = new System.Drawing.Point(48, 10);
+            this.pbEspeceEnnemie.Margin = new System.Windows.Forms.Padding(2);
             this.pbEspeceEnnemie.Name = "pbEspeceEnnemie";
-            this.pbEspeceEnnemie.Size = new System.Drawing.Size(240, 213);
+            this.pbEspeceEnnemie.Size = new System.Drawing.Size(160, 138);
+            this.pbEspeceEnnemie.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbEspeceEnnemie.TabIndex = 1;
             this.pbEspeceEnnemie.TabStop = false;
             // 
             // lblNomEspeceEnnemie
             // 
-            this.lblNomEspeceEnnemie.AutoSize = true;
-            this.lblNomEspeceEnnemie.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomEspeceEnnemie.Location = new System.Drawing.Point(47, 232);
+            this.lblNomEspeceEnnemie.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblNomEspeceEnnemie.Location = new System.Drawing.Point(12, 150);
+            this.lblNomEspeceEnnemie.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNomEspeceEnnemie.Name = "lblNomEspeceEnnemie";
-            this.lblNomEspeceEnnemie.Size = new System.Drawing.Size(118, 37);
+            this.lblNomEspeceEnnemie.Size = new System.Drawing.Size(233, 66);
             this.lblNomEspeceEnnemie.TabIndex = 2;
-            this.lblNomEspeceEnnemie.Text = "<nom>";
+            this.lblNomEspeceEnnemie.Text = "<Nom>";
+            this.lblNomEspeceEnnemie.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblNbPlanete
             // 
             this.lblNbPlanete.AutoSize = true;
-            this.lblNbPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNbPlanete.Location = new System.Drawing.Point(50, 277);
+            this.lblNbPlanete.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblNbPlanete.Location = new System.Drawing.Point(23, 216);
+            this.lblNbPlanete.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNbPlanete.Name = "lblNbPlanete";
-            this.lblNbPlanete.Size = new System.Drawing.Size(154, 22);
+            this.lblNbPlanete.Size = new System.Drawing.Size(140, 16);
             this.lblNbPlanete.TabIndex = 3;
             this.lblNbPlanete.Text = "Planète d\'origine :";
             // 
             // lblOrigine
             // 
             this.lblOrigine.AutoSize = true;
-            this.lblOrigine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrigine.Location = new System.Drawing.Point(50, 299);
+            this.lblOrigine.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblOrigine.Location = new System.Drawing.Point(23, 230);
+            this.lblOrigine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOrigine.Name = "lblOrigine";
-            this.lblOrigine.Size = new System.Drawing.Size(247, 22);
+            this.lblOrigine.Size = new System.Drawing.Size(210, 16);
             this.lblOrigine.TabIndex = 4;
             this.lblOrigine.Text = "<nom de la planète d\'origine>";
             // 
             // lblCouleur
             // 
             this.lblCouleur.AutoSize = true;
-            this.lblCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCouleur.Location = new System.Drawing.Point(50, 340);
+            this.lblCouleur.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblCouleur.Location = new System.Drawing.Point(23, 257);
+            this.lblCouleur.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCouleur.Name = "lblCouleur";
-            this.lblCouleur.Size = new System.Drawing.Size(91, 22);
+            this.lblCouleur.Size = new System.Drawing.Size(70, 16);
             this.lblCouleur.TabIndex = 5;
             this.lblCouleur.Text = "<couleur>";
             // 
             // lblArme
             // 
             this.lblArme.AutoSize = true;
-            this.lblArme.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArme.Location = new System.Drawing.Point(50, 438);
+            this.lblArme.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblArme.Location = new System.Drawing.Point(23, 321);
+            this.lblArme.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblArme.Name = "lblArme";
-            this.lblArme.Size = new System.Drawing.Size(125, 22);
+            this.lblArme.Size = new System.Drawing.Size(98, 16);
             this.lblArme.TabIndex = 6;
             this.lblArme.Text = "<type d\'arme>";
             this.lblArme.Click += new System.EventHandler(this.lblArme_Click);
@@ -102,37 +109,39 @@
             // lblAgressivite
             // 
             this.lblAgressivite.AutoSize = true;
-            this.lblAgressivite.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAgressivite.Location = new System.Drawing.Point(231, 379);
+            this.lblAgressivite.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblAgressivite.Location = new System.Drawing.Point(194, 282);
+            this.lblAgressivite.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAgressivite.Name = "lblAgressivite";
-            this.lblAgressivite.Size = new System.Drawing.Size(78, 22);
+            this.lblAgressivite.Size = new System.Drawing.Size(56, 16);
             this.lblAgressivite.TabIndex = 7;
             this.lblAgressivite.Text = "<degré>";
             // 
             // lblArmeCommun
             // 
             this.lblArmeCommun.AutoSize = true;
-            this.lblArmeCommun.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblArmeCommun.Location = new System.Drawing.Point(50, 416);
+            this.lblArmeCommun.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblArmeCommun.Location = new System.Drawing.Point(23, 306);
+            this.lblArmeCommun.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblArmeCommun.Name = "lblArmeCommun";
-            this.lblArmeCommun.Size = new System.Drawing.Size(120, 22);
+            this.lblArmeCommun.Size = new System.Drawing.Size(98, 16);
             this.lblArmeCommun.TabIndex = 8;
             this.lblArmeCommun.Text = "Type d\'arme :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 379);
+            this.label1.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 282);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 22);
+            this.label1.Size = new System.Drawing.Size(161, 16);
             this.label1.TabIndex = 9;
             this.label1.Text = "Degré d\'Aggressivité :";
             // 
             // UserControlEspecesEnnemies
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.label1);
             this.Controls.Add(this.lblArmeCommun);
             this.Controls.Add(this.lblAgressivite);
@@ -142,8 +151,9 @@
             this.Controls.Add(this.lblNbPlanete);
             this.Controls.Add(this.lblNomEspeceEnnemie);
             this.Controls.Add(this.pbEspeceEnnemie);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlEspecesEnnemies";
-            this.Size = new System.Drawing.Size(354, 494);
+            this.Size = new System.Drawing.Size(258, 383);
             ((System.ComponentModel.ISupportInitialize)(this.pbEspeceEnnemie)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

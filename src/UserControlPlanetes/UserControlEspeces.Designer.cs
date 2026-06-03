@@ -39,73 +39,73 @@
             // 
             // pbEspece
             // 
-            this.pbEspece.Location = new System.Drawing.Point(25, 13);
+            this.pbEspece.Location = new System.Drawing.Point(54, 13);
             this.pbEspece.Margin = new System.Windows.Forms.Padding(4);
             this.pbEspece.Name = "pbEspece";
             this.pbEspece.Size = new System.Drawing.Size(132, 122);
+            this.pbEspece.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbEspece.TabIndex = 0;
             this.pbEspece.TabStop = false;
             // 
             // lblNomEspece
             // 
-            this.lblNomEspece.AutoSize = true;
-            this.lblNomEspece.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNomEspece.Location = new System.Drawing.Point(18, 150);
+            this.lblNomEspece.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.lblNomEspece.Location = new System.Drawing.Point(4, 139);
             this.lblNomEspece.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNomEspece.Name = "lblNomEspece";
-            this.lblNomEspece.Size = new System.Drawing.Size(118, 37);
+            this.lblNomEspece.Size = new System.Drawing.Size(233, 48);
             this.lblNomEspece.TabIndex = 1;
             this.lblNomEspece.Text = "<nom>";
+            this.lblNomEspece.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.lblNomEspece.Click += new System.EventHandler(this.lblNomEspece_Click);
             // 
             // lblOrigine
             // 
             this.lblOrigine.AutoSize = true;
-            this.lblOrigine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrigine.Location = new System.Drawing.Point(21, 231);
+            this.lblOrigine.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblOrigine.Location = new System.Drawing.Point(21, 245);
             this.lblOrigine.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblOrigine.Name = "lblOrigine";
-            this.lblOrigine.Size = new System.Drawing.Size(247, 22);
+            this.lblOrigine.Size = new System.Drawing.Size(210, 16);
             this.lblOrigine.TabIndex = 2;
             this.lblOrigine.Text = "<nom de la planète d\'origine>";
             // 
             // lblCouleur
             // 
             this.lblCouleur.AutoSize = true;
-            this.lblCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCouleur.Location = new System.Drawing.Point(21, 253);
+            this.lblCouleur.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblCouleur.Location = new System.Drawing.Point(21, 267);
             this.lblCouleur.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCouleur.Name = "lblCouleur";
-            this.lblCouleur.Size = new System.Drawing.Size(91, 22);
+            this.lblCouleur.Size = new System.Drawing.Size(70, 16);
             this.lblCouleur.TabIndex = 3;
             this.lblCouleur.Text = "<couleur>";
             // 
             // lblNbPlanete
             // 
             this.lblNbPlanete.AutoSize = true;
-            this.lblNbPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNbPlanete.Location = new System.Drawing.Point(21, 209);
+            this.lblNbPlanete.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblNbPlanete.Location = new System.Drawing.Point(21, 223);
             this.lblNbPlanete.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNbPlanete.Name = "lblNbPlanete";
-            this.lblNbPlanete.Size = new System.Drawing.Size(154, 22);
+            this.lblNbPlanete.Size = new System.Drawing.Size(140, 16);
             this.lblNbPlanete.TabIndex = 4;
             this.lblNbPlanete.Text = "Planète d\'origine :";
             // 
             // lblCamp
             // 
             this.lblCamp.AutoSize = true;
-            this.lblCamp.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCamp.Location = new System.Drawing.Point(21, 187);
+            this.lblCamp.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblCamp.Location = new System.Drawing.Point(21, 201);
             this.lblCamp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCamp.Name = "lblCamp";
-            this.lblCamp.Size = new System.Drawing.Size(75, 22);
+            this.lblCamp.Size = new System.Drawing.Size(49, 16);
             this.lblCamp.TabIndex = 5;
             this.lblCamp.Text = "<camp>";
             // 
             // UserControlEspeces
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.Controls.Add(this.lblCamp);
             this.Controls.Add(this.lblNbPlanete);
             this.Controls.Add(this.lblCouleur);
