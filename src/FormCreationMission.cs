@@ -374,7 +374,7 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
             if (!fermetureAutorisee)
             {
                 e.Cancel = true;
-                MessageBox.Show("Les membres ainsi que les objectifs de captures doivent être saisis");
+                MessageBox.Show("Les membres ainsi que les objectifs de captures doivent être renseignés");
             }
         }
 
