@@ -356,29 +356,42 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
                 cmd.ExecuteNonQuery();
             }
 
-            foreach (string item in listBoxCaptures.Items)
+            SQLiteTransaction transaction = Connexion.Connec.BeginTransaction();
+
+            try
             {
-                string[] parties = item.Split('\t');
+                foreach (string item in listBoxCaptures.Items)
+                {
+                    string[] parties = item.Split('\t');
 
-                SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
-                cmd.CommandText = $@"SELECT id FROM Espece WHERE lower(nom) = lower('{parties[0]}')";
-                int idEspece = Convert.ToInt32(cmd.ExecuteScalar());
-                int nombre = int.Parse(parties[1]);
+                    SQLiteCommand cmdSelect = new SQLiteCommand(Connexion.Connec);
+                    cmdSelect.Transaction = transaction;
+                    cmdSelect.CommandText = $"SELECT id FROM Espece WHERE lower(nom) = lower('{parties[0]}')";
+                    int idEspece = Convert.ToInt32(cmdSelect.ExecuteScalar());
 
-                cmd = new SQLiteCommand(Connexion.Connec);
+                    int nombre = int.Parse(parties[1]);
 
-                cmd.CommandText = @"
-                    INSERT OR IGNORE INTO Capturer
-                    (nomPlanete, numeroMission, idEspeceEnnemi, nombre)
-                    VALUES
-                    (@planete, @mission, @espece, @nombre)";
+                    SQLiteCommand cmdInsert = new SQLiteCommand(Connexion.Connec);
+                    cmdInsert.Transaction = transaction;
+                    cmdInsert.CommandText = $@"
+                        INSERT OR IGNORE INTO Capturer
+                        (nomPlanete, numeroMission, idEspeceEnnemi, nombre)
+                        VALUES
+                        ('{planete}', {numeroMission}, {idEspece}, {nombre})";
 
-                cmd.Parameters.AddWithValue("@planete", planete);
-                cmd.Parameters.AddWithValue("@mission", numeroMission);
-                cmd.Parameters.AddWithValue("@espece", idEspece);
-                cmd.Parameters.AddWithValue("@nombre", nombre);
+                    cmdInsert.ExecuteNonQuery();
+                }
 
-                cmd.ExecuteNonQuery();
+                transaction.Commit();
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                MessageBox.Show($"Erreur lors de l'insertion : {ex.Message}");
+            }
+            finally
+            {
+                transaction.Dispose();
             }
 
             MessageBox.Show("Membre(s) et objectif(s) de capture(s) ajoutés");

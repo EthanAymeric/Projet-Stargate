@@ -26,7 +26,7 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 - [x] changer nombre de membres requis pour le nombre de membres disponibles (max du slider)
 - [x] Ajouter les membres de mission 
 - [x] Protéger les TextBox des injections SQL (String.Replace("'", "''");) et autres
-- [ ] Faire l'ajout de captures par transaction
+- [x] Faire l'ajout de captures par transaction
 - [ ] Ajouter des missions 
 - [ ] Ne pas fermer la fenêtre lorsque la mission est créée mais reset la fenêtre pour pouvoir ajouter une nouvelle mission directement
 
