@@ -38,7 +38,7 @@ namespace SAE24
             lblDateDeb.Visible = true;
             lblDuree.Visible = true;
             lblChef.Visible = true;
-            string nomPlanete = nomMission.Substring(0, nomMission.Length - 1);
+            string nomPlanete = nomMission.Substring(0, nomMission.Length - 1).Replace(" ","");
             pbPlanete.Image = Image.FromFile($"../../Images/Planetes/{nomPlanete}.png");
             if (DateTime.Parse(dateDeb).Add(new System.TimeSpan(Convert.ToInt32(duree), 0, 0, 0)) > DateTime.Now)
             {
