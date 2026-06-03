@@ -19,9 +19,9 @@ namespace SAE24
     public partial class FormCreationMission : Form
     {
         private int nbMembres, membresRestants;
-        // private List<int> membresCoches = new List<int>();
         private string planete;
         private int numeroMission;
+        private bool fermetureAutorisee;
 
         public FormCreationMission()
         {
@@ -35,6 +35,7 @@ namespace SAE24
 
         private void load()
         {
+            fermetureAutorisee = true;
             groupBox.Visible = false;
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = @"select nom from planete";
@@ -222,6 +223,7 @@ values ('{planete}', {numeroMission}, {nbMembres}, '{depart}', '{retour}', '{mat
 
             if (cmd.ExecuteNonQuery() == 1) {
                 groupBox.Visible = true;
+                fermetureAutorisee = false;
                 part2();
             }
         }
@@ -364,6 +366,15 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
             if (e.KeyCode == Keys.Delete && listBoxCaptures.SelectedIndex != -1)
             {
                 listBoxCaptures.Items.RemoveAt(listBoxCaptures.SelectedIndex);
+            }
+        }
+
+        private void FormCreationMission_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!fermetureAutorisee)
+            {
+                e.Cancel = true;
+                MessageBox.Show("Les membres ainsi que les objectifs de captures doivent être saisis");
             }
         }
 

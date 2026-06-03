@@ -419,6 +419,7 @@
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormCreationMission";
             this.Text = "Création d\'une nouvelle mission";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCreationMission_FormClosing);
             this.Load += new System.EventHandler(this.FormCreationMission_Load);
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
