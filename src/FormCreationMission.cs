@@ -196,7 +196,7 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
 
             planete = comboBoxPlanete.SelectedItem.ToString();
             numeroMission = nbMissionsPlanete(planete) + 1;
-            this.nbMembres = trackBarNbMembres.Value;
+            this.nbMembres = trackBarNbMembres.Value - 1; // Pour compter le chef de mission 
             this.membresRestants = this.nbMembres;
             string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
             string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
@@ -209,6 +209,16 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = $@"insert into Mission (nomPlanete, numero, nbMembreRequis, dateDepart, dateRetour, matriculeChef, feuilleDeRoute, objectifDatabaz, budget) 
 values ('{planete}', {numeroMission}, {nbMembres}, '{depart}', '{retour}', '{matriculeChef}', '{feuille}', {databaz}, {budget})";
+
+            cmd.ExecuteNonQuery();
+
+            cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = $@"INSERT INTO Composer (nomPlanete, numeroMission, matriculeMembre) 
+                                SELECT '{planete}', {numeroMission}, '{matriculeChef}'
+                                WHERE NOT EXISTS (
+                                    SELECT 1 FROM Composer WHERE nomPlanete = '{planete}'
+                                    AND numeroMission = {numeroMission}
+                                    AND matriculeMembre = '{matriculeChef}')";
 
             if (cmd.ExecuteNonQuery() == 1) {
                 groupBox.Visible = true;
