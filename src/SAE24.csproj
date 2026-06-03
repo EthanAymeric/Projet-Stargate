@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Connexion.cs" />
+    <Compile Include="Couleur.cs" />
     <Compile Include="FormulaireMission.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -175,9 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="UserControlPlanetes\UserControlPlanetes.slnx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\Membres\" />

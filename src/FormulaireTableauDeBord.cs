@@ -29,10 +29,20 @@ namespace SAE24
             InfosPlanetes();
             InfosEspeces();
             ChargementElementsGrpEspeces();
+            ModifDate();
+
+            //Mettre en place la couleur de base du thème sur le formulaire
+            BackColor = Couleur.getBackground;
+            ForeColor = Couleur.getText;
+            foreach (Control c in Controls)
+            {
+                UpdateColorControls(c);
+            }   
         }
 
         private void UpdateDataSet()
         {
+            // Sert à mettre à jour le DataSet quand il y a un ajout de mission
             MesDatas.DsGlobal.Clear();
             co = Connexion.Connec;
             try
@@ -53,6 +63,7 @@ namespace SAE24
 
         private void RemplissageDS()
         {
+            // Remplit le DataSet Local à partir de la base de donnée
             co = Connexion.Connec;
             try
             {
@@ -68,6 +79,38 @@ namespace SAE24
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
             finally { Connexion.FermerConnexion(); }
+        }
+
+        private void ModifDate()
+        {
+            // Sert à modifier le format de toute les dates dans le DataSet pour avoir le même format partout
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Depense"].Rows)
+            {
+                r[3] = Convert.ToDateTime(r[3]).ToString("yyyy-MM-dd");
+
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Allie"].Rows)
+            {
+                r[1] = Convert.ToDateTime(r[1]).ToString("yyyy-MM-dd"); 
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Rows)
+            {
+                r[3] = Convert.ToDateTime(r[3]).ToString("yyyy-MM-dd");
+                r[4] = Convert.ToDateTime(r[4]).ToString("yyyy-MM-dd");
+
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Contact"].Rows)
+            {
+                r[2] = Convert.ToDateTime(r[2]).ToString("yyyy-MM-dd");
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["JournalDeBord"].Rows)
+            {
+                r[2] = Convert.ToDateTime(r[2]).ToString("yyyy-MM-dd");
+            }
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Membre"].Rows)
+            {
+                r[3] = Convert.ToDateTime(r[3]).ToString("yyyy-MM-dd");
+            }
         }
 
         private void AjoutRelation()
@@ -98,11 +141,33 @@ namespace SAE24
                 // id (Espece) <-> idEspece (Allie)
                 MesDatas.DsGlobal.Relations.Add("FK_Espece_Allie", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Allie"].Columns["idEspece"]);
 
-                // id (Espece) <-> idEspece (Ennemi)
-                MesDatas.DsGlobal.Relations.Add("FK_Espece_Ennemi", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Ennemi"].Columns["idEspece"]);
-
                 // nom (Planete) <-> nomPlanete (Mission)
                 MesDatas.DsGlobal.Relations.Add("FK_Planete_Mission", MesDatas.DsGlobal.Tables["Planete"].Columns["nom"], MesDatas.DsGlobal.Tables["Mission"].Columns["nomPlanete"]);
+
+		// Journal De Bord > Mission
+                MesDatas.DsGlobal.Relations.Add("FK_Mission_JournalDeBord", missionPK, journalDeBord);
+
+                // Contact > Mission
+                DataColumn[] contact = new DataColumn[] { MesDatas.DsGlobal.Tables["Contact"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Contact"].Columns["numeroMission"] };
+                MesDatas.DsGlobal.Relations.Add("FK_Mission_Contact", missionPK, contact);
+
+                // Contact > Informateur
+                MesDatas.DsGlobal.Relations.Add("FK_Informateur_Contact", MesDatas.DsGlobal.Tables["Informateur"].Columns["nomCode"], MesDatas.DsGlobal.Tables["Contact"].Columns["nomCodeInformateur"]);
+
+                // Depense > Type Depense
+                MesDatas.DsGlobal.Relations.Add("FK_TypeDepense_Depense", MesDatas.DsGlobal.Tables["TypeDepense"].Columns["id"], MesDatas.DsGlobal.Tables["Depense"].Columns["idTypeDepense"]);
+                
+                // Capture > Mission
+                DataColumn[] capture = new DataColumn[] { MesDatas.DsGlobal.Tables["Capturer"].Columns["nomPlanete"], MesDatas.DsGlobal.Tables["Capturer"].Columns["numeroMission"] };
+                MesDatas.DsGlobal.Relations.Add("FK_Mission_Capturer", missionPK, capture);
+                
+                // Capturer > Espece
+                MesDatas.DsGlobal.Relations.Add("FK_Espece_Capturer", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Capturer"].Columns["idEspeceEnnemi"]);
+
+                // Ennemi > Espece
+                MesDatas.DsGlobal.Relations.Add("FK_Espece_Ennemi", MesDatas.DsGlobal.Tables["Espece"].Columns["id"], MesDatas.DsGlobal.Tables["Ennemi"].Columns["idEspece"]);
+
+
             } 
             catch (Exception ex) 
             { 
@@ -111,7 +176,8 @@ namespace SAE24
         }
         private void ActualisationTDB()
         {
-            int top = 20, left = 20;
+
+            // Remplis le Flow Layout Pannel avec les UserControl MissionResume
             foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Rows)
             {
                 string nomMission = r["NomPlanete"].ToString() + r["numero"].ToString();
@@ -126,12 +192,18 @@ namespace SAE24
 
 
                 MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
-                mr.Top = top;
-                mr.Left = left;
+                mr.afficher += AfficherResume;
                 pnlTDB.Controls.Add(mr);
-
-                top += mr.Height + 20;
             }
+        }
+
+        private void AfficherResume(object sender, EventArgs e)
+        {
+            // Permet d'afficher la fiche de mission en cliquant sur une mission
+
+            MissionResume mr = (MissionResume)sender;
+            FormulaireMission frm = new FormulaireMission(mr.GetMission);
+            frm.ShowDialog();
         }
         private void btnTDB_Click(object sender, EventArgs e)
         {
@@ -490,31 +562,41 @@ namespace SAE24
             }
         }
 
-        private void FrmTableauDeBord_Shown(object sender, EventArgs e)
+        private void btnSwitchTheme_Click(object sender, EventArgs e)
         {
             //Chargement();
             foreach (System.Windows.Forms.Button b in Controls.OfType<System.Windows.Forms.Button>())
+            Couleur.SwitchTheme();
+            btnSwitchTheme.Text = (btnSwitchTheme.Text == "Theme Sombre") ? "Theme Clair" : "Theme Sombre";
+            BackColor = Couleur.getBackground;
+            ForeColor = Couleur.getText;
+            foreach (Control c in Controls)
             {
-                b.Visible = true;
+                UpdateColorControls(c);
             }
-            pbChargement.Visible = false;
+
         }
 
-        private void Chargement()
+        private void UpdateColorControls(Control c)
         {
-            pbChargement.Value = 0;
-            System.Threading.Thread.Sleep(1000);
-            pbChargement.Value = 13;
-            System.Threading.Thread.Sleep(1500);
-            pbChargement.Value = 21;
-            System.Threading.Thread.Sleep(500);
-            pbChargement.Value = 34;
-            System.Threading.Thread.Sleep(250);
-            pbChargement.Value = 55;
-            System.Threading.Thread.Sleep(1000);
-            pbChargement.Value = 89;
-            System.Threading.Thread.Sleep(500);
-            pbChargement.Value = 100;
+            if(c is Label)
+            {
+                c.ForeColor = Couleur.getText;
+            }
+            if(c is Button)
+            {
+                c.BackColor = Couleur.getButton;
+                c.ForeColor = Couleur.getText;
+            }
+            if(c is MissionResume)
+            {
+                MissionResume mr = (MissionResume)c;
+                mr.UpdateColors();
+            }
+            foreach(Control subControl in c.Controls)
+            {
+                UpdateColorControls(subControl);
+            }
         }
 
         private void btnReset_Click(object sender, EventArgs e)

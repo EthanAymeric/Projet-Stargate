@@ -12,7 +12,15 @@ namespace SAE24
 {
     public partial class MissionResume : UserControl
     {
-
+        public delegate void AfficherResume(object sender, EventArgs e);
+        public AfficherResume afficher;
+        private void AfficherResume_Click(object sender, EventArgs e)
+        {
+            if (afficher != null)
+            {
+                afficher(this, e); 
+            }
+        }
         public MissionResume()
         {
             InitializeComponent();
@@ -21,6 +29,7 @@ namespace SAE24
         public MissionResume(string nomMission, string dateDeb, string duree, string chef)
         {
             InitializeComponent();
+            UpdateColors();
             lblNomMission.Text = nomMission;
             lblDateDeb.Text = dateDeb;
             lblDuree.Text = $"{duree} Jours";
@@ -31,27 +40,44 @@ namespace SAE24
             lblChef.Visible = true;
             string nomPlanete = nomMission.Substring(0, nomMission.Length - 1);
             pbPlanete.Image = Image.FromFile($"../../Images/Planetes/{nomPlanete}.png");
+            if (DateTime.Parse(dateDeb).Add(new System.TimeSpan(Convert.ToInt32(duree), 0, 0, 0)) > DateTime.Now)
+            {
+                lblStatus.Text = "En Cours";
+            } else if (DateTime.Parse(dateDeb).Add(new System.TimeSpan(Convert.ToInt32(duree), 0, 0, 0)) < DateTime.Now)
+            {
+                lblStatus.Text = "Achevée";
+            }
         }
 
-        private void MissionResume_Load(object sender, EventArgs e)
-        {
-
+        public string GetMission{
+            get
+            {
+                return lblNomMission.Text;
+            }
         }
 
         private void MissionResume_MouseEnter(object sender, EventArgs e)
         {
-            BackColor = Color.LightGray;
+            BackColor = Couleur.getButtonHover;
+            foreach (Control c in Controls.OfType<Label>())
+            {
+                c.BackColor = Couleur.getButtonHover;
+            }
         }
 
         private void MissionResume_MouseLeave(object sender, EventArgs e)
         {
-            BackColor = Color.White;
+            UpdateColors();
         }
 
-        private void pbPlanete_Click(object sender, EventArgs e)
+        public void UpdateColors()
         {
-            FormulaireMission frm = new FormulaireMission(lblNomMission.Text);
-            frm.ShowDialog();
+            this.BackColor = Couleur.getButton;
+            foreach (Control c in Controls)
+            {
+                c.ForeColor = Couleur.getText;
+                c.BackColor = Couleur.getButton;
+            }
         }
     }
 }

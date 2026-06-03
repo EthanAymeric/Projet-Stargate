@@ -28,166 +28,1069 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblDepart = new System.Windows.Forms.Label();
-            this.lblArrivee = new System.Windows.Forms.Label();
-            this.lblBudget = new System.Windows.Forms.Label();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblSolde = new System.Windows.Forms.Label();
-            this.grpFeuilleRoute = new System.Windows.Forms.GroupBox();
-            this.missionPB1 = new SAE24.MissionPB();
-            this.grpMembre = new System.Windows.Forms.GroupBox();
-            this.pnlMembre = new System.Windows.Forms.Panel();
             this.grpCaptures = new System.Windows.Forms.GroupBox();
-            this.txtFeuilleRoute = new System.Windows.Forms.RichTextBox();
             this.txtCaptures = new System.Windows.Forms.RichTextBox();
-            this.grpFeuilleRoute.SuspendLayout();
-            this.grpMembre.SuspendLayout();
+            this.lblBudget = new System.Windows.Forms.Label();
+            this.lblArrivee = new System.Windows.Forms.Label();
+            this.lblDepart = new System.Windows.Forms.Label();
+            this.grpMembre = new System.Windows.Forms.GroupBox();
+            this.pnlMembre = new System.Windows.Forms.FlowLayoutPanel();
+            this.grpFeuilleRoute = new System.Windows.Forms.GroupBox();
+            this.txtFeuilleRoute = new System.Windows.Forms.RichTextBox();
+            this.grpCapture = new System.Windows.Forms.GroupBox();
+            this.dgvCapture = new System.Windows.Forms.DataGridView();
+            this.lblDepense = new System.Windows.Forms.Label();
+            this.lblSommeVersees = new System.Windows.Forms.Label();
+            this.grpDepenses = new System.Windows.Forms.GroupBox();
+            this.dgvDepenses = new System.Windows.Forms.DataGridView();
+            this.grpContacts = new System.Windows.Forms.GroupBox();
+            this.dgvContact = new System.Windows.Forms.DataGridView();
+            this.grpEvent = new System.Windows.Forms.GroupBox();
+            this.lblEventDescription = new System.Windows.Forms.Label();
+            this.btnLast = new System.Windows.Forms.Button();
+            this.btnSuivant = new System.Windows.Forms.Button();
+            this.btnPrecedent = new System.Windows.Forms.Button();
+            this.btnFirst = new System.Windows.Forms.Button();
+            this.lblDateEvent = new System.Windows.Forms.Label();
+            this.grpFormEvent = new System.Windows.Forms.GroupBox();
+            this.rtxtCommentaire = new System.Windows.Forms.RichTextBox();
+            this.dtpDateEvent = new System.Windows.Forms.DateTimePicker();
+            this.lblCommentaireEvent = new System.Windows.Forms.Label();
+            this.lblDateAjoutEvent = new System.Windows.Forms.Label();
+            this.btnAjoutEvent = new System.Windows.Forms.Button();
+            this.grpFormCapture = new System.Windows.Forms.GroupBox();
+            this.txtNombre = new System.Windows.Forms.TextBox();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.lblCapture = new System.Windows.Forms.Label();
+            this.cboCapture = new System.Windows.Forms.ComboBox();
+            this.btnAjoutCapture = new System.Windows.Forms.Button();
+            this.grpFormDepense = new System.Windows.Forms.GroupBox();
+            this.rtxtMotifDepense = new System.Windows.Forms.RichTextBox();
+            this.txtMontantDepense = new System.Windows.Forms.TextBox();
+            this.cboTypeDepense = new System.Windows.Forms.ComboBox();
+            this.lblTypeDepense = new System.Windows.Forms.Label();
+            this.lblMotifDepense = new System.Windows.Forms.Label();
+            this.lblMontantDepense = new System.Windows.Forms.Label();
+            this.dtpDateDepense = new System.Windows.Forms.DateTimePicker();
+            this.lblDateDepense = new System.Windows.Forms.Label();
+            this.btnAjoutDepense = new System.Windows.Forms.Button();
+            this.grpFormContact = new System.Windows.Forms.GroupBox();
+            this.cboInformateur = new System.Windows.Forms.ComboBox();
+            this.lblInformateur = new System.Windows.Forms.Label();
+            this.rtxtAppreciation = new System.Windows.Forms.RichTextBox();
+            this.lblAppreciation = new System.Windows.Forms.Label();
+            this.lblSomme = new System.Windows.Forms.Label();
+            this.txtSomme = new System.Windows.Forms.TextBox();
+            this.lblDateContact = new System.Windows.Forms.Label();
+            this.dtpDateContact = new System.Windows.Forms.DateTimePicker();
+            this.btnAjoutContact = new System.Windows.Forms.Button();
+            this.grpChoixAjout = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.rdbNewContact = new System.Windows.Forms.RadioButton();
+            this.pnlInfoGenerale = new System.Windows.Forms.Panel();
+            this.pnlHistorique = new System.Windows.Forms.Panel();
+            this.pnlAjout = new System.Windows.Forms.Panel();
+            this.pbPlanete = new System.Windows.Forms.PictureBox();
+            this.lblNomMission = new System.Windows.Forms.Label();
             this.grpCaptures.SuspendLayout();
+            this.grpMembre.SuspendLayout();
+            this.grpFeuilleRoute.SuspendLayout();
+            this.grpCapture.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCapture)).BeginInit();
+            this.grpDepenses.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDepenses)).BeginInit();
+            this.grpContacts.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).BeginInit();
+            this.grpEvent.SuspendLayout();
+            this.grpFormEvent.SuspendLayout();
+            this.grpFormCapture.SuspendLayout();
+            this.grpFormDepense.SuspendLayout();
+            this.grpFormContact.SuspendLayout();
+            this.grpChoixAjout.SuspendLayout();
+            this.pnlInfoGenerale.SuspendLayout();
+            this.pnlHistorique.SuspendLayout();
+            this.pnlAjout.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPlanete)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblDepart
-            // 
-            this.lblDepart.AutoSize = true;
-            this.lblDepart.Location = new System.Drawing.Point(10, 152);
-            this.lblDepart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDepart.Name = "lblDepart";
-            this.lblDepart.Size = new System.Drawing.Size(35, 13);
-            this.lblDepart.TabIndex = 1;
-            this.lblDepart.Text = "label1";
-            // 
-            // lblArrivee
-            // 
-            this.lblArrivee.AutoSize = true;
-            this.lblArrivee.Location = new System.Drawing.Point(10, 180);
-            this.lblArrivee.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblArrivee.Name = "lblArrivee";
-            this.lblArrivee.Size = new System.Drawing.Size(35, 13);
-            this.lblArrivee.TabIndex = 2;
-            this.lblArrivee.Text = "label1";
-            // 
-            // lblBudget
-            // 
-            this.lblBudget.AutoSize = true;
-            this.lblBudget.Location = new System.Drawing.Point(10, 208);
-            this.lblBudget.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblBudget.Name = "lblBudget";
-            this.lblBudget.Size = new System.Drawing.Size(35, 13);
-            this.lblBudget.TabIndex = 3;
-            this.lblBudget.Text = "label1";
             // 
             // lblSolde
             // 
             this.lblSolde.AutoSize = true;
-            this.lblSolde.Location = new System.Drawing.Point(10, 236);
+            this.lblSolde.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblSolde.Location = new System.Drawing.Point(704, 195);
             this.lblSolde.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSolde.Name = "lblSolde";
-            this.lblSolde.Size = new System.Drawing.Size(35, 13);
-            this.lblSolde.TabIndex = 4;
-            this.lblSolde.Text = "label1";
+            this.lblSolde.Size = new System.Drawing.Size(72, 20);
+            this.lblSolde.TabIndex = 17;
+            this.lblSolde.Text = "<Solde>";
             // 
-            // grpFeuilleRoute
+            // grpCaptures
             // 
-            this.grpFeuilleRoute.Controls.Add(this.txtFeuilleRoute);
-            this.grpFeuilleRoute.Location = new System.Drawing.Point(12, 263);
-            this.grpFeuilleRoute.Name = "grpFeuilleRoute";
-            this.grpFeuilleRoute.Size = new System.Drawing.Size(586, 153);
-            this.grpFeuilleRoute.TabIndex = 6;
-            this.grpFeuilleRoute.TabStop = false;
-            this.grpFeuilleRoute.Text = "Feuille de route";
+            this.grpCaptures.Controls.Add(this.txtCaptures);
+            this.grpCaptures.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpCaptures.Location = new System.Drawing.Point(561, 463);
+            this.grpCaptures.Name = "grpCaptures";
+            this.grpCaptures.Size = new System.Drawing.Size(619, 214);
+            this.grpCaptures.TabIndex = 12;
+            this.grpCaptures.TabStop = false;
+            this.grpCaptures.Text = "Objectifs (captures)";
             // 
-            // missionPB1
+            // txtCaptures
             // 
-            this.missionPB1.Location = new System.Drawing.Point(214, 10);
-            this.missionPB1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.missionPB1.Name = "missionPB1";
-            this.missionPB1.Size = new System.Drawing.Size(172, 139);
-            this.missionPB1.TabIndex = 0;
+            this.txtCaptures.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCaptures.Location = new System.Drawing.Point(7, 23);
+            this.txtCaptures.Name = "txtCaptures";
+            this.txtCaptures.ReadOnly = true;
+            this.txtCaptures.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtCaptures.Size = new System.Drawing.Size(606, 184);
+            this.txtCaptures.TabIndex = 0;
+            this.txtCaptures.Text = "";
+            // 
+            // lblBudget
+            // 
+            this.lblBudget.AutoSize = true;
+            this.lblBudget.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblBudget.Location = new System.Drawing.Point(704, 278);
+            this.lblBudget.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblBudget.Name = "lblBudget";
+            this.lblBudget.Size = new System.Drawing.Size(81, 20);
+            this.lblBudget.TabIndex = 16;
+            this.lblBudget.Text = "<Budget>";
+            // 
+            // lblArrivee
+            // 
+            this.lblArrivee.AutoSize = true;
+            this.lblArrivee.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblArrivee.Location = new System.Drawing.Point(704, 29);
+            this.lblArrivee.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblArrivee.Name = "lblArrivee";
+            this.lblArrivee.Size = new System.Drawing.Size(90, 20);
+            this.lblArrivee.TabIndex = 15;
+            this.lblArrivee.Text = "<Arrivee>";
+            // 
+            // lblDepart
+            // 
+            this.lblDepart.AutoSize = true;
+            this.lblDepart.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblDepart.Location = new System.Drawing.Point(704, 112);
+            this.lblDepart.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDepart.Name = "lblDepart";
+            this.lblDepart.Size = new System.Drawing.Size(81, 20);
+            this.lblDepart.TabIndex = 14;
+            this.lblDepart.Text = "<Depart>";
             // 
             // grpMembre
             // 
             this.grpMembre.Controls.Add(this.pnlMembre);
-            this.grpMembre.Location = new System.Drawing.Point(12, 423);
+            this.grpMembre.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpMembre.Location = new System.Drawing.Point(1186, 3);
             this.grpMembre.Name = "grpMembre";
-            this.grpMembre.Size = new System.Drawing.Size(576, 181);
-            this.grpMembre.TabIndex = 7;
+            this.grpMembre.Size = new System.Drawing.Size(615, 674);
+            this.grpMembre.TabIndex = 11;
             this.grpMembre.TabStop = false;
             this.grpMembre.Text = "Membre de l\'équipage";
             // 
             // pnlMembre
             // 
-            this.pnlMembre.AutoScroll = true;
-            this.pnlMembre.Location = new System.Drawing.Point(7, 20);
+            this.pnlMembre.Location = new System.Drawing.Point(7, 22);
             this.pnlMembre.Name = "pnlMembre";
-            this.pnlMembre.Size = new System.Drawing.Size(563, 155);
+            this.pnlMembre.Size = new System.Drawing.Size(602, 646);
             this.pnlMembre.TabIndex = 0;
             // 
-            // grpCaptures
+            // grpFeuilleRoute
             // 
-            this.grpCaptures.Controls.Add(this.txtCaptures);
-            this.grpCaptures.Location = new System.Drawing.Point(12, 611);
-            this.grpCaptures.Name = "grpCaptures";
-            this.grpCaptures.Size = new System.Drawing.Size(586, 126);
-            this.grpCaptures.TabIndex = 8;
-            this.grpCaptures.TabStop = false;
-            this.grpCaptures.Text = "Objectifs (captures)";
+            this.grpFeuilleRoute.Controls.Add(this.txtFeuilleRoute);
+            this.grpFeuilleRoute.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpFeuilleRoute.Location = new System.Drawing.Point(3, 7);
+            this.grpFeuilleRoute.Name = "grpFeuilleRoute";
+            this.grpFeuilleRoute.Size = new System.Drawing.Size(553, 670);
+            this.grpFeuilleRoute.TabIndex = 10;
+            this.grpFeuilleRoute.TabStop = false;
+            this.grpFeuilleRoute.Text = "Feuille de route";
             // 
             // txtFeuilleRoute
             // 
-            this.txtFeuilleRoute.Location = new System.Drawing.Point(7, 19);
+            this.txtFeuilleRoute.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtFeuilleRoute.Location = new System.Drawing.Point(6, 22);
             this.txtFeuilleRoute.Name = "txtFeuilleRoute";
             this.txtFeuilleRoute.ReadOnly = true;
             this.txtFeuilleRoute.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtFeuilleRoute.Size = new System.Drawing.Size(573, 128);
+            this.txtFeuilleRoute.Size = new System.Drawing.Size(541, 640);
             this.txtFeuilleRoute.TabIndex = 6;
             this.txtFeuilleRoute.Text = "";
             // 
-            // txtCaptures
+            // grpCapture
             // 
-            this.txtCaptures.Location = new System.Drawing.Point(7, 20);
-            this.txtCaptures.Name = "txtCaptures";
-            this.txtCaptures.ReadOnly = true;
-            this.txtCaptures.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.txtCaptures.Size = new System.Drawing.Size(573, 101);
-            this.txtCaptures.TabIndex = 0;
-            this.txtCaptures.Text = "";
+            this.grpCapture.Controls.Add(this.dgvCapture);
+            this.grpCapture.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpCapture.Location = new System.Drawing.Point(892, 311);
+            this.grpCapture.Name = "grpCapture";
+            this.grpCapture.Size = new System.Drawing.Size(908, 262);
+            this.grpCapture.TabIndex = 8;
+            this.grpCapture.TabStop = false;
+            this.grpCapture.Text = "Capture Effectuées";
+            // 
+            // dgvCapture
+            // 
+            this.dgvCapture.AllowUserToAddRows = false;
+            this.dgvCapture.AllowUserToDeleteRows = false;
+            this.dgvCapture.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCapture.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvCapture.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCapture.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(58)))), ((int)(((byte)(237)))));
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCapture.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            this.dgvCapture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCapture.DefaultCellStyle = dataGridViewCellStyle32;
+            this.dgvCapture.EnableHeadersVisualStyles = false;
+            this.dgvCapture.Location = new System.Drawing.Point(6, 22);
+            this.dgvCapture.Name = "dgvCapture";
+            this.dgvCapture.ReadOnly = true;
+            this.dgvCapture.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvCapture.RowHeadersWidth = 51;
+            this.dgvCapture.Size = new System.Drawing.Size(896, 234);
+            this.dgvCapture.TabIndex = 0;
+            // 
+            // lblDepense
+            // 
+            this.lblDepense.AutoSize = true;
+            this.lblDepense.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblDepense.Location = new System.Drawing.Point(14, 592);
+            this.lblDepense.Name = "lblDepense";
+            this.lblDepense.Size = new System.Drawing.Size(63, 20);
+            this.lblDepense.TabIndex = 9;
+            this.lblDepense.Text = "label1";
+            // 
+            // lblSommeVersees
+            // 
+            this.lblSommeVersees.AutoSize = true;
+            this.lblSommeVersees.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblSommeVersees.Location = new System.Drawing.Point(895, 592);
+            this.lblSommeVersees.Name = "lblSommeVersees";
+            this.lblSommeVersees.Size = new System.Drawing.Size(63, 20);
+            this.lblSommeVersees.TabIndex = 8;
+            this.lblSommeVersees.Text = "label1";
+            // 
+            // grpDepenses
+            // 
+            this.grpDepenses.Controls.Add(this.dgvDepenses);
+            this.grpDepenses.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpDepenses.Location = new System.Drawing.Point(8, 311);
+            this.grpDepenses.Name = "grpDepenses";
+            this.grpDepenses.Size = new System.Drawing.Size(878, 262);
+            this.grpDepenses.TabIndex = 7;
+            this.grpDepenses.TabStop = false;
+            this.grpDepenses.Text = "Dépenses Effectuées";
+            // 
+            // dgvDepenses
+            // 
+            this.dgvDepenses.AllowUserToAddRows = false;
+            this.dgvDepenses.AllowUserToDeleteRows = false;
+            this.dgvDepenses.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDepenses.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvDepenses.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvDepenses.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(58)))), ((int)(((byte)(237)))));
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDepenses.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            this.dgvDepenses.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvDepenses.DefaultCellStyle = dataGridViewCellStyle34;
+            this.dgvDepenses.EnableHeadersVisualStyles = false;
+            this.dgvDepenses.Location = new System.Drawing.Point(6, 22);
+            this.dgvDepenses.Name = "dgvDepenses";
+            this.dgvDepenses.ReadOnly = true;
+            this.dgvDepenses.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvDepenses.RowHeadersWidth = 51;
+            this.dgvDepenses.Size = new System.Drawing.Size(866, 234);
+            this.dgvDepenses.TabIndex = 0;
+            // 
+            // grpContacts
+            // 
+            this.grpContacts.Controls.Add(this.dgvContact);
+            this.grpContacts.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpContacts.Location = new System.Drawing.Point(892, 3);
+            this.grpContacts.Name = "grpContacts";
+            this.grpContacts.Size = new System.Drawing.Size(908, 302);
+            this.grpContacts.TabIndex = 6;
+            this.grpContacts.TabStop = false;
+            this.grpContacts.Text = "Contacts avec les informateurs";
+            // 
+            // dgvContact
+            // 
+            this.dgvContact.AllowUserToAddRows = false;
+            this.dgvContact.AllowUserToDeleteRows = false;
+            this.dgvContact.AllowUserToResizeColumns = false;
+            this.dgvContact.AllowUserToResizeRows = false;
+            this.dgvContact.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvContact.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvContact.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvContact.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(124)))), ((int)(((byte)(58)))), ((int)(((byte)(237)))));
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvContact.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
+            this.dgvContact.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvContact.DefaultCellStyle = dataGridViewCellStyle36;
+            this.dgvContact.EnableHeadersVisualStyles = false;
+            this.dgvContact.Location = new System.Drawing.Point(7, 23);
+            this.dgvContact.Name = "dgvContact";
+            this.dgvContact.ReadOnly = true;
+            this.dgvContact.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvContact.RowHeadersWidth = 51;
+            this.dgvContact.RowTemplate.ReadOnly = true;
+            this.dgvContact.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvContact.Size = new System.Drawing.Size(895, 279);
+            this.dgvContact.TabIndex = 0;
+            // 
+            // grpEvent
+            // 
+            this.grpEvent.Controls.Add(this.lblEventDescription);
+            this.grpEvent.Controls.Add(this.btnLast);
+            this.grpEvent.Controls.Add(this.btnSuivant);
+            this.grpEvent.Controls.Add(this.btnPrecedent);
+            this.grpEvent.Controls.Add(this.btnFirst);
+            this.grpEvent.Controls.Add(this.lblDateEvent);
+            this.grpEvent.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpEvent.Location = new System.Drawing.Point(7, 3);
+            this.grpEvent.Name = "grpEvent";
+            this.grpEvent.Size = new System.Drawing.Size(879, 302);
+            this.grpEvent.TabIndex = 5;
+            this.grpEvent.TabStop = false;
+            this.grpEvent.Text = "Evénement du Journal";
+            // 
+            // lblEventDescription
+            // 
+            this.lblEventDescription.AutoEllipsis = true;
+            this.lblEventDescription.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblEventDescription.Location = new System.Drawing.Point(275, 99);
+            this.lblEventDescription.Name = "lblEventDescription";
+            this.lblEventDescription.Size = new System.Drawing.Size(598, 108);
+            this.lblEventDescription.TabIndex = 1;
+            this.lblEventDescription.Text = "<Event>";
+            this.lblEventDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // btnLast
+            // 
+            this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLast.Location = new System.Drawing.Point(554, 246);
+            this.btnLast.Name = "btnLast";
+            this.btnLast.Size = new System.Drawing.Size(46, 50);
+            this.btnLast.TabIndex = 5;
+            this.btnLast.Text = ">>";
+            this.btnLast.UseVisualStyleBackColor = true;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
+            // 
+            // btnSuivant
+            // 
+            this.btnSuivant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSuivant.Location = new System.Drawing.Point(462, 246);
+            this.btnSuivant.Name = "btnSuivant";
+            this.btnSuivant.Size = new System.Drawing.Size(46, 50);
+            this.btnSuivant.TabIndex = 4;
+            this.btnSuivant.Text = ">";
+            this.btnSuivant.UseVisualStyleBackColor = true;
+            this.btnSuivant.Click += new System.EventHandler(this.btnSuivant_Click);
+            // 
+            // btnPrecedent
+            // 
+            this.btnPrecedent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrecedent.Location = new System.Drawing.Point(370, 246);
+            this.btnPrecedent.Name = "btnPrecedent";
+            this.btnPrecedent.Size = new System.Drawing.Size(46, 50);
+            this.btnPrecedent.TabIndex = 3;
+            this.btnPrecedent.Text = "<";
+            this.btnPrecedent.UseVisualStyleBackColor = true;
+            this.btnPrecedent.Click += new System.EventHandler(this.btnPrecedent_Click);
+            // 
+            // btnFirst
+            // 
+            this.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFirst.Location = new System.Drawing.Point(278, 246);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(46, 50);
+            this.btnFirst.TabIndex = 2;
+            this.btnFirst.Text = "<<";
+            this.btnFirst.UseVisualStyleBackColor = true;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
+            // 
+            // lblDateEvent
+            // 
+            this.lblDateEvent.AutoSize = true;
+            this.lblDateEvent.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblDateEvent.Location = new System.Drawing.Point(75, 135);
+            this.lblDateEvent.Name = "lblDateEvent";
+            this.lblDateEvent.Size = new System.Drawing.Size(105, 33);
+            this.lblDateEvent.TabIndex = 0;
+            this.lblDateEvent.Text = "<Date>";
+            // 
+            // grpFormEvent
+            // 
+            this.grpFormEvent.Controls.Add(this.rtxtCommentaire);
+            this.grpFormEvent.Controls.Add(this.dtpDateEvent);
+            this.grpFormEvent.Controls.Add(this.lblCommentaireEvent);
+            this.grpFormEvent.Controls.Add(this.lblDateAjoutEvent);
+            this.grpFormEvent.Controls.Add(this.btnAjoutEvent);
+            this.grpFormEvent.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpFormEvent.Location = new System.Drawing.Point(487, 217);
+            this.grpFormEvent.Margin = new System.Windows.Forms.Padding(2);
+            this.grpFormEvent.Name = "grpFormEvent";
+            this.grpFormEvent.Padding = new System.Windows.Forms.Padding(2);
+            this.grpFormEvent.Size = new System.Drawing.Size(831, 472);
+            this.grpFormEvent.TabIndex = 1;
+            this.grpFormEvent.TabStop = false;
+            this.grpFormEvent.Text = "Ajout d\'Évènements";
+            this.grpFormEvent.Visible = false;
+            // 
+            // rtxtCommentaire
+            // 
+            this.rtxtCommentaire.Location = new System.Drawing.Point(14, 119);
+            this.rtxtCommentaire.Name = "rtxtCommentaire";
+            this.rtxtCommentaire.Size = new System.Drawing.Size(794, 110);
+            this.rtxtCommentaire.TabIndex = 6;
+            this.rtxtCommentaire.Text = "";
+            // 
+            // dtpDateEvent
+            // 
+            this.dtpDateEvent.Location = new System.Drawing.Point(236, 43);
+            this.dtpDateEvent.Name = "dtpDateEvent";
+            this.dtpDateEvent.Size = new System.Drawing.Size(273, 25);
+            this.dtpDateEvent.TabIndex = 5;
+            // 
+            // lblCommentaireEvent
+            // 
+            this.lblCommentaireEvent.AutoSize = true;
+            this.lblCommentaireEvent.Location = new System.Drawing.Point(11, 90);
+            this.lblCommentaireEvent.Name = "lblCommentaireEvent";
+            this.lblCommentaireEvent.Size = new System.Drawing.Size(108, 20);
+            this.lblCommentaireEvent.TabIndex = 4;
+            this.lblCommentaireEvent.Text = "Commentaire";
+            // 
+            // lblDateAjoutEvent
+            // 
+            this.lblDateAjoutEvent.AutoSize = true;
+            this.lblDateAjoutEvent.Location = new System.Drawing.Point(11, 45);
+            this.lblDateAjoutEvent.Name = "lblDateAjoutEvent";
+            this.lblDateAjoutEvent.Size = new System.Drawing.Size(45, 20);
+            this.lblDateAjoutEvent.TabIndex = 3;
+            this.lblDateAjoutEvent.Text = "Date";
+            // 
+            // btnAjoutEvent
+            // 
+            this.btnAjoutEvent.Location = new System.Drawing.Point(730, 429);
+            this.btnAjoutEvent.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAjoutEvent.Name = "btnAjoutEvent";
+            this.btnAjoutEvent.Size = new System.Drawing.Size(97, 36);
+            this.btnAjoutEvent.TabIndex = 2;
+            this.btnAjoutEvent.Text = "Valider";
+            this.btnAjoutEvent.UseVisualStyleBackColor = true;
+            this.btnAjoutEvent.Click += new System.EventHandler(this.btnValidationAjout_Click);
+            // 
+            // grpFormCapture
+            // 
+            this.grpFormCapture.Controls.Add(this.txtNombre);
+            this.grpFormCapture.Controls.Add(this.lblNombre);
+            this.grpFormCapture.Controls.Add(this.lblCapture);
+            this.grpFormCapture.Controls.Add(this.cboCapture);
+            this.grpFormCapture.Controls.Add(this.btnAjoutCapture);
+            this.grpFormCapture.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpFormCapture.Location = new System.Drawing.Point(487, 212);
+            this.grpFormCapture.Margin = new System.Windows.Forms.Padding(2);
+            this.grpFormCapture.Name = "grpFormCapture";
+            this.grpFormCapture.Padding = new System.Windows.Forms.Padding(2);
+            this.grpFormCapture.Size = new System.Drawing.Size(831, 472);
+            this.grpFormCapture.TabIndex = 3;
+            this.grpFormCapture.TabStop = false;
+            this.grpFormCapture.Text = "Ajout de Capture";
+            this.grpFormCapture.Visible = false;
+            // 
+            // txtNombre
+            // 
+            this.txtNombre.Location = new System.Drawing.Point(332, 84);
+            this.txtNombre.Name = "txtNombre";
+            this.txtNombre.Size = new System.Drawing.Size(189, 25);
+            this.txtNombre.TabIndex = 11;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Location = new System.Drawing.Point(8, 83);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(81, 20);
+            this.lblNombre.TabIndex = 11;
+            this.lblNombre.Text = "Nombre :";
+            // 
+            // lblCapture
+            // 
+            this.lblCapture.AutoSize = true;
+            this.lblCapture.Location = new System.Drawing.Point(8, 39);
+            this.lblCapture.Name = "lblCapture";
+            this.lblCapture.Size = new System.Drawing.Size(162, 20);
+            this.lblCapture.TabIndex = 11;
+            this.lblCapture.Text = "Espèce capturée :";
+            // 
+            // cboCapture
+            // 
+            this.cboCapture.FormattingEnabled = true;
+            this.cboCapture.Location = new System.Drawing.Point(332, 37);
+            this.cboCapture.Name = "cboCapture";
+            this.cboCapture.Size = new System.Drawing.Size(189, 28);
+            this.cboCapture.TabIndex = 11;
+            // 
+            // btnAjoutCapture
+            // 
+            this.btnAjoutCapture.Location = new System.Drawing.Point(730, 429);
+            this.btnAjoutCapture.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAjoutCapture.Name = "btnAjoutCapture";
+            this.btnAjoutCapture.Size = new System.Drawing.Size(97, 36);
+            this.btnAjoutCapture.TabIndex = 2;
+            this.btnAjoutCapture.Text = "Valider";
+            this.btnAjoutCapture.UseVisualStyleBackColor = true;
+            this.btnAjoutCapture.Click += new System.EventHandler(this.btnValidationAjout_Click);
+            // 
+            // grpFormDepense
+            // 
+            this.grpFormDepense.Controls.Add(this.rtxtMotifDepense);
+            this.grpFormDepense.Controls.Add(this.txtMontantDepense);
+            this.grpFormDepense.Controls.Add(this.cboTypeDepense);
+            this.grpFormDepense.Controls.Add(this.lblTypeDepense);
+            this.grpFormDepense.Controls.Add(this.lblMotifDepense);
+            this.grpFormDepense.Controls.Add(this.lblMontantDepense);
+            this.grpFormDepense.Controls.Add(this.dtpDateDepense);
+            this.grpFormDepense.Controls.Add(this.lblDateDepense);
+            this.grpFormDepense.Controls.Add(this.btnAjoutDepense);
+            this.grpFormDepense.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpFormDepense.Location = new System.Drawing.Point(487, 215);
+            this.grpFormDepense.Margin = new System.Windows.Forms.Padding(2);
+            this.grpFormDepense.Name = "grpFormDepense";
+            this.grpFormDepense.Padding = new System.Windows.Forms.Padding(2);
+            this.grpFormDepense.Size = new System.Drawing.Size(831, 472);
+            this.grpFormDepense.TabIndex = 3;
+            this.grpFormDepense.TabStop = false;
+            this.grpFormDepense.Text = "Ajout de Dépense";
+            this.grpFormDepense.Visible = false;
+            // 
+            // rtxtMotifDepense
+            // 
+            this.rtxtMotifDepense.Location = new System.Drawing.Point(230, 118);
+            this.rtxtMotifDepense.Margin = new System.Windows.Forms.Padding(2);
+            this.rtxtMotifDepense.Name = "rtxtMotifDepense";
+            this.rtxtMotifDepense.Size = new System.Drawing.Size(142, 27);
+            this.rtxtMotifDepense.TabIndex = 10;
+            this.rtxtMotifDepense.Text = "";
+            // 
+            // txtMontantDepense
+            // 
+            this.txtMontantDepense.Location = new System.Drawing.Point(230, 81);
+            this.txtMontantDepense.Margin = new System.Windows.Forms.Padding(2);
+            this.txtMontantDepense.Name = "txtMontantDepense";
+            this.txtMontantDepense.Size = new System.Drawing.Size(76, 25);
+            this.txtMontantDepense.TabIndex = 9;
+            // 
+            // cboTypeDepense
+            // 
+            this.cboTypeDepense.FormattingEnabled = true;
+            this.cboTypeDepense.Location = new System.Drawing.Point(230, 159);
+            this.cboTypeDepense.Margin = new System.Windows.Forms.Padding(2);
+            this.cboTypeDepense.Name = "cboTypeDepense";
+            this.cboTypeDepense.Size = new System.Drawing.Size(92, 28);
+            this.cboTypeDepense.TabIndex = 8;
+            // 
+            // lblTypeDepense
+            // 
+            this.lblTypeDepense.AutoSize = true;
+            this.lblTypeDepense.Location = new System.Drawing.Point(8, 159);
+            this.lblTypeDepense.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTypeDepense.Name = "lblTypeDepense";
+            this.lblTypeDepense.Size = new System.Drawing.Size(144, 20);
+            this.lblTypeDepense.TabIndex = 7;
+            this.lblTypeDepense.Text = "Type de dépense";
+            // 
+            // lblMotifDepense
+            // 
+            this.lblMotifDepense.AutoSize = true;
+            this.lblMotifDepense.Location = new System.Drawing.Point(5, 122);
+            this.lblMotifDepense.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMotifDepense.Name = "lblMotifDepense";
+            this.lblMotifDepense.Size = new System.Drawing.Size(54, 20);
+            this.lblMotifDepense.TabIndex = 6;
+            this.lblMotifDepense.Text = "Motif";
+            // 
+            // lblMontantDepense
+            // 
+            this.lblMontantDepense.AutoSize = true;
+            this.lblMontantDepense.Location = new System.Drawing.Point(5, 83);
+            this.lblMontantDepense.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMontantDepense.Name = "lblMontantDepense";
+            this.lblMontantDepense.Size = new System.Drawing.Size(72, 20);
+            this.lblMontantDepense.TabIndex = 5;
+            this.lblMontantDepense.Text = "Montant";
+            // 
+            // dtpDateDepense
+            // 
+            this.dtpDateDepense.Location = new System.Drawing.Point(230, 45);
+            this.dtpDateDepense.Margin = new System.Windows.Forms.Padding(2);
+            this.dtpDateDepense.Name = "dtpDateDepense";
+            this.dtpDateDepense.Size = new System.Drawing.Size(151, 25);
+            this.dtpDateDepense.TabIndex = 4;
+            // 
+            // lblDateDepense
+            // 
+            this.lblDateDepense.AutoSize = true;
+            this.lblDateDepense.Location = new System.Drawing.Point(5, 45);
+            this.lblDateDepense.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDateDepense.Name = "lblDateDepense";
+            this.lblDateDepense.Size = new System.Drawing.Size(72, 20);
+            this.lblDateDepense.TabIndex = 3;
+            this.lblDateDepense.Text = "Date : ";
+            // 
+            // btnAjoutDepense
+            // 
+            this.btnAjoutDepense.Location = new System.Drawing.Point(496, 430);
+            this.btnAjoutDepense.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAjoutDepense.Name = "btnAjoutDepense";
+            this.btnAjoutDepense.Size = new System.Drawing.Size(73, 36);
+            this.btnAjoutDepense.TabIndex = 2;
+            this.btnAjoutDepense.Text = "Valider";
+            this.btnAjoutDepense.UseVisualStyleBackColor = true;
+            this.btnAjoutDepense.Click += new System.EventHandler(this.btnValidationAjout_Click);
+            // 
+            // grpFormContact
+            // 
+            this.grpFormContact.Controls.Add(this.cboInformateur);
+            this.grpFormContact.Controls.Add(this.lblInformateur);
+            this.grpFormContact.Controls.Add(this.rtxtAppreciation);
+            this.grpFormContact.Controls.Add(this.lblAppreciation);
+            this.grpFormContact.Controls.Add(this.lblSomme);
+            this.grpFormContact.Controls.Add(this.txtSomme);
+            this.grpFormContact.Controls.Add(this.lblDateContact);
+            this.grpFormContact.Controls.Add(this.dtpDateContact);
+            this.grpFormContact.Controls.Add(this.btnAjoutContact);
+            this.grpFormContact.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpFormContact.Location = new System.Drawing.Point(487, 212);
+            this.grpFormContact.Margin = new System.Windows.Forms.Padding(2);
+            this.grpFormContact.Name = "grpFormContact";
+            this.grpFormContact.Padding = new System.Windows.Forms.Padding(2);
+            this.grpFormContact.Size = new System.Drawing.Size(831, 472);
+            this.grpFormContact.TabIndex = 3;
+            this.grpFormContact.TabStop = false;
+            this.grpFormContact.Text = "Ajout de Contact";
+            this.grpFormContact.Visible = false;
+            // 
+            // cboInformateur
+            // 
+            this.cboInformateur.FormattingEnabled = true;
+            this.cboInformateur.Location = new System.Drawing.Point(236, 300);
+            this.cboInformateur.Name = "cboInformateur";
+            this.cboInformateur.Size = new System.Drawing.Size(285, 28);
+            this.cboInformateur.TabIndex = 16;
+            // 
+            // lblInformateur
+            // 
+            this.lblInformateur.AutoSize = true;
+            this.lblInformateur.Location = new System.Drawing.Point(23, 303);
+            this.lblInformateur.Name = "lblInformateur";
+            this.lblInformateur.Size = new System.Drawing.Size(108, 20);
+            this.lblInformateur.TabIndex = 15;
+            this.lblInformateur.Text = "Informateur";
+            // 
+            // rtxtAppreciation
+            // 
+            this.rtxtAppreciation.Location = new System.Drawing.Point(27, 157);
+            this.rtxtAppreciation.Name = "rtxtAppreciation";
+            this.rtxtAppreciation.Size = new System.Drawing.Size(776, 110);
+            this.rtxtAppreciation.TabIndex = 14;
+            this.rtxtAppreciation.Text = "";
+            // 
+            // lblAppreciation
+            // 
+            this.lblAppreciation.AutoSize = true;
+            this.lblAppreciation.Location = new System.Drawing.Point(23, 126);
+            this.lblAppreciation.Name = "lblAppreciation";
+            this.lblAppreciation.Size = new System.Drawing.Size(117, 20);
+            this.lblAppreciation.TabIndex = 13;
+            this.lblAppreciation.Text = "Appreciation";
+            // 
+            // lblSomme
+            // 
+            this.lblSomme.AutoSize = true;
+            this.lblSomme.Location = new System.Drawing.Point(23, 87);
+            this.lblSomme.Name = "lblSomme";
+            this.lblSomme.Size = new System.Drawing.Size(117, 20);
+            this.lblSomme.TabIndex = 12;
+            this.lblSomme.Text = "Somme versée";
+            // 
+            // txtSomme
+            // 
+            this.txtSomme.Location = new System.Drawing.Point(236, 85);
+            this.txtSomme.Name = "txtSomme";
+            this.txtSomme.Size = new System.Drawing.Size(129, 25);
+            this.txtSomme.TabIndex = 11;
+            // 
+            // lblDateContact
+            // 
+            this.lblDateContact.AutoSize = true;
+            this.lblDateContact.Location = new System.Drawing.Point(23, 40);
+            this.lblDateContact.Name = "lblDateContact";
+            this.lblDateContact.Size = new System.Drawing.Size(45, 20);
+            this.lblDateContact.TabIndex = 11;
+            this.lblDateContact.Text = "Date";
+            // 
+            // dtpDateContact
+            // 
+            this.dtpDateContact.Location = new System.Drawing.Point(236, 40);
+            this.dtpDateContact.Name = "dtpDateContact";
+            this.dtpDateContact.Size = new System.Drawing.Size(285, 25);
+            this.dtpDateContact.TabIndex = 11;
+            // 
+            // btnAjoutContact
+            // 
+            this.btnAjoutContact.Location = new System.Drawing.Point(730, 429);
+            this.btnAjoutContact.Margin = new System.Windows.Forms.Padding(2);
+            this.btnAjoutContact.Name = "btnAjoutContact";
+            this.btnAjoutContact.Size = new System.Drawing.Size(97, 36);
+            this.btnAjoutContact.TabIndex = 2;
+            this.btnAjoutContact.Text = "Valider";
+            this.btnAjoutContact.UseVisualStyleBackColor = true;
+            this.btnAjoutContact.Click += new System.EventHandler(this.btnValidationAjout_Click);
+            // 
+            // grpChoixAjout
+            // 
+            this.grpChoixAjout.Controls.Add(this.label4);
+            this.grpChoixAjout.Controls.Add(this.label3);
+            this.grpChoixAjout.Controls.Add(this.label2);
+            this.grpChoixAjout.Controls.Add(this.label1);
+            this.grpChoixAjout.Controls.Add(this.radioButton3);
+            this.grpChoixAjout.Controls.Add(this.radioButton2);
+            this.grpChoixAjout.Controls.Add(this.radioButton1);
+            this.grpChoixAjout.Controls.Add(this.rdbNewContact);
+            this.grpChoixAjout.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpChoixAjout.Location = new System.Drawing.Point(7, 11);
+            this.grpChoixAjout.Margin = new System.Windows.Forms.Padding(2);
+            this.grpChoixAjout.Name = "grpChoixAjout";
+            this.grpChoixAjout.Padding = new System.Windows.Forms.Padding(2);
+            this.grpChoixAjout.Size = new System.Drawing.Size(1790, 149);
+            this.grpChoixAjout.TabIndex = 0;
+            this.grpChoixAjout.TabStop = false;
+            this.grpChoixAjout.Text = "Type d\'évènement à ajouter";
+            // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(1031, 81);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 40);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Nouvelle capture";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(799, 81);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 40);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Nouvel Évènement";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(915, 81);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 40);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Nouvelle Dépense";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(682, 81);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 40);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Nouveau Contact";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // radioButton3
+            // 
+            this.radioButton3.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton3.Location = new System.Drawing.Point(1058, 32);
+            this.radioButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton3.Name = "radioButton3";
+            this.radioButton3.Size = new System.Drawing.Size(47, 47);
+            this.radioButton3.TabIndex = 3;
+            this.radioButton3.TabStop = true;
+            this.radioButton3.Tag = "4";
+            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton3.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton2.Location = new System.Drawing.Point(942, 32);
+            this.radioButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(47, 47);
+            this.radioButton2.TabIndex = 2;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Tag = "3";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            // 
+            // radioButton1
+            // 
+            this.radioButton1.Appearance = System.Windows.Forms.Appearance.Button;
+            this.radioButton1.Location = new System.Drawing.Point(826, 32);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(47, 47);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Tag = "2";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            // 
+            // rdbNewContact
+            // 
+            this.rdbNewContact.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdbNewContact.Location = new System.Drawing.Point(710, 32);
+            this.rdbNewContact.Margin = new System.Windows.Forms.Padding(2);
+            this.rdbNewContact.Name = "rdbNewContact";
+            this.rdbNewContact.Size = new System.Drawing.Size(47, 47);
+            this.rdbNewContact.TabIndex = 0;
+            this.rdbNewContact.TabStop = true;
+            this.rdbNewContact.Tag = "1";
+            this.rdbNewContact.UseVisualStyleBackColor = true;
+            this.rdbNewContact.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
+            // 
+            // pnlInfoGenerale
+            // 
+            this.pnlInfoGenerale.Controls.Add(this.lblSolde);
+            this.pnlInfoGenerale.Controls.Add(this.lblBudget);
+            this.pnlInfoGenerale.Controls.Add(this.grpMembre);
+            this.pnlInfoGenerale.Controls.Add(this.lblArrivee);
+            this.pnlInfoGenerale.Controls.Add(this.lblDepart);
+            this.pnlInfoGenerale.Controls.Add(this.grpFeuilleRoute);
+            this.pnlInfoGenerale.Controls.Add(this.grpCaptures);
+            this.pnlInfoGenerale.Location = new System.Drawing.Point(0, 225);
+            this.pnlInfoGenerale.Name = "pnlInfoGenerale";
+            this.pnlInfoGenerale.Size = new System.Drawing.Size(1804, 683);
+            this.pnlInfoGenerale.TabIndex = 18;
+            // 
+            // pnlHistorique
+            // 
+            this.pnlHistorique.Controls.Add(this.lblDepense);
+            this.pnlHistorique.Controls.Add(this.grpEvent);
+            this.pnlHistorique.Controls.Add(this.lblSommeVersees);
+            this.pnlHistorique.Controls.Add(this.grpDepenses);
+            this.pnlHistorique.Controls.Add(this.grpContacts);
+            this.pnlHistorique.Controls.Add(this.grpCapture);
+            this.pnlHistorique.Location = new System.Drawing.Point(0, 225);
+            this.pnlHistorique.Name = "pnlHistorique";
+            this.pnlHistorique.Size = new System.Drawing.Size(1804, 683);
+            this.pnlHistorique.TabIndex = 13;
+            // 
+            // pnlAjout
+            // 
+            this.pnlAjout.Controls.Add(this.grpFormDepense);
+            this.pnlAjout.Controls.Add(this.grpChoixAjout);
+            this.pnlAjout.Controls.Add(this.grpFormContact);
+            this.pnlAjout.Controls.Add(this.grpFormEvent);
+            this.pnlAjout.Controls.Add(this.grpFormCapture);
+            this.pnlAjout.Location = new System.Drawing.Point(0, 225);
+            this.pnlAjout.Name = "pnlAjout";
+            this.pnlAjout.Size = new System.Drawing.Size(1804, 683);
+            this.pnlAjout.TabIndex = 9;
+            // 
+            // pbPlanete
+            // 
+            this.pbPlanete.Location = new System.Drawing.Point(6, 12);
+            this.pbPlanete.Name = "pbPlanete";
+            this.pbPlanete.Size = new System.Drawing.Size(207, 207);
+            this.pbPlanete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPlanete.TabIndex = 19;
+            this.pbPlanete.TabStop = false;
+            // 
+            // lblNomMission
+            // 
+            this.lblNomMission.AutoSize = true;
+            this.lblNomMission.Font = new System.Drawing.Font("Cascadia Code", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblNomMission.Location = new System.Drawing.Point(260, 80);
+            this.lblNomMission.Name = "lblNomMission";
+            this.lblNomMission.Size = new System.Drawing.Size(202, 66);
+            this.lblNomMission.TabIndex = 20;
+            this.lblNomMission.Text = "label5";
             // 
             // FormulaireMission
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 744);
-            this.Controls.Add(this.grpCaptures);
-            this.Controls.Add(this.grpMembre);
-            this.Controls.Add(this.grpFeuilleRoute);
-            this.Controls.Add(this.lblSolde);
-            this.Controls.Add(this.lblBudget);
-            this.Controls.Add(this.lblArrivee);
-            this.Controls.Add(this.lblDepart);
-            this.Controls.Add(this.missionPB1);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1812, 914);
+            this.Controls.Add(this.lblNomMission);
+            this.Controls.Add(this.pbPlanete);
+            this.Controls.Add(this.pnlAjout);
+            this.Controls.Add(this.pnlInfoGenerale);
+            this.Controls.Add(this.pnlHistorique);
+            this.Font = new System.Drawing.Font("Cascadia Code", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormulaireMission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormulaireMission";
             this.Load += new System.EventHandler(this.FormulaireMission_Load);
-            this.grpFeuilleRoute.ResumeLayout(false);
-            this.grpMembre.ResumeLayout(false);
             this.grpCaptures.ResumeLayout(false);
+            this.grpMembre.ResumeLayout(false);
+            this.grpFeuilleRoute.ResumeLayout(false);
+            this.grpCapture.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvCapture)).EndInit();
+            this.grpDepenses.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDepenses)).EndInit();
+            this.grpContacts.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvContact)).EndInit();
+            this.grpEvent.ResumeLayout(false);
+            this.grpEvent.PerformLayout();
+            this.grpFormEvent.ResumeLayout(false);
+            this.grpFormEvent.PerformLayout();
+            this.grpFormCapture.ResumeLayout(false);
+            this.grpFormCapture.PerformLayout();
+            this.grpFormDepense.ResumeLayout(false);
+            this.grpFormDepense.PerformLayout();
+            this.grpFormContact.ResumeLayout(false);
+            this.grpFormContact.PerformLayout();
+            this.grpChoixAjout.ResumeLayout(false);
+            this.pnlInfoGenerale.ResumeLayout(false);
+            this.pnlInfoGenerale.PerformLayout();
+            this.pnlHistorique.ResumeLayout(false);
+            this.pnlHistorique.PerformLayout();
+            this.pnlAjout.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPlanete)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private MissionPB missionPB1;
-        private System.Windows.Forms.Label lblDepart;
-        private System.Windows.Forms.Label lblArrivee;
-        private System.Windows.Forms.Label lblBudget;
-        private System.Windows.Forms.Label lblSolde;
-        private System.Windows.Forms.GroupBox grpFeuilleRoute;
         private System.Windows.Forms.GroupBox grpMembre;
-        private System.Windows.Forms.Panel pnlMembre;
         private System.Windows.Forms.GroupBox grpCaptures;
-        private System.Windows.Forms.RichTextBox txtFeuilleRoute;
         private System.Windows.Forms.RichTextBox txtCaptures;
+        private System.Windows.Forms.GroupBox grpFeuilleRoute;
+        private System.Windows.Forms.RichTextBox txtFeuilleRoute;
+        private System.Windows.Forms.Label lblSolde;
+        private System.Windows.Forms.Label lblBudget;
+        private System.Windows.Forms.Label lblArrivee;
+        private System.Windows.Forms.Label lblDepart;
+        private System.Windows.Forms.Label lblDepense;
+        private System.Windows.Forms.Label lblSommeVersees;
+        private System.Windows.Forms.GroupBox grpDepenses;
+        private System.Windows.Forms.DataGridView dgvDepenses;
+        private System.Windows.Forms.GroupBox grpContacts;
+        private System.Windows.Forms.DataGridView dgvContact;
+        private System.Windows.Forms.GroupBox grpEvent;
+        private System.Windows.Forms.Button btnLast;
+        private System.Windows.Forms.Button btnSuivant;
+        private System.Windows.Forms.Button btnPrecedent;
+        private System.Windows.Forms.Button btnFirst;
+        private System.Windows.Forms.Label lblEventDescription;
+        private System.Windows.Forms.Label lblDateEvent;
+        private System.Windows.Forms.GroupBox grpCapture;
+        private System.Windows.Forms.DataGridView dgvCapture;
+        private System.Windows.Forms.GroupBox grpChoixAjout;
+        private System.Windows.Forms.RadioButton rdbNewContact;
+        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox grpFormDepense;
+        private System.Windows.Forms.Button btnAjoutDepense;
+        private System.Windows.Forms.GroupBox grpFormCapture;
+        private System.Windows.Forms.Button btnAjoutCapture;
+        private System.Windows.Forms.GroupBox grpFormContact;
+        private System.Windows.Forms.Button btnAjoutContact;
+        private System.Windows.Forms.GroupBox grpFormEvent;
+        private System.Windows.Forms.Button btnAjoutEvent;
+        private System.Windows.Forms.DateTimePicker dtpDateDepense;
+        private System.Windows.Forms.Label lblDateDepense;
+        private System.Windows.Forms.TextBox txtMontantDepense;
+        private System.Windows.Forms.ComboBox cboTypeDepense;
+        private System.Windows.Forms.Label lblTypeDepense;
+        private System.Windows.Forms.Label lblMotifDepense;
+        private System.Windows.Forms.Label lblMontantDepense;
+        private System.Windows.Forms.RichTextBox rtxtMotifDepense;
+        private System.Windows.Forms.ComboBox cboCapture;
+        private System.Windows.Forms.Label lblCapture;
+        private System.Windows.Forms.TextBox txtNombre;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.TextBox txtSomme;
+        private System.Windows.Forms.Label lblDateContact;
+        private System.Windows.Forms.DateTimePicker dtpDateContact;
+        private System.Windows.Forms.Label lblAppreciation;
+        private System.Windows.Forms.Label lblSomme;
+        private System.Windows.Forms.Label lblInformateur;
+        private System.Windows.Forms.RichTextBox rtxtAppreciation;
+        private System.Windows.Forms.ComboBox cboInformateur;
+        private System.Windows.Forms.RichTextBox rtxtCommentaire;
+        private System.Windows.Forms.DateTimePicker dtpDateEvent;
+        private System.Windows.Forms.Label lblCommentaireEvent;
+        private System.Windows.Forms.Label lblDateAjoutEvent;
+        private System.Windows.Forms.FlowLayoutPanel pnlMembre;
+        private System.Windows.Forms.Panel pnlInfoGenerale;
+        private System.Windows.Forms.Panel pnlHistorique;
+        private System.Windows.Forms.Panel pnlAjout;
+        private System.Windows.Forms.PictureBox pbPlanete;
+        private System.Windows.Forms.Label lblNomMission;
     }
 }
