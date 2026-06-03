@@ -341,44 +341,15 @@ namespace SAE24
 
         private void AfficherFormContact()
         {
-            int top = 40;
-            int left = 20;
+         
             grpFormCapture.Visible = false;
             grpFormDepense.Visible = false;
             grpFormDepense.Visible = false;
             grpFormContact.Visible = true;
 
-            lblDateContact.Top = top;
-            lblDateContact.Left = left;
-
-
-            dtpDateContact.Top = lblDateContact.Top;
-            dtpDateContact.Left = lblDateContact.Width + 20 + left;
             dtpDateContact.MinDate = Convert.ToDateTime(missionActuelle["dateDepart"]);
             dtpDateContact.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]);
-            dtpDateContact.Width = 200;
 
-
-
-            lblNombre.Top = top + lblDateContact.Height + 20;
-            lblNombre.Left = left;
-
-            txtSomme.Top = lblNombre.Top;
-            txtSomme.Left = lblNombre.Width + 20 + left;
-
-            lblAppreciation.Left = left;
-            lblAppreciation.Top = lblNombre.Top + lblNombre.Height + 20;
-
-            rtxtAppreciation.Top = lblAppreciation.Top + lblAppreciation.Height + 20;
-            rtxtAppreciation.Left = left;
-            rtxtAppreciation.Width = grpFormContact.Width - 40;
-            rtxtAppreciation.Height = 100;
-
-            lblInformateur.Left = left;
-            lblInformateur.Top = rtxtAppreciation.Top + rtxtAppreciation.Height + 20;
-
-            cboInformateur.Top = rtxtAppreciation.Top + rtxtAppreciation.Height + 20;
-            cboInformateur.Left = lblInformateur.Width + 20 + left;
             cboInformateur.DataSource = MesDatas.DsGlobal.Tables["Informateur"];
             cboInformateur.DisplayMember = "nom";
             cboInformateur.ValueMember = "nomCode";
@@ -656,11 +627,7 @@ namespace SAE24
                 c.BackColor = Couleur.getButton;
                 c.ForeColor = Couleur.getText;
             }
-            else if (c is MissionResume)
-            {
-                MissionResume mr = (MissionResume)c;
-                mr.UpdateColors();
-            } else
+            else
             {
                 c.BackColor = Couleur.getBackground;
                 c.ForeColor = Couleur.getText;

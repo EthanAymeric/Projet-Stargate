@@ -55,10 +55,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.lblMembre);
             this.Controls.Add(this.pbMembre);
             this.Name = "MembreEquipage";
-            this.Size = new System.Drawing.Size(120, 123);
+            this.Size = new System.Drawing.Size(118, 121);
             ((System.ComponentModel.ISupportInitialize)(this.pbMembre)).EndInit();
             this.ResumeLayout(false);
 
