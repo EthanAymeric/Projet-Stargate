@@ -1323,6 +1323,9 @@ namespace SAE24
         {
             ChargementStats();
 
+            grpFiltreMission.Visible = false;
+            grpTableauDeBord.Visible = false;
+            pnlTDB.Visible = false;
             pnlEspeces.Visible = false;
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
