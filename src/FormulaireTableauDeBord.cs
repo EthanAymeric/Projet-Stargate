@@ -34,7 +34,7 @@ namespace SAE24
             ChargementElementsGrpEspeces();
             ModifDate();
             ActualisationTDB(cboFiltrePlanete.Text,cboFiltreEtat.Text);
-            grpFiltreMission.Visible = true;
+
 
             //Mettre en place la couleur de base du thème sur le formulaire
             BackColor = Couleur.getBackground;
@@ -175,6 +175,8 @@ namespace SAE24
         }
         private void ActualisationTDB(String filtrePlanète, String filtreEtat)
         {
+            grpFiltreMission.Visible = true;
+            grpTableauDeBord.Visible = true;
             int missionTrouvee = 0;
             string filtreFinal = "";
             if (filtrePlanète.Length != 0)
@@ -277,6 +279,7 @@ namespace SAE24
             
             pnlTDB.Visible = true;
             grpFiltreMission.Visible = true;
+            grpTableauDeBord.Visible = true;
             pnlPlanetes.Visible = false;
             pnlEspeces.Visible = false;
             pnlAllies.Visible = false;
@@ -308,6 +311,7 @@ namespace SAE24
         {
             pnlTDB.Visible = false;
             grpFiltreMission.Visible = false;
+            grpTableauDeBord.Visible = false;
             pnlPlanetes.Visible = false;
             pnlEspeces.Visible = true;
             pnlAllies.Visible = false;
@@ -319,6 +323,7 @@ namespace SAE24
         {
             pnlTDB.Visible = false;
             grpFiltreMission.Visible = false;
+            grpTableauDeBord.Visible = false;
             pnlPlanetes.Visible = true;
             pnlEspeces.Visible = false;
             pnlAllies.Visible = false;
@@ -332,6 +337,7 @@ namespace SAE24
             
             pnlEspeces.Controls.Clear();
             grpFiltreMission.Visible = false;
+            grpTableauDeBord.Visible = false;
             pnlEspeces.Visible = false;
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
@@ -636,6 +642,7 @@ namespace SAE24
 
         private void UpdateColorControls(Control c)
         {
+            c.ForeColor = Couleur.getText;
             if(c is Label)
             {
                 c.ForeColor = Couleur.getText;

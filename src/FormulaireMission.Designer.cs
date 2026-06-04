@@ -529,6 +529,7 @@
             // 
             // btnAjoutEvent
             // 
+            this.btnAjoutEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjoutEvent.Location = new System.Drawing.Point(730, 429);
             this.btnAjoutEvent.Margin = new System.Windows.Forms.Padding(2);
             this.btnAjoutEvent.Name = "btnAjoutEvent";
@@ -592,6 +593,7 @@
             // 
             // btnAjoutCapture
             // 
+            this.btnAjoutCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjoutCapture.Location = new System.Drawing.Point(730, 429);
             this.btnAjoutCapture.Margin = new System.Windows.Forms.Padding(2);
             this.btnAjoutCapture.Name = "btnAjoutCapture";
@@ -701,6 +703,7 @@
             // 
             // btnAjoutDepense
             // 
+            this.btnAjoutDepense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjoutDepense.Location = new System.Drawing.Point(496, 430);
             this.btnAjoutDepense.Margin = new System.Windows.Forms.Padding(2);
             this.btnAjoutDepense.Name = "btnAjoutDepense";
@@ -802,6 +805,7 @@
             // 
             // btnAjoutContact
             // 
+            this.btnAjoutContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjoutContact.Location = new System.Drawing.Point(730, 429);
             this.btnAjoutContact.Margin = new System.Windows.Forms.Padding(2);
             this.btnAjoutContact.Name = "btnAjoutContact";
@@ -985,6 +989,7 @@
             // 
             // btnInfoGenerale
             // 
+            this.btnInfoGenerale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInfoGenerale.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnInfoGenerale.Location = new System.Drawing.Point(26, 268);
             this.btnInfoGenerale.Name = "btnInfoGenerale";
@@ -996,6 +1001,7 @@
             // 
             // btnJournal
             // 
+            this.btnJournal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnJournal.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnJournal.Location = new System.Drawing.Point(26, 346);
             this.btnJournal.Name = "btnJournal";
@@ -1007,6 +1013,7 @@
             // 
             // btnAjout
             // 
+            this.btnAjout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAjout.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnAjout.Location = new System.Drawing.Point(26, 424);
             this.btnAjout.Name = "btnAjout";

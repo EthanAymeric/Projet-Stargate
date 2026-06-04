@@ -49,12 +49,12 @@
             this.btnSwitchTheme = new System.Windows.Forms.Button();
             this.grpFiltreMission = new System.Windows.Forms.GroupBox();
             this.btntriAlpha = new System.Windows.Forms.Button();
+            this.btntriEtat = new System.Windows.Forms.Button();
             this.cboFiltreEtat = new System.Windows.Forms.ComboBox();
             this.lblFiltreEtat = new System.Windows.Forms.Label();
             this.lblFiltrePlanete = new System.Windows.Forms.Label();
             this.cboFiltrePlanete = new System.Windows.Forms.ComboBox();
             this.grpTableauDeBord = new System.Windows.Forms.GroupBox();
-            this.btntriEtat = new System.Windows.Forms.Button();
             this.grpEspeces.SuspendLayout();
             this.grpFiltreMission.SuspendLayout();
             this.grpTableauDeBord.SuspendLayout();
@@ -215,6 +215,7 @@
             // btnRecherche
             // 
             this.btnRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRecherche.Location = new System.Drawing.Point(1164, 38);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(157, 48);
@@ -226,6 +227,7 @@
             // btnReset
             // 
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReset.Location = new System.Drawing.Point(1164, 129);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(157, 52);
@@ -321,6 +323,7 @@
             // 
             // btntriAlpha
             // 
+            this.btntriAlpha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btntriAlpha.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btntriAlpha.Location = new System.Drawing.Point(1253, 100);
             this.btntriAlpha.Name = "btntriAlpha";
@@ -329,6 +332,18 @@
             this.btntriAlpha.Text = "A → Z";
             this.btntriAlpha.UseVisualStyleBackColor = true;
             this.btntriAlpha.Click += new System.EventHandler(this.btntriAlpha_Click);
+            // 
+            // btntriEtat
+            // 
+            this.btntriEtat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btntriEtat.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntriEtat.Location = new System.Drawing.Point(1253, 20);
+            this.btntriEtat.Name = "btntriEtat";
+            this.btntriEtat.Size = new System.Drawing.Size(118, 62);
+            this.btntriEtat.TabIndex = 5;
+            this.btntriEtat.Text = "Etat ↑↓";
+            this.btntriEtat.UseVisualStyleBackColor = true;
+            this.btntriEtat.Click += new System.EventHandler(this.btntriEtat_Click);
             // 
             // cboFiltreEtat
             // 
@@ -380,17 +395,6 @@
             this.grpTableauDeBord.TabIndex = 10;
             this.grpTableauDeBord.TabStop = false;
             this.grpTableauDeBord.Text = "Nombre de mission trouvée : ";
-            // 
-            // btntriAlpha
-            // 
-            this.btntriEtat.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntriEtat.Location = new System.Drawing.Point(1253, 20);
-            this.btntriEtat.Name = "btntriAlpha";
-            this.btntriEtat.Size = new System.Drawing.Size(118, 62);
-            this.btntriEtat.TabIndex = 5;
-            this.btntriEtat.Text = "Etat ↑↓";
-            this.btntriEtat.UseVisualStyleBackColor = true;
-            this.btntriEtat.Click += new System.EventHandler(this.btntriEtat_Click);
             // 
             // FrmTableauDeBord
             // 
