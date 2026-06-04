@@ -174,13 +174,30 @@ namespace SAE24
         private void ActualisationTDB(String filtrePlanète, String triAlphabetique, String filtreEtat)
         {
             string filtreFinal = "";
-            if (filtrePlanète != "" && filtreEtat != "")
+            if (filtrePlanète.Length != 0)
+            {
+                filtreFinal = $"nomPlanete = '{filtrePlanète}'";
+                if (filtreEtat == "En cours")
+                {
+                    filtreFinal += $" AND dateRetour > #{DateTime.Today.ToString("yyyy-MM-dd")}#";
+                }
+                else if (filtreEtat == "Terminée")
+                {
+                    filtreFinal += $" AND dateRetour <= #{DateTime.Today.ToString("yyyy - MM - dd")}#";
+                }
+            }
+            else if (filtrePlanète.Length == 0 && filtreEtat.Length != 0) 
             {
                 if (filtreEtat == "En cours")
                 {
-                    filtreFinal = $"nomPlanete = '{filtrePlanète}' AND dateRetour > #{DateTime.Today}#";
+                    filtreFinal = $"dateRetour > #{DateTime.Today.ToString("yyyy-MM-dd")}#";
+                }
+                else if (filtreEtat == "Terminée")
+                {
+                    filtreFinal = $"dateRetour <= #{DateTime.Today.ToString("yyyy - MM - dd")}#";
                 }
             }
+            
 
             pnlTDB.Controls.Clear();
             try
@@ -1098,7 +1115,7 @@ namespace SAE24
 
         private void cboFiltrePlanete_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ActualisationTDB(cboFiltrePlanete.Text, "", "En cours");
+            ActualisationTDB(cboFiltrePlanete.Text, "", cboFiltreEtat.Text);
         }
     }
 }

@@ -51,6 +51,8 @@
             this.grpFiltreMission = new System.Windows.Forms.GroupBox();
             this.lblFiltrePlanete = new System.Windows.Forms.Label();
             this.cboFiltrePlanete = new System.Windows.Forms.ComboBox();
+            this.lblFiltreEtat = new System.Windows.Forms.Label();
+            this.cboFiltreEtat = new System.Windows.Forms.ComboBox();
             this.grpEspeces.SuspendLayout();
             this.grpFiltreMission.SuspendLayout();
             this.SuspendLayout();
@@ -308,6 +310,8 @@
             // 
             // grpFiltreMission
             // 
+            this.grpFiltreMission.Controls.Add(this.cboFiltreEtat);
+            this.grpFiltreMission.Controls.Add(this.lblFiltreEtat);
             this.grpFiltreMission.Controls.Add(this.lblFiltrePlanete);
             this.grpFiltreMission.Controls.Add(this.cboFiltrePlanete);
             this.grpFiltreMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
@@ -330,11 +334,33 @@
             // cboFiltrePlanete
             // 
             this.cboFiltrePlanete.FormattingEnabled = true;
-            this.cboFiltrePlanete.Location = new System.Drawing.Point(238, 44);
+            this.cboFiltrePlanete.Location = new System.Drawing.Point(157, 44);
             this.cboFiltrePlanete.Name = "cboFiltrePlanete";
             this.cboFiltrePlanete.Size = new System.Drawing.Size(196, 33);
             this.cboFiltrePlanete.TabIndex = 0;
             this.cboFiltrePlanete.SelectedIndexChanged += new System.EventHandler(this.cboFiltrePlanete_SelectedIndexChanged);
+            // 
+            // lblFiltreEtat
+            // 
+            this.lblFiltreEtat.AutoSize = true;
+            this.lblFiltreEtat.Location = new System.Drawing.Point(24, 118);
+            this.lblFiltreEtat.Name = "lblFiltreEtat";
+            this.lblFiltreEtat.Size = new System.Drawing.Size(175, 25);
+            this.lblFiltreEtat.TabIndex = 2;
+            this.lblFiltreEtat.Text = "Etat de la mission :";
+            // 
+            // cboFiltreEtat
+            // 
+            this.cboFiltreEtat.FormattingEnabled = true;
+            this.cboFiltreEtat.Items.AddRange(new object[] {
+            "",
+            "En cours",
+            "Terminée"});
+            this.cboFiltreEtat.Location = new System.Drawing.Point(232, 115);
+            this.cboFiltreEtat.Name = "cboFiltreEtat";
+            this.cboFiltreEtat.Size = new System.Drawing.Size(121, 33);
+            this.cboFiltreEtat.TabIndex = 3;
+            this.cboFiltreEtat.SelectedIndexChanged += new System.EventHandler(this.cboFiltrePlanete_SelectedIndexChanged);
             // 
             // FrmTableauDeBord
             // 
@@ -394,6 +420,8 @@
         private System.Windows.Forms.GroupBox grpFiltreMission;
         private System.Windows.Forms.ComboBox cboFiltrePlanete;
         private System.Windows.Forms.Label lblFiltrePlanete;
+        private System.Windows.Forms.ComboBox cboFiltreEtat;
+        private System.Windows.Forms.Label lblFiltreEtat;
     }
 }
 
