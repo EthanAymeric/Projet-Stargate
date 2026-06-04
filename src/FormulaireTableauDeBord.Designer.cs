@@ -51,9 +51,9 @@
             this.pnlEnnemis = new System.Windows.Forms.Panel();
             this.btnStats = new System.Windows.Forms.Button();
             this.pnlStats = new System.Windows.Forms.Panel();
+            this.cboStats2 = new System.Windows.Forms.ComboBox();
             this.cboStats1 = new System.Windows.Forms.ComboBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.cboStats2 = new System.Windows.Forms.ComboBox();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.pnlStats.SuspendLayout();
@@ -63,10 +63,10 @@
             // btnTDB
             // 
             this.btnTDB.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnTDB.Location = new System.Drawing.Point(49, 221);
-            this.btnTDB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnTDB.Location = new System.Drawing.Point(33, 144);
+            this.btnTDB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnTDB.Name = "btnTDB";
-            this.btnTDB.Size = new System.Drawing.Size(217, 66);
+            this.btnTDB.Size = new System.Drawing.Size(145, 43);
             this.btnTDB.TabIndex = 1;
             this.btnTDB.Text = "Tableau de bord";
             this.btnTDB.UseVisualStyleBackColor = true;
@@ -76,10 +76,10 @@
             // btnNouvelleMission
             // 
             this.btnNouvelleMission.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnNouvelleMission.Location = new System.Drawing.Point(49, 776);
-            this.btnNouvelleMission.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnNouvelleMission.Location = new System.Drawing.Point(33, 504);
+            this.btnNouvelleMission.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
-            this.btnNouvelleMission.Size = new System.Drawing.Size(217, 66);
+            this.btnNouvelleMission.Size = new System.Drawing.Size(145, 43);
             this.btnNouvelleMission.TabIndex = 2;
             this.btnNouvelleMission.Text = "Nouvelle Mission";
             this.btnNouvelleMission.UseVisualStyleBackColor = true;
@@ -89,10 +89,10 @@
             // btnRaces
             // 
             this.btnRaces.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRaces.Location = new System.Drawing.Point(49, 363);
-            this.btnRaces.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnRaces.Location = new System.Drawing.Point(33, 236);
+            this.btnRaces.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnRaces.Name = "btnRaces";
-            this.btnRaces.Size = new System.Drawing.Size(217, 66);
+            this.btnRaces.Size = new System.Drawing.Size(145, 43);
             this.btnRaces.TabIndex = 3;
             this.btnRaces.Text = "Decouverte des races";
             this.btnRaces.UseVisualStyleBackColor = true;
@@ -102,10 +102,10 @@
             // btnPlanetes
             // 
             this.btnPlanetes.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnPlanetes.Location = new System.Drawing.Point(49, 496);
-            this.btnPlanetes.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnPlanetes.Location = new System.Drawing.Point(33, 322);
+            this.btnPlanetes.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnPlanetes.Name = "btnPlanetes";
-            this.btnPlanetes.Size = new System.Drawing.Size(217, 66);
+            this.btnPlanetes.Size = new System.Drawing.Size(145, 43);
             this.btnPlanetes.TabIndex = 4;
             this.btnPlanetes.Text = "Infos des planètes";
             this.btnPlanetes.UseVisualStyleBackColor = true;
@@ -116,36 +116,36 @@
             // 
             this.pnlTDB.AutoScroll = true;
             this.pnlTDB.Controls.Add(this.pbChargement);
-            this.pnlTDB.Location = new System.Drawing.Point(334, 218);
-            this.pnlTDB.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pnlTDB.Location = new System.Drawing.Point(223, 142);
+            this.pnlTDB.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlTDB.Name = "pnlTDB";
-            this.pnlTDB.Size = new System.Drawing.Size(1425, 734);
+            this.pnlTDB.Size = new System.Drawing.Size(950, 477);
             this.pnlTDB.TabIndex = 5;
             // 
             // pbChargement
             // 
-            this.pbChargement.Location = new System.Drawing.Point(232, 180);
-            this.pbChargement.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pbChargement.Location = new System.Drawing.Point(155, 117);
+            this.pbChargement.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pbChargement.Name = "pbChargement";
-            this.pbChargement.Size = new System.Drawing.Size(408, 55);
+            this.pbChargement.Size = new System.Drawing.Size(272, 36);
             this.pbChargement.TabIndex = 0;
             // 
             // pnlPlanetes
             // 
             this.pnlPlanetes.AutoScroll = true;
-            this.pnlPlanetes.Location = new System.Drawing.Point(334, 218);
-            this.pnlPlanetes.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pnlPlanetes.Location = new System.Drawing.Point(223, 142);
+            this.pnlPlanetes.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlPlanetes.Name = "pnlPlanetes";
-            this.pnlPlanetes.Size = new System.Drawing.Size(1425, 734);
+            this.pnlPlanetes.Size = new System.Drawing.Size(950, 477);
             this.pnlPlanetes.TabIndex = 6;
             // 
             // pnlEspeces
             // 
             this.pnlEspeces.AutoScroll = true;
-            this.pnlEspeces.Location = new System.Drawing.Point(678, 218);
-            this.pnlEspeces.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pnlEspeces.Location = new System.Drawing.Point(452, 142);
+            this.pnlEspeces.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlEspeces.Name = "pnlEspeces";
-            this.pnlEspeces.Size = new System.Drawing.Size(1081, 734);
+            this.pnlEspeces.Size = new System.Drawing.Size(721, 477);
             this.pnlEspeces.TabIndex = 7;
             // 
             // grpEspeces
@@ -160,9 +160,11 @@
             this.grpEspeces.Controls.Add(this.btnReset);
             this.grpEspeces.Controls.Add(this.rdbEnnemis);
             this.grpEspeces.Controls.Add(this.rdbAllies);
-            this.grpEspeces.Location = new System.Drawing.Point(331, 221);
+            this.grpEspeces.Location = new System.Drawing.Point(221, 144);
+            this.grpEspeces.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.grpEspeces.Name = "grpEspeces";
-            this.grpEspeces.Size = new System.Drawing.Size(335, 731);
+            this.grpEspeces.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpEspeces.Size = new System.Drawing.Size(223, 475);
             this.grpEspeces.TabIndex = 0;
             this.grpEspeces.TabStop = false;
             this.grpEspeces.Text = "Recherche d\'espèces";
@@ -171,7 +173,8 @@
             // 
             this.lblIndicationCouleur.AutoSize = true;
             this.lblIndicationCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationCouleur.Location = new System.Drawing.Point(252, 242);
+            this.lblIndicationCouleur.Location = new System.Drawing.Point(168, 157);
+            this.lblIndicationCouleur.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIndicationCouleur.Name = "lblIndicationCouleur";
             this.lblIndicationCouleur.Size = new System.Drawing.Size(81, 25);
             this.lblIndicationCouleur.TabIndex = 11;
@@ -181,12 +184,12 @@
             // 
             this.lblIndicationPlanete.AutoSize = true;
             this.lblIndicationPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationPlanete.Location = new System.Drawing.Point(252, 193);
+            this.lblIndicationPlanete.Location = new System.Drawing.Point(168, 125);
+            this.lblIndicationPlanete.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIndicationPlanete.Name = "lblIndicationPlanete";
             this.lblIndicationPlanete.Size = new System.Drawing.Size(78, 25);
             this.lblIndicationPlanete.TabIndex = 10;
             this.lblIndicationPlanete.Text = "Planète";
-            this.lblIndicationPlanete.Click += new System.EventHandler(this.lblIndicationPlanete_Click);
             // 
             // cboPlanete
             // 
@@ -194,9 +197,10 @@
             this.cboPlanete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPlanete.FormattingEnabled = true;
-            this.cboPlanete.Location = new System.Drawing.Point(24, 190);
+            this.cboPlanete.Location = new System.Drawing.Point(16, 123);
+            this.cboPlanete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboPlanete.Name = "cboPlanete";
-            this.cboPlanete.Size = new System.Drawing.Size(222, 33);
+            this.cboPlanete.Size = new System.Drawing.Size(149, 33);
             this.cboPlanete.TabIndex = 9;
             this.cboPlanete.SelectedIndexChanged += new System.EventHandler(this.cboPlanete_SelectedIndexChanged);
             // 
@@ -204,7 +208,8 @@
             // 
             this.lblIndicationNom.AutoSize = true;
             this.lblIndicationNom.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationNom.Location = new System.Drawing.Point(252, 142);
+            this.lblIndicationNom.Location = new System.Drawing.Point(168, 92);
+            this.lblIndicationNom.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIndicationNom.Name = "lblIndicationNom";
             this.lblIndicationNom.Size = new System.Drawing.Size(53, 25);
             this.lblIndicationNom.TabIndex = 8;
@@ -213,11 +218,11 @@
             // txtNomEspece
             // 
             this.txtNomEspece.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomEspece.Location = new System.Drawing.Point(24, 142);
+            this.txtNomEspece.Location = new System.Drawing.Point(16, 92);
+            this.txtNomEspece.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtNomEspece.Name = "txtNomEspece";
-            this.txtNomEspece.Size = new System.Drawing.Size(222, 30);
+            this.txtNomEspece.Size = new System.Drawing.Size(149, 30);
             this.txtNomEspece.TabIndex = 7;
-            this.txtNomEspece.MouseClick += new System.Windows.Forms.MouseEventHandler(this.txtNomEspece_MouseClick);
             this.txtNomEspece.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomEspece_KeyPress);
             // 
             // cboCouleur
@@ -226,19 +231,20 @@
             this.cboCouleur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCouleur.FormattingEnabled = true;
-            this.cboCouleur.Location = new System.Drawing.Point(24, 240);
+            this.cboCouleur.Location = new System.Drawing.Point(16, 156);
+            this.cboCouleur.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboCouleur.Name = "cboCouleur";
-            this.cboCouleur.Size = new System.Drawing.Size(222, 33);
+            this.cboCouleur.Size = new System.Drawing.Size(149, 33);
             this.cboCouleur.TabIndex = 4;
             this.cboCouleur.SelectedIndexChanged += new System.EventHandler(this.cboCouleur_SelectedIndexChanged);
-            this.cboCouleur.SelectedValueChanged += new System.EventHandler(this.cboCouleur_SelectedValueChanged);
             // 
             // btnRecherche
             // 
             this.btnRecherche.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRecherche.Location = new System.Drawing.Point(42, 345);
+            this.btnRecherche.Location = new System.Drawing.Point(28, 224);
+            this.btnRecherche.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnRecherche.Name = "btnRecherche";
-            this.btnRecherche.Size = new System.Drawing.Size(240, 69);
+            this.btnRecherche.Size = new System.Drawing.Size(160, 45);
             this.btnRecherche.TabIndex = 3;
             this.btnRecherche.Text = "Recherche";
             this.btnRecherche.UseVisualStyleBackColor = true;
@@ -247,9 +253,10 @@
             // btnReset
             // 
             this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnReset.Location = new System.Drawing.Point(42, 450);
+            this.btnReset.Location = new System.Drawing.Point(28, 292);
+            this.btnReset.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(240, 69);
+            this.btnReset.Size = new System.Drawing.Size(160, 45);
             this.btnReset.TabIndex = 2;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
@@ -260,7 +267,8 @@
             this.rdbEnnemis.AutoSize = true;
             this.rdbEnnemis.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbEnnemis.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbEnnemis.Location = new System.Drawing.Point(24, 84);
+            this.rdbEnnemis.Location = new System.Drawing.Point(16, 55);
+            this.rdbEnnemis.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbEnnemis.Name = "rdbEnnemis";
             this.rdbEnnemis.Size = new System.Drawing.Size(205, 29);
             this.rdbEnnemis.TabIndex = 1;
@@ -273,7 +281,8 @@
             this.rdbAllies.AutoSize = true;
             this.rdbAllies.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rdbAllies.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbAllies.Location = new System.Drawing.Point(24, 49);
+            this.rdbAllies.Location = new System.Drawing.Point(16, 32);
+            this.rdbAllies.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.rdbAllies.Name = "rdbAllies";
             this.rdbAllies.Size = new System.Drawing.Size(176, 29);
             this.rdbAllies.TabIndex = 0;
@@ -284,28 +293,28 @@
             // pnlAllies
             // 
             this.pnlAllies.AutoScroll = true;
-            this.pnlAllies.Location = new System.Drawing.Point(678, 218);
-            this.pnlAllies.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pnlAllies.Location = new System.Drawing.Point(452, 142);
+            this.pnlAllies.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlAllies.Name = "pnlAllies";
-            this.pnlAllies.Size = new System.Drawing.Size(1081, 734);
+            this.pnlAllies.Size = new System.Drawing.Size(721, 477);
             this.pnlAllies.TabIndex = 8;
             // 
             // pnlEnnemis
             // 
             this.pnlEnnemis.AutoScroll = true;
-            this.pnlEnnemis.Location = new System.Drawing.Point(678, 218);
-            this.pnlEnnemis.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pnlEnnemis.Location = new System.Drawing.Point(452, 142);
+            this.pnlEnnemis.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlEnnemis.Name = "pnlEnnemis";
-            this.pnlEnnemis.Size = new System.Drawing.Size(1081, 734);
+            this.pnlEnnemis.Size = new System.Drawing.Size(721, 477);
             this.pnlEnnemis.TabIndex = 9;
             // 
             // btnStats
             // 
             this.btnStats.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStats.Location = new System.Drawing.Point(49, 623);
-            this.btnStats.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.btnStats.Location = new System.Drawing.Point(33, 405);
+            this.btnStats.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnStats.Name = "btnStats";
-            this.btnStats.Size = new System.Drawing.Size(217, 66);
+            this.btnStats.Size = new System.Drawing.Size(145, 43);
             this.btnStats.TabIndex = 10;
             this.btnStats.Text = "Statistiques";
             this.btnStats.UseVisualStyleBackColor = true;
@@ -317,31 +326,11 @@
             this.pnlStats.AutoScroll = true;
             this.pnlStats.Controls.Add(this.cboStats2);
             this.pnlStats.Controls.Add(this.cboStats1);
-            this.pnlStats.Location = new System.Drawing.Point(334, 218);
-            this.pnlStats.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.pnlStats.Location = new System.Drawing.Point(223, 142);
+            this.pnlStats.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlStats.Name = "pnlStats";
-            this.pnlStats.Size = new System.Drawing.Size(1425, 734);
+            this.pnlStats.Size = new System.Drawing.Size(950, 477);
             this.pnlStats.TabIndex = 7;
-            // 
-            // cboStats1
-            // 
-            this.cboStats1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cboStats1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboStats1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboStats1.FormattingEnabled = true;
-            this.cboStats1.Location = new System.Drawing.Point(20, 260);
-            this.cboStats1.Name = "cboStats1";
-            this.cboStats1.Size = new System.Drawing.Size(358, 34);
-            this.cboStats1.TabIndex = 1;
-            this.cboStats1.SelectedIndexChanged += new System.EventHandler(this.cboStats1_SelectedIndexChanged);
-            // 
-            // pbLogo
-            // 
-            this.pbLogo.Location = new System.Drawing.Point(49, 12);
-            this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(400, 180);
-            this.pbLogo.TabIndex = 11;
-            this.pbLogo.TabStop = false;
             // 
             // cboStats2
             // 
@@ -349,16 +338,40 @@
             this.cboStats2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStats2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboStats2.FormattingEnabled = true;
-            this.cboStats2.Location = new System.Drawing.Point(20, 1800);
+            this.cboStats2.Location = new System.Drawing.Point(13, 1181);
+            this.cboStats2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cboStats2.Name = "cboStats2";
-            this.cboStats2.Size = new System.Drawing.Size(358, 34);
+            this.cboStats2.Size = new System.Drawing.Size(240, 34);
             this.cboStats2.TabIndex = 2;
+            this.cboStats2.SelectedIndexChanged += new System.EventHandler(this.cboStats2_SelectedIndexChanged);
+            // 
+            // cboStats1
+            // 
+            this.cboStats1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboStats1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStats1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboStats1.FormattingEnabled = true;
+            this.cboStats1.Location = new System.Drawing.Point(13, 169);
+            this.cboStats1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboStats1.Name = "cboStats1";
+            this.cboStats1.Size = new System.Drawing.Size(240, 34);
+            this.cboStats1.TabIndex = 1;
+            this.cboStats1.SelectedIndexChanged += new System.EventHandler(this.cboStats1_SelectedIndexChanged);
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Location = new System.Drawing.Point(33, 8);
+            this.pbLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(267, 117);
+            this.pbLogo.TabIndex = 11;
+            this.pbLogo.TabStop = false;
             // 
             // FrmTableauDeBord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1878, 1044);
+            this.ClientSize = new System.Drawing.Size(1252, 679);
             this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.btnStats);
@@ -372,7 +385,7 @@
             this.Controls.Add(this.btnPlanetes);
             this.Controls.Add(this.btnRaces);
             this.Controls.Add(this.btnTDB);
-            this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmTableauDeBord";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tableau de Bord";

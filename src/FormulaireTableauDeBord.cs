@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using UserControlPlanetes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
+using System.Text.RegularExpressions;
 
 namespace SAE24
 {
@@ -1159,27 +1160,12 @@ namespace SAE24
 
         }
 
-        private void cboNom_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void cboCouleur_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (estSurEspece)
             {
                 afficherFiltre();
             }
-        }
-
-        private void cboCouleur_SelectedValueChanged(object sender, EventArgs e)
-        {
-            //afficherFiltre();
-        }
-
-        private void ckCouleur_CheckedChanged(object sender, EventArgs e)
-        {
-            
         }
 
         private void txtNomEspece_KeyPress(object sender, KeyPressEventArgs e)
@@ -1204,19 +1190,8 @@ namespace SAE24
             {
                 e.Handled = false;
             }
-
-            
         }
 
-        private void txtNomEspece_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void lblIndicationPlanete_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void cboPlanete_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1268,10 +1243,10 @@ namespace SAE24
 
                 // 2e requete
                 // Pour les missions comportant un équipage de plus de 10 personnes, indiquer la liste des dépenses effectuées, ainsi que les budgets initiaux et actuels
-                string req2 = @"select d.montant as Dépenses, d.motif as Type, m.budget as Budget
-                                from Depense d join Mission m
-                                on d.numeroMission = m.numero
-                                group by m.nbMembreRequis >= 10";
+                string req2 = @"SELECT m.nomPlanete || '-' || m.numero as 'Mission', sum(d.montant) as 'Dépenses', m.budget as 'Budget initial', m.budget - sum(d.montant) as 'Budget restant'
+                FROM Depense d JOIN Mission m ON d.nomPlanete = m.nomPlanete AND d.numeroMission = m.numero
+                WHERE m.nbMembreRequis > 10 
+                GROUP BY m.nomPlanete, m.numero";
                 SQLiteCommand cmd2 = new SQLiteCommand(req2, co);
                 SQLiteDataAdapter da2 = new SQLiteDataAdapter(cmd2);
                 da2.Fill(MesDatas.DsGlobal, "DepensesDix");
@@ -1292,6 +1267,7 @@ namespace SAE24
                 dgvStats2.Left = left;
                 dgvStats2.Height = height;
                 dgvStats2.Width = width;
+                dgvStats2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
                 //dgvStats2.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
 
@@ -1299,10 +1275,9 @@ namespace SAE24
 
                 // 3e requete
                 // Pour chaque planète, indiquer le nombre de missions qui y ont déjà eu lieu. Certaines planètes n’ont jamais fait l’objet de mission, elles devront néanmoins apparaître
-                string req3 = @"select p.nom as Planete, COALESCE(count(m.numero), 0) as [Nombre de missions]
-                                from Planete p 
-                                left join Mission m on p.nom = m.nomPlanete
-                                group by p.nom";
+                string req3 = @"SELECT p.nom, count(m.nomPlanete)
+                FROM Planete p LEFT JOIN Mission m ON p.nom = m.nomPlanete
+                GROUP BY p.nom;";
                 SQLiteCommand cmd3 = new SQLiteCommand(req3, co);
                 SQLiteDataAdapter da3 = new SQLiteDataAdapter(cmd3);
                 da3.Fill(MesDatas.DsGlobal, "ListePlaneteMissions");
@@ -1323,6 +1298,7 @@ namespace SAE24
                 dgvStats3.Left = left;
                 dgvStats3.Height = height;
                 dgvStats3.Width = width;
+                dgvStats3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
                 pnlStats.Controls.Add(dgvStats3);
 
@@ -1331,11 +1307,13 @@ namespace SAE24
                 // Liste des dépenses (date, motif et montant concaténés dans une seule colonne intitulée « Dépenses les plus importantes »),
                 // nom de la mission et nom et prénom du chef de la mission, pour les dépenses les plus élevées de chaque mission. 
 
-                // Affichage par défaut
-                //
-                // A COMPLETER
-
-                string req4 = @"select montant from Depense";
+                string req4 = @"SELECT d.dateD || ' - ' || d.motif || ': ' || d.montant || '€' AS [Dépenses les plus importantes], 
+d.nomPlanete || '-' || d.numeroMission AS [Nom de la mission],
+me.nom || ' ' || me.prenom AS [Chef de mission]
+FROM Depense d 
+JOIN Mission m ON d.nomPlanete = m.nomPlanete AND d.numeroMission = m.numero
+JOIN Membre me ON me.matricule = m.matriculeChef
+GROUP BY d.nomPlanete, d.numeroMission";
                 SQLiteCommand cmd4 = new SQLiteCommand(req4, co);
                 SQLiteDataAdapter da4 = new SQLiteDataAdapter(cmd4);
                 da4.Fill(MesDatas.DsGlobal, "ListeDepenses");
@@ -1356,12 +1334,9 @@ namespace SAE24
                 dgvStats4.Left = left;
                 dgvStats4.Height = height;
                 dgvStats4.Width = width;
+                dgvStats4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
                 pnlStats.Controls.Add(dgvStats4);
-
-
-
-                
 
             }
             catch (Exception ex)
@@ -1411,7 +1386,7 @@ namespace SAE24
                                 AND EXISTS (
                                     SELECT 1 FROM Composer c1
                                     WHERE c1.matriculeMembre = '{matricule}'
-                                    AND c1.nomPlanete    = c.nomPlanete
+                                    AND c1.nomPlanete = c.nomPlanete
                                     AND c1.numeroMission = c.numeroMission
                                 )
                                 ORDER BY m.matricule";
@@ -1423,11 +1398,6 @@ namespace SAE24
             catch (Exception ex)
             {
                 MessageBox.Show("Erreur : " + ex.Message);
-                return;
-            }
-            finally
-            {
-                Connexion.FermerConnexion();
             }
 
             Label lblStat1 = new Label();
@@ -1445,6 +1415,7 @@ namespace SAE24
             dgvStats1.Width = width;
             dgvStats1.Left = left;
             dgvStats1.Top = top;
+            dgvStats1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             pnlStats.Controls.Add(dgvStats1);
 
             filtrePossible = true;
@@ -1455,20 +1426,16 @@ namespace SAE24
             // 5e requete
             // Quels sont les informateurs (nom de code, espèce d’origine, somme totale reçue) qui ont perçu le moins d’argent pendant une mission donnée ? 
 
-            // Affichage par défaut
-            //
-            // A COMPLETER
             if (cboStats2.SelectedValue == null) return;
             int height = 220;
             int width = 500;
             int left = cboStats1.Left;
-            int top = 920;
 
             // Récupération du nom de la planète
             string nomPlanete = cboStats2.SelectedValue.ToString().Substring(0, cboStats2.SelectedValue.ToString().Length - 1);
 
             // Récupération du numéro de la mission sur ladite planète
-            string numeroMission = cboStats2.SelectedValue.ToString().Substring(6);
+            string numeroMission = Regex.Match(cboStats2.SelectedValue.ToString(), @"\d+").Value;
 
             // Supprimer uniquement l'ancien dgv et label de la stat1 s'ils existent
             Control ancienDgv = pnlStats.Controls["dgvStats5"];
@@ -1476,27 +1443,36 @@ namespace SAE24
             if (ancienDgv != null) pnlStats.Controls.Remove(ancienDgv);
             if (ancienLbl != null) pnlStats.Controls.Remove(ancienLbl);
 
+            int top = ancienLbl != null ? ancienLbl.Top : 920;
 
             co = Connexion.Connec;
             DataTable table = new DataTable();
             try
             {
-
-                
-
-                string req5 = $@"select i.nom as Informateur, es.nom as Espèce, min(c.sommeVersee) as Montant
-                                from Informateur i
-                                join Ennemi e
-                                on i.idEspeceEnnemi = e.idEspece
-                                join Espece es
-                                on e.idEspece = es.id
-                                join Contact c
-                                on i.nomCode = c.nomCodeInformateur
-                                where c.nomPlanete = '{nomPlanete}' and c.numeroMission = {numeroMission}";
+                string req5 = $@"SELECT t.nomCode AS [Nom de code], t.nomEspece AS [Nom de l'espèce], t.totalVersee [Total versé]
+                    FROM (
+                        SELECT i.nomCode, e.nom AS nomEspece, SUM(c.sommeVersee) AS totalVersee
+                        FROM Contact c
+                        JOIN Informateur i ON c.nomCodeInformateur = i.nomCode
+                        JOIN Espece e ON i.idEspeceEnnemi = e.id
+                        WHERE c.nomPlanete = '{nomPlanete}'
+                        AND c.numeroMission = {numeroMission}
+                        GROUP BY i.nomCode, e.nom
+                    ) t
+                    WHERE t.totalVersee = (
+                        SELECT MIN(totalVersee)
+                        FROM (
+                            SELECT SUM(c.sommeVersee) AS totalVersee
+                            FROM Contact c
+                            WHERE c.nomPlanete = '{nomPlanete}'
+                              AND c.numeroMission = {numeroMission}
+                            GROUP BY c.nomCodeInformateur
+                        )
+                    )";
                 SQLiteCommand cmd5 = new SQLiteCommand(req5, co);
                 SQLiteDataReader reader = cmd5.ExecuteReader();
                 table.Load(reader);
-                
+
             }
             catch (Exception ex)
             {
@@ -1524,6 +1500,7 @@ namespace SAE24
             dgvStats5.Left = left;
             dgvStats5.Height = height;
             dgvStats5.Width = width;
+            dgvStats5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
             pnlStats.Controls.Add(dgvStats5);
 
