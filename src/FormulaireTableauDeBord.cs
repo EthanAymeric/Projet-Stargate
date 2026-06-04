@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Net.Configuration;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -1238,6 +1239,7 @@ namespace SAE24
             estSurEspece = false;
 
             FiltrerListesMembresMemeMission();
+            FiltrerInformateursMoinsSous();
         }
 
         private void ChargementStats()
@@ -1245,7 +1247,7 @@ namespace SAE24
             int height = 200;
             int width = 500;
 
-            int top = 300;
+            int top = cboStats1.Top + 35;
             int left = cboStats1.Left;
 
             // Chargement de la ComboBox Stats pour l'affichage des premières données statistiques
@@ -1257,6 +1259,12 @@ namespace SAE24
                 SQLiteCommand cmd = new SQLiteCommand(request, co);
                 SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
                 da.Fill(MesDatas.DsGlobal, "ListeMembres");
+
+                // Combobox Stats Informateurs
+                string requestInfos = @"select concat(nomPlanete, numero) as Mission from Mission";
+                SQLiteCommand cmdInfos = new SQLiteCommand(requestInfos, co);
+                SQLiteDataAdapter daInfos = new SQLiteDataAdapter(cmdInfos);
+                daInfos.Fill(MesDatas.DsGlobal, "ListeMissions");
 
                 // 2e requete
                 // Pour les missions comportant un équipage de plus de 10 personnes, indiquer la liste des dépenses effectuées, ainsi que les budgets initiaux et actuels
@@ -1351,36 +1359,9 @@ namespace SAE24
 
                 pnlStats.Controls.Add(dgvStats4);
 
-                // 5e requete
-                // Quels sont les informateurs (nom de code, espèce d’origine, somme totale reçue) qui ont perçu le moins d’argent pendant une mission donnée ? 
-
-                // Affichage par défaut
-                //
-                // A COMPLETER
 
 
-                string req5 = @"select nom from Informateur";
-                SQLiteCommand cmd5 = new SQLiteCommand(req5, co);
-                SQLiteDataAdapter da5 = new SQLiteDataAdapter(cmd5);
-                da5.Fill(MesDatas.DsGlobal, "ListeInformateur");
-                DataGridView dgvStats5 = new DataGridView();
-                dgvStats5.DataSource = MesDatas.DsGlobal.Tables["ListeInformateur"];
-
-                top += dgvStats4.Height + 20;
-                Label lblStats5 = new Label();
-                lblStats5.AutoSize = true;
-                lblStats5.Text = "Informateurs qui ont perçu le moins d'argent pendant une mission donnée";
-                lblStats5.Top = top;
-                lblStats5.Left = left;
-                pnlStats.Controls.Add(lblStats5);
-                top += 20;
-
-                dgvStats5.Top = top;
-                dgvStats5.Left = left;
-                dgvStats5.Height = height;
-                dgvStats5.Width = width;
-
-                pnlStats.Controls.Add(dgvStats5);
+                
 
             }
             catch (Exception ex)
@@ -1396,6 +1377,10 @@ namespace SAE24
             cboStats1.DisplayMember = "nom";
             cboStats1.ValueMember = "matricule";
 
+            cboStats2.DataSource = MesDatas.DsGlobal.Tables["ListeMissions"];
+            cboStats2.DisplayMember = "Mission";
+            cboStats2.ValueMember = "Mission";
+
         }
 
         private void FiltrerListesMembresMemeMission()
@@ -1403,7 +1388,7 @@ namespace SAE24
             if (cboStats1.SelectedValue == null) return;
             string matricule = cboStats1.SelectedValue.ToString();
 
-            int height = 220;
+            int height = 130;
             int width = 500;
             int left = cboStats1.Left;
             int top = 25;
@@ -1464,6 +1449,86 @@ namespace SAE24
 
             filtrePossible = true;
         }
+
+        private void FiltrerInformateursMoinsSous()
+        {
+            // 5e requete
+            // Quels sont les informateurs (nom de code, espèce d’origine, somme totale reçue) qui ont perçu le moins d’argent pendant une mission donnée ? 
+
+            // Affichage par défaut
+            //
+            // A COMPLETER
+            if (cboStats2.SelectedValue == null) return;
+            int height = 220;
+            int width = 500;
+            int left = cboStats1.Left;
+            int top = 920;
+
+            // Récupération du nom de la planète
+            string nomPlanete = cboStats2.SelectedValue.ToString().Substring(0, cboStats2.SelectedValue.ToString().Length - 1);
+
+            // Récupération du numéro de la mission sur ladite planète
+            string numeroMission = cboStats2.SelectedValue.ToString().Substring(6);
+
+            // Supprimer uniquement l'ancien dgv et label de la stat1 s'ils existent
+            Control ancienDgv = pnlStats.Controls["dgvStats5"];
+            Control ancienLbl = pnlStats.Controls["lblStats5"];
+            if (ancienDgv != null) pnlStats.Controls.Remove(ancienDgv);
+            if (ancienLbl != null) pnlStats.Controls.Remove(ancienLbl);
+
+
+            co = Connexion.Connec;
+            DataTable table = new DataTable();
+            try
+            {
+
+                
+
+                string req5 = $@"select i.nom as Informateur, es.nom as Espèce, min(c.sommeVersee) as Montant
+                                from Informateur i
+                                join Ennemi e
+                                on i.idEspeceEnnemi = e.idEspece
+                                join Espece es
+                                on e.idEspece = es.id
+                                join Contact c
+                                on i.nomCode = c.nomCodeInformateur
+                                where c.nomPlanete = '{nomPlanete}' and c.numeroMission = {numeroMission}";
+                SQLiteCommand cmd5 = new SQLiteCommand(req5, co);
+                SQLiteDataReader reader = cmd5.ExecuteReader();
+                table.Load(reader);
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : " + ex.Message);
+                return;
+            }
+            finally
+            {
+                Connexion.FermerConnexion();
+            }
+
+            Label lblStats5 = new Label();
+            lblStats5.Name = "lblStats5";
+            lblStats5.AutoSize = true;
+            lblStats5.Text = "Informateurs qui ont perçu le moins d'argent pendant une mission donnée";
+            lblStats5.Top = top;
+            lblStats5.Left = left;
+            pnlStats.Controls.Add(lblStats5);
+            top += 20;
+
+            DataGridView dgvStats5 = new DataGridView();
+            dgvStats5.Name = "dgvStats5";
+            dgvStats5.DataSource = table;
+            dgvStats5.Top = top;
+            dgvStats5.Left = left;
+            dgvStats5.Height = height;
+            dgvStats5.Width = width;
+
+            pnlStats.Controls.Add(dgvStats5);
+
+            filtrePossible = true;
+        }
         private void cboStats1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (filtrePossible)
@@ -1477,6 +1542,14 @@ namespace SAE24
         {
             pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             pbLogo.Image = Image.FromFile("../../Images/Logo/STARGATE.jpg");
+        }
+
+        private void cboStats2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filtrePossible)
+            {
+                FiltrerInformateursMoinsSous();
+            }
         }
     }
 }

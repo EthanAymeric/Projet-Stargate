@@ -53,6 +53,7 @@
             this.pnlStats = new System.Windows.Forms.Panel();
             this.cboStats1 = new System.Windows.Forms.ComboBox();
             this.pbLogo = new System.Windows.Forms.PictureBox();
+            this.cboStats2 = new System.Windows.Forms.ComboBox();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.pnlStats.SuspendLayout();
@@ -314,6 +315,7 @@
             // pnlStats
             // 
             this.pnlStats.AutoScroll = true;
+            this.pnlStats.Controls.Add(this.cboStats2);
             this.pnlStats.Controls.Add(this.cboStats1);
             this.pnlStats.Location = new System.Drawing.Point(334, 218);
             this.pnlStats.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
@@ -327,7 +329,7 @@
             this.cboStats1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboStats1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboStats1.FormattingEnabled = true;
-            this.cboStats1.Location = new System.Drawing.Point(21, 405);
+            this.cboStats1.Location = new System.Drawing.Point(20, 260);
             this.cboStats1.Name = "cboStats1";
             this.cboStats1.Size = new System.Drawing.Size(358, 34);
             this.cboStats1.TabIndex = 1;
@@ -340,6 +342,17 @@
             this.pbLogo.Size = new System.Drawing.Size(400, 180);
             this.pbLogo.TabIndex = 11;
             this.pbLogo.TabStop = false;
+            // 
+            // cboStats2
+            // 
+            this.cboStats2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboStats2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStats2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboStats2.FormattingEnabled = true;
+            this.cboStats2.Location = new System.Drawing.Point(20, 1800);
+            this.cboStats2.Name = "cboStats2";
+            this.cboStats2.Size = new System.Drawing.Size(358, 34);
+            this.cboStats2.TabIndex = 2;
             // 
             // FrmTableauDeBord
             // 
@@ -400,6 +413,7 @@
         private System.Windows.Forms.Panel pnlStats;
         private System.Windows.Forms.ComboBox cboStats1;
         private System.Windows.Forms.PictureBox pbLogo;
+        private System.Windows.Forms.ComboBox cboStats2;
     }
 }
 
