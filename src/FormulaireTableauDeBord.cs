@@ -1400,56 +1400,70 @@ namespace SAE24
 
         private void FiltrerListesMembresMemeMission()
         {
-            // Filtrer
-            // 1ère stats
-            // Liste de toutes les personnes (nom, prénom, type (militaire ou civil)) avec laquelle un membre (sélectionné dans une zone de liste) est déjà parti en mission
-            string filtre = "";
-            bool estCivil = false;
+            if (cboStats1.SelectedValue == null) return;
+            string matricule = cboStats1.SelectedValue.ToString();
+
             int height = 220;
             int width = 500;
             int left = cboStats1.Left;
             int top = 25;
 
+            // Supprimer uniquement l'ancien dgv et label de la stat1 s'ils existent
+            Control ancienDgv = pnlStats.Controls["dgvStats1"];
+            Control ancienLbl = pnlStats.Controls["lblStats1"];
+            if (ancienDgv != null) pnlStats.Controls.Remove(ancienDgv);
+            if (ancienLbl != null) pnlStats.Controls.Remove(ancienLbl);
+
             co = Connexion.Connec;
+            DataTable table = new DataTable();
+
             try
             {
-                string req = @"select m1.matriculeMembre, m2.matriculeMembre
-                                from Composer m1 join Composer m2 on m1.nomPlanete = m2.nomPlanete
-                                where m1.matriculeMembre = '" + cboStats1.SelectedValue + "'";
+                string req = $@"SELECT DISTINCT m.matricule, m.nom, m.prenom, case when m.matricule like 'M%' then 'Militaire' else 'civil' end
+                                FROM Composer c
+                                JOIN Membre m ON c.matriculeMembre = m.matricule
+                                WHERE c.matriculeMembre != '{matricule}'
+                                AND EXISTS (
+                                    SELECT 1 FROM Composer c1
+                                    WHERE c1.matriculeMembre = '{matricule}'
+                                    AND c1.nomPlanete    = c.nomPlanete
+                                    AND c1.numeroMission = c.numeroMission
+                                )
+                                ORDER BY m.matricule";
+
                 SQLiteCommand cmd = new SQLiteCommand(req, co);
-                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-                da.Fill(MesDatas.DsGlobal, "ListeMembres");
+                SQLiteDataReader reader = cmd.ExecuteReader();
+                table.Load(reader);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Erreur : " + ex.Message);
+                return;
             }
             finally
             {
                 Connexion.FermerConnexion();
             }
 
+            Label lblStat1 = new Label();
+            lblStat1.Name = "lblStats1"; 
+            lblStat1.AutoSize = true;
+            lblStat1.Left = left;
+            lblStat1.Top = 5;
+            lblStat1.Text = "Membres ayant partagé une mission avec le membre sélectionné";
+            pnlStats.Controls.Add(lblStat1);
 
             DataGridView dgvStats1 = new DataGridView();
-            dgvStats1.DataSource = MesDatas.DsGlobal.Tables["ListeMembre"];
-
+            dgvStats1.Name = "dgvStats1";
+            dgvStats1.DataSource = table;
             dgvStats1.Height = height;
             dgvStats1.Width = width;
             dgvStats1.Left = left;
             dgvStats1.Top = top;
-
-            filtrePossible = true;
-
             pnlStats.Controls.Add(dgvStats1);
 
-            Label lblStat1 = new Label();
-            lblStat1.AutoSize = true;
-            lblStat1.Left = left;
-            lblStat1.Text = "Liste de toutes les personnes avec laquelle un membre est déjà parti en mission";
-
-            pnlStats.Controls.Add(lblStat1);
+            filtrePossible = true;
         }
-
         private void cboStats1_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (filtrePossible)
