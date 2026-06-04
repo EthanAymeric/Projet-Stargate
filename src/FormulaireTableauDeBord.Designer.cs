@@ -53,6 +53,7 @@
             // 
             // btnTDB
             // 
+            this.btnTDB.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnTDB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
             this.btnTDB.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnTDB.FlatAppearance.BorderSize = 2;
@@ -69,6 +70,7 @@
             // 
             // btnNouvelleMission
             // 
+            this.btnNouvelleMission.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnNouvelleMission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
             this.btnNouvelleMission.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNouvelleMission.FlatAppearance.BorderSize = 2;
@@ -85,6 +87,7 @@
             // 
             // btnRaces
             // 
+            this.btnRaces.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnRaces.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
             this.btnRaces.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnRaces.FlatAppearance.BorderSize = 2;
@@ -101,6 +104,7 @@
             // 
             // btnPlanetes
             // 
+            this.btnPlanetes.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnPlanetes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
             this.btnPlanetes.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnPlanetes.FlatAppearance.BorderSize = 2;
@@ -145,6 +149,7 @@
             // 
             // grpEspeces
             // 
+            this.grpEspeces.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.grpEspeces.Controls.Add(this.lblIndicationNom);
             this.grpEspeces.Controls.Add(this.txtNomEspece);
             this.grpEspeces.Controls.Add(this.ckCouleur);
@@ -154,7 +159,7 @@
             this.grpEspeces.Controls.Add(this.rdbEnnemis);
             this.grpEspeces.Controls.Add(this.rdbAllies);
             this.grpEspeces.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.grpEspeces.Location = new System.Drawing.Point(268, 631);
+            this.grpEspeces.Location = new System.Drawing.Point(268, 630);
             this.grpEspeces.Name = "grpEspeces";
             this.grpEspeces.Size = new System.Drawing.Size(1418, 240);
             this.grpEspeces.TabIndex = 0;
@@ -163,6 +168,7 @@
             // 
             // lblIndicationNom
             // 
+            this.lblIndicationNom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIndicationNom.AutoSize = true;
             this.lblIndicationNom.Location = new System.Drawing.Point(548, 51);
             this.lblIndicationNom.Name = "lblIndicationNom";
@@ -172,6 +178,7 @@
             // 
             // txtNomEspece
             // 
+            this.txtNomEspece.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.txtNomEspece.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtNomEspece.Location = new System.Drawing.Point(276, 52);
             this.txtNomEspece.Name = "txtNomEspece";
@@ -182,6 +189,7 @@
             // 
             // ckCouleur
             // 
+            this.ckCouleur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ckCouleur.AutoSize = true;
             this.ckCouleur.Location = new System.Drawing.Point(552, 146);
             this.ckCouleur.Name = "ckCouleur";
@@ -193,6 +201,7 @@
             // 
             // cboCouleur
             // 
+            this.cboCouleur.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cboCouleur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCouleur.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.cboCouleur.FormattingEnabled = true;
@@ -205,6 +214,7 @@
             // 
             // btnRecherche
             // 
+            this.btnRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRecherche.Location = new System.Drawing.Point(1164, 38);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(157, 48);
@@ -215,6 +225,7 @@
             // 
             // btnReset
             // 
+            this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReset.Location = new System.Drawing.Point(1164, 129);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(157, 52);
@@ -225,6 +236,7 @@
             // 
             // rdbEnnemis
             // 
+            this.rdbEnnemis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rdbEnnemis.AutoSize = true;
             this.rdbEnnemis.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.rdbEnnemis.Location = new System.Drawing.Point(24, 145);
@@ -295,7 +307,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.ClientSize = new System.Drawing.Size(1905, 1042);
+            this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.grpEspeces);
             this.Controls.Add(this.pnlPlanetes);
             this.Controls.Add(this.pnlEnnemis);
@@ -309,6 +321,7 @@
             this.Controls.Add(this.btnTDB);
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "FrmTableauDeBord";
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tableau de Bord";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
