@@ -328,6 +328,7 @@
             // 
             // btnSwitchTheme
             // 
+            this.btnSwitchTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSwitchTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
             this.btnSwitchTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSwitchTheme.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
@@ -450,7 +451,7 @@
             this.pnlStats.Location = new System.Drawing.Point(268, 88);
             this.pnlStats.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlStats.Name = "pnlStats";
-            this.pnlStats.Size = new System.Drawing.Size(1406, 468);
+            this.pnlStats.Size = new System.Drawing.Size(1406, 1209);
             this.pnlStats.TabIndex = 7;
             // 
             // cboStats2
@@ -524,6 +525,7 @@
             this.pnlStats.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

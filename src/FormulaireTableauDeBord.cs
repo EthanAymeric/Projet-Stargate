@@ -693,7 +693,6 @@ namespace SAE24
 
         private void btnSwitchTheme_Click(object sender, EventArgs e)
         {
-            foreach (System.Windows.Forms.Button b in Controls.OfType<System.Windows.Forms.Button>())
             Couleur.SwitchTheme();
             btnSwitchTheme.Text = (btnSwitchTheme.Text == "Theme Sombre") ? "Theme Clair" : "Theme Sombre";
             BackColor = Couleur.getBackground;
