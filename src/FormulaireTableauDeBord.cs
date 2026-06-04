@@ -38,6 +38,7 @@ namespace SAE24
             InfosPlanetes();
             InfosEspeces();
             ChargementElementsGrpEspeces();
+            ChargementLogo();
         }
 
         private void UpdateDataSet()
@@ -1476,6 +1477,12 @@ namespace SAE24
                 FiltrerListesMembresMemeMission();
             }
             
+        }
+
+        private void ChargementLogo()
+        {
+            pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbLogo.Image = Image.FromFile("../../Images/Logo/STARGATE.jpg");
         }
     }
 }

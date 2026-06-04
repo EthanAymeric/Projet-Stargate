@@ -52,9 +52,11 @@
             this.btnStats = new System.Windows.Forms.Button();
             this.pnlStats = new System.Windows.Forms.Panel();
             this.cboStats1 = new System.Windows.Forms.ComboBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.pnlTDB.SuspendLayout();
             this.grpEspeces.SuspendLayout();
             this.pnlStats.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnTDB
@@ -330,11 +332,20 @@
             this.cboStats1.TabIndex = 1;
             this.cboStats1.SelectedIndexChanged += new System.EventHandler(this.cboStats1_SelectedIndexChanged);
             // 
+            // pbLogo
+            // 
+            this.pbLogo.Location = new System.Drawing.Point(49, 12);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(400, 180);
+            this.pbLogo.TabIndex = 11;
+            this.pbLogo.TabStop = false;
+            // 
             // FrmTableauDeBord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1878, 1044);
+            this.Controls.Add(this.pbLogo);
             this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.btnStats);
             this.Controls.Add(this.pnlStats);
@@ -357,6 +368,7 @@
             this.grpEspeces.ResumeLayout(false);
             this.grpEspeces.PerformLayout();
             this.pnlStats.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -386,6 +398,7 @@
         private System.Windows.Forms.Button btnStats;
         private System.Windows.Forms.Panel pnlStats;
         private System.Windows.Forms.ComboBox cboStats1;
+        private System.Windows.Forms.PictureBox pbLogo;
     }
 }
 
