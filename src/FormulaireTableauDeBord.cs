@@ -174,6 +174,7 @@ namespace SAE24
         }
         private void ActualisationTDB(String filtrePlanète, String filtreEtat)
         {
+            int missionTrouvee = 0;
             string filtreFinal = "";
             if (filtrePlanète.Length != 0)
             {
@@ -208,6 +209,7 @@ namespace SAE24
                 // Remplis le Flow Layout Pannel avec les UserControl MissionResume
                 foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Select($"{filtreFinal}",$"{triFinal}"))
                 {
+                    missionTrouvee++;
                     string nomMission = r["NomPlanete"].ToString() + r["numero"].ToString();
                     string strDateDepart = r["dateDepart"].ToString();
                     DateTime dateRetour = DateTime.Parse(r["dateRetour"].ToString());
@@ -223,6 +225,7 @@ namespace SAE24
                     mr.afficher += AfficherResume;
                     pnlTDB.Controls.Add(mr);
                 }
+                grpTableauDeBord.Text = "Nombre de mission trouvée : " + missionTrouvee;
             } catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
