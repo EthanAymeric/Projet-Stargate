@@ -48,12 +48,13 @@
             this.pnlTDB = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSwitchTheme = new System.Windows.Forms.Button();
             this.grpFiltreMission = new System.Windows.Forms.GroupBox();
-            this.btnAlphaSort = new System.Windows.Forms.Button();
+            this.btntriAlpha = new System.Windows.Forms.Button();
             this.cboFiltreEtat = new System.Windows.Forms.ComboBox();
             this.lblFiltreEtat = new System.Windows.Forms.Label();
             this.lblFiltrePlanete = new System.Windows.Forms.Label();
             this.cboFiltrePlanete = new System.Windows.Forms.ComboBox();
             this.grpTableauDeBord = new System.Windows.Forms.GroupBox();
+            this.btntriEtat = new System.Windows.Forms.Button();
             this.grpEspeces.SuspendLayout();
             this.grpFiltreMission.SuspendLayout();
             this.grpTableauDeBord.SuspendLayout();
@@ -304,7 +305,8 @@
             // 
             // grpFiltreMission
             // 
-            this.grpFiltreMission.Controls.Add(this.btnAlphaSort);
+            this.grpFiltreMission.Controls.Add(this.btntriAlpha);
+            this.grpFiltreMission.Controls.Add(this.btntriEtat);
             this.grpFiltreMission.Controls.Add(this.cboFiltreEtat);
             this.grpFiltreMission.Controls.Add(this.lblFiltreEtat);
             this.grpFiltreMission.Controls.Add(this.lblFiltrePlanete);
@@ -317,16 +319,16 @@
             this.grpFiltreMission.TabStop = false;
             this.grpFiltreMission.Text = "Filtre de missions";
             // 
-            // btnAlphaSort
+            // btntriAlpha
             // 
-            this.btnAlphaSort.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlphaSort.Location = new System.Drawing.Point(1248, 55);
-            this.btnAlphaSort.Name = "btnAlphaSort";
-            this.btnAlphaSort.Size = new System.Drawing.Size(118, 62);
-            this.btnAlphaSort.TabIndex = 4;
-            this.btnAlphaSort.Text = "A → Z";
-            this.btnAlphaSort.UseVisualStyleBackColor = true;
-            this.btnAlphaSort.Click += new System.EventHandler(this.btnAlphaSort_Click);
+            this.btntriAlpha.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntriAlpha.Location = new System.Drawing.Point(1253, 100);
+            this.btntriAlpha.Name = "btntriAlpha";
+            this.btntriAlpha.Size = new System.Drawing.Size(118, 62);
+            this.btntriAlpha.TabIndex = 4;
+            this.btntriAlpha.Text = "A → Z";
+            this.btntriAlpha.UseVisualStyleBackColor = true;
+            this.btntriAlpha.Click += new System.EventHandler(this.btntriAlpha_Click);
             // 
             // cboFiltreEtat
             // 
@@ -378,6 +380,17 @@
             this.grpTableauDeBord.TabIndex = 10;
             this.grpTableauDeBord.TabStop = false;
             this.grpTableauDeBord.Text = "Nombre de mission trouvée : ";
+            // 
+            // btntriAlpha
+            // 
+            this.btntriEtat.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntriEtat.Location = new System.Drawing.Point(1253, 20);
+            this.btntriEtat.Name = "btntriAlpha";
+            this.btntriEtat.Size = new System.Drawing.Size(118, 62);
+            this.btntriEtat.TabIndex = 5;
+            this.btntriEtat.Text = "Etat ↑↓";
+            this.btntriEtat.UseVisualStyleBackColor = true;
+            this.btntriEtat.Click += new System.EventHandler(this.btntriEtat_Click);
             // 
             // FrmTableauDeBord
             // 
@@ -439,8 +452,9 @@
         private System.Windows.Forms.Label lblFiltrePlanete;
         private System.Windows.Forms.ComboBox cboFiltreEtat;
         private System.Windows.Forms.Label lblFiltreEtat;
-        private System.Windows.Forms.Button btnAlphaSort;
+        private System.Windows.Forms.Button btntriAlpha;
         private System.Windows.Forms.GroupBox grpTableauDeBord;
+        private System.Windows.Forms.Button btntriEtat;
     }
 }
 

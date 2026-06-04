@@ -18,7 +18,8 @@ namespace SAE24
 {
     public partial class FrmTableauDeBord : Form
     {
-        bool alphaSort = true;
+        bool triEtat = true;
+        bool triAlpha = true;
         SQLiteConnection co;
         public FrmTableauDeBord()
         {
@@ -200,12 +201,13 @@ namespace SAE24
                 }
             }
 
-            string triFinal = (alphaSort) ? "nomPlanete ASC" : "nomPlanete DESC";
+            string triFinal = (triAlpha) ? "nomPlanete ASC" : "nomPlanete DESC";
             
 
             pnlTDB.Controls.Clear();
             try
             {
+                List<String[]> buffer = new List<String[]>();
                 // Remplis le Flow Layout Pannel avec les UserControl MissionResume
                 foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Select($"{filtreFinal}",$"{triFinal}"))
                 {
@@ -220,10 +222,40 @@ namespace SAE24
                     string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
                     string chef = $"{identite} : {grade}";
 
+                    if (triEtat)
+                    {
+                        if (dateRetour <= DateTime.Today)
+                        {
+                            buffer.Add(new String[] {nomMission, strDateDepart, strDuree, chef});
+                        }
+                        else
+                        {
+                            MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
+                            mr.afficher += AfficherResume;
+                            pnlTDB.Controls.Add(mr);
+                        }
+                    }
+                    else if (!triEtat)
+                    {
+                        if (dateRetour > DateTime.Today)
+                        {
+                            buffer.Add(new String[] { nomMission, strDateDepart, strDuree, chef });
+                        }
+                        else
+                        {
+                            MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
+                            mr.afficher += AfficherResume;
+                            pnlTDB.Controls.Add(mr);
+                        }
+                    }
+                    
+                }
 
-                    MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
-                    mr.afficher += AfficherResume;
-                    pnlTDB.Controls.Add(mr);
+                foreach (String[] str in buffer)
+                {
+                    MissionResume etatMr = new MissionResume(str[0], str[1], str[2], str[3]);
+                    etatMr.afficher += AfficherResume;
+                    pnlTDB.Controls.Add(etatMr);
                 }
                 grpTableauDeBord.Text = "Nombre de mission trouvée : " + missionTrouvee;
             } catch (Exception ex)
@@ -1124,9 +1156,17 @@ namespace SAE24
             ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
         }
 
-        private void btnAlphaSort_Click(object sender, EventArgs e)
+        private void btntriAlpha_Click(object sender, EventArgs e)
         {
-            alphaSort = !alphaSort;
+            triAlpha = !triAlpha;
+            btntriAlpha.Text = (triAlpha) ? "A → Z" : "Z → A";
+            ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
+
+        }
+
+        private void btntriEtat_Click(object sender, EventArgs e)
+        {
+            triEtat = !triEtat;
             ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
         }
     }
