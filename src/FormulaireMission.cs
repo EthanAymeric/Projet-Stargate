@@ -4,12 +4,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 
 namespace SAE24
 {
@@ -21,6 +25,7 @@ namespace SAE24
         DataTable depenseMissionActuelle;
         DataTable contactMissionActuelle;
         DataTable captureMissionActuelle;
+
         public FormulaireMission()
         {
             InitializeComponent();
@@ -30,7 +35,7 @@ namespace SAE24
         {
             InitializeComponent();
             missionActuelle = MesDatas.DsGlobal.Tables["Mission"].Select($"nomPlanete = '{idMission.Substring(0, idMission.Length - 1)}' AND numero = '{idMission.Substring(idMission.Length - 1, 1)}'")[0];
-            pbPlanete.Image = Image.FromFile($"../../Images/Planetes/{idMission.Substring(0, idMission.Length - 1)}.png");
+            pbPlanete.Image = System.Drawing.Image.FromFile($"../../Images/Planetes/{idMission.Substring(0, idMission.Length - 1)}.png");
             lblNomMission.Text = idMission;
             BackColor = Couleur.getBackground;
             ForeColor = Couleur.getText;
@@ -38,6 +43,7 @@ namespace SAE24
             {
                 UpdateColorControls(c);
             }
+            QuestPDF.Settings.License = LicenseType.Community;
         }
 
         private void RemplissageMembre()
@@ -67,7 +73,7 @@ namespace SAE24
             m.setText = $"{profil["nom"].ToString()}\n{profil["prenom"].ToString()}";
             if (profil["matricule"].ToString() == missionActuelle["matriculeChef"].ToString())
             {
-                m.BackColor = Color.Green;
+                m.BackColor = System.Drawing.Color.Green;
             }
             m.Top = top;
             m.Left = left;
@@ -635,6 +641,111 @@ namespace SAE24
             {
                 e.Handled = false;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string identiteChef = $"{missionActuelle.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {missionActuelle.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
+            DataRow[] membreMission = missionActuelle.GetChildRows("FK_Mission_Composer");
+            DataRow[] journalDeBord = missionActuelle.GetChildRows("FK_Mission_JournalDeBord");
+
+            Document.Create(container =>
+            {
+                container.Page(page =>
+                {
+                    page.Size(PageSizes.A4);
+                    page.Margin(2, Unit.Centimetre);
+                    page.PageColor(Colors.White);
+                    page.DefaultTextStyle(x => x.FontSize(16));
+                        
+
+                    page.Content()
+                        .PaddingVertical(1, Unit.Centimetre)
+                        .Column(x =>
+                        {
+                            x.Spacing(15);
+
+                            x.Item().Text($"Rapport de la mission {missionActuelle["nomPlanete"]}{missionActuelle["numero"]}")
+                                    .SemiBold().FontSize(30).FontColor(Colors.DeepPurple.Medium);
+
+                            x.Item().Text($"Date de départ : {missionActuelle["dateDepart"]}");
+                            x.Item().Text($"Date de retour : {missionActuelle["dateRetour"]}");
+
+                            x.Item().Text($"Sous la supervision de {identiteChef}")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            x.Item().Text($"Budget initial de {missionActuelle["Budget"]}")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            x.Item().Text($"Feuille de route :\n{missionActuelle["feuilleDeRoute"]}")
+                                    .FontSize(16);
+
+                            x.Item().PageBreak();
+                            x.Item().Text("Liste des membres :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            foreach(DataRow r in membreMission)
+                            {
+                                DataRow profil = r.GetParentRow("FK_Membre_Composer");
+                                x.Item().Text($"-> {profil["nom"]} {profil["prenom"]}");
+                            }
+
+                            x.Item().Text("Journal de Bord :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            int i = 1;
+                            foreach(DataRow r in journalDeBord)
+                            {
+
+                                x.Item().Text($"{i}) le {r["dateJ"]} -> {r["commentaires"]}");
+                            }
+
+
+                            x.Item().Text("Depense effectuées :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            foreach(DataRow r in depenseMissionActuelle.Rows)
+                            {
+                                x.Item().Text($"{r["Date"]} : {r["Motif"]} -> {r["Montant"]}");
+                            }
+
+
+                            x.Item().Text("Contacts avec les informateurs :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            foreach(DataRow r in contactMissionActuelle.Rows)
+                            {
+                                x.Item().Text($"Le {r["Date"]} : {r["Appreciation"]}");
+                            }
+
+                            x.Item().Text("Captures effectuées :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            foreach(DataRow r in captureMissionActuelle.Rows)
+                            {
+                                x.Item().Text($"{r["Nom de l'espèce"]} : {r["Nombre de captures réalisées"]} sur {r["Objectif initial"]} ({r["Taux de réussite (en %)"]}%)");
+                            }
+
+
+                        });
+
+                    page.Footer()
+                        .AlignCenter()
+                        .Text(x =>
+                        {
+                            x.Span("Page ");
+                            x.CurrentPageNumber();
+                        });
+                });
+            })
+            .GeneratePdf($"{missionActuelle["nomPlanete"]}{missionActuelle["numero"]}.pdf");
         }
     }
 }
