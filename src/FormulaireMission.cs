@@ -25,6 +25,7 @@ namespace SAE24
         DataTable depenseMissionActuelle;
         DataTable contactMissionActuelle;
         DataTable captureMissionActuelle;
+        double solde = 0;
 
         public FormulaireMission()
         {
@@ -44,6 +45,7 @@ namespace SAE24
                 UpdateColorControls(c);
             }
             QuestPDF.Settings.License = LicenseType.Community;
+            solde = Convert.ToDouble(missionActuelle["budget"]);
         }
 
         private void RemplissageMembre()
@@ -87,15 +89,18 @@ namespace SAE24
         {
             lblDepart.Text = $"Date de départ : {missionActuelle["dateDepart"]}";
             lblArrivee.Text = $"Date de retour prévu : {missionActuelle["dateRetour"]}";
-            double solde = Convert.ToDouble(missionActuelle["budget"]);
 
             lblBudget.Text = $"Budget : {missionActuelle["budget"]}";
 
             DataRow[] depense = missionActuelle.GetChildRows("FK_Mission_Depense");
-
+            DataRow[] contact = missionActuelle.GetChildRows("FK_Mission_Contact");
             foreach (DataRow row in depense)
             {
                 solde -= Convert.ToDouble(row["montant"]);
+            }
+            foreach (DataRow row in contact)
+            {
+                solde -= Convert.ToDouble(row["sommeVersee"]);
             }
             lblSolde.Text = $"Solde après dépenses : {solde.ToString()}";
             txtFeuilleRoute.Text = $"{missionActuelle["feuilleDeRoute"]}";
@@ -413,7 +418,6 @@ namespace SAE24
                 MessageBox.Show(request);
                 SQLiteCommand cmd = new SQLiteCommand(request,co);
                 int res = cmd.ExecuteNonQuery();
-                MessageBox.Show(res.ToString());
 
 
                 DataRow eventRow = MesDatas.DsGlobal.Tables["JournalDeBord"].NewRow();
@@ -422,6 +426,7 @@ namespace SAE24
                 eventRow[2] = date;
                 eventRow[3] = commentaire;
                 MesDatas.DsGlobal.Tables["JournalDeBord"].Rows.Add(eventRow);
+                MessageBox.Show("Évènement ajouté");
 
             } catch (Exception ex) { MessageBox.Show(ex.Message); }
             finally { Connexion.FermerConnexion(); }
@@ -429,6 +434,7 @@ namespace SAE24
 
         public void AjoutCapture()
         {
+
             SQLiteConnection co = Connexion.Connec;
 
             try
@@ -438,7 +444,7 @@ namespace SAE24
                 string id = cboCapture.SelectedValue.ToString();
                 int nombre = Convert.ToInt32(txtNombre.Text.Replace("'","''"));
 
-                string verifRequest = $"SELECT Count(idEspeceEnnemi) FROM Capturer WHERE idEspeceEnnemi = '{id}'";
+                string verifRequest = $"SELECT Count(idEspeceEnnemi) FROM Capturer WHERE idEspeceEnnemi = '{id}' AND nomPlanete = '{missionActuelle["nomPlanete"]}' AND numeroMission = '{missionActuelle["numero"]}'";
                 SQLiteCommand verifCmd = new SQLiteCommand(verifRequest, co);
                 int res = Convert.ToInt32(verifCmd.ExecuteScalar());
 
@@ -448,7 +454,6 @@ namespace SAE24
 
                     SQLiteCommand cmd = new SQLiteCommand(insertRequest, co);
                     int resInsert = cmd.ExecuteNonQuery();
-                    MessageBox.Show(resInsert.ToString());
 
                     DataRow drNewCapture = captureMissionActuelle.NewRow();
                     drNewCapture[0] = cboCapture.Text;
@@ -463,6 +468,8 @@ namespace SAE24
                     drNewCapture[2] = nombre;
                     drNewCapture[3] = Convert.ToInt32(nombre) * 100 / Convert.ToInt32(drNewCapture[1]);
                     captureMissionActuelle.Rows.Add(drNewCapture);
+
+                    MessageBox.Show("Capture ajoutée");
                 }
                 else
                 {
@@ -470,8 +477,14 @@ namespace SAE24
                     SQLiteCommand cmd = new SQLiteCommand(request, co);
                     int resUpdate = cmd.ExecuteNonQuery();
                     DataRow drCapture = captureMissionActuelle.Select($"[Nom de l'espèce] = '{cboCapture.Text}'")[0];
+                    if (drCapture[1].ToString().Length == 0)
+                    {
+                        drCapture[1] = 1;
+                    }
                     drCapture[2] = (Convert.ToInt32(drCapture[2]) + nombre).ToString();
                     drCapture[3] = Convert.ToInt32(drCapture[2]) * 100 / Convert.ToInt32(drCapture[1]);
+
+                    MessageBox.Show("Capture ajoutée");
                 }
 
             }
@@ -488,17 +501,29 @@ namespace SAE24
             {
                 string nomPlanete = missionActuelle[0].ToString();
                 string numeroMission = missionActuelle[1].ToString();
-                int id = Convert.ToInt32(depenseMissionActuelle.Compute("max([N°])",string.Empty)) + 1;
+                int id;
+                if (depenseMissionActuelle.Rows.Count != 0)
+                {
+                    id = Convert.ToInt32(depenseMissionActuelle.Compute("max([N°])",string.Empty)) + 1;
+                }
+                else
+                {
+                    id = 1;
+                }
                 string date = dtpDateDepense.Value.ToString("yyyy-MM-dd");
                 string montant = txtMontantDepense.Text.Replace("'","''");
                 string motif = rtxtMotifDepense.Text.Replace("'","''");
                 string idTypeDepense = cboTypeDepense.SelectedValue.ToString();
 
+                if (Convert.ToInt32(lblSolde.Text.Split(' ')[4]) - Convert.ToInt32(montant) < 0)
+                {
+                    throw new Exception("Le montant indiqué ferait dépasser le budget total de la mission");
+                }
+
                 string request = $"INSERT INTO Depense(nomPlanete, numeroMission, id, dateD, montant, motif, idTypeDepense) VALUES ('{nomPlanete}','{numeroMission}','{id}','{date}','{montant}','{motif}','{idTypeDepense}')";
 
                 SQLiteCommand cmd = new SQLiteCommand(request, co);
                 int res = cmd.ExecuteNonQuery();
-                MessageBox.Show(res.ToString());
                 DataRow dr = depenseMissionActuelle.NewRow();
                 dr[0] = id;
                 dr[1] = date;
@@ -506,6 +531,11 @@ namespace SAE24
                 dr[3] = montant;
                 dr[4] = MesDatas.DsGlobal.Tables["TypeDepense"].Select($"id = {idTypeDepense}")[0][1];
                 depenseMissionActuelle.Rows.Add(dr);
+
+                solde -= Convert.ToDouble(montant);
+
+                lblSolde.Text = $"Solde après dépenses : {solde.ToString()}";
+                MessageBox.Show("Dépense ajoutée");
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -526,15 +556,24 @@ namespace SAE24
                 string nomCodeInformateur = cboInformateur.SelectedValue.ToString();
                 string request = $"INSERT INTO Contact(nomPlanete, numeroMission, dateC, sommeVersee, appreciation, nomCodeInformateur) VALUES ('{nomPlanete}','{numeroMission}','{date}','{sommeVersee}','{appreciation}','{nomCodeInformateur}')";
 
+                if (Convert.ToInt32(lblSolde.Text.Split(' ')[4]) - Convert.ToInt32(sommeVersee) < 0)
+                {
+                    throw new Exception("Le montant indiqué ferait dépasser le budget total de la mission");
+                }
+
                 SQLiteCommand cmd = new SQLiteCommand(request, co);
                 int res = cmd.ExecuteNonQuery();
-                MessageBox.Show(res.ToString());
                 DataRow dr = contactMissionActuelle.NewRow();
                 dr[0] = date;
                 dr[1] = sommeVersee;
                 dr[2] = appreciation;
-                dr[3] = MesDatas.DsGlobal.Tables["Espece"].Select($"id = {nomCodeInformateur}")[1];
+                dr[3] = cboInformateur.Text;
                 contactMissionActuelle.Rows.Add(dr);
+
+                solde -= Convert.ToDouble(sommeVersee);
+
+                lblSolde.Text = $"Solde après dépenses : {solde.ToString()}";
+                MessageBox.Show("Contact ajouté");
 
             }
             catch (Exception ex)
