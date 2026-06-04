@@ -53,6 +53,7 @@
             this.cboFiltrePlanete = new System.Windows.Forms.ComboBox();
             this.lblFiltreEtat = new System.Windows.Forms.Label();
             this.cboFiltreEtat = new System.Windows.Forms.ComboBox();
+            this.btnAlphaSort = new System.Windows.Forms.Button();
             this.grpEspeces.SuspendLayout();
             this.grpFiltreMission.SuspendLayout();
             this.SuspendLayout();
@@ -310,6 +311,7 @@
             // 
             // grpFiltreMission
             // 
+            this.grpFiltreMission.Controls.Add(this.btnAlphaSort);
             this.grpFiltreMission.Controls.Add(this.cboFiltreEtat);
             this.grpFiltreMission.Controls.Add(this.lblFiltreEtat);
             this.grpFiltreMission.Controls.Add(this.lblFiltrePlanete);
@@ -361,6 +363,17 @@
             this.cboFiltreEtat.Size = new System.Drawing.Size(121, 33);
             this.cboFiltreEtat.TabIndex = 3;
             this.cboFiltreEtat.SelectedIndexChanged += new System.EventHandler(this.cboFiltrePlanete_SelectedIndexChanged);
+            // 
+            // btnAlphaSort
+            // 
+            this.btnAlphaSort.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlphaSort.Location = new System.Drawing.Point(1294, 86);
+            this.btnAlphaSort.Name = "btnAlphaSort";
+            this.btnAlphaSort.Size = new System.Drawing.Size(118, 62);
+            this.btnAlphaSort.TabIndex = 4;
+            this.btnAlphaSort.Text = "A → Z";
+            this.btnAlphaSort.UseVisualStyleBackColor = true;
+            this.btnAlphaSort.Click += new System.EventHandler(this.btnAlphaSort_Click);
             // 
             // FrmTableauDeBord
             // 
@@ -422,6 +435,7 @@
         private System.Windows.Forms.Label lblFiltrePlanete;
         private System.Windows.Forms.ComboBox cboFiltreEtat;
         private System.Windows.Forms.Label lblFiltreEtat;
+        private System.Windows.Forms.Button btnAlphaSort;
     }
 }
 

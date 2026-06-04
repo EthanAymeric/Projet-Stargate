@@ -18,6 +18,7 @@ namespace SAE24
 {
     public partial class FrmTableauDeBord : Form
     {
+        bool alphaSort = true;
         SQLiteConnection co;
         public FrmTableauDeBord()
         {
@@ -31,7 +32,7 @@ namespace SAE24
             InfosEspeces();
             ChargementElementsGrpEspeces();
             ModifDate();
-            ActualisationTDB("","","");
+            ActualisationTDB(cboFiltrePlanete.Text,cboFiltreEtat.Text);
             grpFiltreMission.Visible = true;
 
             //Mettre en place la couleur de base du thème sur le formulaire
@@ -171,7 +172,7 @@ namespace SAE24
                 MessageBox.Show(ex.Message); 
             }
         }
-        private void ActualisationTDB(String filtrePlanète, String triAlphabetique, String filtreEtat)
+        private void ActualisationTDB(String filtrePlanète, String filtreEtat)
         {
             string filtreFinal = "";
             if (filtrePlanète.Length != 0)
@@ -197,13 +198,15 @@ namespace SAE24
                     filtreFinal = $"dateRetour <= #{DateTime.Today.ToString("yyyy - MM - dd")}#";
                 }
             }
+
+            string triFinal = (alphaSort) ? "nomPlanete ASC" : "nomPlanete DESC";
             
 
             pnlTDB.Controls.Clear();
             try
             {
                 // Remplis le Flow Layout Pannel avec les UserControl MissionResume
-                foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Select($"{filtreFinal}",$"{triAlphabetique}"))
+                foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Select($"{filtreFinal}",$"{triFinal}"))
                 {
                     string nomMission = r["NomPlanete"].ToString() + r["numero"].ToString();
                     string strDateDepart = r["dateDepart"].ToString();
@@ -245,7 +248,7 @@ namespace SAE24
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = false;
 
-            ActualisationTDB("","","");
+            ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
         }
 
         private void btnNouvelleMission_Click(object sender, EventArgs e)
@@ -261,7 +264,7 @@ namespace SAE24
             {
                 UpdateDataSet();
                 AjoutRelation();
-                ActualisationTDB("","","");
+                ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
             }
 
         }
@@ -1115,7 +1118,13 @@ namespace SAE24
 
         private void cboFiltrePlanete_SelectedIndexChanged(object sender, EventArgs e)
         {
-            ActualisationTDB(cboFiltrePlanete.Text, "", cboFiltreEtat.Text);
+            ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
+        }
+
+        private void btnAlphaSort_Click(object sender, EventArgs e)
+        {
+            alphaSort = !alphaSort;
+            ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
         }
     }
 }
