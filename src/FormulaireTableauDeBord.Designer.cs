@@ -496,6 +496,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.grpTableauDeBord);
+            this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.grpFiltreMission);
             this.Controls.Add(this.grpEspeces);
             this.Controls.Add(this.pnlPlanetes);
