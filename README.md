@@ -17,8 +17,8 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 
 ## TO-DO list 
 
-- [ ] Tableau de bord 
-    - [ ] Faire un filtre pour missions en cours, missions terminées, etc...
+- [x] Tableau de bord 
+    - [x] Faire un filtre pour missions en cours, missions terminées, etc...
 - [x] Création de mission 
     - [x] Appliquer le thème 
     - [ ] Fix le fait qu'une mission ayant pour membre seulement son chef ait pour nombre de membres requis 1 et pas 0
