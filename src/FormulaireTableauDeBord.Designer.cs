@@ -48,7 +48,11 @@
             this.pnlEnnemis = new System.Windows.Forms.FlowLayoutPanel();
             this.pnlTDB = new System.Windows.Forms.FlowLayoutPanel();
             this.btnSwitchTheme = new System.Windows.Forms.Button();
+            this.grpFiltreMission = new System.Windows.Forms.GroupBox();
+            this.lblFiltrePlanete = new System.Windows.Forms.Label();
+            this.cboFiltrePlanete = new System.Windows.Forms.ComboBox();
             this.grpEspeces.SuspendLayout();
+            this.grpFiltreMission.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnTDB
@@ -60,7 +64,7 @@
             this.btnTDB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnTDB.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnTDB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnTDB.Location = new System.Drawing.Point(12, 91);
+            this.btnTDB.Location = new System.Drawing.Point(12, 328);
             this.btnTDB.Name = "btnTDB";
             this.btnTDB.Size = new System.Drawing.Size(213, 72);
             this.btnTDB.TabIndex = 1;
@@ -77,7 +81,7 @@
             this.btnNouvelleMission.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNouvelleMission.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnNouvelleMission.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnNouvelleMission.Location = new System.Drawing.Point(13, 188);
+            this.btnNouvelleMission.Location = new System.Drawing.Point(13, 440);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
             this.btnNouvelleMission.Size = new System.Drawing.Size(213, 72);
             this.btnNouvelleMission.TabIndex = 2;
@@ -94,7 +98,7 @@
             this.btnRaces.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRaces.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnRaces.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnRaces.Location = new System.Drawing.Point(13, 291);
+            this.btnRaces.Location = new System.Drawing.Point(13, 552);
             this.btnRaces.Name = "btnRaces";
             this.btnRaces.Size = new System.Drawing.Size(213, 72);
             this.btnRaces.TabIndex = 3;
@@ -111,7 +115,7 @@
             this.btnPlanetes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPlanetes.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnPlanetes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnPlanetes.Location = new System.Drawing.Point(13, 403);
+            this.btnPlanetes.Location = new System.Drawing.Point(13, 664);
             this.btnPlanetes.Name = "btnPlanetes";
             this.btnPlanetes.Size = new System.Drawing.Size(213, 72);
             this.btnPlanetes.TabIndex = 4;
@@ -149,7 +153,6 @@
             // 
             // grpEspeces
             // 
-            this.grpEspeces.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.grpEspeces.Controls.Add(this.lblIndicationNom);
             this.grpEspeces.Controls.Add(this.txtNomEspece);
             this.grpEspeces.Controls.Add(this.ckCouleur);
@@ -280,10 +283,12 @@
             // pnlTDB
             // 
             this.pnlTDB.AutoScroll = true;
+            this.pnlTDB.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlTDB.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.pnlTDB.Location = new System.Drawing.Point(268, 88);
+            this.pnlTDB.Location = new System.Drawing.Point(268, 266);
+            this.pnlTDB.MaximumSize = new System.Drawing.Size(1418, 783);
             this.pnlTDB.Name = "pnlTDB";
-            this.pnlTDB.Size = new System.Drawing.Size(1418, 783);
+            this.pnlTDB.Size = new System.Drawing.Size(1418, 605);
             this.pnlTDB.TabIndex = 0;
             this.pnlTDB.WrapContents = false;
             // 
@@ -301,6 +306,36 @@
             this.btnSwitchTheme.UseVisualStyleBackColor = false;
             this.btnSwitchTheme.Click += new System.EventHandler(this.btnSwitchTheme_Click);
             // 
+            // grpFiltreMission
+            // 
+            this.grpFiltreMission.Controls.Add(this.lblFiltrePlanete);
+            this.grpFiltreMission.Controls.Add(this.cboFiltrePlanete);
+            this.grpFiltreMission.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpFiltreMission.Location = new System.Drawing.Point(268, 87);
+            this.grpFiltreMission.Name = "grpFiltreMission";
+            this.grpFiltreMission.Size = new System.Drawing.Size(1418, 173);
+            this.grpFiltreMission.TabIndex = 0;
+            this.grpFiltreMission.TabStop = false;
+            this.grpFiltreMission.Text = "Filtre de missions";
+            // 
+            // lblFiltrePlanete
+            // 
+            this.lblFiltrePlanete.AutoSize = true;
+            this.lblFiltrePlanete.Location = new System.Drawing.Point(19, 47);
+            this.lblFiltrePlanete.Name = "lblFiltrePlanete";
+            this.lblFiltrePlanete.Size = new System.Drawing.Size(89, 25);
+            this.lblFiltrePlanete.TabIndex = 1;
+            this.lblFiltrePlanete.Text = "Planète :";
+            // 
+            // cboFiltrePlanete
+            // 
+            this.cboFiltrePlanete.FormattingEnabled = true;
+            this.cboFiltrePlanete.Location = new System.Drawing.Point(238, 44);
+            this.cboFiltrePlanete.Name = "cboFiltrePlanete";
+            this.cboFiltrePlanete.Size = new System.Drawing.Size(196, 33);
+            this.cboFiltrePlanete.TabIndex = 0;
+            this.cboFiltrePlanete.SelectedIndexChanged += new System.EventHandler(this.cboFiltrePlanete_SelectedIndexChanged);
+            // 
             // FrmTableauDeBord
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -308,6 +343,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.grpFiltreMission);
             this.Controls.Add(this.grpEspeces);
             this.Controls.Add(this.pnlPlanetes);
             this.Controls.Add(this.pnlEnnemis);
@@ -328,6 +364,8 @@
             this.Load += new System.EventHandler(this.FrmTableauDeBord_Load);
             this.grpEspeces.ResumeLayout(false);
             this.grpEspeces.PerformLayout();
+            this.grpFiltreMission.ResumeLayout(false);
+            this.grpFiltreMission.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -353,6 +391,9 @@
         private System.Windows.Forms.FlowLayoutPanel pnlEspeces;
         private System.Windows.Forms.FlowLayoutPanel pnlAllies;
         private System.Windows.Forms.FlowLayoutPanel pnlEnnemis;
+        private System.Windows.Forms.GroupBox grpFiltreMission;
+        private System.Windows.Forms.ComboBox cboFiltrePlanete;
+        private System.Windows.Forms.Label lblFiltrePlanete;
     }
 }
 

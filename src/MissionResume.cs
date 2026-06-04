@@ -59,6 +59,7 @@ namespace SAE24
         private void MissionResume_MouseEnter(object sender, EventArgs e)
         {
             BackColor = Couleur.getButtonHover;
+            Cursor = Cursors.Hand;
             foreach (Control c in Controls.OfType<Label>())
             {
                 c.BackColor = Couleur.getButtonHover;
@@ -67,6 +68,7 @@ namespace SAE24
 
         private void MissionResume_MouseLeave(object sender, EventArgs e)
         {
+            Cursor = Cursors.Default;
             UpdateColors();
         }
 

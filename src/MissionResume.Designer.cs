@@ -118,6 +118,7 @@
             // MissionResume
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.lblStatus);
@@ -127,7 +128,7 @@
             this.Controls.Add(this.lblNomMission);
             this.Controls.Add(this.pbPlanete);
             this.Name = "MissionResume";
-            this.Size = new System.Drawing.Size(1200, 266);
+            this.Size = new System.Drawing.Size(1387, 266);
             this.Click += new System.EventHandler(this.AfficherResume_Click);
             this.MouseEnter += new System.EventHandler(this.MissionResume_MouseEnter);
             this.MouseLeave += new System.EventHandler(this.MissionResume_MouseLeave);

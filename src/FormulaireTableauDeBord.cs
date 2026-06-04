@@ -6,6 +6,7 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,7 +31,8 @@ namespace SAE24
             InfosEspeces();
             ChargementElementsGrpEspeces();
             ModifDate();
-            ActualisationTDB();
+            ActualisationTDB("","","");
+            grpFiltreMission.Visible = true;
 
             //Mettre en place la couleur de base du thème sur le formulaire
             BackColor = Couleur.getBackground;
@@ -38,7 +40,14 @@ namespace SAE24
             foreach (Control c in Controls)
             {
                 UpdateColorControls(c);
-            }   
+            }
+
+            cboFiltrePlanete.Items.Add("");
+            foreach (DataRow r in MesDatas.DsGlobal.Tables["Planete"].Rows)
+            {
+                cboFiltrePlanete.Items.Add(r[0]);
+            }
+            cboFiltrePlanete.SelectedIndex = 0;
         }
 
         private void UpdateDataSet()
@@ -162,26 +171,41 @@ namespace SAE24
                 MessageBox.Show(ex.Message); 
             }
         }
-        private void ActualisationTDB()
+        private void ActualisationTDB(String filtrePlanète, String triAlphabetique, String filtreEtat)
         {
-
-            // Remplis le Flow Layout Pannel avec les UserControl MissionResume
-            foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Rows)
+            string filtreFinal = "";
+            if (filtrePlanète != "" && filtreEtat != "")
             {
-                string nomMission = r["NomPlanete"].ToString() + r["numero"].ToString();
-                string strDateDepart = r["dateDepart"].ToString();
-                DateTime dateRetour = DateTime.Parse(r["dateRetour"].ToString());
-                DateTime dateDepart = DateTime.Parse(r["dateDepart"].ToString());
-                TimeSpan duree = dateRetour.Subtract(dateDepart);
-                string strDuree = duree.ToString("dd");
-                string grade = r.GetParentRow("FK_Militaire_Chef")[1].ToString();
-                string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
-                string chef = $"{identite} : {grade}";
+                if (filtreEtat == "En cours")
+                {
+                    filtreFinal = $"nomPlanete = '{filtrePlanète}' AND dateRetour > #{DateTime.Today}#";
+                }
+            }
+
+            pnlTDB.Controls.Clear();
+            try
+            {
+                // Remplis le Flow Layout Pannel avec les UserControl MissionResume
+                foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Select($"{filtreFinal}",$"{triAlphabetique}"))
+                {
+                    string nomMission = r["NomPlanete"].ToString() + r["numero"].ToString();
+                    string strDateDepart = r["dateDepart"].ToString();
+                    DateTime dateRetour = DateTime.Parse(r["dateRetour"].ToString());
+                    DateTime dateDepart = DateTime.Parse(r["dateDepart"].ToString());
+                    TimeSpan duree = dateRetour.Subtract(dateDepart);
+                    string strDuree = duree.ToString("dd");
+                    string grade = r.GetParentRow("FK_Militaire_Chef")[1].ToString();
+                    string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
+                    string chef = $"{identite} : {grade}";
 
 
-                MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
-                mr.afficher += AfficherResume;
-                pnlTDB.Controls.Add(mr);
+                    MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
+                    mr.afficher += AfficherResume;
+                    pnlTDB.Controls.Add(mr);
+                }
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
@@ -197,13 +221,14 @@ namespace SAE24
         {
             
             pnlTDB.Visible = true;
+            grpFiltreMission.Visible = true;
             pnlPlanetes.Visible = false;
             pnlEspeces.Visible = false;
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = false;
 
-            ActualisationTDB();
+            ActualisationTDB("","","");
         }
 
         private void btnNouvelleMission_Click(object sender, EventArgs e)
@@ -219,7 +244,7 @@ namespace SAE24
             {
                 UpdateDataSet();
                 AjoutRelation();
-                ActualisationTDB();
+                ActualisationTDB("","","");
             }
 
         }
@@ -227,6 +252,7 @@ namespace SAE24
         private void btnRaces_Click(object sender, EventArgs e)
         {
             pnlTDB.Visible = false;
+            grpFiltreMission.Visible = false;
             pnlPlanetes.Visible = false;
             pnlEspeces.Visible = true;
             pnlAllies.Visible = false;
@@ -237,6 +263,7 @@ namespace SAE24
         private void btnPlanetes_Click(object sender, EventArgs e)
         {
             pnlTDB.Visible = false;
+            grpFiltreMission.Visible = false;
             pnlPlanetes.Visible = true;
             pnlEspeces.Visible = false;
             pnlAllies.Visible = false;
@@ -249,6 +276,7 @@ namespace SAE24
             // Préparation du panel pour la recherche des espèces
             
             pnlEspeces.Controls.Clear();
+            grpFiltreMission.Visible = false;
             pnlEspeces.Visible = false;
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
@@ -395,6 +423,7 @@ namespace SAE24
         private void InfosPlanetes()
         {
             pnlPlanetes.Visible = false;
+            grpFiltreMission.Visible = false;
 
             // Parcours de la table pour récupérer toutes les infos nécessaires
             foreach (DataRow r in MesDatas.DsGlobal.Tables["Planete"].Rows)
@@ -1065,6 +1094,11 @@ namespace SAE24
         private void txtNomEspece_MouseClick(object sender, MouseEventArgs e)
         {
 
+        }
+
+        private void cboFiltrePlanete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualisationTDB(cboFiltrePlanete.Text, "", "En cours");
         }
     }
 }
