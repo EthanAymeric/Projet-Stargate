@@ -30,7 +30,7 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
     - [ ] Merge statsEtAutres pour avoir la mise à jour des filtres
 - [x] Informations sur les planètes
     - [ ] Merge statsEtAutres pour avoir la mise à jour des filtres
-- [ ] Statistiques 
+- [ ] Statistiques (requêtes SQL)
 
 - [ ] Modifier la disposition (scaling)
 
