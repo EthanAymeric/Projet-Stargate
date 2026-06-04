@@ -26,7 +26,7 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
     - [ ] Vérifier qu'on ne dépasse pas le budget lors d'ajout de dépenses
     - [x] Boutons ajout d'événement et ajout de dépense inversés 
     - [x] Ajouter un menu pour afficher les différentes parties 
-    - [ ] Ajouter génération en PDF
+    - [x] Ajouter génération en PDF
 - [x] Visualisation des races 
     - [ ] Merge statsEtAutres pour avoir la mise à jour des filtres
 - [x] Informations sur les planètes
