@@ -23,8 +23,8 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
     - [x] Appliquer le thème 
 - [ ] Visualisation et mise à jour des missions
     - [ ] Vérifier qu'on ne dépasse pas le budget lors d'ajout de dépenses
-    - [ ] Boutons ajout d'événement et ajout de dépense inversés 
-    - [ ] Ajouter un menu pour afficher les différentes parties 
+    - [x] Boutons ajout d'événement et ajout de dépense inversés 
+    - [x] Ajouter un menu pour afficher les différentes parties 
     - [ ] Ajouter génération en PDF
 - [x] Visualisation des races 
     - [ ] Merge statsEtAutres pour avoir la mise à jour des filtres
