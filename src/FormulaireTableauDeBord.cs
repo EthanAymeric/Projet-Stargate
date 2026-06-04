@@ -1419,7 +1419,7 @@ namespace SAE24
 
             try
             {
-                string req = $@"SELECT DISTINCT m.matricule, m.nom, m.prenom, case when m.matricule like 'M%' then 'Militaire' else 'civil' end
+                string req = $@"SELECT DISTINCT m.matricule, m.nom, m.prenom, case when m.matricule like 'M%' then 'Militaire' else 'civil' end as 'Type'
                                 FROM Composer c
                                 JOIN Membre m ON c.matriculeMembre = m.matricule
                                 WHERE c.matriculeMembre != '{matricule}'
