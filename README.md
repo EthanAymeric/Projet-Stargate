@@ -22,8 +22,8 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 - [x] Création de mission 
     - [x] Appliquer le thème 
     - [ ] Fix le fait qu'une mission ayant pour membre seulement son chef ait pour nombre de membres requis 1 et pas 0
-- [ ] Visualisation et mise à jour des missions
-    - [ ] Vérifier qu'on ne dépasse pas le budget lors d'ajout de dépenses
+- [x] Visualisation et mise à jour des missions
+    - [x] Vérifier qu'on ne dépasse pas le budget lors d'ajout de dépenses
     - [x] Boutons ajout d'événement et ajout de dépense inversés 
     - [x] Ajouter un menu pour afficher les différentes parties 
     - [x] Ajouter génération en PDF
