@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -598,6 +599,42 @@ namespace SAE24
             pnlInfoGenerale.Visible = false;
             pnlHistorique.Visible = false;
             pnlAjout.Visible = true;
+        }
+
+        private void rtxtMotifDepense_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+            if (Regex.IsMatch(e.KeyChar.ToString(), "^[a-zA-Z0-9,.!'\\s)\"]*$"))
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void txtMontantDepense_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            TextBox txt = (TextBox)sender;
+            e.Handled = true;
+            if (Regex.IsMatch(e.KeyChar.ToString(), "^[0-9,\b]$") && !txt.Text.Contains(","))
+            {
+                e.Handled = false;
+            }
+            if (Regex.IsMatch(e.KeyChar.ToString(), "^[0-9\b]$") && !Regex.IsMatch(txt.Text, "^[0-9]+[,][0-9]{2}"))
+            {
+                e.Handled = false;
+            }
+            if (Regex.IsMatch(e.KeyChar.ToString(), "^\b$"))
+            { 
+                e.Handled = false; 
+            }
+        }
+
+        private void txtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+            if (Regex.IsMatch(e.KeyChar.ToString(), "^[\\d\\b]$"))
+            {
+                e.Handled = false;
+            }
         }
     }
 }

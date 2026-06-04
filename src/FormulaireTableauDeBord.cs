@@ -45,21 +45,7 @@ namespace SAE24
         {
             // Sert à mettre à jour le DataSet quand il y a un ajout de mission
             MesDatas.DsGlobal.Reset();
-            co = Connexion.Connec;
-            try
-            {
-                DataTable mesDT = co.GetSchema("Tables");
-
-                foreach (DataRow r in mesDT.Rows)
-                {
-                    string request = $"SELECT * FROM {r[2].ToString()}";
-                    SQLiteCommand cmd = new SQLiteCommand(request, co);
-                    SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-                    da.Fill(MesDatas.DsGlobal, r[2].ToString());
-                }
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); }
-            finally { Connexion.FermerConnexion(); }
+            RemplissageDS();
         }
 
         private void RemplissageDS()

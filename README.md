@@ -17,20 +17,23 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 
 ## TO-DO list 
 
-- [x] Faire formulaire de login 
-- [x] Ajouter Admin à la bdd pour vérifier le login 
-- [x] Ajouter les éléments formulaire création 
-- [x] Générer un nom de mission 
-- [x] Blinder les saisies 
-- [x] Ne proposer que des chefs disponibles pendant la durée de la mission 
-- [x] changer nombre de membres requis pour le nombre de membres disponibles (max du slider)
-- [x] Ajouter les membres de mission 
-- [x] Protéger les TextBox des injections SQL (String.Replace("'", "''");) et autres
-- [x] Faire l'ajout de captures par transaction
-- [x] Ajouter des missions 
-- [x] Ne pas fermer la fenêtre lorsque la mission est créée mais reset la fenêtre pour pouvoir ajouter une nouvelle mission directement
-- [x] Empêcher de fermer la fenêtre avant que la partie 2 soit terminée 
-- [x] Compter le chef de mission comme membre (pour autoriser les missions à 1 membre)
+- [x] Tableau de bord 
+    - [x] Faire un filtre pour missions en cours, missions terminées, etc...
+- [x] Création de mission 
+    - [x] Appliquer le thème 
+    - [ ] Fix le fait qu'une mission ayant pour membre seulement son chef ait pour nombre de membres requis 1 et pas 0
+- [ ] Visualisation et mise à jour des missions
+    - [ ] Vérifier qu'on ne dépasse pas le budget lors d'ajout de dépenses
+    - [x] Boutons ajout d'événement et ajout de dépense inversés 
+    - [x] Ajouter un menu pour afficher les différentes parties 
+    - [x] Ajouter génération en PDF
+- [x] Visualisation des races 
+    - [ ] Merge statsEtAutres pour avoir la mise à jour des filtres
+- [x] Informations sur les planètes
+    - [ ] Merge statsEtAutres pour avoir la mise à jour des filtres
+- [ ] Statistiques (requêtes SQL)
+
+- [ ] Modifier la disposition (scaling)
 
 ## Organisation du dépôt 
 
