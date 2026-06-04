@@ -298,42 +298,14 @@ namespace SAE24
 
         private void AfficherFormDepense()
         {
-            int top = 40;
-            int left = 20;
             grpFormDepense.Visible = true;
             grpFormCapture.Visible = false;
             grpFormContact.Visible = false;
             grpFormEvent.Visible = false;
 
-            lblDateDepense.Top = top;
-            lblDateDepense.Left = left;
-
-            dtpDateDepense.Top = lblDateDepense.Top;
-            dtpDateDepense.Left = lblDateDepense.Width + 20 + left;
             dtpDateDepense.MinDate = Convert.ToDateTime(missionActuelle["dateDepart"]);
             dtpDateDepense.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]);
-            dtpDateDepense.Width = 200;
 
-
-            lblMontantDepense.Top = top + lblDateDepense.Height + 20;
-            lblMontantDepense.Left = left;
-
-            txtMontantDepense.Top = lblMontantDepense.Top;
-            txtMontantDepense.Left = lblMontantDepense.Width + 20 + left;
-
-            lblMotifDepense.Left = left;
-            lblMotifDepense.Top = lblMontantDepense.Top + lblMontantDepense.Height + 20;
-
-            rtxtMotifDepense.Top = lblMotifDepense.Top + lblMotifDepense.Height + 20;
-            rtxtMotifDepense.Left = left;
-            rtxtMotifDepense.Width = grpFormDepense.Width - 40;
-            rtxtMotifDepense.Height = 100;
-
-            lblTypeDepense.Left = left;
-            lblTypeDepense.Top = rtxtMotifDepense.Top + rtxtMotifDepense.Height + 20;
-
-            cboTypeDepense.Top = rtxtMotifDepense.Top + rtxtMotifDepense.Height + 20;
-            cboTypeDepense.Left = lblTypeDepense.Width + 20 + left;
             cboTypeDepense.DataSource = MesDatas.DsGlobal.Tables["TypeDepense"];
             cboTypeDepense.DisplayMember = "libelle";
             cboTypeDepense.ValueMember = "id";
@@ -357,35 +329,17 @@ namespace SAE24
 
         private void AfficherFormEvent()
         {
-            int top = 40;
-            int left = 20;
             grpFormEvent.Visible = true;
             grpFormCapture.Visible = false;
             grpFormContact.Visible = false;
             grpFormDepense.Visible = false;
 
-            lblDateAjoutEvent.Top = top;
-            lblDateAjoutEvent.Left = left;
-
-            dtpDateEvent.Top = lblDateAjoutEvent.Top;
-            dtpDateEvent.Left = lblDateAjoutEvent.Width + 20 + left;
             dtpDateEvent.MinDate = Convert.ToDateTime(missionActuelle["dateDepart"]);
-            dtpDateEvent.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]); 
-            dtpDateEvent.Width = 200;
-
-
-            lblCommentaireEvent.Left = left;
-            lblCommentaireEvent.Top = lblDateAjoutEvent.Top + lblDateAjoutEvent.Height + 20;
-
-            rtxtCommentaire.Top = lblCommentaireEvent.Top + lblCommentaireEvent.Height + 40;
-            rtxtCommentaire.Left = left;
-            rtxtCommentaire.Width = grpFormEvent.Width - 40;
+            dtpDateEvent.MaxDate = Convert.ToDateTime(missionActuelle["dateRetour"]);
         }
 
         private void AfficherFormCapture()
         {
-            int top = 40;
-            int left = 20;
             grpFormCapture.Visible = true;
             grpFormContact.Visible = false;
             grpFormDepense.Visible = false;
@@ -406,19 +360,6 @@ namespace SAE24
             cboCapture.DataSource = especeEnnemi;
             cboCapture.DisplayMember = "nom";
             cboCapture.ValueMember = "id";
-
-            lblCapture.Left = left;
-            lblCapture.Top = top;
-
-            cboCapture.Top = top;
-            cboCapture.Left = left + lblCapture.Width + 20;
-
-            lblNombre.Top = top + lblCapture.Height + 20;
-            lblNombre.Left = left;
-            lblNombre.Height = 25;
-
-            txtNombre.Top = lblNombre.Top;
-            txtNombre.Left = cboCapture.Left;
         }
 
         private void btnValidationAjout_Click(object sender, EventArgs e)
@@ -636,6 +577,27 @@ namespace SAE24
             {
                 UpdateColorControls(subControl);
             }
+        }
+
+        private void btnInfoGenerale_Click(object sender, EventArgs e)
+        {
+            pnlInfoGenerale.Visible = true;
+            pnlHistorique.Visible = false;
+            pnlAjout.Visible = false;
+        }
+
+        private void btnJournal_Click(object sender, EventArgs e)
+        {
+            pnlInfoGenerale.Visible = false;
+            pnlHistorique.Visible = true;
+            pnlAjout.Visible = false;
+        }
+
+        private void btnAjout_Click(object sender, EventArgs e)
+        {
+            pnlInfoGenerale.Visible = false;
+            pnlHistorique.Visible = false;
+            pnlAjout.Visible = true;
         }
     }
 }
