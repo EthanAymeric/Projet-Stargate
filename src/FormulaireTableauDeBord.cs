@@ -1322,8 +1322,18 @@ namespace SAE24
                 // 4e requete
                 // Liste des dépenses (date, motif et montant concaténés dans une seule colonne intitulée « Dépenses les plus importantes »),
                 // nom de la mission et nom et prénom du chef de la mission, pour les dépenses les plus élevées de chaque mission. 
+
+                // Affichage par défaut
+                //
+                // A COMPLETER
+
+                string req4 = @"select montant from Depense";
+                SQLiteCommand cmd4 = new SQLiteCommand(req4, co);
+                SQLiteDataAdapter da4 = new SQLiteDataAdapter(cmd4);
+                da4.Fill(MesDatas.DsGlobal, "ListeDepenses");
+
                 DataGridView dgvStats4 = new DataGridView();
-                //dgvStats4.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+                dgvStats4.DataSource = MesDatas.DsGlobal.Tables["ListeDepenses"];
 
                 top += dgvStats3.Height + 20;
                 Label lblStats4 = new Label();
@@ -1343,8 +1353,18 @@ namespace SAE24
 
                 // 5e requete
                 // Quels sont les informateurs (nom de code, espèce d’origine, somme totale reçue) qui ont perçu le moins d’argent pendant une mission donnée ? 
+
+                // Affichage par défaut
+                //
+                // A COMPLETER
+
+
+                string req5 = @"select nom from Informateur";
+                SQLiteCommand cmd5 = new SQLiteCommand(req5, co);
+                SQLiteDataAdapter da5 = new SQLiteDataAdapter(cmd5);
+                da5.Fill(MesDatas.DsGlobal, "ListeInformateur");
                 DataGridView dgvStats5 = new DataGridView();
-                //dgvStats4.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+                dgvStats5.DataSource = MesDatas.DsGlobal.Tables["ListeInformateur"];
 
                 top += dgvStats4.Height + 20;
                 Label lblStats5 = new Label();
@@ -1390,68 +1410,28 @@ namespace SAE24
             int left = cboStats1.Left;
             int top = 25;
 
-            DataTable dt = new DataTable();
-            DataRow[] tab;
-
-            foreach (DataRow dr in MesDatas.DsGlobal.Tables["Composer"].Rows)
+            co = Connexion.Connec;
+            try
             {
-                    DataRow membre = dr.GetParentRow("FK_Membre_Composer");
-                    // S'ils existent dans les missions et que leur matricule commence par C (que c'est des civils donc)
-                    if (membre != null)
-                    {
-                        if (membre["matricule"].ToString().StartsWith("C"))
-                        {
-                            estCivil = true;
-                        }
-                        // sinon c'est un militaire
-                        else if (membre["matricule"].ToString().StartsWith("M"))
-                        {
-                            estCivil = false;
-                        }
-
-                        if (membre["matricule"].ToString() == cboCouleur.SelectedValue.ToString())
-                        {
-                            filtre += "nom = '" + membre["nom"] +  "' and ";
-                        }
-                        string temp = filtre;
-                        if (filtre != string.Empty)
-                        {
-                            filtre = temp.Remove(temp.Length - 4);
-                        }
-                        //MessageBox.Show(filtre);
-                    }
-                    
-
-
-
-                //pnlStats.Controls.Add();
-                
-
-                /*
-                string nomMission = r["NomPlanete"].ToString() + r["numero"].ToString();
-                string strDateDepart = r["dateDepart"].ToString();
-                DateTime dateRetour = DateTime.Parse(r["dateRetour"].ToString());
-                DateTime dateDepart = DateTime.Parse(r["dateDepart"].ToString());
-                TimeSpan duree = dateRetour.Subtract(dateDepart);
-                string strDuree = duree.ToString("dd");
-                string grade = r.GetParentRow("FK_Militaire_Chef")[1].ToString();
-                string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
-                string chef = $"{identite} : {grade}";
-                
-
-                MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
-                mr.Top = top;
-                mr.Left = left;
-                pnlTDB.Controls.Add(mr);
-
-                top += mr.Height + 20;
-                */
+                string req = @"select m1.matriculeMembre, m2.matriculeMembre
+                                from Composer m1 join Composer m2 on m1.nomPlanete = m2.nomPlanete
+                                where m1.matriculeMembre = '" + cboStats1.SelectedValue + "'";
+                SQLiteCommand cmd = new SQLiteCommand(req, co);
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                da.Fill(MesDatas.DsGlobal, "ListeMembres");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connexion.FermerConnexion();
             }
 
-            tab = MesDatas.DsGlobal.Tables["Membre"].Select(filtre);
-            dt = tab.CopyToDataTable();
+
             DataGridView dgvStats1 = new DataGridView();
-            dgvStats1.DataSource = dt;
+            dgvStats1.DataSource = MesDatas.DsGlobal.Tables["ListeMembre"];
 
             dgvStats1.Height = height;
             dgvStats1.Width = width;
