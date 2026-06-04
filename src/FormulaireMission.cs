@@ -4,12 +4,16 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 
 namespace SAE24
 {
@@ -21,6 +25,8 @@ namespace SAE24
         DataTable depenseMissionActuelle;
         DataTable contactMissionActuelle;
         DataTable captureMissionActuelle;
+        double solde = 0;
+
         public FormulaireMission()
         {
             InitializeComponent();
@@ -30,7 +36,7 @@ namespace SAE24
         {
             InitializeComponent();
             missionActuelle = MesDatas.DsGlobal.Tables["Mission"].Select($"nomPlanete = '{idMission.Substring(0, idMission.Length - 1)}' AND numero = '{idMission.Substring(idMission.Length - 1, 1)}'")[0];
-            pbPlanete.Image = Image.FromFile($"../../Images/Planetes/{idMission.Substring(0, idMission.Length - 1)}.png");
+            pbPlanete.Image = System.Drawing.Image.FromFile($"../../Images/Planetes/{idMission.Substring(0, idMission.Length - 1)}.png");
             lblNomMission.Text = idMission;
             BackColor = Couleur.getBackground;
             ForeColor = Couleur.getText;
@@ -38,6 +44,8 @@ namespace SAE24
             {
                 UpdateColorControls(c);
             }
+            QuestPDF.Settings.License = LicenseType.Community;
+            solde = Convert.ToDouble(missionActuelle["budget"]);
         }
 
         private void RemplissageMembre()
@@ -67,7 +75,7 @@ namespace SAE24
             m.setText = $"{profil["nom"].ToString()}\n{profil["prenom"].ToString()}";
             if (profil["matricule"].ToString() == missionActuelle["matriculeChef"].ToString())
             {
-                m.BackColor = Color.Green;
+                m.BackColor = System.Drawing.Color.Green;
             }
             m.Top = top;
             m.Left = left;
@@ -81,15 +89,18 @@ namespace SAE24
         {
             lblDepart.Text = $"Date de départ : {missionActuelle["dateDepart"]}";
             lblArrivee.Text = $"Date de retour prévu : {missionActuelle["dateRetour"]}";
-            double solde = Convert.ToDouble(missionActuelle["budget"]);
 
             lblBudget.Text = $"Budget : {missionActuelle["budget"]}";
 
             DataRow[] depense = missionActuelle.GetChildRows("FK_Mission_Depense");
-
+            DataRow[] contact = missionActuelle.GetChildRows("FK_Mission_Contact");
             foreach (DataRow row in depense)
             {
                 solde -= Convert.ToDouble(row["montant"]);
+            }
+            foreach (DataRow row in contact)
+            {
+                solde -= Convert.ToDouble(row["sommeVersee"]);
             }
             lblSolde.Text = $"Solde après dépenses : {solde.ToString()}";
             txtFeuilleRoute.Text = $"{missionActuelle["feuilleDeRoute"]}";
@@ -407,7 +418,6 @@ namespace SAE24
                 MessageBox.Show(request);
                 SQLiteCommand cmd = new SQLiteCommand(request,co);
                 int res = cmd.ExecuteNonQuery();
-                MessageBox.Show(res.ToString());
 
 
                 DataRow eventRow = MesDatas.DsGlobal.Tables["JournalDeBord"].NewRow();
@@ -416,6 +426,7 @@ namespace SAE24
                 eventRow[2] = date;
                 eventRow[3] = commentaire;
                 MesDatas.DsGlobal.Tables["JournalDeBord"].Rows.Add(eventRow);
+                MessageBox.Show("Évènement ajouté");
 
             } catch (Exception ex) { MessageBox.Show(ex.Message); }
             finally { Connexion.FermerConnexion(); }
@@ -423,6 +434,7 @@ namespace SAE24
 
         public void AjoutCapture()
         {
+
             SQLiteConnection co = Connexion.Connec;
 
             try
@@ -432,7 +444,7 @@ namespace SAE24
                 string id = cboCapture.SelectedValue.ToString();
                 int nombre = Convert.ToInt32(txtNombre.Text.Replace("'","''"));
 
-                string verifRequest = $"SELECT Count(idEspeceEnnemi) FROM Capturer WHERE idEspeceEnnemi = '{id}'";
+                string verifRequest = $"SELECT Count(idEspeceEnnemi) FROM Capturer WHERE idEspeceEnnemi = '{id}' AND nomPlanete = '{missionActuelle["nomPlanete"]}' AND numeroMission = '{missionActuelle["numero"]}'";
                 SQLiteCommand verifCmd = new SQLiteCommand(verifRequest, co);
                 int res = Convert.ToInt32(verifCmd.ExecuteScalar());
 
@@ -442,7 +454,6 @@ namespace SAE24
 
                     SQLiteCommand cmd = new SQLiteCommand(insertRequest, co);
                     int resInsert = cmd.ExecuteNonQuery();
-                    MessageBox.Show(resInsert.ToString());
 
                     DataRow drNewCapture = captureMissionActuelle.NewRow();
                     drNewCapture[0] = cboCapture.Text;
@@ -457,6 +468,8 @@ namespace SAE24
                     drNewCapture[2] = nombre;
                     drNewCapture[3] = Convert.ToInt32(nombre) * 100 / Convert.ToInt32(drNewCapture[1]);
                     captureMissionActuelle.Rows.Add(drNewCapture);
+
+                    MessageBox.Show("Capture ajoutée");
                 }
                 else
                 {
@@ -464,8 +477,14 @@ namespace SAE24
                     SQLiteCommand cmd = new SQLiteCommand(request, co);
                     int resUpdate = cmd.ExecuteNonQuery();
                     DataRow drCapture = captureMissionActuelle.Select($"[Nom de l'espèce] = '{cboCapture.Text}'")[0];
+                    if (drCapture[1].ToString().Length == 0)
+                    {
+                        drCapture[1] = 1;
+                    }
                     drCapture[2] = (Convert.ToInt32(drCapture[2]) + nombre).ToString();
                     drCapture[3] = Convert.ToInt32(drCapture[2]) * 100 / Convert.ToInt32(drCapture[1]);
+
+                    MessageBox.Show("Capture ajoutée");
                 }
 
             }
@@ -482,17 +501,29 @@ namespace SAE24
             {
                 string nomPlanete = missionActuelle[0].ToString();
                 string numeroMission = missionActuelle[1].ToString();
-                int id = Convert.ToInt32(depenseMissionActuelle.Compute("max([N°])",string.Empty)) + 1;
+                int id;
+                if (depenseMissionActuelle.Rows.Count != 0)
+                {
+                    id = Convert.ToInt32(depenseMissionActuelle.Compute("max([N°])",string.Empty)) + 1;
+                }
+                else
+                {
+                    id = 1;
+                }
                 string date = dtpDateDepense.Value.ToString("yyyy-MM-dd");
                 string montant = txtMontantDepense.Text.Replace("'","''");
                 string motif = rtxtMotifDepense.Text.Replace("'","''");
                 string idTypeDepense = cboTypeDepense.SelectedValue.ToString();
 
+                if (Convert.ToInt32(lblSolde.Text.Split(' ')[4]) - Convert.ToInt32(montant) < 0)
+                {
+                    throw new Exception("Le montant indiqué ferait dépasser le budget total de la mission");
+                }
+
                 string request = $"INSERT INTO Depense(nomPlanete, numeroMission, id, dateD, montant, motif, idTypeDepense) VALUES ('{nomPlanete}','{numeroMission}','{id}','{date}','{montant}','{motif}','{idTypeDepense}')";
 
                 SQLiteCommand cmd = new SQLiteCommand(request, co);
                 int res = cmd.ExecuteNonQuery();
-                MessageBox.Show(res.ToString());
                 DataRow dr = depenseMissionActuelle.NewRow();
                 dr[0] = id;
                 dr[1] = date;
@@ -500,6 +531,11 @@ namespace SAE24
                 dr[3] = montant;
                 dr[4] = MesDatas.DsGlobal.Tables["TypeDepense"].Select($"id = {idTypeDepense}")[0][1];
                 depenseMissionActuelle.Rows.Add(dr);
+
+                solde -= Convert.ToDouble(montant);
+
+                lblSolde.Text = $"Solde après dépenses : {solde.ToString()}";
+                MessageBox.Show("Dépense ajoutée");
 
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
@@ -520,15 +556,24 @@ namespace SAE24
                 string nomCodeInformateur = cboInformateur.SelectedValue.ToString();
                 string request = $"INSERT INTO Contact(nomPlanete, numeroMission, dateC, sommeVersee, appreciation, nomCodeInformateur) VALUES ('{nomPlanete}','{numeroMission}','{date}','{sommeVersee}','{appreciation}','{nomCodeInformateur}')";
 
+                if (Convert.ToInt32(lblSolde.Text.Split(' ')[4]) - Convert.ToInt32(sommeVersee) < 0)
+                {
+                    throw new Exception("Le montant indiqué ferait dépasser le budget total de la mission");
+                }
+
                 SQLiteCommand cmd = new SQLiteCommand(request, co);
                 int res = cmd.ExecuteNonQuery();
-                MessageBox.Show(res.ToString());
                 DataRow dr = contactMissionActuelle.NewRow();
                 dr[0] = date;
                 dr[1] = sommeVersee;
                 dr[2] = appreciation;
-                dr[3] = MesDatas.DsGlobal.Tables["Espece"].Select($"id = {nomCodeInformateur}")[1];
+                dr[3] = cboInformateur.Text;
                 contactMissionActuelle.Rows.Add(dr);
+
+                solde -= Convert.ToDouble(sommeVersee);
+
+                lblSolde.Text = $"Solde après dépenses : {solde.ToString()}";
+                MessageBox.Show("Contact ajouté");
 
             }
             catch (Exception ex)
@@ -635,6 +680,111 @@ namespace SAE24
             {
                 e.Handled = false;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string identiteChef = $"{missionActuelle.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {missionActuelle.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
+            DataRow[] membreMission = missionActuelle.GetChildRows("FK_Mission_Composer");
+            DataRow[] journalDeBord = missionActuelle.GetChildRows("FK_Mission_JournalDeBord");
+
+            Document.Create(container =>
+            {
+                container.Page(page =>
+                {
+                    page.Size(PageSizes.A4);
+                    page.Margin(2, Unit.Centimetre);
+                    page.PageColor(Colors.White);
+                    page.DefaultTextStyle(x => x.FontSize(16));
+                        
+
+                    page.Content()
+                        .PaddingVertical(1, Unit.Centimetre)
+                        .Column(x =>
+                        {
+                            x.Spacing(15);
+
+                            x.Item().Text($"Rapport de la mission {missionActuelle["nomPlanete"]}{missionActuelle["numero"]}")
+                                    .SemiBold().FontSize(30).FontColor(Colors.DeepPurple.Medium);
+
+                            x.Item().Text($"Date de départ : {missionActuelle["dateDepart"]}");
+                            x.Item().Text($"Date de retour : {missionActuelle["dateRetour"]}");
+
+                            x.Item().Text($"Sous la supervision de {identiteChef}")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            x.Item().Text($"Budget initial de {missionActuelle["Budget"]}")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            x.Item().Text($"Feuille de route :\n{missionActuelle["feuilleDeRoute"]}")
+                                    .FontSize(16);
+
+                            x.Item().PageBreak();
+                            x.Item().Text("Liste des membres :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            foreach(DataRow r in membreMission)
+                            {
+                                DataRow profil = r.GetParentRow("FK_Membre_Composer");
+                                x.Item().Text($"-> {profil["nom"]} {profil["prenom"]}");
+                            }
+
+                            x.Item().Text("Journal de Bord :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            int i = 1;
+                            foreach(DataRow r in journalDeBord)
+                            {
+
+                                x.Item().Text($"{i}) le {r["dateJ"]} -> {r["commentaires"]}");
+                            }
+
+
+                            x.Item().Text("Depense effectuées :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            foreach(DataRow r in depenseMissionActuelle.Rows)
+                            {
+                                x.Item().Text($"{r["Date"]} : {r["Motif"]} -> {r["Montant"]}");
+                            }
+
+
+                            x.Item().Text("Contacts avec les informateurs :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            foreach(DataRow r in contactMissionActuelle.Rows)
+                            {
+                                x.Item().Text($"Le {r["Date"]} : {r["Appreciation"]}");
+                            }
+
+                            x.Item().Text("Captures effectuées :")
+                                    .FontSize(24)
+                                    .Bold();
+
+                            foreach(DataRow r in captureMissionActuelle.Rows)
+                            {
+                                x.Item().Text($"{r["Nom de l'espèce"]} : {r["Nombre de captures réalisées"]} sur {r["Objectif initial"]} ({r["Taux de réussite (en %)"]}%)");
+                            }
+
+
+                        });
+
+                    page.Footer()
+                        .AlignCenter()
+                        .Text(x =>
+                        {
+                            x.Span("Page ");
+                            x.CurrentPageNumber();
+                        });
+                });
+            })
+            .GeneratePdf($"{missionActuelle["nomPlanete"]}{missionActuelle["numero"]}.pdf");
         }
     }
 }
