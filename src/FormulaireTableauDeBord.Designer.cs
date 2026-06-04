@@ -341,7 +341,7 @@
             this.btntriEtat.Name = "btntriEtat";
             this.btntriEtat.Size = new System.Drawing.Size(118, 62);
             this.btntriEtat.TabIndex = 5;
-            this.btntriEtat.Text = "Etat ↑↓";
+            this.btntriEtat.Text = "Etat ✖";
             this.btntriEtat.UseVisualStyleBackColor = true;
             this.btntriEtat.Click += new System.EventHandler(this.btntriEtat_Click);
             // 

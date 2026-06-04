@@ -18,7 +18,7 @@ namespace SAE24
 {
     public partial class FrmTableauDeBord : Form
     {
-        bool triEtat = true;
+        int triEtat = 0;
         bool triAlpha = true;
         SQLiteConnection co;
         public FrmTableauDeBord()
@@ -224,7 +224,7 @@ namespace SAE24
                     string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
                     string chef = $"{identite} : {grade}";
 
-                    if (triEtat)
+                    if (triEtat == -1)
                     {
                         if (dateRetour <= DateTime.Today)
                         {
@@ -237,7 +237,7 @@ namespace SAE24
                             pnlTDB.Controls.Add(mr);
                         }
                     }
-                    else if (!triEtat)
+                    else if (triEtat == 1)
                     {
                         if (dateRetour > DateTime.Today)
                         {
@@ -249,6 +249,12 @@ namespace SAE24
                             mr.afficher += AfficherResume;
                             pnlTDB.Controls.Add(mr);
                         }
+                    }
+                    else if (triEtat == 0)
+                    {
+                        MissionResume mr = new MissionResume(nomMission, strDateDepart, strDuree, chef);
+                        mr.afficher += AfficherResume;
+                        pnlTDB.Controls.Add(mr);
                     }
                     
                 }
@@ -1173,7 +1179,18 @@ namespace SAE24
 
         private void btntriEtat_Click(object sender, EventArgs e)
         {
-            triEtat = !triEtat;
+            if (triEtat == 0)
+            {
+                btntriEtat.Text = "Etat ↑↓";
+                triEtat = 1;
+            } else if (triEtat == 1)
+            {
+                triEtat = -1;
+            } else if (triEtat == -1)
+            {
+                triEtat = 0;
+                btntriEtat.Text = "Etat ✖";
+            }
             ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
         }
     }
