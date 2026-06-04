@@ -18,7 +18,7 @@ namespace SAE24
         public FormConnexion()
         {
             InitializeComponent();
-        }
+    }
 
         private void genererErreurLoginMdp()
         {
@@ -48,7 +48,7 @@ namespace SAE24
                 return;
             }
 
-            SQLiteCommand cmd = new SQLiteCommand($"select mdp from Admin where login = '{login}'",
+            SQLiteCommand cmd = new SQLiteCommand($"select mdp from Admin where login = '{login}'", 
                 Connexion.Connec);
             Object obj = cmd.ExecuteScalar();
 
@@ -85,7 +85,7 @@ namespace SAE24
             // supprime l'erreur 
             errorProvider.SetError(textBoxLogin, "");
 
-            e.Handled = e.KeyChar == (char)Keys.Space;
+            e.Handled = e.KeyChar == (char)Keys.Space; 
         }
 
         private void textBoxMdp_KeyPress(object sender, KeyPressEventArgs e)

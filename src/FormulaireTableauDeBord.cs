@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +7,8 @@ using System.Data.SQLite;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Net.Configuration;
+using System.Security.Cryptography;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +16,7 @@ using System.Windows.Forms;
 using UserControlPlanetes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
+using System.Text.RegularExpressions;
 
 namespace SAE24
 {
@@ -21,6 +25,13 @@ namespace SAE24
         int triEtat = 0;
         bool triAlpha = true;
         SQLiteConnection co;
+
+        // initialisation d'un booleen qui vérifie si on est bien sur le bouton de rechrche d'espèce avant de filtrer directement par combobox pour éviter un affichage directement au chragement du form
+        // on le met à faux pour tous les boutons, sauf celui de la recherche d'espèces pour permettre la recherche directement en sélectionnant la valeur dans la combobox
+        bool estSurEspece = false;
+
+        // vérification pour le filtre des statistiques afin de voir si on peut filtrer par nom ou pas
+        bool filtrePossible = false;
         public FrmTableauDeBord()
         {
             InitializeComponent();
@@ -32,6 +43,8 @@ namespace SAE24
             InfosPlanetes();
             InfosEspeces();
             ChargementElementsGrpEspeces();
+            ChargementLogo();
+        
             ModifDate();
             ActualisationTDB(cboFiltrePlanete.Text,cboFiltreEtat.Text);
 
@@ -291,7 +304,8 @@ namespace SAE24
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = false;
-
+            pnlStats.Visible = false;
+            estSurEspece = false;
             ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
         }
 
@@ -310,7 +324,7 @@ namespace SAE24
                 AjoutRelation();
                 ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
             }
-
+            estSurEspece = false;
         }
 
         private void btnRaces_Click(object sender, EventArgs e)
@@ -323,6 +337,9 @@ namespace SAE24
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = true;
+            pnlStats.Visible = false;
+            // On peut mettre ce vérificateur à true pour checker l'état des combobox dès qu'il change
+            estSurEspece = true;
         }
 
         private void btnPlanetes_Click(object sender, EventArgs e)
@@ -335,6 +352,9 @@ namespace SAE24
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
             grpEspeces.Visible = false;
+            pnlStats.Visible = false;
+
+            estSurEspece = false;
         }
 
         private void InfosEspeces()
@@ -347,6 +367,7 @@ namespace SAE24
             pnlEspeces.Visible = false;
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
+            pnlStats.Visible = false;
             pnlEnnemis.Visible = false;
             rdbAllies.Checked = false;
             rdbEnnemis.Checked = false;
@@ -357,18 +378,18 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            // S'il y a un filtre à appliquer, on prend ce qui est indiqué dans la combobox et/ou dans la Textbox pour créer un filtr
-            if (ckCouleur.Checked || txtNomEspece.Text != string.Empty)
+            // S'il y a un filtre à appliquer, on prend ce qui est indiqué dans les combobox et/ou dans la Textbox pour créer un filtre
+            if (cboCouleur.SelectedIndex > 0 || txtNomEspece.Text != string.Empty || cboPlanete.SelectedIndex > 0)
             {
                 // On ajuste le filtre en fonction des indications de recherche
                 string filtre = "";
                 // Pour la couleur
-                if (ckCouleur.Checked)
+                if (cboCouleur.SelectedIndex != 0)
                 {
                     filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
-                // Si les deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
-                if (ckCouleur.Checked && txtNomEspece.Text != string.Empty)
+                // Si deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty) || (cboCouleur.SelectedIndex > 0 && cboPlanete.SelectedIndex != 0))
                 {
                     filtre += " and ";
                 }
@@ -377,7 +398,45 @@ namespace SAE24
                 {
                     filtre += "nom like '" + txtNomEspece.Text + "%'";
                 }
+
+                // Si les trois filtres sont choisis ou si UNIQUEMENT les deux filtres Nom et Planete sont choisi
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty && cboPlanete.SelectedIndex != 0) || (cboPlanete.SelectedIndex != 0 && txtNomEspece.Text != string.Empty))
+                {
+                    filtre += " and ";
+                }
+                // pour la planète
+                if (cboPlanete.SelectedIndex != 0)
+                {
+                    
+                    string temp = filtre + "(";
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Habiter"].Rows)
+                    {
+                        if (cboPlanete.SelectedValue != null && cboPlanete.SelectedValue.ToString() == dr[0].ToString())
+                        {
+                            temp += "id = " + dr[1] + " or ";
+                        }
+                    }
+                    // on enlève le and de trop
+                    
+                    if (temp != (filtre + "("))
+                    {
+                        filtre = temp.Remove(temp.Length - 3);
+                        filtre += ")";
+                    }
+                    else
+                    {
+                        resultatExiste = false;
+                    }
+
+                }
+                if (cboCouleur.SelectedIndex > 0 && cboCouleur.SelectedIndex != 0 && !resultatExiste) 
+                {
+                    string texte = filtre;
+                    filtre = texte.Remove(texte.Length - 5);
+                }
+
                 tab = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
+
                 // Si la recherche spécifiée ne marche pas, on l'indique
                 if (tab.Length == 0)
                 {
@@ -676,19 +735,27 @@ namespace SAE24
                 Permet de réinitialiser tous les éléments de recherche dans grpEspeces
             */
 
-            // Décoche la CheckBox confirmant le filtre de couleur
-            ckCouleur.Checked = false;
             // Vide le textBox de recherche en fonction du nom
-            txtNomEspece.ResetText();
+            txtNomEspece.Clear();
 
             // Décoche les RadioButtons précisant si l'espèce est alliée ou ennemie
             rdbAllies.Checked = false;
             rdbEnnemis.Checked = false;
+
+            // Réinitialise les comboboxes
+            cboCouleur.SelectedIndex = 0;
+            cboPlanete.SelectedIndex = 0;
+
         }
 
         private void btnRecherche_Click(object sender, EventArgs e)
         {
             // Vérifie si un filtre par allié ou ennemi est réalisée ou non et agis en conséquence
+            afficherFiltre();
+        }
+
+        private void afficherFiltre()
+        {
             if (rdbAllies.Checked)
             {
                 InfoEspecesAlliees();
@@ -726,6 +793,7 @@ namespace SAE24
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
+            pnlStats.Visible = false;
             DataRow[] tabTemp;
             DataRow[] clone;
             DataTable dt = new DataTable();
@@ -733,19 +801,17 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            if (ckCouleur.Checked || txtNomEspece.Text != string.Empty)
+            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty || cboPlanete.SelectedIndex != 0)
             {
-                // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
-                // On crée le filtre au fur et à mesure
+                // On ajuste le filtre en fonction des indications de recherche
                 string filtre = "";
                 // Pour la couleur
-                if (ckCouleur.Checked)
+                if (cboCouleur.SelectedIndex > 0)
                 {
-                    
                     filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
-                // Si les deux filtres sont sélectionnés
-                if (ckCouleur.Checked && txtNomEspece.Text != string.Empty)
+                // Si deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty) || (cboCouleur.SelectedIndex > 0 && cboPlanete.SelectedIndex != 0))
                 {
                     filtre += " and ";
                 }
@@ -754,6 +820,42 @@ namespace SAE24
                 {
                     filtre += "nom like '" + txtNomEspece.Text + "%'";
                 }
+
+                // Si les trois filtres sont choisis ou si UNIQUEMENT les deux filtres Nom et Planete sont choisi
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty && cboPlanete.SelectedIndex != 0) || (cboPlanete.SelectedIndex != 0 && txtNomEspece.Text != string.Empty))
+                {
+                    filtre += " and ";
+                }
+                // pour la planète
+                if (cboPlanete.SelectedIndex != 0)
+                {
+                    string temp = filtre + "(";
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Habiter"].Rows)
+                    {
+                        if (cboPlanete.SelectedValue != null && cboPlanete.SelectedValue.ToString() == dr[0].ToString())
+                        {
+                            temp += "id = " + dr[1] + " or ";
+                        }
+                    }
+                    // on enlève le and de trop
+
+                    if (temp != (filtre + "("))
+                    {
+                        filtre = temp.Remove(temp.Length - 3);
+                        filtre += ")";
+                    }
+                    else
+                    {
+                        resultatExiste = false;
+                    }
+
+                }
+                if (cboCouleur.SelectedIndex > 0 && cboCouleur.SelectedIndex != 0 && !resultatExiste)
+                {
+                    string texte = filtre;
+                    filtre = texte.Remove(texte.Length - 5);
+                }
+                
                 tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
                 // Si le filtre ne correspond à aucune espèce
                 if (tabTemp.Length == 0)
@@ -911,6 +1013,7 @@ namespace SAE24
             grpEspeces.Visible = false;
             pnlAllies.Visible = false;
             pnlEnnemis.Visible = false;
+            pnlStats.Visible = false;
             DataRow[] tabTemp;
             DataRow[] clone;
             DataTable dt = new DataTable();
@@ -918,19 +1021,17 @@ namespace SAE24
             bool filtreEstPresent = false;
             bool resultatExiste = true;
 
-            if (ckCouleur.Checked || txtNomEspece.Text != string.Empty)
+            if (cboCouleur.SelectedIndex != 0 || txtNomEspece.Text != string.Empty || cboPlanete.SelectedIndex != 0)
             {
-                // Création d'une table temporaire avec un premier filtre qui ne sélectionne que les espèces correspondants à la couleur choisie
-                // On crée le filtre au fur et à mesure
+                // On ajuste le filtre en fonction des indications de recherche
                 string filtre = "";
                 // Pour la couleur
-                if (ckCouleur.Checked)
+                if (cboCouleur.SelectedIndex > 0)
                 {
-
                     filtre += "couleur = '" + cboCouleur.SelectedValue + "'";
                 }
-                // Si les deux filtres sont sélectionnés
-                if (ckCouleur.Checked && txtNomEspece.Text != string.Empty)
+                // Si deux filtres sont choisis, on rajoute un 'and' dans le filtre pour relié les deux conditions
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty) || (cboCouleur.SelectedIndex > 0 && cboPlanete.SelectedIndex != 0))
                 {
                     filtre += " and ";
                 }
@@ -939,6 +1040,42 @@ namespace SAE24
                 {
                     filtre += "nom like '" + txtNomEspece.Text + "%'";
                 }
+
+                // Si les trois filtres sont choisis ou si UNIQUEMENT les deux filtres Nom et Planete sont choisi
+                if ((cboCouleur.SelectedIndex != 0 && txtNomEspece.Text != string.Empty && cboPlanete.SelectedIndex != 0) || (cboPlanete.SelectedIndex != 0 && txtNomEspece.Text != string.Empty))
+                {
+                    filtre += " and ";
+                }
+                // pour la planète
+                if (cboPlanete.SelectedIndex != 0)
+                {
+                    string temp = filtre + "(";
+                    foreach (DataRow dr in MesDatas.DsGlobal.Tables["Habiter"].Rows)
+                    {
+                        if (cboPlanete.SelectedValue != null && cboPlanete.SelectedValue.ToString() == dr[0].ToString())
+                        {
+                            temp += "id = " + dr[1] + " or ";
+                        }
+                    }
+                    // on enlève le and de trop
+
+                    if (temp != (filtre + "("))
+                    {
+                        filtre = temp.Remove(temp.Length - 3);
+                        filtre += ")";
+                    }
+                    else
+                    {
+                        resultatExiste = false;
+                    }
+
+                }
+                if (cboCouleur.SelectedIndex > 0 && cboCouleur.SelectedIndex != 0 && !resultatExiste)
+                {
+                    string texte = filtre;
+                    filtre = texte.Remove(texte.Length - 5);
+                }
+
                 tabTemp = MesDatas.DsGlobal.Tables["Espece"].Select(filtre);
                 // Si le filtre ne correspond à aucune espèce
                 if (tabTemp.Length == 0)
@@ -1100,6 +1237,12 @@ namespace SAE24
                 SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
                 da.Fill(MesDatas.DsGlobal, "Couleur");
 
+                // ComboBox Planete
+                string request2 = @"select nom from Planete";
+                SQLiteCommand cmd2 = new SQLiteCommand(request2, co);
+                SQLiteDataAdapter da2 = new SQLiteDataAdapter(cmd2);
+                da2.Fill(MesDatas.DsGlobal, "RecherchePlanete");
+
             }
             catch (Exception ex)
             {
@@ -1109,30 +1252,38 @@ namespace SAE24
             {
                 Connexion.FermerConnexion();
             }
+            // Rajout d'une valeur Toutes pour les espèces
+            DataRow row = MesDatas.DsGlobal.Tables["Couleur"].NewRow();
+            row["couleur"] = "Toutes";
+
+            MesDatas.DsGlobal.Tables["Couleur"].Rows.InsertAt(row, 0);
+
+            // Rajout d'une valeur Toutes pour les planètes
+            DataRow row2 = MesDatas.DsGlobal.Tables["RecherchePlanete"].NewRow();
+            row2["nom"] = "Toutes";
+
+            MesDatas.DsGlobal.Tables["RecherchePlanete"].Rows.InsertAt(row2, 0);
+
+            // Remplissage des Comboboxes
             cboCouleur.DataSource = MesDatas.DsGlobal.Tables["Couleur"];
             cboCouleur.DisplayMember = "couleur";
             cboCouleur.ValueMember = "couleur";
 
-        }
+            cboPlanete.DataSource = MesDatas.DsGlobal.Tables["RecherchePlanete"];
+            cboPlanete.DisplayMember = "nom";
+            cboPlanete.ValueMember = "nom";
 
-        private void cboNom_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            
+            rdbAllies.Checked = false;
+            rdbEnnemis.Checked = false;
+
         }
 
         private void cboCouleur_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-        }
-
-        private void cboCouleur_SelectedValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void ckCouleur_CheckedChanged(object sender, EventArgs e)
-        {
-            
+            if (estSurEspece)
+            {
+                afficherFiltre();
+            }
         }
 
         private void txtNomEspece_KeyPress(object sender, KeyPressEventArgs e)
@@ -1153,17 +1304,340 @@ namespace SAE24
             }
 
             // Back/Delete : Pour supprimer des caractères
-            if (e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete)
+            if (e.KeyChar == (char)Keys.Back || e.KeyChar == (char)Keys.Delete || e.KeyChar == '-') 
             {
                 e.Handled = false;
             }
         }
 
-        private void txtNomEspece_MouseClick(object sender, MouseEventArgs e)
+
+        private void cboPlanete_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (estSurEspece)
+            {
+                afficherFiltre();
+            }
+        }
+
+        private void btnStats_Click(object sender, EventArgs e)
+        {
+            ChargementStats();
+
+            pnlEspeces.Visible = false;
+            grpEspeces.Visible = false;
+            pnlAllies.Visible = false;
+            pnlEnnemis.Visible = false;
+            pnlStats.Visible = true;
+
+            estSurEspece = false;
+
+            FiltrerListesMembresMemeMission();
+            FiltrerInformateursMoinsSous();
+        }
+
+        private void ChargementStats()
+        {
+            int height = 200;
+            int width = 500;
+
+            int top = cboStats1.Top + 35;
+            int left = cboStats1.Left;
+
+            // Chargement de la ComboBox Stats pour l'affichage des premières données statistiques
+            co = Connexion.Connec;
+            try
+            {
+                // ComboBox Stats Membres
+                string request = @"select nom, matricule from Membre";
+                SQLiteCommand cmd = new SQLiteCommand(request, co);
+                SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+                da.Fill(MesDatas.DsGlobal, "ListeMembres");
+
+                // Combobox Stats Informateurs
+                string requestInfos = @"select concat(nomPlanete, numero) as Mission from Mission";
+                SQLiteCommand cmdInfos = new SQLiteCommand(requestInfos, co);
+                SQLiteDataAdapter daInfos = new SQLiteDataAdapter(cmdInfos);
+                daInfos.Fill(MesDatas.DsGlobal, "ListeMissions");
+
+                // 2e requete
+                // Pour les missions comportant un équipage de plus de 10 personnes, indiquer la liste des dépenses effectuées, ainsi que les budgets initiaux et actuels
+                string req2 = @"SELECT m.nomPlanete || '-' || m.numero as 'Mission', sum(d.montant) as 'Dépenses', m.budget as 'Budget initial', m.budget - sum(d.montant) as 'Budget restant'
+                FROM Depense d JOIN Mission m ON d.nomPlanete = m.nomPlanete AND d.numeroMission = m.numero
+                WHERE m.nbMembreRequis > 10 
+                GROUP BY m.nomPlanete, m.numero";
+                SQLiteCommand cmd2 = new SQLiteCommand(req2, co);
+                SQLiteDataAdapter da2 = new SQLiteDataAdapter(cmd2);
+                da2.Fill(MesDatas.DsGlobal, "DepensesDix");
+
+                DataGridView dgvStats2 = new DataGridView();
+                dgvStats2.DataSource = MesDatas.DsGlobal.Tables["DepensesDix"];
+
+                Label lblStats2 = new Label();
+                lblStats2.AutoSize = true;
+                lblStats2.Text = "Liste des dépenses effectuées et des budgets initiaux et actuels (pour les missions de plus de 10 personnes)";
+                lblStats2.Top = top;
+                lblStats2.Left = left;
+
+                pnlStats.Controls.Add(lblStats2);
+                top += 20;
+
+                dgvStats2.Top = top;
+                dgvStats2.Left = left;
+                dgvStats2.Height = height;
+                dgvStats2.Width = width;
+                dgvStats2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+                //dgvStats2.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+
+                pnlStats.Controls.Add(dgvStats2);
+
+                // 3e requete
+                // Pour chaque planète, indiquer le nombre de missions qui y ont déjà eu lieu. Certaines planètes n’ont jamais fait l’objet de mission, elles devront néanmoins apparaître
+                string req3 = @"SELECT p.nom, count(m.nomPlanete)
+                FROM Planete p LEFT JOIN Mission m ON p.nom = m.nomPlanete
+                GROUP BY p.nom;";
+                SQLiteCommand cmd3 = new SQLiteCommand(req3, co);
+                SQLiteDataAdapter da3 = new SQLiteDataAdapter(cmd3);
+                da3.Fill(MesDatas.DsGlobal, "ListePlaneteMissions");
+
+                DataGridView dgvStats3 = new DataGridView();
+                dgvStats3.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+
+                top += dgvStats2.Height + 20;
+                Label lblStats3 = new Label();
+                lblStats3.AutoSize = true;
+                lblStats3.Text = "Nombre de missions déjà effectuées pour chaque planète";
+                lblStats3.Top = top;
+                lblStats3.Left = left;
+                pnlStats.Controls.Add(lblStats3);
+                top += 20;
+
+                dgvStats3.Top = top;
+                dgvStats3.Left = left;
+                dgvStats3.Height = height;
+                dgvStats3.Width = width;
+                dgvStats3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+                pnlStats.Controls.Add(dgvStats3);
+
+
+                // 4e requete
+                // Liste des dépenses (date, motif et montant concaténés dans une seule colonne intitulée « Dépenses les plus importantes »),
+                // nom de la mission et nom et prénom du chef de la mission, pour les dépenses les plus élevées de chaque mission. 
+
+                string req4 = @"SELECT d.dateD || ' - ' || d.motif || ': ' || d.montant || '€' AS [Dépenses les plus importantes], 
+d.nomPlanete || '-' || d.numeroMission AS [Nom de la mission],
+me.nom || ' ' || me.prenom AS [Chef de mission]
+FROM Depense d 
+JOIN Mission m ON d.nomPlanete = m.nomPlanete AND d.numeroMission = m.numero
+JOIN Membre me ON me.matricule = m.matriculeChef
+GROUP BY d.nomPlanete, d.numeroMission";
+                SQLiteCommand cmd4 = new SQLiteCommand(req4, co);
+                SQLiteDataAdapter da4 = new SQLiteDataAdapter(cmd4);
+                da4.Fill(MesDatas.DsGlobal, "ListeDepenses");
+
+                DataGridView dgvStats4 = new DataGridView();
+                dgvStats4.DataSource = MesDatas.DsGlobal.Tables["ListeDepenses"];
+
+                top += dgvStats3.Height + 20;
+                Label lblStats4 = new Label();
+                lblStats4.AutoSize = true;
+                lblStats4.Text = "Informations sur les dépenses les plus élevées de chaque mission";
+                lblStats4.Top = top;
+                lblStats4.Left = left;
+                pnlStats.Controls.Add(lblStats4);
+                top += 20;
+
+                dgvStats4.Top = top;
+                dgvStats4.Left = left;
+                dgvStats4.Height = height;
+                dgvStats4.Width = width;
+                dgvStats4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+                pnlStats.Controls.Add(dgvStats4);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Connexion.FermerConnexion();
+            }
+
+            cboStats1.DataSource = MesDatas.DsGlobal.Tables["ListeMembres"];
+            cboStats1.DisplayMember = "nom";
+            cboStats1.ValueMember = "matricule";
+
+            cboStats2.DataSource = MesDatas.DsGlobal.Tables["ListeMissions"];
+            cboStats2.DisplayMember = "Mission";
+            cboStats2.ValueMember = "Mission";
 
         }
 
+        private void FiltrerListesMembresMemeMission()
+        {
+            if (cboStats1.SelectedValue == null) return;
+            string matricule = cboStats1.SelectedValue.ToString();
+
+            int height = 130;
+            int width = 500;
+            int left = cboStats1.Left;
+            int top = 25;
+
+            // Supprimer uniquement l'ancien dgv et label de la stat1 s'ils existent
+            Control ancienDgv = pnlStats.Controls["dgvStats1"];
+            Control ancienLbl = pnlStats.Controls["lblStats1"];
+            if (ancienDgv != null) pnlStats.Controls.Remove(ancienDgv);
+            if (ancienLbl != null) pnlStats.Controls.Remove(ancienLbl);
+
+            co = Connexion.Connec;
+            DataTable table = new DataTable();
+
+            try
+            {
+                string req = $@"SELECT DISTINCT m.matricule, m.nom, m.prenom, case when m.matricule like 'M%' then 'Militaire' else 'civil' end as 'Type'
+                                FROM Composer c
+                                JOIN Membre m ON c.matriculeMembre = m.matricule
+                                WHERE c.matriculeMembre != '{matricule}'
+                                AND EXISTS (
+                                    SELECT 1 FROM Composer c1
+                                    WHERE c1.matriculeMembre = '{matricule}'
+                                    AND c1.nomPlanete = c.nomPlanete
+                                    AND c1.numeroMission = c.numeroMission
+                                )
+                                ORDER BY m.matricule";
+
+                SQLiteCommand cmd = new SQLiteCommand(req, co);
+                SQLiteDataReader reader = cmd.ExecuteReader();
+                table.Load(reader);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : " + ex.Message);
+            }
+
+            Label lblStat1 = new Label();
+            lblStat1.Name = "lblStats1"; 
+            lblStat1.AutoSize = true;
+            lblStat1.Left = left;
+            lblStat1.Top = 5;
+            lblStat1.Text = "Membres ayant partagé une mission avec le membre sélectionné";
+            pnlStats.Controls.Add(lblStat1);
+
+            DataGridView dgvStats1 = new DataGridView();
+            dgvStats1.Name = "dgvStats1";
+            dgvStats1.DataSource = table;
+            dgvStats1.Height = height;
+            dgvStats1.Width = width;
+            dgvStats1.Left = left;
+            dgvStats1.Top = top;
+            dgvStats1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            pnlStats.Controls.Add(dgvStats1);
+
+            filtrePossible = true;
+        }
+
+        private void FiltrerInformateursMoinsSous()
+        {
+            // 5e requete
+            // Quels sont les informateurs (nom de code, espèce d’origine, somme totale reçue) qui ont perçu le moins d’argent pendant une mission donnée ? 
+
+            if (cboStats2.SelectedValue == null) return;
+            int height = 220;
+            int width = 500;
+            int left = cboStats1.Left;
+
+            // Récupération du nom de la planète
+            string nomPlanete = cboStats2.SelectedValue.ToString().Substring(0, cboStats2.SelectedValue.ToString().Length - 1);
+
+            // Récupération du numéro de la mission sur ladite planète
+            string numeroMission = Regex.Match(cboStats2.SelectedValue.ToString(), @"\d+").Value;
+
+            // Supprimer uniquement l'ancien dgv et label de la stat1 s'ils existent
+            Control ancienDgv = pnlStats.Controls["dgvStats5"];
+            Control ancienLbl = pnlStats.Controls["lblStats5"];
+            if (ancienDgv != null) pnlStats.Controls.Remove(ancienDgv);
+            if (ancienLbl != null) pnlStats.Controls.Remove(ancienLbl);
+
+            int top = ancienLbl != null ? ancienLbl.Top : 920;
+
+            co = Connexion.Connec;
+            DataTable table = new DataTable();
+            try
+            {
+                string req5 = $@"SELECT t.nomCode AS [Nom de code], t.nomEspece AS [Nom de l'espèce], t.totalVersee [Total versé]
+                    FROM (
+                        SELECT i.nomCode, e.nom AS nomEspece, SUM(c.sommeVersee) AS totalVersee
+                        FROM Contact c
+                        JOIN Informateur i ON c.nomCodeInformateur = i.nomCode
+                        JOIN Espece e ON i.idEspeceEnnemi = e.id
+                        WHERE c.nomPlanete = '{nomPlanete}'
+                        AND c.numeroMission = {numeroMission}
+                        GROUP BY i.nomCode, e.nom
+                    ) t
+                    WHERE t.totalVersee = (
+                        SELECT MIN(totalVersee)
+                        FROM (
+                            SELECT SUM(c.sommeVersee) AS totalVersee
+                            FROM Contact c
+                            WHERE c.nomPlanete = '{nomPlanete}'
+                              AND c.numeroMission = {numeroMission}
+                            GROUP BY c.nomCodeInformateur
+                        )
+                    )";
+                SQLiteCommand cmd5 = new SQLiteCommand(req5, co);
+                SQLiteDataReader reader = cmd5.ExecuteReader();
+                table.Load(reader);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erreur : " + ex.Message);
+                return;
+            }
+            finally
+            {
+                Connexion.FermerConnexion();
+            }
+
+            Label lblStats5 = new Label();
+            lblStats5.Name = "lblStats5";
+            lblStats5.AutoSize = true;
+            lblStats5.Text = "Informateurs qui ont perçu le moins d'argent pendant une mission donnée";
+            lblStats5.Top = top;
+            lblStats5.Left = left;
+            pnlStats.Controls.Add(lblStats5);
+            top += 20;
+
+            DataGridView dgvStats5 = new DataGridView();
+            dgvStats5.Name = "dgvStats5";
+            dgvStats5.DataSource = table;
+            dgvStats5.Top = top;
+            dgvStats5.Left = left;
+            dgvStats5.Height = height;
+            dgvStats5.Width = width;
+            dgvStats5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            pnlStats.Controls.Add(dgvStats5);
+
+            filtrePossible = true;
+        }
+        private void cboStats1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filtrePossible)
+            {
+                FiltrerListesMembresMemeMission();
+            }
+            
+        }
+
+        private void ChargementLogo()
+        {
+            pbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbLogo.Image = Image.FromFile("../../Images/Logo/STARGATE.jpg");
+        }
         private void cboFiltrePlanete_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
@@ -1177,6 +1651,13 @@ namespace SAE24
 
         }
 
+        private void cboStats2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filtrePossible)
+            {
+                FiltrerInformateursMoinsSous();
+            }
+        }
         private void btntriEtat_Click(object sender, EventArgs e)
         {
             if (triEtat == 0)
