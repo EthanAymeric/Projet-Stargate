@@ -30,7 +30,28 @@ namespace SAE24
 
         private void FormCreationMission_Load(object sender, EventArgs e)
         {
+            //Mettre en place la couleur de base du thème sur le formulaire
+            BackColor = Couleur.getBackground;
+            ForeColor = Couleur.getText;
+            foreach (Control c in Controls)
+            {
+                UpdateColorControls(c);
+            }
+
             load();
+        }
+
+        private void UpdateColorControls(Control c)
+        {
+            if (c is Label)
+            {
+                c.ForeColor = Couleur.getText;
+            }
+            if (c is System.Windows.Forms.Button)
+            {
+                c.BackColor = Couleur.getButton;
+                c.ForeColor = Couleur.getText;
+            }
         }
 
         private void load()

@@ -20,7 +20,7 @@ Chef de Projet : [Guillaume Niederlaender](https://git.unistra.fr/gniederlaender
 - [ ] Tableau de bord 
     - [ ] Faire un filtre pour missions en cours, missions terminées, etc...
 - [x] Création de mission 
-    - [ ] Appliquer le thème 
+    - [x] Appliquer le thème 
 - [ ] Visualisation et mise à jour des missions
     - [ ] Vérifier qu'on ne dépasse pas le budget lors d'ajout de dépenses
     - [ ] Boutons ajout d'événement et ajout de dépense inversés 

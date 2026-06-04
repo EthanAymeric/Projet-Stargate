@@ -18,7 +18,7 @@ namespace SAE24
         public FormConnexion()
         {
             InitializeComponent();
-    }
+        }
 
         private void genererErreurLoginMdp()
         {
@@ -48,7 +48,7 @@ namespace SAE24
                 return;
             }
 
-            SQLiteCommand cmd = new SQLiteCommand($"select mdp from Admin where login = '{login}'", 
+            SQLiteCommand cmd = new SQLiteCommand($"select mdp from Admin where login = '{login}'",
                 Connexion.Connec);
             Object obj = cmd.ExecuteScalar();
 
@@ -85,7 +85,7 @@ namespace SAE24
             // supprime l'erreur 
             errorProvider.SetError(textBoxLogin, "");
 
-            e.Handled = e.KeyChar == (char)Keys.Space; 
+            e.Handled = e.KeyChar == (char)Keys.Space;
         }
 
         private void textBoxMdp_KeyPress(object sender, KeyPressEventArgs e)
@@ -97,6 +97,30 @@ namespace SAE24
         private void checkBoxAfficherMdp_CheckedChanged(object sender, EventArgs e)
         {
             textBoxMdp.UseSystemPasswordChar = !checkBoxAfficherMdp.Checked;
+        }
+
+        private void FormConnexion_Load(object sender, EventArgs e)
+        {
+            //Mettre en place la couleur de base du thème sur le formulaire
+            BackColor = Couleur.getBackground;
+            ForeColor = Couleur.getText;
+            foreach (Control c in Controls)
+            {
+                UpdateColorControls(c);
+            }
+        }
+
+        private void UpdateColorControls(Control c)
+        {
+            if (c is Label)
+            {
+                c.ForeColor = Couleur.getText;
+            }
+            if (c is System.Windows.Forms.Button)
+            {
+                c.BackColor = Couleur.getButton;
+                c.ForeColor = Couleur.getText;
+            }
         }
     }
 }
