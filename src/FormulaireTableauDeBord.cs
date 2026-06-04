@@ -30,6 +30,7 @@ namespace SAE24
             InfosEspeces();
             ChargementElementsGrpEspeces();
             ModifDate();
+            ActualisationTDB();
 
             //Mettre en place la couleur de base du thème sur le formulaire
             BackColor = Couleur.getBackground;
@@ -43,7 +44,7 @@ namespace SAE24
         private void UpdateDataSet()
         {
             // Sert à mettre à jour le DataSet quand il y a un ajout de mission
-            MesDatas.DsGlobal.Clear();
+            MesDatas.DsGlobal.Reset();
             co = Connexion.Connec;
             try
             {
@@ -54,7 +55,7 @@ namespace SAE24
                     string request = $"SELECT * FROM {r[2].ToString()}";
                     SQLiteCommand cmd = new SQLiteCommand(request, co);
                     SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
-                    da.Update(MesDatas.DsGlobal, r[2].ToString());
+                    da.Fill(MesDatas.DsGlobal, r[2].ToString());
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
