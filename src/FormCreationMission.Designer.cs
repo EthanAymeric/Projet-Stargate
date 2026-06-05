@@ -64,6 +64,7 @@
             this.labelMembresRestants = new System.Windows.Forms.Label();
             this.checkedListBoxMembres = new System.Windows.Forms.CheckedListBox();
             this.labelAjoutMembres = new System.Windows.Forms.Label();
+            this.btnCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.groupBox.SuspendLayout();
@@ -236,7 +237,7 @@
             // 
             this.labelTonnes.AutoSize = true;
             this.labelTonnes.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.labelTonnes.Location = new System.Drawing.Point(1202, 91);
+            this.labelTonnes.Location = new System.Drawing.Point(1317, 78);
             this.labelTonnes.Name = "labelTonnes";
             this.labelTonnes.Size = new System.Drawing.Size(76, 24);
             this.labelTonnes.TabIndex = 18;
@@ -316,9 +317,11 @@
             this.groupBox.Controls.Add(this.listBoxCaptures);
             this.groupBox.Controls.Add(this.comboBoxEnnemis);
             this.groupBox.Controls.Add(this.labelObjectifCaptures);
+            this.groupBox.Controls.Add(this.labelTonnes);
             this.groupBox.Controls.Add(this.labelMembresRestants);
             this.groupBox.Controls.Add(this.checkedListBoxMembres);
             this.groupBox.Controls.Add(this.labelAjoutMembres);
+            this.groupBox.Controls.Add(this.btnCancel);
             this.groupBox.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.groupBox.Location = new System.Drawing.Point(12, 11);
             this.groupBox.Name = "groupBox";
@@ -424,18 +427,30 @@
             this.labelAjoutMembres.TabIndex = 0;
             this.labelAjoutMembres.Text = "Ajout de membres";
             // 
+            // btnCancel
+            // 
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancel.Location = new System.Drawing.Point(1248, 489);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(214, 59);
+            this.btnCancel.TabIndex = 26;
+            this.btnCancel.Text = "Annuler";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
             // FormCreationMission
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1486, 590);
+            this.Controls.Add(this.groupBox);
             this.Controls.Add(this.comboBoxChef);
             this.Controls.Add(this.labelChef);
             this.Controls.Add(this.labelEuro);
             this.Controls.Add(this.textBoxBudget);
             this.Controls.Add(this.labelBudget);
             this.Controls.Add(this.buttonValider);
-            this.Controls.Add(this.labelTonnes);
             this.Controls.Add(this.textBoxDatabaz);
             this.Controls.Add(this.labelDatabaz);
             this.Controls.Add(this.labelMembres);
@@ -452,7 +467,6 @@
             this.Controls.Add(this.comboBoxPlanete);
             this.Controls.Add(this.labelPlanete);
             this.Controls.Add(this.richTextBoxFeuilleRoute);
-            this.Controls.Add(this.groupBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -505,5 +519,6 @@
         private System.Windows.Forms.TextBox textBoxNbCaptures;
         private System.Windows.Forms.Button buttonAjouterCapture;
         private System.Windows.Forms.Button buttonValiderCapturesMembres;
+        private System.Windows.Forms.Button btnCancel;
     }
 }

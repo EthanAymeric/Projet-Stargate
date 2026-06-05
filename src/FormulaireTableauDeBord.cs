@@ -340,6 +340,7 @@ namespace LittlePlanete
                 AjoutRelation();
                 ActualisationTDB(cboFiltrePlanete.Text, cboFiltreEtat.Text);
             }
+            else if (formCreationMission.DialogResult == DialogResult.Cancel) { return; }
             estSurEspece = false;
         }
 

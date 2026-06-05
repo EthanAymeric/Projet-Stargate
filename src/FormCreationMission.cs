@@ -22,6 +22,8 @@ namespace LittlePlanete
         private string planete;
         private int numeroMission;
         private bool fermetureAutorisee;
+        private bool ajoutEffectué = false;
+        SQLiteTransaction transaction;
 
         public FormCreationMission()
         {
@@ -124,6 +126,27 @@ namespace LittlePlanete
             comboBoxChef.ValueMember = "Value";
         }
 
+        private void nbMembreDispoTrackBar()
+        {
+            // pour éviter les problèmes de valeur supérieure au maximum après le recalcul du maximum
+            trackBarNbMembres.Value = 1; 
+            string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
+            string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
+
+            SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
+            cmd.CommandText = $@"SELECT count(DISTINCT me.matricule)
+                                FROM Membre me
+                                WHERE me.matricule NOT IN (
+                                    SELECT c.matriculeMembre
+                                    FROM Composer c
+                                    JOIN Mission mi ON c.nomPlanete = mi.nomPlanete AND c.numeroMission = mi.numero
+                                    WHERE mi.dateDepart <= '{retour}' AND mi.dateRetour >= '{depart}')";
+
+            object res = cmd.ExecuteScalar();
+
+            trackBarNbMembres.Maximum = Convert.ToInt32(res) -1;
+        }
+
         private int nbMissionsPlanete(String planete)
         {
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
@@ -144,6 +167,7 @@ namespace LittlePlanete
         private void dateTimePickerDepart_ValueChanged(object sender, EventArgs e)
         {
             reloadComboBoxChef();
+            nbMembreDispoTrackBar();
             dateTimePickerRetour.MinDate = dateTimePickerDepart.Value;
             int nbJours = calculerTempsMission().Days;
 
@@ -158,6 +182,7 @@ namespace LittlePlanete
         private void dateTimePickerRetour_ValueChanged(object sender, EventArgs e)
         {
             reloadComboBoxChef();
+            nbMembreDispoTrackBar();
             dateTimePickerDepart.MaxDate = dateTimePickerRetour.Value;
             int nbJours = calculerTempsMission().Days;
 
@@ -216,36 +241,47 @@ namespace LittlePlanete
                 return;
             }
 
-            planete = comboBoxPlanete.SelectedItem.ToString();
-            numeroMission = nbMissionsPlanete(planete) + 1;
-            this.nbMembres = trackBarNbMembres.Value;
-            this.membresRestants = this.nbMembres - 1; // pour compter le chef de mission avec
-            string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
-            string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
-            string matriculeChef = comboBoxChef.SelectedValue.ToString();
-            string feuille = richTextBoxFeuilleRoute.Text;
-            feuille = feuille.Replace("'", "''");
-            int databaz = int.Parse(this.textBoxDatabaz.Text);
-            int budget = int.Parse(textBoxBudget.Text);
+            transaction = Connexion.Connec.BeginTransaction();
+            try
+            {
 
-            SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
-            cmd.CommandText = $@"insert into Mission (nomPlanete, numero, nbMembreRequis, dateDepart, dateRetour, matriculeChef, feuilleDeRoute, objectifDatabaz, budget) 
-values ('{planete}', {numeroMission}, {nbMembres}, '{depart}', '{retour}', '{matriculeChef}', '{feuille}', {databaz}, {budget})";
+                planete = comboBoxPlanete.SelectedItem.ToString();
+                numeroMission = nbMissionsPlanete(planete) + 1;
+                this.nbMembres = trackBarNbMembres.Value;
+                this.membresRestants = this.nbMembres - 1; // pour compter le chef de mission avec
+                string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
+                string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
+                string matriculeChef = comboBoxChef.SelectedValue.ToString();
+                string feuille = richTextBoxFeuilleRoute.Text;
+                feuille = feuille.Replace("'", "''");
+                int databaz = int.Parse(this.textBoxDatabaz.Text);
+                int budget = int.Parse(textBoxBudget.Text);
 
-            cmd.ExecuteNonQuery();
+                SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
+                cmd.CommandText = $@"insert into Mission (nomPlanete, numero, nbMembreRequis, dateDepart, dateRetour, matriculeChef, feuilleDeRoute, objectifDatabaz, budget) 
+                values ('{planete}', {numeroMission}, {nbMembres}, '{depart}', '{retour}', '{matriculeChef}', '{feuille}', {databaz}, {budget})";
 
-            cmd = new SQLiteCommand(Connexion.Connec);
-            cmd.CommandText = $@"INSERT INTO Composer (nomPlanete, numeroMission, matriculeMembre) 
+                cmd.ExecuteNonQuery();
+
+                cmd = new SQLiteCommand(Connexion.Connec);
+                cmd.CommandText = $@"INSERT INTO Composer (nomPlanete, numeroMission, matriculeMembre) 
                                 SELECT '{planete}', {numeroMission}, '{matriculeChef}'
                                 WHERE NOT EXISTS (
                                     SELECT 1 FROM Composer WHERE nomPlanete = '{planete}'
                                     AND numeroMission = {numeroMission}
                                     AND matriculeMembre = '{matriculeChef}')";
 
-            if (cmd.ExecuteNonQuery() == 1) {
-                groupBox.Visible = true;
-                fermetureAutorisee = false;
-                part2();
+                if (cmd.ExecuteNonQuery() == 1)
+                {
+                    groupBox.Visible = true;
+                    fermetureAutorisee = false;
+                    part2();
+                }
+            }
+            catch (Exception ex)
+            {
+                transaction.Rollback();
+                MessageBox.Show($"Erreur lors de l'insertion : {ex.Message}");
             }
         }
 
@@ -315,7 +351,7 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
                 checkedCount--;
 
             // Si on dépasse la limite, on annule le cochage
-            if (checkedCount > this.membresRestants)
+            if (checkedCount > this.nbMembres)
             {
                 e.NewValue = CheckState.Unchecked;
                 return;
@@ -392,17 +428,26 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
 
         private void FormCreationMission_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (!fermetureAutorisee)
+            if (!fermetureAutorisee && !ajoutEffectué)
             {
                 e.Cancel = true;
                 MessageBox.Show("Les membres ainsi que les objectifs de captures doivent être renseignés");
             }
-            else
+            else if (ajoutEffectué)
             {
                 this.DialogResult = DialogResult.OK;
             }
+            else if (!ajoutEffectué)
+            {
+                this.DialogResult = DialogResult.Cancel;
+            }
         }
 
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            fermetureAutorisee = true;
+            DialogResult = DialogResult.Cancel;
+        }
 
         private void buttonValiderCapturesMembres_Click(object sender, EventArgs e)
         {
@@ -426,8 +471,6 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
 
                 cmd.ExecuteNonQuery();
             }
-
-            SQLiteTransaction transaction = Connexion.Connec.BeginTransaction();
 
             try
             {
@@ -453,6 +496,7 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
                     cmdInsert.ExecuteNonQuery();
                 }
 
+                ajoutEffectué = true;
                 transaction.Commit();
             }
             catch (Exception ex)
