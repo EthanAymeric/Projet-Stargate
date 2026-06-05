@@ -44,7 +44,7 @@
             // 
             this.buttonConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnexion.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.buttonConnexion.Location = new System.Drawing.Point(245, 276);
+            this.buttonConnexion.Location = new System.Drawing.Point(232, 200);
             this.buttonConnexion.Name = "buttonConnexion";
             this.buttonConnexion.Size = new System.Drawing.Size(183, 46);
             this.buttonConnexion.TabIndex = 0;
@@ -95,7 +95,7 @@
             // 
             this.buttonAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAnnuler.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.buttonAnnuler.Location = new System.Drawing.Point(27, 276);
+            this.buttonAnnuler.Location = new System.Drawing.Point(27, 200);
             this.buttonAnnuler.Name = "buttonAnnuler";
             this.buttonAnnuler.Size = new System.Drawing.Size(137, 46);
             this.buttonAnnuler.TabIndex = 5;
@@ -123,7 +123,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(462, 334);
+            this.ClientSize = new System.Drawing.Size(462, 279);
             this.Controls.Add(this.checkBoxAfficherMdp);
             this.Controls.Add(this.buttonAnnuler);
             this.Controls.Add(this.textBoxMdp);

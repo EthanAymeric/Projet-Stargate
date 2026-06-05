@@ -54,6 +54,7 @@
             this.comboBoxChef = new System.Windows.Forms.ComboBox();
             this.labelChef = new System.Windows.Forms.Label();
             this.groupBox = new System.Windows.Forms.GroupBox();
+            this.buttonValiderCapturesMembres = new System.Windows.Forms.Button();
             this.buttonAjouterCapture = new System.Windows.Forms.Button();
             this.textBoxNbCaptures = new System.Windows.Forms.TextBox();
             this.listBoxCaptures = new System.Windows.Forms.ListBox();
@@ -62,7 +63,6 @@
             this.labelMembresRestants = new System.Windows.Forms.Label();
             this.checkedListBoxMembres = new System.Windows.Forms.CheckedListBox();
             this.labelAjoutMembres = new System.Windows.Forms.Label();
-            this.buttonValiderCapturesMembres = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarNbMembres)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.groupBox.SuspendLayout();
@@ -242,6 +242,7 @@
             // 
             // buttonValider
             // 
+            this.buttonValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonValider.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.buttonValider.Location = new System.Drawing.Point(1038, 202);
             this.buttonValider.Name = "buttonValider";
@@ -317,12 +318,23 @@
             this.groupBox.Controls.Add(this.checkedListBoxMembres);
             this.groupBox.Controls.Add(this.labelAjoutMembres);
             this.groupBox.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.groupBox.Location = new System.Drawing.Point(12, 11);
+            this.groupBox.Location = new System.Drawing.Point(12, 12);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(1316, 492);
             this.groupBox.TabIndex = 25;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Objectifs et Membres";
+            // 
+            // buttonValiderCapturesMembres
+            // 
+            this.buttonValiderCapturesMembres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonValiderCapturesMembres.Location = new System.Drawing.Point(1089, 408);
+            this.buttonValiderCapturesMembres.Name = "buttonValiderCapturesMembres";
+            this.buttonValiderCapturesMembres.Size = new System.Drawing.Size(208, 62);
+            this.buttonValiderCapturesMembres.TabIndex = 10;
+            this.buttonValiderCapturesMembres.Text = "Valider";
+            this.buttonValiderCapturesMembres.UseVisualStyleBackColor = true;
+            this.buttonValiderCapturesMembres.Click += new System.EventHandler(this.buttonValiderCapturesMembres_Click);
             // 
             // buttonAjouterCapture
             // 
@@ -407,17 +419,6 @@
             this.labelAjoutMembres.Size = new System.Drawing.Size(186, 24);
             this.labelAjoutMembres.TabIndex = 0;
             this.labelAjoutMembres.Text = "Ajout de membres";
-            // 
-            // buttonValiderCapturesMembres
-            // 
-            this.buttonValiderCapturesMembres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonValiderCapturesMembres.Location = new System.Drawing.Point(1089, 408);
-            this.buttonValiderCapturesMembres.Name = "buttonValiderCapturesMembres";
-            this.buttonValiderCapturesMembres.Size = new System.Drawing.Size(208, 62);
-            this.buttonValiderCapturesMembres.TabIndex = 10;
-            this.buttonValiderCapturesMembres.Text = "Valider et créer une autre mission";
-            this.buttonValiderCapturesMembres.UseVisualStyleBackColor = true;
-            this.buttonValiderCapturesMembres.Click += new System.EventHandler(this.buttonValiderCapturesMembres_Click);
             // 
             // FormCreationMission
             // 
