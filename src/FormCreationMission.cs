@@ -218,8 +218,8 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
 
             planete = comboBoxPlanete.SelectedItem.ToString();
             numeroMission = nbMissionsPlanete(planete) + 1;
-            this.nbMembres = trackBarNbMembres.Value - 1; // Pour compter le chef de mission 
-            this.membresRestants = this.nbMembres;
+            this.nbMembres = trackBarNbMembres.Value;
+            this.membresRestants = this.nbMembres - 1; // pour compter le chef de mission avec
             string depart = dateTimePickerDepart.Value.ToString("yyyy-MM-dd");
             string retour = dateTimePickerRetour.Value.ToString("yyyy-MM-dd");
             string matriculeChef = comboBoxChef.SelectedValue.ToString();
@@ -283,7 +283,7 @@ ORDER BY me.nom, me.prenom;";
             checkedListBoxMembres.DisplayMember = "Key";
             checkedListBoxMembres.ValueMember = "Value";
 
-            labelMembresRestants.Text = nbMembres + " restant(s)";
+            labelMembresRestants.Text = membresRestants + " restant(s)";
 
             cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = $@"SELECT DISTINCT es.nom
@@ -315,7 +315,7 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
                 checkedCount--;
 
             // Si on dépasse la limite, on annule le cochage
-            if (checkedCount > this.nbMembres)
+            if (checkedCount > this.membresRestants)
             {
                 e.NewValue = CheckState.Unchecked;
                 return;
@@ -403,15 +403,11 @@ FROM ennemi e JOIN Espece es ON e.idEspece = es.id";
             }
         }
 
-        private void buttonValiderRetourMenu_Click(object sender, EventArgs e)
-        {
-            // Marche pas :(
-            DialogResult = DialogResult.OK;
-        }
 
         private void buttonValiderCapturesMembres_Click(object sender, EventArgs e)
         {
             if (membresRestants != 0) {
+                MessageBox.Show(membresRestants.ToString());
                 errorProvider.SetError(checkedListBoxMembres, "Le nombre de membres requis doit être sélectionné");
                 return;
             }
