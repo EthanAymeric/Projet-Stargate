@@ -714,7 +714,7 @@ namespace SAE24
                                     .FontSize(16)
                                     .Bold();
 
-                            x.Item().Text($"Budget initial de {missionActuelle["Budget"]}")
+                            x.Item().Text($"Budget initial de {missionActuelle["Budget"]}€")
                                     .FontSize(14)
                                     .Bold();
 
@@ -769,7 +769,7 @@ namespace SAE24
                             }
 
 
-                            x.Item().Text("Depense effectuées :")
+                            x.Item().Text("Dépenses effectuées :")
                                     .FontSize(14)
                                     .Bold();
 
