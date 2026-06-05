@@ -695,8 +695,8 @@ namespace SAE24
                     page.Size(PageSizes.A4);
                     page.Margin(2, Unit.Centimetre);
                     page.PageColor(Colors.White);
-                    page.DefaultTextStyle(x => x.FontSize(16));
-                        
+                    page.DefaultTextStyle(x => x.FontSize(12));
+
 
                     page.Content()
                         .PaddingVertical(1, Unit.Centimetre)
@@ -705,71 +705,117 @@ namespace SAE24
                             x.Spacing(15);
 
                             x.Item().Text($"Rapport de la mission {missionActuelle["nomPlanete"]}{missionActuelle["numero"]}")
-                                    .SemiBold().FontSize(30).FontColor(Colors.DeepPurple.Medium);
+                                    .SemiBold().FontSize(25).FontColor(Colors.DeepPurple.Medium);
 
                             x.Item().Text($"Date de départ : {missionActuelle["dateDepart"]}");
                             x.Item().Text($"Date de retour : {missionActuelle["dateRetour"]}");
 
                             x.Item().Text($"Sous la supervision de {identiteChef}")
-                                    .FontSize(24)
+                                    .FontSize(16)
                                     .Bold();
 
                             x.Item().Text($"Budget initial de {missionActuelle["Budget"]}")
-                                    .FontSize(24)
+                                    .FontSize(14)
                                     .Bold();
 
-                            x.Item().Text($"Feuille de route :\n{missionActuelle["feuilleDeRoute"]}")
-                                    .FontSize(16);
+                            x.Item().Text($"Feuille de route :")
+                                    .FontSize(14)
+                                    .Underline()
+                                    .Bold();
+
+                            x.Item().Text($"{missionActuelle["feuilleDeRoute"]}")
+                                    .FontSize(12);
 
                             x.Item().PageBreak();
                             x.Item().Text("Liste des membres :")
-                                    .FontSize(24)
+                                    .FontSize(14)
                                     .Bold();
 
-                            foreach(DataRow r in membreMission)
+                            foreach (DataRow r in membreMission)
                             {
                                 DataRow profil = r.GetParentRow("FK_Membre_Composer");
-                                x.Item().Text($"-> {profil["nom"]} {profil["prenom"]}");
+                                DataRow[] militaire = profil.GetChildRows("FK_Membre_Militaire");
+
+                                if (militaire.Length != 0)
+                                {
+                                    x.Item().Text($"-> {profil["nom"]} {profil["prenom"]} : {militaire[0][1]}");
+                                }
+
+                                DataRow[] civil = profil.GetChildRows("FK_Membre_Civil");
+
+                                if (civil.Length != 0)
+                                {
+                                    x.Item().Text($"-> {profil["nom"]} {profil["prenom"]} : {civil[0][1]}");
+
+                                }
                             }
 
                             x.Item().Text("Journal de Bord :")
-                                    .FontSize(24)
+                                    .FontSize(14)
                                     .Bold();
 
                             int i = 1;
-                            foreach(DataRow r in journalDeBord)
-                            {
 
-                                x.Item().Text($"{i}) le {r["dateJ"]} -> {r["commentaires"]}");
+                            if (journalDeBord.Length > 0)
+                            {
+                                foreach (DataRow r in journalDeBord)
+                                {
+                                    x.Item().Text($"{i}) le {r["dateJ"]} -> {r["commentaires"]}");
+                                }
+                            }
+                            else
+                            {
+                                x.Item().Text("Aucune entrée dans le journal de bord.");
                             }
 
 
                             x.Item().Text("Depense effectuées :")
-                                    .FontSize(24)
+                                    .FontSize(14)
                                     .Bold();
 
-                            foreach(DataRow r in depenseMissionActuelle.Rows)
+                            if (depenseMissionActuelle.Rows.Count > 0)
                             {
-                                x.Item().Text($"{r["Date"]} : {r["Motif"]} -> {r["Montant"]}");
+                                foreach (DataRow r in depenseMissionActuelle.Rows)
+                                {
+                                    x.Item().Text($"{r["Date"]} : {r["Motif"]} -> {r["Montant"]}");
+                                }
+                            }
+                            else
+                            {
+                                x.Item().Text("Aucune dépense pour cette mission.");
                             }
 
 
                             x.Item().Text("Contacts avec les informateurs :")
-                                    .FontSize(24)
+                                    .FontSize(14)
                                     .Bold();
 
-                            foreach(DataRow r in contactMissionActuelle.Rows)
+                            if (contactMissionActuelle.Rows.Count > 0)
                             {
-                                x.Item().Text($"Le {r["Date"]} : {r["Appreciation"]}");
+                                foreach (DataRow r in contactMissionActuelle.Rows)
+                                {
+                                    x.Item().Text($"Le {r["Date"]} : {r["Appreciation"]}");
+                                }
+                            }
+                            else
+                            {
+                                x.Item().Text("Aucun contact pour cette mission.");
                             }
 
                             x.Item().Text("Captures effectuées :")
-                                    .FontSize(24)
+                                    .FontSize(14)
                                     .Bold();
 
-                            foreach(DataRow r in captureMissionActuelle.Rows)
+                            if (captureMissionActuelle.Rows.Count > 0)
                             {
-                                x.Item().Text($"{r["Nom de l'espèce"]} : {r["Nombre de captures réalisées"]} sur {r["Objectif initial"]} ({r["Taux de réussite (en %)"]}%)");
+                                foreach (DataRow r in captureMissionActuelle.Rows)
+                                {
+                                    x.Item().Text($"{r["Nom de l'espèce"]} : {r["Nombre de captures réalisées"]} sur {r["Objectif initial"]} ({r["Taux de réussite (en %)"]}%)");
+                                }
+                            }
+                            else
+                            {
+                                x.Item().Text("Aucune capture pour cette mission.");
                             }
 
 
@@ -779,12 +825,14 @@ namespace SAE24
                         .AlignCenter()
                         .Text(x =>
                         {
-                            x.Span("Page ");
                             x.CurrentPageNumber();
                         });
                 });
             })
             .GeneratePdf($"{missionActuelle["nomPlanete"]}{missionActuelle["numero"]}.pdf");
+
+
+            MessageBox.Show("PDF Généré");
         }
     }
 }

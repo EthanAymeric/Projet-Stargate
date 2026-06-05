@@ -1371,31 +1371,13 @@ namespace SAE24
                 SQLiteDataAdapter da2 = new SQLiteDataAdapter(cmd2);
                 da2.Fill(MesDatas.DsGlobal, "DepensesDix");
 
-                DataGridView dgvStats2 = new DataGridView();
-                dgvStats2.DataSource = MesDatas.DsGlobal.Tables["DepensesDix"];
-
-                Label lblStats2 = new Label();
-                lblStats2.AutoSize = true;
-                lblStats2.Text = "Liste des dépenses effectuées et des budgets initiaux et actuels (pour les missions de plus de 10 personnes)";
-                lblStats2.Top = top;
-                lblStats2.Left = left;
-
-                pnlStats.Controls.Add(lblStats2);
-                top += 20;
-
-                dgvStats2.Top = top;
-                dgvStats2.Left = left;
-                dgvStats2.Height = height;
-                dgvStats2.Width = width;
-                dgvStats2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+                dgvStatsMissionBudget.DataSource = MesDatas.DsGlobal.Tables["DepensesDix"];
 
                 //dgvStats2.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
 
-                pnlStats.Controls.Add(dgvStats2);
-
                 // 3e requete
                 // Pour chaque planète, indiquer le nombre de missions qui y ont déjà eu lieu. Certaines planètes n’ont jamais fait l’objet de mission, elles devront néanmoins apparaître
-                string req3 = @"SELECT p.nom, count(m.nomPlanete)
+                string req3 = @"SELECT p.nom as [Nom de la planète], count(m.nomPlanete) as [Nombre de mission]
                 FROM Planete p LEFT JOIN Mission m ON p.nom = m.nomPlanete
                 GROUP BY p.nom;";
                 SQLiteCommand cmd3 = new SQLiteCommand(req3, co);
@@ -1403,31 +1385,15 @@ namespace SAE24
                 da3.Fill(MesDatas.DsGlobal, "ListePlaneteMissions");
 
                 DataGridView dgvStats3 = new DataGridView();
-                dgvStats3.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+                dgvMissionParPlanete.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
 
-                top += dgvStats2.Height + 20;
-                Label lblStats3 = new Label();
-                lblStats3.AutoSize = true;
-                lblStats3.Text = "Nombre de missions déjà effectuées pour chaque planète";
-                lblStats3.Top = top;
-                lblStats3.Left = left;
-                pnlStats.Controls.Add(lblStats3);
-                top += 20;
-
-                dgvStats3.Top = top;
-                dgvStats3.Left = left;
-                dgvStats3.Height = height;
-                dgvStats3.Width = width;
-                dgvStats3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-                pnlStats.Controls.Add(dgvStats3);
 
 
                 // 4e requete
                 // Liste des dépenses (date, motif et montant concaténés dans une seule colonne intitulée « Dépenses les plus importantes »),
                 // nom de la mission et nom et prénom du chef de la mission, pour les dépenses les plus élevées de chaque mission. 
 
-                string req4 = @"SELECT d.dateD || ' - ' || d.motif || ': ' || d.montant || '€' AS [Dépenses les plus importantes], 
+                string req4 = @"SELECT d.dateD || ' - ' || d.motif || ': ' || d.montant || '€' AS [Plus grande dépense], 
 d.nomPlanete || '-' || d.numeroMission AS [Nom de la mission],
 me.nom || ' ' || me.prenom AS [Chef de mission]
 FROM Depense d 
@@ -1439,25 +1405,7 @@ GROUP BY d.nomPlanete, d.numeroMission";
                 da4.Fill(MesDatas.DsGlobal, "ListeDepenses");
 
                 DataGridView dgvStats4 = new DataGridView();
-                dgvStats4.DataSource = MesDatas.DsGlobal.Tables["ListeDepenses"];
-
-                top += dgvStats3.Height + 20;
-                Label lblStats4 = new Label();
-                lblStats4.AutoSize = true;
-                lblStats4.Text = "Informations sur les dépenses les plus élevées de chaque mission";
-                lblStats4.Top = top;
-                lblStats4.Left = left;
-                pnlStats.Controls.Add(lblStats4);
-                top += 20;
-
-                dgvStats4.Top = top;
-                dgvStats4.Left = left;
-                dgvStats4.Height = height;
-                dgvStats4.Width = width;
-                dgvStats4.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-                pnlStats.Controls.Add(dgvStats4);
-
+                dgvDepenseParMission.DataSource = MesDatas.DsGlobal.Tables["ListeDepenses"];
             }
             catch (Exception ex)
             {
@@ -1472,9 +1420,9 @@ GROUP BY d.nomPlanete, d.numeroMission";
             cboStats1.DisplayMember = "nom";
             cboStats1.ValueMember = "matricule";
 
-            cboStats2.DataSource = MesDatas.DsGlobal.Tables["ListeMissions"];
-            cboStats2.DisplayMember = "Mission";
-            cboStats2.ValueMember = "Mission";
+            cboStatsInformateurMission.DataSource = MesDatas.DsGlobal.Tables["ListeMissions"];
+            cboStatsInformateurMission.DisplayMember = "Mission";
+            cboStatsInformateurMission.ValueMember = "Mission";
 
         }
 
@@ -1499,7 +1447,7 @@ GROUP BY d.nomPlanete, d.numeroMission";
 
             try
             {
-                string req = $@"SELECT DISTINCT m.matricule, m.nom, m.prenom, case when m.matricule like 'M%' then 'Militaire' else 'civil' end as 'Type'
+                string req = $@"SELECT DISTINCT m.matricule as [Matricule], m.nom as [Nom], m.prenom as [Prénom], case when m.matricule like 'M%' then 'Militaire' else 'Civil' end as 'Type'
                                 FROM Composer c
                                 JOIN Membre m ON c.matriculeMembre = m.matricule
                                 WHERE c.matriculeMembre != '{matricule}'
@@ -1520,23 +1468,7 @@ GROUP BY d.nomPlanete, d.numeroMission";
                 MessageBox.Show("Erreur : " + ex.Message);
             }
 
-            Label lblStat1 = new Label();
-            lblStat1.Name = "lblStats1"; 
-            lblStat1.AutoSize = true;
-            lblStat1.Left = left;
-            lblStat1.Top = 5;
-            lblStat1.Text = "Membres ayant partagé une mission avec le membre sélectionné";
-            pnlStats.Controls.Add(lblStat1);
-
-            DataGridView dgvStats1 = new DataGridView();
-            dgvStats1.Name = "dgvStats1";
-            dgvStats1.DataSource = table;
-            dgvStats1.Height = height;
-            dgvStats1.Width = width;
-            dgvStats1.Left = left;
-            dgvStats1.Top = top;
-            dgvStats1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            pnlStats.Controls.Add(dgvStats1);
+            dgvStatsMembrePartage.DataSource = table;
 
             filtrePossible = true;
         }
@@ -1546,24 +1478,14 @@ GROUP BY d.nomPlanete, d.numeroMission";
             // 5e requete
             // Quels sont les informateurs (nom de code, espèce d’origine, somme totale reçue) qui ont perçu le moins d’argent pendant une mission donnée ? 
 
-            if (cboStats2.SelectedValue == null) return;
-            int height = 220;
-            int width = 500;
-            int left = cboStats1.Left;
 
             // Récupération du nom de la planète
-            string nomPlanete = cboStats2.SelectedValue.ToString().Substring(0, cboStats2.SelectedValue.ToString().Length - 1);
+            string nomPlanete = cboStatsInformateurMission.SelectedValue.ToString().Substring(0, cboStatsInformateurMission.SelectedValue.ToString().Length - 1);
 
             // Récupération du numéro de la mission sur ladite planète
-            string numeroMission = Regex.Match(cboStats2.SelectedValue.ToString(), @"\d+").Value;
+            string numeroMission = Regex.Match(cboStatsInformateurMission.SelectedValue.ToString(), @"\d+").Value;
 
-            // Supprimer uniquement l'ancien dgv et label de la stat1 s'ils existent
-            Control ancienDgv = pnlStats.Controls["dgvStats5"];
-            Control ancienLbl = pnlStats.Controls["lblStats5"];
-            if (ancienDgv != null) pnlStats.Controls.Remove(ancienDgv);
-            if (ancienLbl != null) pnlStats.Controls.Remove(ancienLbl);
-
-            int top = ancienLbl != null ? ancienLbl.Top : 920;
+            // Supprimer uniquement l'ancien dgv et label de la stat1 s'ils 
 
             co = Connexion.Connec;
             DataTable table = new DataTable();
@@ -1604,25 +1526,16 @@ GROUP BY d.nomPlanete, d.numeroMission";
                 Connexion.FermerConnexion();
             }
 
-            Label lblStats5 = new Label();
-            lblStats5.Name = "lblStats5";
-            lblStats5.AutoSize = true;
-            lblStats5.Text = "Informateurs qui ont perçu le moins d'argent pendant une mission donnée";
-            lblStats5.Top = top;
-            lblStats5.Left = left;
-            pnlStats.Controls.Add(lblStats5);
-            top += 20;
+            if (table.Rows.Count != 0)
+            {
+                lblStatsInformateurResultat.Text = "L'Informateur qui a perçu le moins d'argent pendant cette mission est ";
+                lblStatsInformateurResultat.Text += $"{table.Rows[0][0]} {table.Rows[0][1]} avec {table.Rows[0][2]}€";
 
-            DataGridView dgvStats5 = new DataGridView();
-            dgvStats5.Name = "dgvStats5";
-            dgvStats5.DataSource = table;
-            dgvStats5.Top = top;
-            dgvStats5.Left = left;
-            dgvStats5.Height = height;
-            dgvStats5.Width = width;
-            dgvStats5.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            pnlStats.Controls.Add(dgvStats5);
+            }
+            else
+            {
+                lblStatsInformateurResultat.Text = "Aucune information sur cette mission";
+            }
 
             filtrePossible = true;
         }
