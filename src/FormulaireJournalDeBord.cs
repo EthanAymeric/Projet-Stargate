@@ -15,7 +15,7 @@ using QuestPDF.Fluent;
 using QuestPDF.Helpers;
 using QuestPDF.Infrastructure;
 
-namespace SAE24
+namespace LittlePlanete
 {
     public partial class FormulaireMission : Form
     {
@@ -685,7 +685,8 @@ namespace SAE24
             DataRow[] journalDeBord = missionActuelle.GetChildRows("FK_Mission_JournalDeBord");
 
             // Enregistre dans le dossier Downloads de l'utilisateur sous le nom rapport-<nom_mission>.pdf
-            string chemin = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", $"rapport-{missionActuelle["nomPlanete"]}{missionActuelle["numero"]}.pdf");
+            string chemin = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads",
+                $"rapport-{missionActuelle["nomPlanete"]}{missionActuelle["numero"]}.pdf");
 
             Document.Create(container =>
             {

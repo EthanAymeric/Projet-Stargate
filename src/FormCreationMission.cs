@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
-namespace SAE24
+namespace LittlePlanete
 {
     public partial class FormCreationMission : Form
     {

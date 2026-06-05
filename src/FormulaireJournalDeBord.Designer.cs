@@ -1,4 +1,4 @@
-﻿namespace SAE24
+﻿namespace LittlePlanete
 {
     partial class FormulaireMission
     {
@@ -1074,6 +1074,7 @@
             this.Controls.Add(this.pnlHistorique);
             this.Controls.Add(this.pnlAjout);
             this.Font = new System.Drawing.Font("Cascadia Code", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormulaireMission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

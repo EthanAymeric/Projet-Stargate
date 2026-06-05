@@ -1,4 +1,4 @@
-﻿namespace SAE24
+﻿namespace LittlePlanete
 {
     partial class MissionResume
     {

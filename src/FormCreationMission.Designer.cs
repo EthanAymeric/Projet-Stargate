@@ -1,4 +1,4 @@
-﻿namespace SAE24
+﻿namespace LittlePlanete
 {
     partial class FormCreationMission
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCreationMission));
             this.labelPlanete = new System.Windows.Forms.Label();
             this.comboBoxPlanete = new System.Windows.Forms.ComboBox();
             this.labelNomMission = new System.Windows.Forms.Label();
@@ -85,7 +86,7 @@
             this.comboBoxPlanete.FormattingEnabled = true;
             this.comboBoxPlanete.Location = new System.Drawing.Point(370, 16);
             this.comboBoxPlanete.Name = "comboBoxPlanete";
-            this.comboBoxPlanete.Size = new System.Drawing.Size(291, 32);
+            this.comboBoxPlanete.Size = new System.Drawing.Size(366, 32);
             this.comboBoxPlanete.TabIndex = 1;
             this.comboBoxPlanete.SelectedIndexChanged += new System.EventHandler(this.comboBoxPlanete_SelectedIndexChanged);
             // 
@@ -113,7 +114,7 @@
             // 
             this.dateTimePickerDepart.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dateTimePickerDepart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDepart.Location = new System.Drawing.Point(490, 122);
+            this.dateTimePickerDepart.Location = new System.Drawing.Point(527, 122);
             this.dateTimePickerDepart.Name = "dateTimePickerDepart";
             this.dateTimePickerDepart.Size = new System.Drawing.Size(171, 28);
             this.dateTimePickerDepart.TabIndex = 6;
@@ -123,7 +124,7 @@
             // 
             this.dateTimePickerRetour.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.dateTimePickerRetour.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerRetour.Location = new System.Drawing.Point(490, 171);
+            this.dateTimePickerRetour.Location = new System.Drawing.Point(525, 171);
             this.dateTimePickerRetour.Name = "dateTimePickerRetour";
             this.dateTimePickerRetour.Size = new System.Drawing.Size(171, 28);
             this.dateTimePickerRetour.TabIndex = 7;
@@ -174,7 +175,7 @@
             this.richTextBoxFeuilleRoute.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.richTextBoxFeuilleRoute.Location = new System.Drawing.Point(42, 367);
             this.richTextBoxFeuilleRoute.Name = "richTextBoxFeuilleRoute";
-            this.richTextBoxFeuilleRoute.Size = new System.Drawing.Size(619, 168);
+            this.richTextBoxFeuilleRoute.Size = new System.Drawing.Size(694, 168);
             this.richTextBoxFeuilleRoute.TabIndex = 12;
             this.richTextBoxFeuilleRoute.Text = "";
             this.richTextBoxFeuilleRoute.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBoxFeuilleRoute_KeyPress);
@@ -183,7 +184,7 @@
             // 
             this.labelNbMembres.AutoSize = true;
             this.labelNbMembres.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.labelNbMembres.Location = new System.Drawing.Point(684, 16);
+            this.labelNbMembres.Location = new System.Drawing.Point(812, 16);
             this.labelNbMembres.Name = "labelNbMembres";
             this.labelNbMembres.Size = new System.Drawing.Size(318, 24);
             this.labelNbMembres.TabIndex = 13;
@@ -191,7 +192,7 @@
             // 
             // trackBarNbMembres
             // 
-            this.trackBarNbMembres.Location = new System.Drawing.Point(1025, 16);
+            this.trackBarNbMembres.Location = new System.Drawing.Point(1153, 16);
             this.trackBarNbMembres.Minimum = 1;
             this.trackBarNbMembres.Name = "trackBarNbMembres";
             this.trackBarNbMembres.Size = new System.Drawing.Size(261, 45);
@@ -204,7 +205,7 @@
             // 
             this.labelMembres.AutoSize = true;
             this.labelMembres.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.labelMembres.Location = new System.Drawing.Point(1293, 30);
+            this.labelMembres.Location = new System.Drawing.Point(1421, 30);
             this.labelMembres.Name = "labelMembres";
             this.labelMembres.Size = new System.Drawing.Size(21, 24);
             this.labelMembres.TabIndex = 15;
@@ -214,7 +215,7 @@
             // 
             this.labelDatabaz.AutoSize = true;
             this.labelDatabaz.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.labelDatabaz.Location = new System.Drawing.Point(689, 91);
+            this.labelDatabaz.Location = new System.Drawing.Point(817, 91);
             this.labelDatabaz.Name = "labelDatabaz";
             this.labelDatabaz.Size = new System.Drawing.Size(263, 24);
             this.labelDatabaz.TabIndex = 16;
@@ -223,7 +224,7 @@
             // textBoxDatabaz
             // 
             this.textBoxDatabaz.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBoxDatabaz.Location = new System.Drawing.Point(1038, 88);
+            this.textBoxDatabaz.Location = new System.Drawing.Point(1166, 88);
             this.textBoxDatabaz.Name = "textBoxDatabaz";
             this.textBoxDatabaz.ShortcutsEnabled = false;
             this.textBoxDatabaz.Size = new System.Drawing.Size(141, 28);
@@ -244,7 +245,7 @@
             // 
             this.buttonValider.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonValider.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.buttonValider.Location = new System.Drawing.Point(1038, 202);
+            this.buttonValider.Location = new System.Drawing.Point(1166, 202);
             this.buttonValider.Name = "buttonValider";
             this.buttonValider.Size = new System.Drawing.Size(143, 67);
             this.buttonValider.TabIndex = 19;
@@ -256,7 +257,7 @@
             // 
             this.labelEuro.AutoSize = true;
             this.labelEuro.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.labelEuro.Location = new System.Drawing.Point(1201, 142);
+            this.labelEuro.Location = new System.Drawing.Point(1329, 142);
             this.labelEuro.Name = "labelEuro";
             this.labelEuro.Size = new System.Drawing.Size(21, 24);
             this.labelEuro.TabIndex = 22;
@@ -265,7 +266,7 @@
             // textBoxBudget
             // 
             this.textBoxBudget.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.textBoxBudget.Location = new System.Drawing.Point(1037, 139);
+            this.textBoxBudget.Location = new System.Drawing.Point(1165, 139);
             this.textBoxBudget.Name = "textBoxBudget";
             this.textBoxBudget.ShortcutsEnabled = false;
             this.textBoxBudget.Size = new System.Drawing.Size(141, 28);
@@ -276,7 +277,7 @@
             // 
             this.labelBudget.AutoSize = true;
             this.labelBudget.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.labelBudget.Location = new System.Drawing.Point(688, 142);
+            this.labelBudget.Location = new System.Drawing.Point(816, 142);
             this.labelBudget.Name = "labelBudget";
             this.labelBudget.Size = new System.Drawing.Size(120, 24);
             this.labelBudget.TabIndex = 20;
@@ -293,7 +294,7 @@
             this.comboBoxChef.FormattingEnabled = true;
             this.comboBoxChef.Location = new System.Drawing.Point(371, 268);
             this.comboBoxChef.Name = "comboBoxChef";
-            this.comboBoxChef.Size = new System.Drawing.Size(291, 32);
+            this.comboBoxChef.Size = new System.Drawing.Size(365, 32);
             this.comboBoxChef.TabIndex = 24;
             // 
             // labelChef
@@ -320,7 +321,7 @@
             this.groupBox.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.groupBox.Location = new System.Drawing.Point(12, 11);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(1316, 567);
+            this.groupBox.Size = new System.Drawing.Size(1462, 567);
             this.groupBox.TabIndex = 25;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Objectifs et Membres";
@@ -329,7 +330,7 @@
             // 
             this.buttonValiderCapturesMembres.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonValiderCapturesMembres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonValiderCapturesMembres.Location = new System.Drawing.Point(1089, 408);
+            this.buttonValiderCapturesMembres.Location = new System.Drawing.Point(1248, 406);
             this.buttonValiderCapturesMembres.Name = "buttonValiderCapturesMembres";
             this.buttonValiderCapturesMembres.Size = new System.Drawing.Size(208, 62);
             this.buttonValiderCapturesMembres.TabIndex = 10;
@@ -426,8 +427,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1340, 590);
-            this.Controls.Add(this.groupBox);
+            this.ClientSize = new System.Drawing.Size(1486, 590);
             this.Controls.Add(this.comboBoxChef);
             this.Controls.Add(this.labelChef);
             this.Controls.Add(this.labelEuro);
@@ -451,7 +451,9 @@
             this.Controls.Add(this.comboBoxPlanete);
             this.Controls.Add(this.labelPlanete);
             this.Controls.Add(this.richTextBoxFeuilleRoute);
+            this.Controls.Add(this.groupBox);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormCreationMission";
             this.Text = "Création d\'une nouvelle mission";

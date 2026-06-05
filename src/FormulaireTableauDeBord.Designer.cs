@@ -1,4 +1,4 @@
-﻿namespace SAE24
+﻿namespace LittlePlanete
 {
     partial class FrmTableauDeBord
     {
@@ -34,6 +34,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTableauDeBord));
             this.btnTDB = new System.Windows.Forms.Button();
             this.btnNouvelleMission = new System.Windows.Forms.Button();
             this.btnRaces = new System.Windows.Forms.Button();
@@ -709,6 +710,7 @@
             this.Controls.Add(this.btnTDB);
             this.Controls.Add(this.btnStats);
             this.Controls.Add(this.pbLogo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmTableauDeBord";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;

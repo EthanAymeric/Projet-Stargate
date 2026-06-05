@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace SAE24
+namespace LittlePlanete
 {
     public partial class UserControlMessageErreur : UserControl
     {

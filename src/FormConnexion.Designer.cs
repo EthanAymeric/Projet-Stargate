@@ -1,4 +1,4 @@
-﻿namespace SAE24
+﻿namespace LittlePlanete
 {
     partial class FormConnexion
     {
@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormConnexion));
             this.buttonConnexion = new System.Windows.Forms.Button();
             this.labelLogin = new System.Windows.Forms.Label();
             this.labelMdp = new System.Windows.Forms.Label();
@@ -135,6 +136,7 @@
             this.Controls.Add(this.buttonConnexion);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;

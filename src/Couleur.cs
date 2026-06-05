@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SAE24
+namespace LittlePlanete
 {
     internal class Couleur
     {

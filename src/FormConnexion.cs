@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 using BCrypt.Net;
 
-namespace SAE24
+namespace LittlePlanete
 {
     public partial class FormConnexion : Form
     {

@@ -18,7 +18,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolTip;
 using System.Text.RegularExpressions;
 
-namespace SAE24
+namespace LittlePlanete
 {
     public partial class FrmTableauDeBord : Form
     {
@@ -244,7 +244,8 @@ namespace SAE24
                     TimeSpan duree = dateRetour.Subtract(dateDepart);
                     string strDuree = duree.ToString("dd");
                     string grade = r.GetParentRow("FK_Militaire_Chef")[1].ToString();
-                    string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
+                    string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()}" +
+                        $" {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
                     string chef = $"{identite} : {grade}";
 
 
