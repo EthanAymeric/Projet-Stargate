@@ -105,10 +105,5 @@ namespace UserControlPlanetes
                 pbEspeceAlliee.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
-
-        private void UserControlEspecesAlliees_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

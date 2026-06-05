@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle34 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle35 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnTDB = new System.Windows.Forms.Button();
             this.btnNouvelleMission = new System.Windows.Forms.Button();
             this.btnRaces = new System.Windows.Forms.Button();
@@ -65,28 +65,28 @@
             this.grpTableauDeBord = new System.Windows.Forms.GroupBox();
             this.btnStats = new System.Windows.Forms.Button();
             this.pnlStats = new System.Windows.Forms.Panel();
-            this.cboStatsInformateurMission = new System.Windows.Forms.ComboBox();
-            this.cboStats1 = new System.Windows.Forms.ComboBox();
-            this.pbLogo = new System.Windows.Forms.PictureBox();
-            this.dgvStatsMembrePartage = new System.Windows.Forms.DataGridView();
-            this.lblMembreMemeMission = new System.Windows.Forms.Label();
-            this.lblStatsMissionBudget = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dgvStatsMissionBudget = new System.Windows.Forms.DataGridView();
-            this.dgvMissionParPlanete = new System.Windows.Forms.DataGridView();
-            this.dgvDepenseParMission = new System.Windows.Forms.DataGridView();
-            this.lblStatsInformateur = new System.Windows.Forms.Label();
             this.lblStatsInformateurResultat = new System.Windows.Forms.Label();
+            this.lblStatsInformateur = new System.Windows.Forms.Label();
+            this.dgvDepenseParMission = new System.Windows.Forms.DataGridView();
+            this.dgvMissionParPlanete = new System.Windows.Forms.DataGridView();
+            this.dgvStatsMissionBudget = new System.Windows.Forms.DataGridView();
+            this.lblStatsInfoDepenseMission = new System.Windows.Forms.Label();
+            this.lblStatsMissionParPlanete = new System.Windows.Forms.Label();
+            this.lblStatsMissionBudget = new System.Windows.Forms.Label();
+            this.lblStatsMembreMemeMission = new System.Windows.Forms.Label();
+            this.dgvStatsMembrePartage = new System.Windows.Forms.DataGridView();
+            this.cboStatsInformateurMission = new System.Windows.Forms.ComboBox();
+            this.cboStatsMembre = new System.Windows.Forms.ComboBox();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
             this.grpEspeces.SuspendLayout();
             this.grpFiltreMission.SuspendLayout();
             this.grpTableauDeBord.SuspendLayout();
             this.pnlStats.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStatsMembrePartage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStatsMissionBudget)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMissionParPlanete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepenseParMission)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMissionParPlanete)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStatsMissionBudget)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStatsMembrePartage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // btnTDB
@@ -96,7 +96,7 @@
             this.btnTDB.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnTDB.FlatAppearance.BorderSize = 2;
             this.btnTDB.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnTDB.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnTDB.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnTDB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnTDB.Location = new System.Drawing.Point(12, 328);
             this.btnTDB.Name = "btnTDB";
@@ -112,11 +112,11 @@
             this.btnNouvelleMission.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNouvelleMission.FlatAppearance.BorderSize = 2;
             this.btnNouvelleMission.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnNouvelleMission.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnNouvelleMission.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnNouvelleMission.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnNouvelleMission.Location = new System.Drawing.Point(12, 12);
+            this.btnNouvelleMission.Location = new System.Drawing.Point(1170, 100);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
-            this.btnNouvelleMission.Size = new System.Drawing.Size(213, 72);
+            this.btnNouvelleMission.Size = new System.Drawing.Size(242, 62);
             this.btnNouvelleMission.TabIndex = 2;
             this.btnNouvelleMission.Text = "Nouvelle Mission";
             this.btnNouvelleMission.UseVisualStyleBackColor = false;
@@ -129,7 +129,7 @@
             this.btnRaces.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnRaces.FlatAppearance.BorderSize = 2;
             this.btnRaces.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnRaces.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnRaces.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnRaces.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnRaces.Location = new System.Drawing.Point(12, 552);
             this.btnRaces.Name = "btnRaces";
@@ -146,7 +146,7 @@
             this.btnPlanetes.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnPlanetes.FlatAppearance.BorderSize = 2;
             this.btnPlanetes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnPlanetes.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnPlanetes.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnPlanetes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnPlanetes.Location = new System.Drawing.Point(12, 664);
             this.btnPlanetes.Name = "btnPlanetes";
@@ -188,7 +188,7 @@
             this.grpEspeces.Controls.Add(this.btnReset);
             this.grpEspeces.Controls.Add(this.rdbEnnemis);
             this.grpEspeces.Controls.Add(this.rdbAllies);
-            this.grpEspeces.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.grpEspeces.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.grpEspeces.Location = new System.Drawing.Point(268, 699);
             this.grpEspeces.Name = "grpEspeces";
             this.grpEspeces.Size = new System.Drawing.Size(1412, 240);
@@ -199,22 +199,22 @@
             // lblIndicationCouleur
             // 
             this.lblIndicationCouleur.AutoSize = true;
-            this.lblIndicationCouleur.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationCouleur.Location = new System.Drawing.Point(168, 157);
+            this.lblIndicationCouleur.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblIndicationCouleur.Location = new System.Drawing.Point(43, 116);
             this.lblIndicationCouleur.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIndicationCouleur.Name = "lblIndicationCouleur";
-            this.lblIndicationCouleur.Size = new System.Drawing.Size(57, 17);
+            this.lblIndicationCouleur.Size = new System.Drawing.Size(87, 24);
             this.lblIndicationCouleur.TabIndex = 11;
             this.lblIndicationCouleur.Text = "Couleur";
             // 
             // lblIndicationPlanete
             // 
             this.lblIndicationPlanete.AutoSize = true;
-            this.lblIndicationPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIndicationPlanete.Location = new System.Drawing.Point(168, 125);
+            this.lblIndicationPlanete.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblIndicationPlanete.Location = new System.Drawing.Point(43, 180);
             this.lblIndicationPlanete.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIndicationPlanete.Name = "lblIndicationPlanete";
-            this.lblIndicationPlanete.Size = new System.Drawing.Size(56, 17);
+            this.lblIndicationPlanete.Size = new System.Drawing.Size(87, 24);
             this.lblIndicationPlanete.TabIndex = 10;
             this.lblIndicationPlanete.Text = "Planète";
             // 
@@ -222,12 +222,12 @@
             // 
             this.cboPlanete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.cboPlanete.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPlanete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPlanete.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.cboPlanete.FormattingEnabled = true;
-            this.cboPlanete.Location = new System.Drawing.Point(16, 123);
+            this.cboPlanete.Location = new System.Drawing.Point(177, 182);
             this.cboPlanete.Margin = new System.Windows.Forms.Padding(2);
             this.cboPlanete.Name = "cboPlanete";
-            this.cboPlanete.Size = new System.Drawing.Size(149, 24);
+            this.cboPlanete.Size = new System.Drawing.Size(149, 28);
             this.cboPlanete.TabIndex = 9;
             this.cboPlanete.SelectedIndexChanged += new System.EventHandler(this.cboPlanete_SelectedIndexChanged);
             // 
@@ -235,19 +235,20 @@
             // 
             this.lblIndicationNom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblIndicationNom.AutoSize = true;
-            this.lblIndicationNom.Location = new System.Drawing.Point(542, 51);
+            this.lblIndicationNom.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblIndicationNom.Location = new System.Drawing.Point(43, 52);
             this.lblIndicationNom.Name = "lblIndicationNom";
-            this.lblIndicationNom.Size = new System.Drawing.Size(36, 20);
+            this.lblIndicationNom.Size = new System.Drawing.Size(43, 24);
             this.lblIndicationNom.TabIndex = 8;
             this.lblIndicationNom.Text = "Nom";
             // 
             // txtNomEspece
             // 
             this.txtNomEspece.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.txtNomEspece.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.txtNomEspece.Location = new System.Drawing.Point(273, 52);
+            this.txtNomEspece.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.txtNomEspece.Location = new System.Drawing.Point(177, 53);
             this.txtNomEspece.Name = "txtNomEspece";
-            this.txtNomEspece.Size = new System.Drawing.Size(222, 21);
+            this.txtNomEspece.Size = new System.Drawing.Size(222, 25);
             this.txtNomEspece.TabIndex = 7;
             this.txtNomEspece.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomEspece_KeyPress);
             // 
@@ -255,12 +256,12 @@
             // 
             this.cboCouleur.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cboCouleur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboCouleur.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.cboCouleur.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.cboCouleur.FormattingEnabled = true;
-            this.cboCouleur.Location = new System.Drawing.Point(13, 156);
+            this.cboCouleur.Location = new System.Drawing.Point(177, 116);
             this.cboCouleur.Margin = new System.Windows.Forms.Padding(2);
             this.cboCouleur.Name = "cboCouleur";
-            this.cboCouleur.Size = new System.Drawing.Size(222, 24);
+            this.cboCouleur.Size = new System.Drawing.Size(222, 28);
             this.cboCouleur.TabIndex = 4;
             this.cboCouleur.SelectedIndexChanged += new System.EventHandler(this.cboCouleur_SelectedIndexChanged);
             // 
@@ -268,7 +269,7 @@
             // 
             this.btnRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRecherche.Location = new System.Drawing.Point(1158, 38);
+            this.btnRecherche.Location = new System.Drawing.Point(1158, 52);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(160, 45);
             this.btnRecherche.TabIndex = 3;
@@ -280,7 +281,7 @@
             // 
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReset.Location = new System.Drawing.Point(1158, 129);
+            this.btnReset.Location = new System.Drawing.Point(1158, 143);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(160, 45);
             this.btnReset.TabIndex = 2;
@@ -292,11 +293,11 @@
             // 
             this.rdbEnnemis.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.rdbEnnemis.AutoSize = true;
-            this.rdbEnnemis.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.rdbEnnemis.Location = new System.Drawing.Point(16, 55);
+            this.rdbEnnemis.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.rdbEnnemis.Location = new System.Drawing.Point(764, 48);
             this.rdbEnnemis.Margin = new System.Windows.Forms.Padding(2);
             this.rdbEnnemis.Name = "rdbEnnemis";
-            this.rdbEnnemis.Size = new System.Drawing.Size(171, 24);
+            this.rdbEnnemis.Size = new System.Drawing.Size(204, 28);
             this.rdbEnnemis.TabIndex = 1;
             this.rdbEnnemis.TabStop = true;
             this.rdbEnnemis.Text = "Espèces Ennemies";
@@ -305,11 +306,11 @@
             // rdbAllies
             // 
             this.rdbAllies.AutoSize = true;
-            this.rdbAllies.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.rdbAllies.Location = new System.Drawing.Point(16, 32);
+            this.rdbAllies.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.rdbAllies.Location = new System.Drawing.Point(445, 50);
             this.rdbAllies.Margin = new System.Windows.Forms.Padding(2);
             this.rdbAllies.Name = "rdbAllies";
-            this.rdbAllies.Size = new System.Drawing.Size(162, 24);
+            this.rdbAllies.Size = new System.Drawing.Size(193, 28);
             this.rdbAllies.TabIndex = 0;
             this.rdbAllies.TabStop = true;
             this.rdbAllies.Text = "Espèces Alliées";
@@ -350,19 +351,20 @@
             this.btnSwitchTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSwitchTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
             this.btnSwitchTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSwitchTheme.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnSwitchTheme.Font = new System.Drawing.Font("Cascadia Code", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnSwitchTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnSwitchTheme.Location = new System.Drawing.Point(1679, 12);
+            this.btnSwitchTheme.Location = new System.Drawing.Point(1823, 12);
             this.btnSwitchTheme.Name = "btnSwitchTheme";
-            this.btnSwitchTheme.Size = new System.Drawing.Size(213, 72);
+            this.btnSwitchTheme.Size = new System.Drawing.Size(69, 69);
             this.btnSwitchTheme.TabIndex = 5;
-            this.btnSwitchTheme.Text = "Theme Sombre";
+            this.btnSwitchTheme.Text = "🌒︎";
             this.btnSwitchTheme.UseVisualStyleBackColor = false;
             this.btnSwitchTheme.Click += new System.EventHandler(this.btnSwitchTheme_Click);
             // 
             // grpFiltreMission
             // 
             this.grpFiltreMission.Controls.Add(this.btntriAlpha);
+            this.grpFiltreMission.Controls.Add(this.btnNouvelleMission);
             this.grpFiltreMission.Controls.Add(this.btntriEtat);
             this.grpFiltreMission.Controls.Add(this.cboFiltreEtat);
             this.grpFiltreMission.Controls.Add(this.lblFiltreEtat);
@@ -380,7 +382,7 @@
             // 
             this.btntriAlpha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btntriAlpha.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntriAlpha.Location = new System.Drawing.Point(1253, 100);
+            this.btntriAlpha.Location = new System.Drawing.Point(1170, 27);
             this.btntriAlpha.Name = "btntriAlpha";
             this.btntriAlpha.Size = new System.Drawing.Size(118, 62);
             this.btntriAlpha.TabIndex = 4;
@@ -392,7 +394,7 @@
             // 
             this.btntriEtat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btntriEtat.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btntriEtat.Location = new System.Drawing.Point(1253, 20);
+            this.btntriEtat.Location = new System.Drawing.Point(1294, 27);
             this.btntriEtat.Name = "btntriEtat";
             this.btntriEtat.Size = new System.Drawing.Size(118, 62);
             this.btntriEtat.TabIndex = 5;
@@ -456,7 +458,7 @@
             this.btnStats.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
             this.btnStats.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnStats.Font = new System.Drawing.Font("Cascadia Code", 15.7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.btnStats.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.btnStats.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnStats.Location = new System.Drawing.Point(12, 440);
             this.btnStats.Name = "btnStats";
@@ -474,18 +476,176 @@
             this.pnlStats.Controls.Add(this.dgvDepenseParMission);
             this.pnlStats.Controls.Add(this.dgvMissionParPlanete);
             this.pnlStats.Controls.Add(this.dgvStatsMissionBudget);
-            this.pnlStats.Controls.Add(this.label3);
-            this.pnlStats.Controls.Add(this.label2);
+            this.pnlStats.Controls.Add(this.lblStatsInfoDepenseMission);
+            this.pnlStats.Controls.Add(this.lblStatsMissionParPlanete);
             this.pnlStats.Controls.Add(this.lblStatsMissionBudget);
-            this.pnlStats.Controls.Add(this.lblMembreMemeMission);
+            this.pnlStats.Controls.Add(this.lblStatsMembreMemeMission);
             this.pnlStats.Controls.Add(this.dgvStatsMembrePartage);
             this.pnlStats.Controls.Add(this.cboStatsInformateurMission);
-            this.pnlStats.Controls.Add(this.cboStats1);
+            this.pnlStats.Controls.Add(this.cboStatsMembre);
             this.pnlStats.Location = new System.Drawing.Point(268, 101);
             this.pnlStats.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlStats.Name = "pnlStats";
             this.pnlStats.Size = new System.Drawing.Size(1017, 838);
             this.pnlStats.TabIndex = 7;
+            // 
+            // lblStatsInformateurResultat
+            // 
+            this.lblStatsInformateurResultat.AutoEllipsis = true;
+            this.lblStatsInformateurResultat.Font = new System.Drawing.Font("Cascadia Code", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblStatsInformateurResultat.Location = new System.Drawing.Point(258, 951);
+            this.lblStatsInformateurResultat.Name = "lblStatsInformateurResultat";
+            this.lblStatsInformateurResultat.Size = new System.Drawing.Size(736, 44);
+            this.lblStatsInformateurResultat.TabIndex = 12;
+            this.lblStatsInformateurResultat.Text = "Informateur ayant eu le moins de sous pour chaque mission";
+            // 
+            // lblStatsInformateur
+            // 
+            this.lblStatsInformateur.AutoSize = true;
+            this.lblStatsInformateur.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblStatsInformateur.Location = new System.Drawing.Point(8, 919);
+            this.lblStatsInformateur.Name = "lblStatsInformateur";
+            this.lblStatsInformateur.Size = new System.Drawing.Size(696, 27);
+            this.lblStatsInformateur.TabIndex = 11;
+            this.lblStatsInformateur.Text = "Informateur ayant eu le moins de sous pour chaque mission";
+            // 
+            // dgvDepenseParMission
+            // 
+            this.dgvDepenseParMission.AllowUserToAddRows = false;
+            this.dgvDepenseParMission.AllowUserToDeleteRows = false;
+            this.dgvDepenseParMission.AllowUserToOrderColumns = true;
+            this.dgvDepenseParMission.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDepenseParMission.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle31.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle31.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle31.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvDepenseParMission.DefaultCellStyle = dataGridViewCellStyle31;
+            this.dgvDepenseParMission.Location = new System.Drawing.Point(13, 749);
+            this.dgvDepenseParMission.Name = "dgvDepenseParMission";
+            this.dgvDepenseParMission.ReadOnly = true;
+            this.dgvDepenseParMission.Size = new System.Drawing.Size(981, 150);
+            this.dgvDepenseParMission.TabIndex = 10;
+            // 
+            // dgvMissionParPlanete
+            // 
+            this.dgvMissionParPlanete.AllowUserToAddRows = false;
+            this.dgvMissionParPlanete.AllowUserToDeleteRows = false;
+            this.dgvMissionParPlanete.AllowUserToOrderColumns = true;
+            this.dgvMissionParPlanete.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvMissionParPlanete.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle32.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle32.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle32.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvMissionParPlanete.DefaultCellStyle = dataGridViewCellStyle32;
+            this.dgvMissionParPlanete.Location = new System.Drawing.Point(13, 479);
+            this.dgvMissionParPlanete.Name = "dgvMissionParPlanete";
+            this.dgvMissionParPlanete.ReadOnly = true;
+            this.dgvMissionParPlanete.Size = new System.Drawing.Size(981, 218);
+            this.dgvMissionParPlanete.TabIndex = 9;
+            // 
+            // dgvStatsMissionBudget
+            // 
+            this.dgvStatsMissionBudget.AllowUserToAddRows = false;
+            this.dgvStatsMissionBudget.AllowUserToDeleteRows = false;
+            this.dgvStatsMissionBudget.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle33.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle33.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle33.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStatsMissionBudget.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            this.dgvStatsMissionBudget.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle34.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle34.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle34.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle34.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle34.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStatsMissionBudget.DefaultCellStyle = dataGridViewCellStyle34;
+            this.dgvStatsMissionBudget.Location = new System.Drawing.Point(13, 279);
+            this.dgvStatsMissionBudget.Name = "dgvStatsMissionBudget";
+            this.dgvStatsMissionBudget.ReadOnly = true;
+            this.dgvStatsMissionBudget.Size = new System.Drawing.Size(981, 150);
+            this.dgvStatsMissionBudget.TabIndex = 8;
+            // 
+            // lblStatsInfoDepenseMission
+            // 
+            this.lblStatsInfoDepenseMission.AutoSize = true;
+            this.lblStatsInfoDepenseMission.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblStatsInfoDepenseMission.Location = new System.Drawing.Point(8, 717);
+            this.lblStatsInfoDepenseMission.Name = "lblStatsInfoDepenseMission";
+            this.lblStatsInfoDepenseMission.Size = new System.Drawing.Size(780, 27);
+            this.lblStatsInfoDepenseMission.TabIndex = 7;
+            this.lblStatsInfoDepenseMission.Text = "Informations sur les dépenses les plus élevées de chaque mission";
+            // 
+            // lblStatsMissionParPlanete
+            // 
+            this.lblStatsMissionParPlanete.AutoSize = true;
+            this.lblStatsMissionParPlanete.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblStatsMissionParPlanete.Location = new System.Drawing.Point(8, 449);
+            this.lblStatsMissionParPlanete.Name = "lblStatsMissionParPlanete";
+            this.lblStatsMissionParPlanete.Size = new System.Drawing.Size(648, 27);
+            this.lblStatsMissionParPlanete.TabIndex = 6;
+            this.lblStatsMissionParPlanete.Text = "Nombre de missions déjà éffectuées sur chaque planète";
+            // 
+            // lblStatsMissionBudget
+            // 
+            this.lblStatsMissionBudget.AutoSize = true;
+            this.lblStatsMissionBudget.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblStatsMissionBudget.Location = new System.Drawing.Point(8, 249);
+            this.lblStatsMissionBudget.Name = "lblStatsMissionBudget";
+            this.lblStatsMissionBudget.Size = new System.Drawing.Size(792, 27);
+            this.lblStatsMissionBudget.TabIndex = 5;
+            this.lblStatsMissionBudget.Text = "Pour les missions de plus de 10 membres, budget initial et actuel";
+            // 
+            // lblStatsMembreMemeMission
+            // 
+            this.lblStatsMembreMemeMission.AutoSize = true;
+            this.lblStatsMembreMemeMission.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblStatsMembreMemeMission.Location = new System.Drawing.Point(8, 13);
+            this.lblStatsMembreMemeMission.Name = "lblStatsMembreMemeMission";
+            this.lblStatsMembreMemeMission.Size = new System.Drawing.Size(576, 27);
+            this.lblStatsMembreMemeMission.TabIndex = 4;
+            this.lblStatsMembreMemeMission.Text = "Membres ayant participé à des missions ensemble";
+            // 
+            // dgvStatsMembrePartage
+            // 
+            this.dgvStatsMembrePartage.AllowUserToAddRows = false;
+            this.dgvStatsMembrePartage.AllowUserToDeleteRows = false;
+            this.dgvStatsMembrePartage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle35.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle35.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle35.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle35.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle35.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle35.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvStatsMembrePartage.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
+            this.dgvStatsMembrePartage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle36.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle36.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            dataGridViewCellStyle36.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle36.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle36.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStatsMembrePartage.DefaultCellStyle = dataGridViewCellStyle36;
+            this.dgvStatsMembrePartage.Location = new System.Drawing.Point(13, 80);
+            this.dgvStatsMembrePartage.Name = "dgvStatsMembrePartage";
+            this.dgvStatsMembrePartage.ReadOnly = true;
+            this.dgvStatsMembrePartage.Size = new System.Drawing.Size(981, 150);
+            this.dgvStatsMembrePartage.TabIndex = 3;
             // 
             // cboStatsInformateurMission
             // 
@@ -500,185 +660,27 @@
             this.cboStatsInformateurMission.TabIndex = 2;
             this.cboStatsInformateurMission.SelectedIndexChanged += new System.EventHandler(this.cboStats2_SelectedIndexChanged);
             // 
-            // cboStats1
+            // cboStatsMembre
             // 
-            this.cboStats1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.cboStats1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboStats1.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.cboStats1.FormattingEnabled = true;
-            this.cboStats1.Location = new System.Drawing.Point(13, 47);
-            this.cboStats1.Margin = new System.Windows.Forms.Padding(2);
-            this.cboStats1.Name = "cboStats1";
-            this.cboStats1.Size = new System.Drawing.Size(240, 28);
-            this.cboStats1.TabIndex = 1;
-            this.cboStats1.SelectedIndexChanged += new System.EventHandler(this.cboStats1_SelectedIndexChanged);
+            this.cboStatsMembre.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboStatsMembre.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStatsMembre.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.cboStatsMembre.FormattingEnabled = true;
+            this.cboStatsMembre.Location = new System.Drawing.Point(13, 47);
+            this.cboStatsMembre.Margin = new System.Windows.Forms.Padding(2);
+            this.cboStatsMembre.Name = "cboStatsMembre";
+            this.cboStatsMembre.Size = new System.Drawing.Size(240, 28);
+            this.cboStatsMembre.TabIndex = 1;
+            this.cboStatsMembre.SelectedIndexChanged += new System.EventHandler(this.cboStats1_SelectedIndexChanged);
             // 
             // pbLogo
             // 
-            this.pbLogo.Location = new System.Drawing.Point(33, 8);
+            this.pbLogo.Location = new System.Drawing.Point(5, 98);
             this.pbLogo.Margin = new System.Windows.Forms.Padding(2);
             this.pbLogo.Name = "pbLogo";
-            this.pbLogo.Size = new System.Drawing.Size(267, 117);
+            this.pbLogo.Size = new System.Drawing.Size(259, 114);
             this.pbLogo.TabIndex = 11;
             this.pbLogo.TabStop = false;
-            // 
-            // dgvStatsMembrePartage
-            // 
-            this.dgvStatsMembrePartage.AllowUserToAddRows = false;
-            this.dgvStatsMembrePartage.AllowUserToDeleteRows = false;
-            this.dgvStatsMembrePartage.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStatsMembrePartage.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvStatsMembrePartage.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStatsMembrePartage.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dgvStatsMembrePartage.Location = new System.Drawing.Point(13, 80);
-            this.dgvStatsMembrePartage.Name = "dgvStatsMembrePartage";
-            this.dgvStatsMembrePartage.ReadOnly = true;
-            this.dgvStatsMembrePartage.Size = new System.Drawing.Size(981, 150);
-            this.dgvStatsMembrePartage.TabIndex = 3;
-            // 
-            // lblMembreMemeMission
-            // 
-            this.lblMembreMemeMission.AutoSize = true;
-            this.lblMembreMemeMission.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblMembreMemeMission.Location = new System.Drawing.Point(8, 13);
-            this.lblMembreMemeMission.Name = "lblMembreMemeMission";
-            this.lblMembreMemeMission.Size = new System.Drawing.Size(576, 27);
-            this.lblMembreMemeMission.TabIndex = 4;
-            this.lblMembreMemeMission.Text = "Membres ayant participé à des missions ensemble";
-            // 
-            // lblStatsMissionBudget
-            // 
-            this.lblStatsMissionBudget.AutoSize = true;
-            this.lblStatsMissionBudget.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblStatsMissionBudget.Location = new System.Drawing.Point(8, 249);
-            this.lblStatsMissionBudget.Name = "lblStatsMissionBudget";
-            this.lblStatsMissionBudget.Size = new System.Drawing.Size(792, 27);
-            this.lblStatsMissionBudget.TabIndex = 5;
-            this.lblStatsMissionBudget.Text = "Pour les missions de plus de 10 membres, budget initial et actuel";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(8, 449);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(648, 27);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Nombre de missions déjà éffectuées sur chaque planète";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(8, 717);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(780, 27);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Informations sur les dépenses les plus élevées de chaque mission";
-            // 
-            // dgvStatsMissionBudget
-            // 
-            this.dgvStatsMissionBudget.AllowUserToAddRows = false;
-            this.dgvStatsMissionBudget.AllowUserToDeleteRows = false;
-            this.dgvStatsMissionBudget.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvStatsMissionBudget.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvStatsMissionBudget.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvStatsMissionBudget.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvStatsMissionBudget.Location = new System.Drawing.Point(13, 279);
-            this.dgvStatsMissionBudget.Name = "dgvStatsMissionBudget";
-            this.dgvStatsMissionBudget.ReadOnly = true;
-            this.dgvStatsMissionBudget.Size = new System.Drawing.Size(981, 150);
-            this.dgvStatsMissionBudget.TabIndex = 8;
-            // 
-            // dgvMissionParPlanete
-            // 
-            this.dgvMissionParPlanete.AllowUserToAddRows = false;
-            this.dgvMissionParPlanete.AllowUserToDeleteRows = false;
-            this.dgvMissionParPlanete.AllowUserToOrderColumns = true;
-            this.dgvMissionParPlanete.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvMissionParPlanete.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvMissionParPlanete.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvMissionParPlanete.Location = new System.Drawing.Point(13, 479);
-            this.dgvMissionParPlanete.Name = "dgvMissionParPlanete";
-            this.dgvMissionParPlanete.ReadOnly = true;
-            this.dgvMissionParPlanete.Size = new System.Drawing.Size(981, 218);
-            this.dgvMissionParPlanete.TabIndex = 9;
-            // 
-            // dgvDepenseParMission
-            // 
-            this.dgvDepenseParMission.AllowUserToAddRows = false;
-            this.dgvDepenseParMission.AllowUserToDeleteRows = false;
-            this.dgvDepenseParMission.AllowUserToOrderColumns = true;
-            this.dgvDepenseParMission.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDepenseParMission.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvDepenseParMission.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgvDepenseParMission.Location = new System.Drawing.Point(13, 749);
-            this.dgvDepenseParMission.Name = "dgvDepenseParMission";
-            this.dgvDepenseParMission.ReadOnly = true;
-            this.dgvDepenseParMission.Size = new System.Drawing.Size(981, 150);
-            this.dgvDepenseParMission.TabIndex = 10;
-            // 
-            // lblStatsInformateur
-            // 
-            this.lblStatsInformateur.AutoSize = true;
-            this.lblStatsInformateur.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblStatsInformateur.Location = new System.Drawing.Point(8, 919);
-            this.lblStatsInformateur.Name = "lblStatsInformateur";
-            this.lblStatsInformateur.Size = new System.Drawing.Size(696, 27);
-            this.lblStatsInformateur.TabIndex = 11;
-            this.lblStatsInformateur.Text = "Informateur ayant eu le moins de sous pour chaque mission";
-            // 
-            // lblStatsInformateurResultat
-            // 
-            this.lblStatsInformateurResultat.AutoEllipsis = true;
-            this.lblStatsInformateurResultat.Font = new System.Drawing.Font("Cascadia Code", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblStatsInformateurResultat.Location = new System.Drawing.Point(258, 951);
-            this.lblStatsInformateurResultat.Name = "lblStatsInformateurResultat";
-            this.lblStatsInformateurResultat.Size = new System.Drawing.Size(736, 44);
-            this.lblStatsInformateurResultat.TabIndex = 12;
-            this.lblStatsInformateurResultat.Text = "Informateur ayant eu le moins de sous pour chaque mission";
             // 
             // FrmTableauDeBord
             // 
@@ -687,20 +689,20 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.pnlStats);
-            this.Controls.Add(this.grpEspeces);
-            this.Controls.Add(this.grpTableauDeBord);
-            this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.grpFiltreMission);
+            this.Controls.Add(this.pnlEspeces);
+            this.Controls.Add(this.grpEspeces);
+            this.Controls.Add(this.pnlStats);
+            this.Controls.Add(this.grpTableauDeBord);
             this.Controls.Add(this.pnlPlanetes);
             this.Controls.Add(this.pnlEnnemis);
             this.Controls.Add(this.pnlAllies);
-            this.Controls.Add(this.pnlEspeces);
             this.Controls.Add(this.btnSwitchTheme);
             this.Controls.Add(this.btnPlanetes);
             this.Controls.Add(this.btnRaces);
             this.Controls.Add(this.btnTDB);
             this.Controls.Add(this.btnStats);
+            this.Controls.Add(this.pbLogo);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FrmTableauDeBord";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
@@ -715,11 +717,11 @@
             this.grpTableauDeBord.ResumeLayout(false);
             this.pnlStats.ResumeLayout(false);
             this.pnlStats.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStatsMembrePartage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStatsMissionBudget)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMissionParPlanete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDepenseParMission)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvMissionParPlanete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStatsMissionBudget)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStatsMembrePartage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -756,17 +758,17 @@
         private System.Windows.Forms.Label lblIndicationCouleur;
         private System.Windows.Forms.Button btnStats;
         private System.Windows.Forms.Panel pnlStats;
-        private System.Windows.Forms.ComboBox cboStats1;
+        private System.Windows.Forms.ComboBox cboStatsMembre;
         private System.Windows.Forms.PictureBox pbLogo;
         private System.Windows.Forms.ComboBox cboStatsInformateurMission;
         private System.Windows.Forms.DataGridView dgvStatsMembrePartage;
-        private System.Windows.Forms.Label lblMembreMemeMission;
+        private System.Windows.Forms.Label lblStatsMembreMemeMission;
         private System.Windows.Forms.Label lblStatsMissionBudget;
         private System.Windows.Forms.DataGridView dgvDepenseParMission;
         private System.Windows.Forms.DataGridView dgvMissionParPlanete;
         private System.Windows.Forms.DataGridView dgvStatsMissionBudget;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblStatsInfoDepenseMission;
+        private System.Windows.Forms.Label lblStatsMissionParPlanete;
         private System.Windows.Forms.Label lblStatsInformateur;
         private System.Windows.Forms.Label lblStatsInformateurResultat;
     }

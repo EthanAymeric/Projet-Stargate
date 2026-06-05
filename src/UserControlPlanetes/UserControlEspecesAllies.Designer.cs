@@ -44,10 +44,10 @@
             // 
             // pbEspeceAlliee
             // 
-            this.pbEspeceAlliee.Location = new System.Drawing.Point(48, 12);
+            this.pbEspeceAlliee.Location = new System.Drawing.Point(111, 12);
             this.pbEspeceAlliee.Margin = new System.Windows.Forms.Padding(2);
             this.pbEspeceAlliee.Name = "pbEspeceAlliee";
-            this.pbEspeceAlliee.Size = new System.Drawing.Size(174, 143);
+            this.pbEspeceAlliee.Size = new System.Drawing.Size(174, 174);
             this.pbEspeceAlliee.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbEspeceAlliee.TabIndex = 0;
             this.pbEspeceAlliee.TabStop = false;
@@ -56,7 +56,7 @@
             // 
             this.lblNomEspeceAlliee.AutoEllipsis = true;
             this.lblNomEspeceAlliee.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.lblNomEspeceAlliee.Location = new System.Drawing.Point(2, 164);
+            this.lblNomEspeceAlliee.Location = new System.Drawing.Point(65, 188);
             this.lblNomEspeceAlliee.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNomEspeceAlliee.Name = "lblNomEspeceAlliee";
             this.lblNomEspeceAlliee.Size = new System.Drawing.Size(266, 60);
@@ -67,99 +67,99 @@
             // lblDegreBienveillance
             // 
             this.lblDegreBienveillance.AutoSize = true;
-            this.lblDegreBienveillance.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblDegreBienveillance.Location = new System.Drawing.Point(203, 282);
+            this.lblDegreBienveillance.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblDegreBienveillance.Location = new System.Drawing.Point(306, 336);
             this.lblDegreBienveillance.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDegreBienveillance.Name = "lblDegreBienveillance";
-            this.lblDegreBienveillance.Size = new System.Drawing.Size(56, 16);
+            this.lblDegreBienveillance.Size = new System.Drawing.Size(87, 24);
             this.lblDegreBienveillance.TabIndex = 2;
             this.lblDegreBienveillance.Text = "<degré>";
             // 
             // lblBienveillanceCommun
             // 
             this.lblBienveillanceCommun.AutoSize = true;
-            this.lblBienveillanceCommun.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblBienveillanceCommun.Location = new System.Drawing.Point(28, 282);
+            this.lblBienveillanceCommun.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblBienveillanceCommun.Location = new System.Drawing.Point(28, 336);
             this.lblBienveillanceCommun.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBienveillanceCommun.Name = "lblBienveillanceCommun";
-            this.lblBienveillanceCommun.Size = new System.Drawing.Size(175, 16);
+            this.lblBienveillanceCommun.Size = new System.Drawing.Size(274, 24);
             this.lblBienveillanceCommun.TabIndex = 3;
             this.lblBienveillanceCommun.Text = "Degré de Bienveillance :";
             // 
             // lblOrigine
             // 
             this.lblOrigine.AutoSize = true;
-            this.lblOrigine.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblOrigine.Location = new System.Drawing.Point(28, 239);
+            this.lblOrigine.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblOrigine.Location = new System.Drawing.Point(28, 277);
             this.lblOrigine.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblOrigine.Name = "lblOrigine";
-            this.lblOrigine.Size = new System.Drawing.Size(210, 16);
+            this.lblOrigine.Size = new System.Drawing.Size(329, 24);
             this.lblOrigine.TabIndex = 4;
             this.lblOrigine.Text = "<nom de la planète d\'origine>";
             // 
             // lblPremierContactCommun
             // 
             this.lblPremierContactCommun.AutoSize = true;
-            this.lblPremierContactCommun.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblPremierContactCommun.Location = new System.Drawing.Point(28, 306);
+            this.lblPremierContactCommun.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblPremierContactCommun.Location = new System.Drawing.Point(28, 376);
             this.lblPremierContactCommun.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblPremierContactCommun.Name = "lblPremierContactCommun";
-            this.lblPremierContactCommun.Size = new System.Drawing.Size(210, 16);
+            this.lblPremierContactCommun.Size = new System.Drawing.Size(329, 24);
             this.lblPremierContactCommun.TabIndex = 5;
             this.lblPremierContactCommun.Text = "Premier contact effectué le :";
             // 
             // lblDatePremierContact
             // 
             this.lblDatePremierContact.AutoSize = true;
-            this.lblDatePremierContact.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblDatePremierContact.Location = new System.Drawing.Point(28, 321);
+            this.lblDatePremierContact.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblDatePremierContact.Location = new System.Drawing.Point(28, 399);
             this.lblDatePremierContact.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDatePremierContact.Name = "lblDatePremierContact";
-            this.lblDatePremierContact.Size = new System.Drawing.Size(182, 16);
+            this.lblDatePremierContact.Size = new System.Drawing.Size(285, 24);
             this.lblDatePremierContact.TabIndex = 6;
             this.lblDatePremierContact.Text = "<date du premier contact>";
             // 
             // lblInstrument
             // 
             this.lblInstrument.AutoSize = true;
-            this.lblInstrument.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblInstrument.Location = new System.Drawing.Point(28, 356);
+            this.lblInstrument.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblInstrument.Location = new System.Drawing.Point(28, 450);
             this.lblInstrument.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInstrument.Name = "lblInstrument";
-            this.lblInstrument.Size = new System.Drawing.Size(91, 16);
+            this.lblInstrument.Size = new System.Drawing.Size(142, 24);
             this.lblInstrument.TabIndex = 7;
             this.lblInstrument.Text = "<instrument>";
             // 
             // lblNbPlanete
             // 
             this.lblNbPlanete.AutoSize = true;
-            this.lblNbPlanete.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblNbPlanete.Location = new System.Drawing.Point(28, 224);
+            this.lblNbPlanete.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblNbPlanete.Location = new System.Drawing.Point(28, 254);
             this.lblNbPlanete.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNbPlanete.Name = "lblNbPlanete";
-            this.lblNbPlanete.Size = new System.Drawing.Size(140, 16);
+            this.lblNbPlanete.Size = new System.Drawing.Size(219, 24);
             this.lblNbPlanete.TabIndex = 8;
             this.lblNbPlanete.Text = "Planète d\'origine :";
             // 
             // lblCouleur
             // 
             this.lblCouleur.AutoSize = true;
-            this.lblCouleur.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblCouleur.Location = new System.Drawing.Point(28, 258);
+            this.lblCouleur.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblCouleur.Location = new System.Drawing.Point(28, 304);
             this.lblCouleur.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCouleur.Name = "lblCouleur";
-            this.lblCouleur.Size = new System.Drawing.Size(70, 16);
+            this.lblCouleur.Size = new System.Drawing.Size(109, 24);
             this.lblCouleur.TabIndex = 9;
             this.lblCouleur.Text = "<couleur>";
             // 
             // lblInstrumentCommun
             // 
             this.lblInstrumentCommun.AutoSize = true;
-            this.lblInstrumentCommun.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblInstrumentCommun.Location = new System.Drawing.Point(28, 342);
+            this.lblInstrumentCommun.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblInstrumentCommun.Location = new System.Drawing.Point(28, 428);
             this.lblInstrumentCommun.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblInstrumentCommun.Name = "lblInstrumentCommun";
-            this.lblInstrumentCommun.Size = new System.Drawing.Size(217, 16);
+            this.lblInstrumentCommun.Size = new System.Drawing.Size(340, 24);
             this.lblInstrumentCommun.TabIndex = 10;
             this.lblInstrumentCommun.Text = "Instrument de musique favori :";
             // 
@@ -179,8 +179,7 @@
             this.Controls.Add(this.pbEspeceAlliee);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "UserControlEspecesAlliees";
-            this.Size = new System.Drawing.Size(270, 391);
-            this.Load += new System.EventHandler(this.UserControlEspecesAlliees_Load);
+            this.Size = new System.Drawing.Size(396, 507);
             ((System.ComponentModel.ISupportInitialize)(this.pbEspeceAlliee)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

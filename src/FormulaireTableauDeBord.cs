@@ -694,7 +694,7 @@ namespace SAE24
         private void btnSwitchTheme_Click(object sender, EventArgs e)
         {
             Couleur.SwitchTheme();
-            btnSwitchTheme.Text = (btnSwitchTheme.Text == "Theme Sombre") ? "Theme Clair" : "Theme Sombre";
+            btnSwitchTheme.Text = (btnSwitchTheme.Text == "🌒︎") ? "☉︎" : "🌒︎";
             BackColor = Couleur.getBackground;
             ForeColor = Couleur.getText;
             foreach (Control c in Controls)
@@ -1320,6 +1320,11 @@ namespace SAE24
 
         private void btnStats_Click(object sender, EventArgs e)
         {
+            foreach (DataGridView dgv in pnlStats.Controls.OfType<DataGridView>())
+            {
+                dgv.DataSource = null;
+                dgv.Refresh();
+            }
             ChargementStats();
 
             grpFiltreMission.Visible = false;
@@ -1333,18 +1338,13 @@ namespace SAE24
 
             estSurEspece = false;
 
+
             FiltrerListesMembresMemeMission();
             FiltrerInformateursMoinsSous();
         }
 
         private void ChargementStats()
         {
-            int height = 200;
-            int width = 500;
-
-            int top = cboStats1.Top + 35;
-            int left = cboStats1.Left;
-
             // Chargement de la ComboBox Stats pour l'affichage des premières données statistiques
             co = Connexion.Connec;
             try
@@ -1369,9 +1369,10 @@ namespace SAE24
                 GROUP BY m.nomPlanete, m.numero";
                 SQLiteCommand cmd2 = new SQLiteCommand(req2, co);
                 SQLiteDataAdapter da2 = new SQLiteDataAdapter(cmd2);
-                da2.Fill(MesDatas.DsGlobal, "DepensesDix");
+                DataTable depenseDix = new DataTable();
+                da2.Fill(depenseDix);
 
-                dgvStatsMissionBudget.DataSource = MesDatas.DsGlobal.Tables["DepensesDix"];
+                dgvStatsMissionBudget.DataSource = depenseDix;
 
                 //dgvStats2.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
 
@@ -1382,10 +1383,11 @@ namespace SAE24
                 GROUP BY p.nom;";
                 SQLiteCommand cmd3 = new SQLiteCommand(req3, co);
                 SQLiteDataAdapter da3 = new SQLiteDataAdapter(cmd3);
-                da3.Fill(MesDatas.DsGlobal, "ListePlaneteMissions");
+                DataTable ListePlaneteMission = new DataTable();
+                da3.Fill(ListePlaneteMission);
 
                 DataGridView dgvStats3 = new DataGridView();
-                dgvMissionParPlanete.DataSource = MesDatas.DsGlobal.Tables["ListePlaneteMissions"];
+                dgvMissionParPlanete.DataSource = ListePlaneteMission;
 
 
 
@@ -1416,9 +1418,9 @@ GROUP BY d.nomPlanete, d.numeroMission";
                 Connexion.FermerConnexion();
             }
 
-            cboStats1.DataSource = MesDatas.DsGlobal.Tables["ListeMembres"];
-            cboStats1.DisplayMember = "nom";
-            cboStats1.ValueMember = "matricule";
+            cboStatsMembre.DataSource = MesDatas.DsGlobal.Tables["ListeMembres"];
+            cboStatsMembre.DisplayMember = "nom";
+            cboStatsMembre.ValueMember = "matricule";
 
             cboStatsInformateurMission.DataSource = MesDatas.DsGlobal.Tables["ListeMissions"];
             cboStatsInformateurMission.DisplayMember = "Mission";
@@ -1428,19 +1430,8 @@ GROUP BY d.nomPlanete, d.numeroMission";
 
         private void FiltrerListesMembresMemeMission()
         {
-            if (cboStats1.SelectedValue == null) return;
-            string matricule = cboStats1.SelectedValue.ToString();
-
-            int height = 130;
-            int width = 500;
-            int left = cboStats1.Left;
-            int top = 25;
-
-            // Supprimer uniquement l'ancien dgv et label de la stat1 s'ils existent
-            Control ancienDgv = pnlStats.Controls["dgvStats1"];
-            Control ancienLbl = pnlStats.Controls["lblStats1"];
-            if (ancienDgv != null) pnlStats.Controls.Remove(ancienDgv);
-            if (ancienLbl != null) pnlStats.Controls.Remove(ancienLbl);
+            if (cboStatsMembre.SelectedValue == null) return;
+            string matricule = cboStatsMembre.SelectedValue.ToString();
 
             co = Connexion.Connec;
             DataTable table = new DataTable();

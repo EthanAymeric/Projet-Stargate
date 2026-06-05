@@ -103,10 +103,5 @@ namespace UserControlPlanetes
 
             }
         }
-
-        private void lblArme_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
