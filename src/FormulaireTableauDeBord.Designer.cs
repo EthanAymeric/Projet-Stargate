@@ -93,13 +93,14 @@
             // 
             this.btnTDB.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnTDB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
+            this.btnTDB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTDB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTDB.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnTDB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnTDB.Location = new System.Drawing.Point(12, 328);
             this.btnTDB.Name = "btnTDB";
             this.btnTDB.Size = new System.Drawing.Size(213, 72);
-            this.btnTDB.TabIndex = 1;
+            this.btnTDB.TabIndex = 0;
             this.btnTDB.Text = "Tableau de bord";
             this.btnTDB.UseVisualStyleBackColor = false;
             this.btnTDB.Click += new System.EventHandler(this.btnTDB_Click);
@@ -107,13 +108,14 @@
             // btnNouvelleMission
             // 
             this.btnNouvelleMission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
+            this.btnNouvelleMission.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNouvelleMission.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNouvelleMission.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnNouvelleMission.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnNouvelleMission.Location = new System.Drawing.Point(1170, 100);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
             this.btnNouvelleMission.Size = new System.Drawing.Size(242, 62);
-            this.btnNouvelleMission.TabIndex = 2;
+            this.btnNouvelleMission.TabIndex = 4;
             this.btnNouvelleMission.Text = "Nouvelle Mission";
             this.btnNouvelleMission.UseVisualStyleBackColor = false;
             this.btnNouvelleMission.Click += new System.EventHandler(this.btnNouvelleMission_Click);
@@ -122,13 +124,14 @@
             // 
             this.btnRaces.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnRaces.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
+            this.btnRaces.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRaces.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRaces.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnRaces.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnRaces.Location = new System.Drawing.Point(12, 552);
             this.btnRaces.Name = "btnRaces";
             this.btnRaces.Size = new System.Drawing.Size(213, 72);
-            this.btnRaces.TabIndex = 3;
+            this.btnRaces.TabIndex = 2;
             this.btnRaces.Text = "Découverte des races";
             this.btnRaces.UseVisualStyleBackColor = false;
             this.btnRaces.Click += new System.EventHandler(this.btnRaces_Click);
@@ -137,13 +140,14 @@
             // 
             this.btnPlanetes.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnPlanetes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
+            this.btnPlanetes.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPlanetes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlanetes.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnPlanetes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnPlanetes.Location = new System.Drawing.Point(12, 664);
             this.btnPlanetes.Name = "btnPlanetes";
             this.btnPlanetes.Size = new System.Drawing.Size(213, 72);
-            this.btnPlanetes.TabIndex = 4;
+            this.btnPlanetes.TabIndex = 3;
             this.btnPlanetes.Text = "Infos des planètes";
             this.btnPlanetes.UseVisualStyleBackColor = false;
             this.btnPlanetes.Click += new System.EventHandler(this.btnPlanetes_Click);
@@ -165,8 +169,8 @@
             this.pnlEspeces.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pnlEspeces.Location = new System.Drawing.Point(268, 88);
             this.pnlEspeces.Name = "pnlEspeces";
-            this.pnlEspeces.Size = new System.Drawing.Size(1418, 605);
-            this.pnlEspeces.TabIndex = 7;
+            this.pnlEspeces.Size = new System.Drawing.Size(1418, 614);
+            this.pnlEspeces.TabIndex = 4;
             // 
             // grpEspeces
             // 
@@ -260,7 +264,9 @@
             // btnRecherche
             // 
             this.btnRecherche.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRecherche.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRecherche.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRecherche.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnRecherche.Location = new System.Drawing.Point(1158, 52);
             this.btnRecherche.Name = "btnRecherche";
             this.btnRecherche.Size = new System.Drawing.Size(160, 45);
@@ -272,7 +278,9 @@
             // btnReset
             // 
             this.btnReset.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReset.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnReset.Location = new System.Drawing.Point(1158, 143);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(160, 45);
@@ -342,6 +350,7 @@
             // 
             this.btnSwitchTheme.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSwitchTheme.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
+            this.btnSwitchTheme.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSwitchTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSwitchTheme.Font = new System.Drawing.Font("Cascadia Code", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnSwitchTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
@@ -372,24 +381,26 @@
             // 
             // btntriAlpha
             // 
+            this.btntriAlpha.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btntriAlpha.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btntriAlpha.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntriAlpha.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btntriAlpha.Location = new System.Drawing.Point(1170, 27);
             this.btntriAlpha.Name = "btntriAlpha";
             this.btntriAlpha.Size = new System.Drawing.Size(118, 62);
-            this.btntriAlpha.TabIndex = 4;
+            this.btntriAlpha.TabIndex = 2;
             this.btntriAlpha.Text = "A → Z";
             this.btntriAlpha.UseVisualStyleBackColor = true;
             this.btntriAlpha.Click += new System.EventHandler(this.btntriAlpha_Click);
             // 
             // btntriEtat
             // 
+            this.btntriEtat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btntriEtat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btntriEtat.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btntriEtat.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btntriEtat.Location = new System.Drawing.Point(1294, 27);
             this.btntriEtat.Name = "btntriEtat";
             this.btntriEtat.Size = new System.Drawing.Size(118, 62);
-            this.btntriEtat.TabIndex = 5;
+            this.btntriEtat.TabIndex = 3;
             this.btntriEtat.Text = "Etat ✖";
             this.btntriEtat.UseVisualStyleBackColor = true;
             this.btntriEtat.Click += new System.EventHandler(this.btntriEtat_Click);
@@ -405,7 +416,7 @@
             this.cboFiltreEtat.Location = new System.Drawing.Point(320, 115);
             this.cboFiltreEtat.Name = "cboFiltreEtat";
             this.cboFiltreEtat.Size = new System.Drawing.Size(121, 35);
-            this.cboFiltreEtat.TabIndex = 3;
+            this.cboFiltreEtat.TabIndex = 1;
             this.cboFiltreEtat.SelectedIndexChanged += new System.EventHandler(this.cboFiltrePlanete_SelectedIndexChanged);
             // 
             // lblFiltreEtat
@@ -451,13 +462,14 @@
             // 
             this.btnStats.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
+            this.btnStats.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnStats.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStats.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
             this.btnStats.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
             this.btnStats.Location = new System.Drawing.Point(12, 440);
             this.btnStats.Name = "btnStats";
             this.btnStats.Size = new System.Drawing.Size(213, 72);
-            this.btnStats.TabIndex = 10;
+            this.btnStats.TabIndex = 1;
             this.btnStats.Text = "Statistiques";
             this.btnStats.UseVisualStyleBackColor = false;
             this.btnStats.Click += new System.EventHandler(this.btnStats_Click);

@@ -42,6 +42,7 @@
             // 
             // buttonConnexion
             // 
+            this.buttonConnexion.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonConnexion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonConnexion.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.buttonConnexion.Location = new System.Drawing.Point(232, 200);
@@ -93,6 +94,7 @@
             // 
             // buttonAnnuler
             // 
+            this.buttonAnnuler.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAnnuler.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAnnuler.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.buttonAnnuler.Location = new System.Drawing.Point(27, 200);

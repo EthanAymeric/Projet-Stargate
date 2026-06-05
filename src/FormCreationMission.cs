@@ -103,13 +103,13 @@ namespace SAE24
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = $@"SELECT DISTINCT m.grade || ' · ' || me.nom || ' ' || me.prenom, me.matricule
             FROM Militaire m
-JOIN Membre me ON m.matriculeMembre = me.matricule
-WHERE me.matricule NOT IN(
-    SELECT c.matriculeMembre
-    FROM Composer c
-    JOIN Mission mi ON c.nomPlanete = mi.nomPlanete AND c.numeroMission = mi.numero
-    WHERE mi.dateDepart <= '{retour}' AND mi.dateRetour >= '{depart}')
-ORDER BY m.grade";
+            JOIN Membre me ON m.matriculeMembre = me.matricule
+            WHERE me.matricule NOT IN(
+                SELECT c.matriculeMembre
+                FROM Composer c
+                JOIN Mission mi ON c.nomPlanete = mi.nomPlanete AND c.numeroMission = mi.numero
+                WHERE mi.dateDepart <= '{retour}' AND mi.dateRetour >= '{depart}')
+            ORDER BY m.grade";
 
             SQLiteDataReader reader = cmd.ExecuteReader();
             Dictionary<string, string> result = new Dictionary<string, string>();
@@ -128,8 +128,8 @@ ORDER BY m.grade";
         {
             SQLiteCommand cmd = new SQLiteCommand(Connexion.Connec);
             cmd.CommandText = $@"select count(*) 
-from Mission 
-where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
+            from Mission 
+            where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
 
             return Convert.ToInt32(cmd.ExecuteScalar());
         }

@@ -63,7 +63,6 @@
             this.lblNomPlanete.Size = new System.Drawing.Size(90, 33);
             this.lblNomPlanete.TabIndex = 1;
             this.lblNomPlanete.Text = "<nom>";
-            this.lblNomPlanete.Click += new System.EventHandler(this.label1_Click);
             // 
             // pbTemp
             // 
@@ -77,97 +76,96 @@
             // lblTemp
             // 
             this.lblTemp.AutoSize = true;
-            this.lblTemp.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblTemp.Location = new System.Drawing.Point(342, 91);
+            this.lblTemp.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblTemp.Location = new System.Drawing.Point(361, 91);
             this.lblTemp.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTemp.Name = "lblTemp";
-            this.lblTemp.Size = new System.Drawing.Size(98, 16);
+            this.lblTemp.Size = new System.Drawing.Size(126, 20);
             this.lblTemp.TabIndex = 3;
             this.lblTemp.Text = "<température>";
             // 
             // lblGraviteCommun
             // 
             this.lblGraviteCommun.AutoSize = true;
-            this.lblGraviteCommun.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblGraviteCommun.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblGraviteCommun.Location = new System.Drawing.Point(272, 172);
             this.lblGraviteCommun.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGraviteCommun.Name = "lblGraviteCommun";
-            this.lblGraviteCommun.Size = new System.Drawing.Size(70, 16);
+            this.lblGraviteCommun.Size = new System.Drawing.Size(90, 20);
             this.lblGraviteCommun.TabIndex = 4;
             this.lblGraviteCommun.Text = "Gravité :";
             // 
             // lblGraviteValue
             // 
             this.lblGraviteValue.AutoSize = true;
-            this.lblGraviteValue.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblGraviteValue.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblGraviteValue.Location = new System.Drawing.Point(351, 172);
             this.lblGraviteValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGraviteValue.Name = "lblGraviteValue";
-            this.lblGraviteValue.Size = new System.Drawing.Size(70, 16);
+            this.lblGraviteValue.Size = new System.Drawing.Size(90, 20);
             this.lblGraviteValue.TabIndex = 5;
             this.lblGraviteValue.Text = "<gravité>";
             // 
             // lblPresenceDatabaz
             // 
             this.lblPresenceDatabaz.AutoSize = true;
-            this.lblPresenceDatabaz.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPresenceDatabaz.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblPresenceDatabaz.Location = new System.Drawing.Point(271, 141);
             this.lblPresenceDatabaz.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPresenceDatabaz.Name = "lblPresenceDatabaz";
-            this.lblPresenceDatabaz.Size = new System.Drawing.Size(219, 17);
+            this.lblPresenceDatabaz.Size = new System.Drawing.Size(279, 20);
             this.lblPresenceDatabaz.TabIndex = 6;
             this.lblPresenceDatabaz.Text = "<Présence de Databaz (ou non)>";
             // 
             // lblEspecesCommun
             // 
             this.lblEspecesCommun.AutoSize = true;
-            this.lblEspecesCommun.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblEspecesCommun.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblEspecesCommun.Location = new System.Drawing.Point(272, 221);
             this.lblEspecesCommun.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEspecesCommun.Name = "lblEspecesCommun";
-            this.lblEspecesCommun.Size = new System.Drawing.Size(140, 16);
+            this.lblEspecesCommun.Size = new System.Drawing.Size(180, 20);
             this.lblEspecesCommun.TabIndex = 7;
             this.lblEspecesCommun.Text = "Espèces présentes :";
             // 
             // lblEspecesValue
             // 
             this.lblEspecesValue.AutoSize = true;
-            this.lblEspecesValue.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblEspecesValue.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblEspecesValue.Location = new System.Drawing.Point(275, 246);
             this.lblEspecesValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEspecesValue.Name = "lblEspecesValue";
-            this.lblEspecesValue.Size = new System.Drawing.Size(63, 16);
+            this.lblEspecesValue.Size = new System.Drawing.Size(81, 20);
             this.lblEspecesValue.TabIndex = 8;
             this.lblEspecesValue.Text = "<nom(s)>";
-            this.lblEspecesValue.Click += new System.EventHandler(this.lblEspecesValue_Click);
             // 
             // lblMissionsCommun
             // 
             this.lblMissionsCommun.AutoSize = true;
-            this.lblMissionsCommun.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblMissionsCommun.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblMissionsCommun.Location = new System.Drawing.Point(272, 199);
             this.lblMissionsCommun.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMissionsCommun.Name = "lblMissionsCommun";
-            this.lblMissionsCommun.Size = new System.Drawing.Size(147, 16);
+            this.lblMissionsCommun.Size = new System.Drawing.Size(189, 20);
             this.lblMissionsCommun.TabIndex = 9;
             this.lblMissionsCommun.Text = "Missions réalisées :";
             // 
             // lblMissionsValue
             // 
             this.lblMissionsValue.AutoSize = true;
-            this.lblMissionsValue.Font = new System.Drawing.Font("Cascadia Code", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.lblMissionsValue.Location = new System.Drawing.Point(426, 199);
+            this.lblMissionsValue.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.lblMissionsValue.Location = new System.Drawing.Point(469, 199);
             this.lblMissionsValue.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMissionsValue.Name = "lblMissionsValue";
-            this.lblMissionsValue.Size = new System.Drawing.Size(63, 16);
+            this.lblMissionsValue.Size = new System.Drawing.Size(81, 20);
             this.lblMissionsValue.TabIndex = 10;
             this.lblMissionsValue.Text = "<nom(s)>";
-            this.lblMissionsValue.Click += new System.EventHandler(this.lblMissionsValue_Click);
             // 
             // UserControlPlanete
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.Controls.Add(this.lblMissionsValue);
             this.Controls.Add(this.lblMissionsCommun);
             this.Controls.Add(this.lblEspecesValue);
@@ -183,7 +181,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "UserControlPlanete";
             this.Size = new System.Drawing.Size(573, 296);
-            this.Load += new System.EventHandler(this.UserControl1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbPlanete)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTemp)).EndInit();
             this.ResumeLayout(false);

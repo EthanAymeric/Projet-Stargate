@@ -210,9 +210,10 @@
             // 
             // pnlMembre
             // 
+            this.pnlMembre.AutoScroll = true;
             this.pnlMembre.Location = new System.Drawing.Point(7, 22);
             this.pnlMembre.Name = "pnlMembre";
-            this.pnlMembre.Size = new System.Drawing.Size(556, 646);
+            this.pnlMembre.Size = new System.Drawing.Size(556, 645);
             this.pnlMembre.TabIndex = 0;
             // 
             // grpFeuilleRoute
@@ -424,6 +425,7 @@
             // 
             // btnLast
             // 
+            this.btnLast.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLast.Location = new System.Drawing.Point(554, 246);
             this.btnLast.Name = "btnLast";
@@ -435,6 +437,7 @@
             // 
             // btnSuivant
             // 
+            this.btnSuivant.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSuivant.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSuivant.Location = new System.Drawing.Point(462, 246);
             this.btnSuivant.Name = "btnSuivant";
@@ -446,6 +449,7 @@
             // 
             // btnPrecedent
             // 
+            this.btnPrecedent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPrecedent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrecedent.Location = new System.Drawing.Point(370, 246);
             this.btnPrecedent.Name = "btnPrecedent";
@@ -457,6 +461,7 @@
             // 
             // btnFirst
             // 
+            this.btnFirst.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFirst.Location = new System.Drawing.Point(278, 246);
             this.btnFirst.Name = "btnFirst";
@@ -483,11 +488,11 @@
             this.grpFormEvent.Controls.Add(this.lblDateAjoutEvent);
             this.grpFormEvent.Controls.Add(this.btnAjoutEvent);
             this.grpFormEvent.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.grpFormEvent.Location = new System.Drawing.Point(380, 217);
+            this.grpFormEvent.Location = new System.Drawing.Point(380, 215);
             this.grpFormEvent.Margin = new System.Windows.Forms.Padding(2);
             this.grpFormEvent.Name = "grpFormEvent";
             this.grpFormEvent.Padding = new System.Windows.Forms.Padding(2);
-            this.grpFormEvent.Size = new System.Drawing.Size(831, 472);
+            this.grpFormEvent.Size = new System.Drawing.Size(831, 462);
             this.grpFormEvent.TabIndex = 1;
             this.grpFormEvent.TabStop = false;
             this.grpFormEvent.Text = "Ajout d\'Évènements";
@@ -495,24 +500,24 @@
             // 
             // rtxtCommentaire
             // 
-            this.rtxtCommentaire.Location = new System.Drawing.Point(14, 119);
+            this.rtxtCommentaire.Location = new System.Drawing.Point(52, 154);
             this.rtxtCommentaire.Name = "rtxtCommentaire";
-            this.rtxtCommentaire.Size = new System.Drawing.Size(794, 110);
+            this.rtxtCommentaire.Size = new System.Drawing.Size(727, 89);
             this.rtxtCommentaire.TabIndex = 6;
             this.rtxtCommentaire.Text = "";
             this.rtxtCommentaire.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtxtMotifDepense_KeyPress);
             // 
             // dtpDateEvent
             // 
-            this.dtpDateEvent.Location = new System.Drawing.Point(236, 43);
+            this.dtpDateEvent.Location = new System.Drawing.Point(230, 45);
             this.dtpDateEvent.Name = "dtpDateEvent";
-            this.dtpDateEvent.Size = new System.Drawing.Size(273, 25);
+            this.dtpDateEvent.Size = new System.Drawing.Size(291, 25);
             this.dtpDateEvent.TabIndex = 5;
             // 
             // lblCommentaireEvent
             // 
             this.lblCommentaireEvent.AutoSize = true;
-            this.lblCommentaireEvent.Location = new System.Drawing.Point(11, 90);
+            this.lblCommentaireEvent.Location = new System.Drawing.Point(48, 121);
             this.lblCommentaireEvent.Name = "lblCommentaireEvent";
             this.lblCommentaireEvent.Size = new System.Drawing.Size(108, 20);
             this.lblCommentaireEvent.TabIndex = 4;
@@ -521,19 +526,20 @@
             // lblDateAjoutEvent
             // 
             this.lblDateAjoutEvent.AutoSize = true;
-            this.lblDateAjoutEvent.Location = new System.Drawing.Point(11, 45);
+            this.lblDateAjoutEvent.Location = new System.Drawing.Point(47, 49);
             this.lblDateAjoutEvent.Name = "lblDateAjoutEvent";
-            this.lblDateAjoutEvent.Size = new System.Drawing.Size(45, 20);
+            this.lblDateAjoutEvent.Size = new System.Drawing.Size(63, 20);
             this.lblDateAjoutEvent.TabIndex = 3;
-            this.lblDateAjoutEvent.Text = "Date";
+            this.lblDateAjoutEvent.Text = "Date :";
             // 
             // btnAjoutEvent
             // 
+            this.btnAjoutEvent.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAjoutEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjoutEvent.Location = new System.Drawing.Point(730, 429);
+            this.btnAjoutEvent.Location = new System.Drawing.Point(730, 419);
             this.btnAjoutEvent.Margin = new System.Windows.Forms.Padding(2);
             this.btnAjoutEvent.Name = "btnAjoutEvent";
-            this.btnAjoutEvent.Size = new System.Drawing.Size(97, 36);
+            this.btnAjoutEvent.Size = new System.Drawing.Size(95, 36);
             this.btnAjoutEvent.TabIndex = 2;
             this.btnAjoutEvent.Text = "Valider";
             this.btnAjoutEvent.UseVisualStyleBackColor = true;
@@ -547,11 +553,11 @@
             this.grpFormCapture.Controls.Add(this.cboCapture);
             this.grpFormCapture.Controls.Add(this.btnAjoutCapture);
             this.grpFormCapture.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.grpFormCapture.Location = new System.Drawing.Point(380, 212);
+            this.grpFormCapture.Location = new System.Drawing.Point(380, 215);
             this.grpFormCapture.Margin = new System.Windows.Forms.Padding(2);
             this.grpFormCapture.Name = "grpFormCapture";
             this.grpFormCapture.Padding = new System.Windows.Forms.Padding(2);
-            this.grpFormCapture.Size = new System.Drawing.Size(831, 472);
+            this.grpFormCapture.Size = new System.Drawing.Size(831, 462);
             this.grpFormCapture.TabIndex = 3;
             this.grpFormCapture.TabStop = false;
             this.grpFormCapture.Text = "Ajout de Capture";
@@ -559,16 +565,16 @@
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(332, 84);
+            this.txtNombre.Location = new System.Drawing.Point(230, 81);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(189, 25);
+            this.txtNombre.Size = new System.Drawing.Size(142, 25);
             this.txtNombre.TabIndex = 11;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
             // 
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(8, 83);
+            this.lblNombre.Location = new System.Drawing.Point(48, 84);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(81, 20);
             this.lblNombre.TabIndex = 11;
@@ -577,7 +583,7 @@
             // lblCapture
             // 
             this.lblCapture.AutoSize = true;
-            this.lblCapture.Location = new System.Drawing.Point(8, 39);
+            this.lblCapture.Location = new System.Drawing.Point(47, 49);
             this.lblCapture.Name = "lblCapture";
             this.lblCapture.Size = new System.Drawing.Size(162, 20);
             this.lblCapture.TabIndex = 11;
@@ -585,19 +591,21 @@
             // 
             // cboCapture
             // 
+            this.cboCapture.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCapture.FormattingEnabled = true;
-            this.cboCapture.Location = new System.Drawing.Point(332, 37);
+            this.cboCapture.Location = new System.Drawing.Point(230, 45);
             this.cboCapture.Name = "cboCapture";
-            this.cboCapture.Size = new System.Drawing.Size(189, 28);
+            this.cboCapture.Size = new System.Drawing.Size(291, 28);
             this.cboCapture.TabIndex = 11;
             // 
             // btnAjoutCapture
             // 
+            this.btnAjoutCapture.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAjoutCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjoutCapture.Location = new System.Drawing.Point(730, 429);
+            this.btnAjoutCapture.Location = new System.Drawing.Point(730, 419);
             this.btnAjoutCapture.Margin = new System.Windows.Forms.Padding(2);
             this.btnAjoutCapture.Name = "btnAjoutCapture";
-            this.btnAjoutCapture.Size = new System.Drawing.Size(97, 36);
+            this.btnAjoutCapture.Size = new System.Drawing.Size(95, 36);
             this.btnAjoutCapture.TabIndex = 2;
             this.btnAjoutCapture.Text = "Valider";
             this.btnAjoutCapture.UseVisualStyleBackColor = true;
@@ -619,7 +627,7 @@
             this.grpFormDepense.Margin = new System.Windows.Forms.Padding(2);
             this.grpFormDepense.Name = "grpFormDepense";
             this.grpFormDepense.Padding = new System.Windows.Forms.Padding(2);
-            this.grpFormDepense.Size = new System.Drawing.Size(831, 472);
+            this.grpFormDepense.Size = new System.Drawing.Size(831, 462);
             this.grpFormDepense.TabIndex = 3;
             this.grpFormDepense.TabStop = false;
             this.grpFormDepense.Text = "Ajout de Dépense";
@@ -627,10 +635,10 @@
             // 
             // rtxtMotifDepense
             // 
-            this.rtxtMotifDepense.Location = new System.Drawing.Point(230, 118);
+            this.rtxtMotifDepense.Location = new System.Drawing.Point(52, 154);
             this.rtxtMotifDepense.Margin = new System.Windows.Forms.Padding(2);
             this.rtxtMotifDepense.Name = "rtxtMotifDepense";
-            this.rtxtMotifDepense.Size = new System.Drawing.Size(142, 27);
+            this.rtxtMotifDepense.Size = new System.Drawing.Size(727, 89);
             this.rtxtMotifDepense.TabIndex = 10;
             this.rtxtMotifDepense.Text = "";
             this.rtxtMotifDepense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtxtMotifDepense_KeyPress);
@@ -640,23 +648,23 @@
             this.txtMontantDepense.Location = new System.Drawing.Point(230, 81);
             this.txtMontantDepense.Margin = new System.Windows.Forms.Padding(2);
             this.txtMontantDepense.Name = "txtMontantDepense";
-            this.txtMontantDepense.Size = new System.Drawing.Size(76, 25);
+            this.txtMontantDepense.Size = new System.Drawing.Size(142, 25);
             this.txtMontantDepense.TabIndex = 9;
             this.txtMontantDepense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontantDepense_KeyPress);
             // 
             // cboTypeDepense
             // 
-            this.cboTypeDepense.FormattingEnabled = true;
-            this.cboTypeDepense.Location = new System.Drawing.Point(230, 159);
+            this.cboTypeDepense.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTypeDepense.Location = new System.Drawing.Point(230, 268);
             this.cboTypeDepense.Margin = new System.Windows.Forms.Padding(2);
             this.cboTypeDepense.Name = "cboTypeDepense";
-            this.cboTypeDepense.Size = new System.Drawing.Size(92, 28);
+            this.cboTypeDepense.Size = new System.Drawing.Size(220, 28);
             this.cboTypeDepense.TabIndex = 8;
             // 
             // lblTypeDepense
             // 
             this.lblTypeDepense.AutoSize = true;
-            this.lblTypeDepense.Location = new System.Drawing.Point(8, 159);
+            this.lblTypeDepense.Location = new System.Drawing.Point(48, 271);
             this.lblTypeDepense.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTypeDepense.Name = "lblTypeDepense";
             this.lblTypeDepense.Size = new System.Drawing.Size(144, 20);
@@ -666,7 +674,7 @@
             // lblMotifDepense
             // 
             this.lblMotifDepense.AutoSize = true;
-            this.lblMotifDepense.Location = new System.Drawing.Point(5, 122);
+            this.lblMotifDepense.Location = new System.Drawing.Point(48, 121);
             this.lblMotifDepense.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMotifDepense.Name = "lblMotifDepense";
             this.lblMotifDepense.Size = new System.Drawing.Size(54, 20);
@@ -676,7 +684,7 @@
             // lblMontantDepense
             // 
             this.lblMontantDepense.AutoSize = true;
-            this.lblMontantDepense.Location = new System.Drawing.Point(5, 83);
+            this.lblMontantDepense.Location = new System.Drawing.Point(48, 84);
             this.lblMontantDepense.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMontantDepense.Name = "lblMontantDepense";
             this.lblMontantDepense.Size = new System.Drawing.Size(72, 20);
@@ -686,15 +694,14 @@
             // dtpDateDepense
             // 
             this.dtpDateDepense.Location = new System.Drawing.Point(230, 45);
-            this.dtpDateDepense.Margin = new System.Windows.Forms.Padding(2);
             this.dtpDateDepense.Name = "dtpDateDepense";
-            this.dtpDateDepense.Size = new System.Drawing.Size(151, 25);
+            this.dtpDateDepense.Size = new System.Drawing.Size(291, 25);
             this.dtpDateDepense.TabIndex = 4;
             // 
             // lblDateDepense
             // 
             this.lblDateDepense.AutoSize = true;
-            this.lblDateDepense.Location = new System.Drawing.Point(5, 45);
+            this.lblDateDepense.Location = new System.Drawing.Point(47, 49);
             this.lblDateDepense.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblDateDepense.Name = "lblDateDepense";
             this.lblDateDepense.Size = new System.Drawing.Size(72, 20);
@@ -703,11 +710,12 @@
             // 
             // btnAjoutDepense
             // 
+            this.btnAjoutDepense.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAjoutDepense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjoutDepense.Location = new System.Drawing.Point(496, 430);
+            this.btnAjoutDepense.Location = new System.Drawing.Point(730, 419);
             this.btnAjoutDepense.Margin = new System.Windows.Forms.Padding(2);
             this.btnAjoutDepense.Name = "btnAjoutDepense";
-            this.btnAjoutDepense.Size = new System.Drawing.Size(73, 36);
+            this.btnAjoutDepense.Size = new System.Drawing.Size(95, 36);
             this.btnAjoutDepense.TabIndex = 2;
             this.btnAjoutDepense.Text = "Valider";
             this.btnAjoutDepense.UseVisualStyleBackColor = true;
@@ -725,11 +733,11 @@
             this.grpFormContact.Controls.Add(this.dtpDateContact);
             this.grpFormContact.Controls.Add(this.btnAjoutContact);
             this.grpFormContact.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.grpFormContact.Location = new System.Drawing.Point(380, 212);
+            this.grpFormContact.Location = new System.Drawing.Point(380, 215);
             this.grpFormContact.Margin = new System.Windows.Forms.Padding(2);
             this.grpFormContact.Name = "grpFormContact";
             this.grpFormContact.Padding = new System.Windows.Forms.Padding(2);
-            this.grpFormContact.Size = new System.Drawing.Size(831, 472);
+            this.grpFormContact.Size = new System.Drawing.Size(831, 462);
             this.grpFormContact.TabIndex = 3;
             this.grpFormContact.TabStop = false;
             this.grpFormContact.Text = "Ajout de Contact";
@@ -737,8 +745,9 @@
             // 
             // cboInformateur
             // 
+            this.cboInformateur.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboInformateur.FormattingEnabled = true;
-            this.cboInformateur.Location = new System.Drawing.Point(236, 300);
+            this.cboInformateur.Location = new System.Drawing.Point(230, 268);
             this.cboInformateur.Name = "cboInformateur";
             this.cboInformateur.Size = new System.Drawing.Size(285, 28);
             this.cboInformateur.TabIndex = 16;
@@ -746,7 +755,7 @@
             // lblInformateur
             // 
             this.lblInformateur.AutoSize = true;
-            this.lblInformateur.Location = new System.Drawing.Point(23, 303);
+            this.lblInformateur.Location = new System.Drawing.Point(48, 271);
             this.lblInformateur.Name = "lblInformateur";
             this.lblInformateur.Size = new System.Drawing.Size(108, 20);
             this.lblInformateur.TabIndex = 15;
@@ -754,9 +763,9 @@
             // 
             // rtxtAppreciation
             // 
-            this.rtxtAppreciation.Location = new System.Drawing.Point(27, 157);
+            this.rtxtAppreciation.Location = new System.Drawing.Point(52, 154);
             this.rtxtAppreciation.Name = "rtxtAppreciation";
-            this.rtxtAppreciation.Size = new System.Drawing.Size(776, 110);
+            this.rtxtAppreciation.Size = new System.Drawing.Size(727, 89);
             this.rtxtAppreciation.TabIndex = 14;
             this.rtxtAppreciation.Text = "";
             this.rtxtAppreciation.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rtxtMotifDepense_KeyPress);
@@ -764,7 +773,7 @@
             // lblAppreciation
             // 
             this.lblAppreciation.AutoSize = true;
-            this.lblAppreciation.Location = new System.Drawing.Point(23, 126);
+            this.lblAppreciation.Location = new System.Drawing.Point(48, 121);
             this.lblAppreciation.Name = "lblAppreciation";
             this.lblAppreciation.Size = new System.Drawing.Size(117, 20);
             this.lblAppreciation.TabIndex = 13;
@@ -773,7 +782,7 @@
             // lblSomme
             // 
             this.lblSomme.AutoSize = true;
-            this.lblSomme.Location = new System.Drawing.Point(23, 87);
+            this.lblSomme.Location = new System.Drawing.Point(48, 84);
             this.lblSomme.Name = "lblSomme";
             this.lblSomme.Size = new System.Drawing.Size(117, 20);
             this.lblSomme.TabIndex = 12;
@@ -781,35 +790,36 @@
             // 
             // txtSomme
             // 
-            this.txtSomme.Location = new System.Drawing.Point(236, 85);
+            this.txtSomme.Location = new System.Drawing.Point(230, 81);
             this.txtSomme.Name = "txtSomme";
-            this.txtSomme.Size = new System.Drawing.Size(129, 25);
+            this.txtSomme.Size = new System.Drawing.Size(142, 25);
             this.txtSomme.TabIndex = 11;
             this.txtSomme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontantDepense_KeyPress);
             // 
             // lblDateContact
             // 
             this.lblDateContact.AutoSize = true;
-            this.lblDateContact.Location = new System.Drawing.Point(23, 40);
+            this.lblDateContact.Location = new System.Drawing.Point(47, 49);
             this.lblDateContact.Name = "lblDateContact";
-            this.lblDateContact.Size = new System.Drawing.Size(45, 20);
+            this.lblDateContact.Size = new System.Drawing.Size(63, 20);
             this.lblDateContact.TabIndex = 11;
-            this.lblDateContact.Text = "Date";
+            this.lblDateContact.Text = "Date :";
             // 
             // dtpDateContact
             // 
-            this.dtpDateContact.Location = new System.Drawing.Point(236, 40);
+            this.dtpDateContact.Location = new System.Drawing.Point(230, 45);
             this.dtpDateContact.Name = "dtpDateContact";
-            this.dtpDateContact.Size = new System.Drawing.Size(285, 25);
+            this.dtpDateContact.Size = new System.Drawing.Size(291, 25);
             this.dtpDateContact.TabIndex = 11;
             // 
             // btnAjoutContact
             // 
+            this.btnAjoutContact.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAjoutContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjoutContact.Location = new System.Drawing.Point(730, 429);
+            this.btnAjoutContact.Location = new System.Drawing.Point(730, 419);
             this.btnAjoutContact.Margin = new System.Windows.Forms.Padding(2);
             this.btnAjoutContact.Name = "btnAjoutContact";
-            this.btnAjoutContact.Size = new System.Drawing.Size(97, 36);
+            this.btnAjoutContact.Size = new System.Drawing.Size(95, 36);
             this.btnAjoutContact.TabIndex = 2;
             this.btnAjoutContact.Text = "Valider";
             this.btnAjoutContact.UseVisualStyleBackColor = true;
@@ -878,6 +888,8 @@
             // rdbChoixCapture
             // 
             this.rdbChoixCapture.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdbChoixCapture.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbChoixCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdbChoixCapture.Location = new System.Drawing.Point(940, 32);
             this.rdbChoixCapture.Margin = new System.Windows.Forms.Padding(2);
             this.rdbChoixCapture.Name = "rdbChoixCapture";
@@ -891,6 +903,8 @@
             // rdbChoixEvent
             // 
             this.rdbChoixEvent.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdbChoixEvent.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbChoixEvent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdbChoixEvent.Location = new System.Drawing.Point(824, 32);
             this.rdbChoixEvent.Margin = new System.Windows.Forms.Padding(2);
             this.rdbChoixEvent.Name = "rdbChoixEvent";
@@ -904,6 +918,8 @@
             // rdbChoixDepense
             // 
             this.rdbChoixDepense.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdbChoixDepense.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbChoixDepense.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdbChoixDepense.Location = new System.Drawing.Point(708, 32);
             this.rdbChoixDepense.Margin = new System.Windows.Forms.Padding(2);
             this.rdbChoixDepense.Name = "rdbChoixDepense";
@@ -917,6 +933,8 @@
             // rdbChoixContact
             // 
             this.rdbChoixContact.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdbChoixContact.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rdbChoixContact.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdbChoixContact.Location = new System.Drawing.Point(592, 32);
             this.rdbChoixContact.Margin = new System.Windows.Forms.Padding(2);
             this.rdbChoixContact.Name = "rdbChoixContact";
@@ -958,10 +976,10 @@
             // pnlAjout
             // 
             this.pnlAjout.Controls.Add(this.grpFormDepense);
-            this.pnlAjout.Controls.Add(this.grpChoixAjout);
-            this.pnlAjout.Controls.Add(this.grpFormContact);
-            this.pnlAjout.Controls.Add(this.grpFormEvent);
             this.pnlAjout.Controls.Add(this.grpFormCapture);
+            this.pnlAjout.Controls.Add(this.grpFormEvent);
+            this.pnlAjout.Controls.Add(this.grpFormContact);
+            this.pnlAjout.Controls.Add(this.grpChoixAjout);
             this.pnlAjout.Location = new System.Drawing.Point(213, 225);
             this.pnlAjout.Name = "pnlAjout";
             this.pnlAjout.Size = new System.Drawing.Size(1591, 683);
@@ -989,36 +1007,39 @@
             // 
             // btnInfoGenerale
             // 
+            this.btnInfoGenerale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnInfoGenerale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInfoGenerale.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnInfoGenerale.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnInfoGenerale.Location = new System.Drawing.Point(26, 268);
             this.btnInfoGenerale.Name = "btnInfoGenerale";
             this.btnInfoGenerale.Size = new System.Drawing.Size(159, 57);
-            this.btnInfoGenerale.TabIndex = 10;
+            this.btnInfoGenerale.TabIndex = 0;
             this.btnInfoGenerale.Text = "Informations générales";
             this.btnInfoGenerale.UseVisualStyleBackColor = true;
             this.btnInfoGenerale.Click += new System.EventHandler(this.btnInfoGenerale_Click);
             // 
             // btnJournal
             // 
+            this.btnJournal.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnJournal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnJournal.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnJournal.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnJournal.Location = new System.Drawing.Point(26, 346);
             this.btnJournal.Name = "btnJournal";
             this.btnJournal.Size = new System.Drawing.Size(159, 57);
-            this.btnJournal.TabIndex = 21;
+            this.btnJournal.TabIndex = 1;
             this.btnJournal.Text = "Journal de Bord";
             this.btnJournal.UseVisualStyleBackColor = true;
             this.btnJournal.Click += new System.EventHandler(this.btnJournal_Click);
             // 
             // btnAjout
             // 
+            this.btnAjout.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAjout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAjout.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
+            this.btnAjout.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnAjout.Location = new System.Drawing.Point(26, 424);
             this.btnAjout.Name = "btnAjout";
             this.btnAjout.Size = new System.Drawing.Size(159, 57);
-            this.btnAjout.TabIndex = 22;
+            this.btnAjout.TabIndex = 2;
             this.btnAjout.Text = "Ajout d\'évènements";
             this.btnAjout.UseVisualStyleBackColor = true;
             this.btnAjout.Click += new System.EventHandler(this.btnAjout_Click);
@@ -1026,6 +1047,7 @@
             // btnGeneratePdf
             // 
             this.btnGeneratePdf.BackColor = System.Drawing.Color.Transparent;
+            this.btnGeneratePdf.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnGeneratePdf.FlatAppearance.BorderSize = 0;
             this.btnGeneratePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGeneratePdf.Image = ((System.Drawing.Image)(resources.GetObject("btnGeneratePdf.Image")));
@@ -1034,7 +1056,7 @@
             this.btnGeneratePdf.Size = new System.Drawing.Size(64, 64);
             this.btnGeneratePdf.TabIndex = 23;
             this.btnGeneratePdf.UseVisualStyleBackColor = false;
-            this.btnGeneratePdf.Click += new System.EventHandler(this.button1_Click);
+            this.btnGeneratePdf.Click += new System.EventHandler(this.btnGeneratePdf_Click);
             // 
             // FormulaireMission
             // 
@@ -1047,10 +1069,10 @@
             this.Controls.Add(this.btnJournal);
             this.Controls.Add(this.btnInfoGenerale);
             this.Controls.Add(this.lblNomMission);
+            this.Controls.Add(this.pnlInfoGenerale);
             this.Controls.Add(this.pbPlanete);
             this.Controls.Add(this.pnlHistorique);
             this.Controls.Add(this.pnlAjout);
-            this.Controls.Add(this.pnlInfoGenerale);
             this.Font = new System.Drawing.Font("Cascadia Code", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormulaireMission";

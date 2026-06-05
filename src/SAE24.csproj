@@ -129,11 +129,11 @@
       <DependentUpon>FormCreationMission.cs</DependentUpon>
     </Compile>
     <Compile Include="Couleur.cs" />
-    <Compile Include="FormulaireMission.cs">
+    <Compile Include="FormulaireJournalDeBord.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormulaireMission.Designer.cs">
-      <DependentUpon>FormulaireMission.cs</DependentUpon>
+    <Compile Include="FormulaireJournalDeBord.Designer.cs">
+      <DependentUpon>FormulaireJournalDeBord.cs</DependentUpon>
     </Compile>
     <Compile Include="FormulaireTableauDeBord.cs">
       <SubType>Form</SubType>
@@ -141,24 +141,18 @@
     <Compile Include="FormulaireTableauDeBord.Designer.cs">
       <DependentUpon>FormulaireTableauDeBord.cs</DependentUpon>
     </Compile>
-    <Compile Include="MembreEquipage.cs">
+    <Compile Include="UserControl\UCMembreEquipage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MembreEquipage.Designer.cs">
-      <DependentUpon>MembreEquipage.cs</DependentUpon>
+    <Compile Include="UserControl\UCMembreEquipage.Designer.cs">
+      <DependentUpon>UCMembreEquipage.cs</DependentUpon>
     </Compile>
     <Compile Include="mesDatas.cs" />
-    <Compile Include="MissionPB.cs">
+    <Compile Include="UserControl\UCMissionResume.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MissionPB.Designer.cs">
-      <DependentUpon>MissionPB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MissionResume.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="MissionResume.Designer.cs">
-      <DependentUpon>MissionResume.cs</DependentUpon>
+    <Compile Include="UserControl\UCMissionResume.Designer.cs">
+      <DependentUpon>UCMissionResume.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,45 +162,42 @@
     <Compile Include="UserControlMessageErreur.Designer.cs">
       <DependentUpon>UserControlMessageErreur.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlPlanetes\Properties\AssemblyInfo.cs" />
-    <Compile Include="UserControlPlanetes\UserControl1.cs">
+    <Compile Include="UserControl\Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl\UCPlanete.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlPlanetes\UserControl1.Designer.cs">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <Compile Include="UserControl\UCPlanete.Designer.cs">
+      <DependentUpon>UCPlanete.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlPlanetes\UserControlEspeces.cs">
+    <Compile Include="UserControl\UserControlEspeces.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlPlanetes\UserControlEspeces.Designer.cs">
+    <Compile Include="UserControl\UserControlEspeces.Designer.cs">
       <DependentUpon>UserControlEspeces.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlPlanetes\UserControlEspecesAllies.cs">
+    <Compile Include="UserControl\UserControlEspecesAllies.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlPlanetes\UserControlEspecesAllies.Designer.cs">
+    <Compile Include="UserControl\UserControlEspecesAllies.Designer.cs">
       <DependentUpon>UserControlEspecesAllies.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlPlanetes\UserControlEspecesEnnemies.cs">
+    <Compile Include="UserControl\UserControlEspecesEnnemies.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlPlanetes\UserControlEspecesEnnemies.Designer.cs">
+    <Compile Include="UserControl\UserControlEspecesEnnemies.Designer.cs">
       <DependentUpon>UserControlEspecesEnnemies.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="FormulaireMission.resx">
-      <DependentUpon>FormulaireMission.cs</DependentUpon>
+    <EmbeddedResource Include="FormulaireJournalDeBord.resx">
+      <DependentUpon>FormulaireJournalDeBord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormulaireTableauDeBord.resx">
       <DependentUpon>FormulaireTableauDeBord.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MembreEquipage.resx">
-      <DependentUpon>MembreEquipage.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\UCMembreEquipage.resx">
+      <DependentUpon>UCMembreEquipage.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MissionPB.resx">
-      <DependentUpon>MissionPB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="MissionResume.resx">
-      <DependentUpon>MissionResume.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\UCMissionResume.resx">
+      <DependentUpon>UCMissionResume.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -217,7 +208,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
     <EmbeddedResource Include="UserControlMessageErreur.resx">
       <DependentUpon>UserControlMessageErreur.cs</DependentUpon>
     </EmbeddedResource>
@@ -227,16 +217,16 @@
     <EmbeddedResource Include="FormCreationMission.resx">
       <DependentUpon>FormCreationMission.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlPlanetes\UserControl1.resx">
-      <DependentUpon>UserControl1.cs</DependentUpon>
+    <EmbeddedResource Include="UserControl\UCPlanete.resx">
+      <DependentUpon>UCPlanete.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlPlanetes\UserControlEspeces.resx">
+    <EmbeddedResource Include="UserControl\UserControlEspeces.resx">
       <DependentUpon>UserControlEspeces.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlPlanetes\UserControlEspecesAllies.resx">
+    <EmbeddedResource Include="UserControl\UserControlEspecesAllies.resx">
       <DependentUpon>UserControlEspecesAllies.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlPlanetes\UserControlEspecesEnnemies.resx">
+    <EmbeddedResource Include="UserControl\UserControlEspecesEnnemies.resx">
       <DependentUpon>UserControlEspecesEnnemies.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="DataBase\Stargate.db" />
@@ -250,7 +240,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="UserControlPlanetes\UserControlPlanetes.csproj" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

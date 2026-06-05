@@ -39,6 +39,7 @@
             // 
             // pbPlanete
             // 
+            this.pbPlanete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pbPlanete.Location = new System.Drawing.Point(4, 8);
             this.pbPlanete.Name = "pbPlanete";
             this.pbPlanete.Size = new System.Drawing.Size(250, 250);
@@ -52,6 +53,7 @@
             // lblNomMission
             // 
             this.lblNomMission.AutoSize = true;
+            this.lblNomMission.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblNomMission.Font = new System.Drawing.Font("Cascadia Code", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblNomMission.Location = new System.Drawing.Point(291, 29);
             this.lblNomMission.Name = "lblNomMission";
@@ -66,6 +68,7 @@
             // lblDateDeb
             // 
             this.lblDateDeb.AutoSize = true;
+            this.lblDateDeb.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDateDeb.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblDateDeb.Location = new System.Drawing.Point(293, 98);
             this.lblDateDeb.Name = "lblDateDeb";
@@ -80,6 +83,7 @@
             // lblDuree
             // 
             this.lblDuree.AutoSize = true;
+            this.lblDuree.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblDuree.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblDuree.Location = new System.Drawing.Point(663, 98);
             this.lblDuree.Name = "lblDuree";
@@ -94,6 +98,7 @@
             // lblChef
             // 
             this.lblChef.AutoSize = true;
+            this.lblChef.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblChef.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblChef.Location = new System.Drawing.Point(293, 156);
             this.lblChef.Name = "lblChef";
@@ -108,6 +113,7 @@
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
+            this.lblStatus.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblStatus.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblStatus.Location = new System.Drawing.Point(1035, 59);
             this.lblStatus.Name = "lblStatus";

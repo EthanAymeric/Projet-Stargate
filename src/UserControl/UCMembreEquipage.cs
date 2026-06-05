@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace SAE24
 {
-    public partial class MissionPB : UserControl
+    public partial class MembreEquipage : UserControl
     {
-        public MissionPB()
+        public MembreEquipage()
         {
             InitializeComponent();
         }
@@ -21,17 +21,17 @@ namespace SAE24
         {
             set
             {
-                this.pictureBox1.Image = Image.FromFile($"../../Images/Planetes/{value}.png");
+                pbMembre.Image = Image.FromFile($"../../Images/Membres/{value}.png");
+                pbMembre.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
 
-        public string SetText
+        public string setText
         {
             set
             {
-                this.lblMissionNom.Text = value;
+                lblMembre.Text = value; 
             }
         }
-
     }
 }

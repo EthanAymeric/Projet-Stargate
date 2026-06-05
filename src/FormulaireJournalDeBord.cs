@@ -54,17 +54,15 @@ namespace SAE24
         private void RemplissageMembre()
         {
             DataRow[] membreMission = missionActuelle.GetChildRows("FK_Mission_Composer");
-            int left = 10;
 
             foreach (DataRow membre in membreMission)
             {
-                left = CreationMembre(membre, left);
+                CreationMembre(membre);
             }
         }
 
-        private int CreationMembre(DataRow r, int left)
+        private void CreationMembre(DataRow r)
         {
-            int top = 10;
             MembreEquipage m = new MembreEquipage();
             DataRow profil = r.GetParentRow("FK_Membre_Composer");
             if (profil["matricule"].ToString()[0] == 'C')
@@ -78,14 +76,9 @@ namespace SAE24
             m.setText = $"{profil["nom"].ToString()}\n{profil["prenom"].ToString()}";
             if (profil["matricule"].ToString() == missionActuelle["matriculeChef"].ToString())
             {
-                m.BackColor = System.Drawing.Color.Green;
+                m.BackColor = Couleur.getButton;
             }
-            m.Top = top;
-            m.Left = left;
             pnlMembre.Controls.Add(m);
-            left += m.Width + 5;
-
-            return left;
         }
 
         private void RemplissageInfoMission()
@@ -416,7 +409,7 @@ namespace SAE24
             try
             {
                 string date = dtpDateEvent.Value.ToString("yyyy-MM-dd");
-                string commentaire = rtxtCommentaire.Text;
+                string commentaire = rtxtCommentaire.Text.Replace("'", "''");
                 string request = $"INSERT INTO JournalDeBord(nomPlanete, numero, dateJ, commentaires) VALUES ('{missionActuelle["nomPlanete"].ToString()}','{missionActuelle["numero"].ToString()}','{date}','{commentaire}')";
                 MessageBox.Show(request);
                 SQLiteCommand cmd = new SQLiteCommand(request,co);
@@ -685,7 +678,7 @@ namespace SAE24
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnGeneratePdf_Click(object sender, EventArgs e)
         {
             string identiteChef = $"{missionActuelle.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {missionActuelle.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
             DataRow[] membreMission = missionActuelle.GetChildRows("FK_Mission_Composer");

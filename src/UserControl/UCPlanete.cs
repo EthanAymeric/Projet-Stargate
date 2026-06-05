@@ -126,25 +126,5 @@ namespace UserControlPlanetes
                 pbTemp.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void UserControl1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEspecesValue_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblMissionsValue_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

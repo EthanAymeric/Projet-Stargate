@@ -38,6 +38,9 @@ namespace SAE24
         }
         private void FrmTableauDeBord_Load(object sender, EventArgs e)
         {
+            // Lors du chargement du formulaire, on remplit le DataSet local à partir de la base de donnée,
+            // on ajoute les relations entre les différentes tables du DataSet pour pouvoir faire des liens entre les différentes données,
+            // on affiche les différentes planètes et espèces dans le tableau de bord et on prépare les éléments pour la recherche d'espèces
             RemplissageDS();
             AjoutRelation();
             InfosPlanetes();
@@ -188,9 +191,14 @@ namespace SAE24
         }
         private void ActualisationTDB(String filtrePlanète, String filtreEtat)
         {
+            // Permet d'actualiser le tableau de bord en fonction des filtres choisis
             grpFiltreMission.Visible = true;
             grpTableauDeBord.Visible = true;
+
+            // On compte le nombre de mission trouvée
             int missionTrouvee = 0;
+
+            // Création du filtre final en fonction des choix de l'utilisateur dans les combobox
             string filtreFinal = "";
             if (filtrePlanète.Length != 0)
             {
@@ -217,8 +225,8 @@ namespace SAE24
             }
 
             string triFinal = (triAlpha) ? "nomPlanete ASC" : "nomPlanete DESC";
-            
 
+            // On vide le Flow Layout Pannel pour ne pas avoir d'affichage en double à chaque actualisation
             pnlTDB.Controls.Clear();
             try
             {
@@ -226,6 +234,8 @@ namespace SAE24
                 // Remplis le Flow Layout Pannel avec les UserControl MissionResume
                 foreach (DataRow r in MesDatas.DsGlobal.Tables["Mission"].Select($"{filtreFinal}",$"{triFinal}"))
                 {
+
+                    // On façonne le résumé de la mission pour l'affichage dans le tableau de bord
                     missionTrouvee++;
                     string nomMission = r["NomPlanete"].ToString() + r["numero"].ToString();
                     string strDateDepart = r["dateDepart"].ToString();
@@ -237,6 +247,9 @@ namespace SAE24
                     string identite = $"{r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[1].ToString()} {r.GetParentRow("FK_Militaire_Chef").GetParentRow("FK_Membre_Militaire")[2].ToString()}";
                     string chef = $"{identite} : {grade}";
 
+
+                    // En fonction du tri choisi, on affiche les missions qui correspondent au tri d'état dans le Flow Layout Pannel
+                    // Et les autres dans un buffer pour les afficher à la fin (afin d'avoir les missions qui ne correspondent pas au filtre d'état à la fin du tableau de bord)
                     if (triEtat == -1)
                     {
                         if (dateRetour <= DateTime.Today)
@@ -311,6 +324,8 @@ namespace SAE24
 
         private void btnNouvelleMission_Click(object sender, EventArgs e)
         {
+
+            // Permet d'ajouter une mission en cliquant sur le bouton "Nouvelle Mission" et de mettre à jour le tableau de bord en conséquence
             FormConnexion connexion = new FormConnexion();
             FormCreationMission formCreationMission = new FormCreationMission();
             connexion.ShowDialog();
@@ -1386,7 +1401,6 @@ namespace SAE24
                 DataTable ListePlaneteMission = new DataTable();
                 da3.Fill(ListePlaneteMission);
 
-                DataGridView dgvStats3 = new DataGridView();
                 dgvMissionParPlanete.DataSource = ListePlaneteMission;
 
 
@@ -1396,17 +1410,16 @@ namespace SAE24
                 // nom de la mission et nom et prénom du chef de la mission, pour les dépenses les plus élevées de chaque mission. 
 
                 string req4 = @"SELECT d.dateD || ' - ' || d.motif || ': ' || d.montant || '€' AS [Plus grande dépense], 
-d.nomPlanete || '-' || d.numeroMission AS [Nom de la mission],
-me.nom || ' ' || me.prenom AS [Chef de mission]
-FROM Depense d 
-JOIN Mission m ON d.nomPlanete = m.nomPlanete AND d.numeroMission = m.numero
-JOIN Membre me ON me.matricule = m.matriculeChef
-GROUP BY d.nomPlanete, d.numeroMission";
+                d.nomPlanete || '-' || d.numeroMission AS [Nom de la mission],
+                me.nom || ' ' || me.prenom AS [Chef de mission]
+                FROM Depense d 
+                JOIN Mission m ON d.nomPlanete = m.nomPlanete AND d.numeroMission = m.numero
+                JOIN Membre me ON me.matricule = m.matriculeChef
+                GROUP BY d.nomPlanete, d.numeroMission";
                 SQLiteCommand cmd4 = new SQLiteCommand(req4, co);
                 SQLiteDataAdapter da4 = new SQLiteDataAdapter(cmd4);
                 da4.Fill(MesDatas.DsGlobal, "ListeDepenses");
 
-                DataGridView dgvStats4 = new DataGridView();
                 dgvDepenseParMission.DataSource = MesDatas.DsGlobal.Tables["ListeDepenses"];
             }
             catch (Exception ex)

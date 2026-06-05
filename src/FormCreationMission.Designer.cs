@@ -172,9 +172,9 @@
             // richTextBoxFeuilleRoute
             // 
             this.richTextBoxFeuilleRoute.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.richTextBoxFeuilleRoute.Location = new System.Drawing.Point(370, 335);
+            this.richTextBoxFeuilleRoute.Location = new System.Drawing.Point(42, 367);
             this.richTextBoxFeuilleRoute.Name = "richTextBoxFeuilleRoute";
-            this.richTextBoxFeuilleRoute.Size = new System.Drawing.Size(291, 168);
+            this.richTextBoxFeuilleRoute.Size = new System.Drawing.Size(619, 168);
             this.richTextBoxFeuilleRoute.TabIndex = 12;
             this.richTextBoxFeuilleRoute.Text = "";
             this.richTextBoxFeuilleRoute.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.richTextBoxFeuilleRoute_KeyPress);
@@ -320,13 +320,14 @@
             this.groupBox.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.groupBox.Location = new System.Drawing.Point(12, 11);
             this.groupBox.Name = "groupBox";
-            this.groupBox.Size = new System.Drawing.Size(1316, 492);
+            this.groupBox.Size = new System.Drawing.Size(1316, 567);
             this.groupBox.TabIndex = 25;
             this.groupBox.TabStop = false;
             this.groupBox.Text = "Objectifs et Membres";
             // 
             // buttonValiderCapturesMembres
             // 
+            this.buttonValiderCapturesMembres.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonValiderCapturesMembres.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonValiderCapturesMembres.Location = new System.Drawing.Point(1089, 408);
             this.buttonValiderCapturesMembres.Name = "buttonValiderCapturesMembres";
@@ -338,6 +339,7 @@
             // 
             // buttonAjouterCapture
             // 
+            this.buttonAjouterCapture.Cursor = System.Windows.Forms.Cursors.Hand;
             this.buttonAjouterCapture.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAjouterCapture.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.buttonAjouterCapture.Location = new System.Drawing.Point(1148, 76);
@@ -424,7 +426,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1340, 516);
+            this.ClientSize = new System.Drawing.Size(1340, 590);
             this.Controls.Add(this.groupBox);
             this.Controls.Add(this.comboBoxChef);
             this.Controls.Add(this.labelChef);
@@ -438,7 +440,6 @@
             this.Controls.Add(this.labelMembres);
             this.Controls.Add(this.trackBarNbMembres);
             this.Controls.Add(this.labelNbMembres);
-            this.Controls.Add(this.richTextBoxFeuilleRoute);
             this.Controls.Add(this.labelFeuilleRoute);
             this.Controls.Add(this.labelDuree);
             this.Controls.Add(this.labelDateRetour);
@@ -449,6 +450,7 @@
             this.Controls.Add(this.labelNomMission);
             this.Controls.Add(this.comboBoxPlanete);
             this.Controls.Add(this.labelPlanete);
+            this.Controls.Add(this.richTextBoxFeuilleRoute);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F);
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "FormCreationMission";

@@ -21,7 +21,7 @@ namespace SAE24
             if (darkTheme)
             {
                 background = Color.FromArgb(26, 10, 60);
-                text = Color.FromArgb(124, 58, 237);
+                text = Color.FromArgb(184, 78, 255);
                 button = Color.FromArgb(46, 16, 101);
                 button_hover = Color.FromArgb(250, 245, 255);
             }
