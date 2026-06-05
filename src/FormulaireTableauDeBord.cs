@@ -1471,6 +1471,10 @@ GROUP BY d.nomPlanete, d.numeroMission";
 
 
             // Récupération du nom de la planète
+            if (cboStatsInformateurMission.SelectedIndex == -1)
+            {
+                return;
+            }
             string nomPlanete = cboStatsInformateurMission.SelectedValue.ToString().Substring(0, cboStatsInformateurMission.SelectedValue.ToString().Length - 1);
 
             // Récupération du numéro de la mission sur ladite planète
