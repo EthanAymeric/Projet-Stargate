@@ -246,7 +246,7 @@
             this.grpCapture.Size = new System.Drawing.Size(697, 262);
             this.grpCapture.TabIndex = 8;
             this.grpCapture.TabStop = false;
-            this.grpCapture.Text = "Capture Effectuées";
+            this.grpCapture.Text = "Captures Effectuées";
             // 
             // dgvCapture
             // 
@@ -997,7 +997,7 @@
             this.btnInfoGenerale.Name = "btnInfoGenerale";
             this.btnInfoGenerale.Size = new System.Drawing.Size(159, 57);
             this.btnInfoGenerale.TabIndex = 10;
-            this.btnInfoGenerale.Text = "Information générale";
+            this.btnInfoGenerale.Text = "Informations générales";
             this.btnInfoGenerale.UseVisualStyleBackColor = true;
             this.btnInfoGenerale.Click += new System.EventHandler(this.btnInfoGenerale_Click);
             // 
@@ -1055,7 +1055,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormulaireMission";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FormulaireMission";
+            this.Text = "Informations de la mission";
             this.Load += new System.EventHandler(this.FormulaireMission_Load);
             this.grpCaptures.ResumeLayout(false);
             this.grpMembre.ResumeLayout(false);

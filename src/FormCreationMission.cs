@@ -138,7 +138,7 @@ where lower(nomPlanete) = lower('{comboBoxPlanete.SelectedItem}')";
         {
             errorProvider.SetError(comboBoxPlanete, "");
             int nbMissions = nbMissionsPlanete(comboBoxPlanete.SelectedItem.ToString());
-            labelNomMission.Text = $"Nom de mission: {comboBoxPlanete.SelectedItem} - {nbMissions + 1}";
+            labelNomMission.Text = $"Nom de mission: {comboBoxPlanete.SelectedItem}{nbMissions + 1}";
         }
 
         private void dateTimePickerDepart_ValueChanged(object sender, EventArgs e)

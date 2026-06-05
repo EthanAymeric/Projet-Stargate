@@ -318,7 +318,7 @@
             this.groupBox.Controls.Add(this.checkedListBoxMembres);
             this.groupBox.Controls.Add(this.labelAjoutMembres);
             this.groupBox.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.groupBox.Location = new System.Drawing.Point(12, 12);
+            this.groupBox.Location = new System.Drawing.Point(12, 11);
             this.groupBox.Name = "groupBox";
             this.groupBox.Size = new System.Drawing.Size(1316, 492);
             this.groupBox.TabIndex = 25;
@@ -393,7 +393,7 @@
             // 
             this.labelMembresRestants.AutoSize = true;
             this.labelMembresRestants.ForeColor = System.Drawing.Color.Crimson;
-            this.labelMembresRestants.Location = new System.Drawing.Point(523, 34);
+            this.labelMembresRestants.Location = new System.Drawing.Point(497, 34);
             this.labelMembresRestants.Name = "labelMembresRestants";
             this.labelMembresRestants.Size = new System.Drawing.Size(153, 24);
             this.labelMembresRestants.TabIndex = 2;

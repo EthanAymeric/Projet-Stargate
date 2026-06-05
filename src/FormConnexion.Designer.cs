@@ -138,7 +138,7 @@
             this.MinimizeBox = false;
             this.Name = "FormConnexion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Connexion Administrateur";
+            this.Text = "Connexion administrateur";
             this.Load += new System.EventHandler(this.FormConnexion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
