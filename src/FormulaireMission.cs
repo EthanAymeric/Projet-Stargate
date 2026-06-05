@@ -42,7 +42,10 @@ namespace SAE24
             ForeColor = Couleur.getText;
             foreach (Control c in Controls)
             {
-                UpdateColorControls(c);
+                if (c.Name != "btnGeneratePdf")
+                {
+                    UpdateColorControls(c);
+                }
             }
             QuestPDF.Settings.License = LicenseType.Community;
             solde = Convert.ToDouble(missionActuelle["budget"]);
@@ -128,7 +131,7 @@ namespace SAE24
             creationDGVDepense();
             creationListeEvent();
             creationDGVCapture();
-            Text = $"Resume de la mission : {missionActuelle["nomPlanete"]} {missionActuelle["numero"]}";
+            Text = $"Résumé de la mission {missionActuelle["nomPlanete"]}{missionActuelle["numero"]}";
         }
 
         private void creationDGVDepense()
@@ -688,6 +691,9 @@ namespace SAE24
             DataRow[] membreMission = missionActuelle.GetChildRows("FK_Mission_Composer");
             DataRow[] journalDeBord = missionActuelle.GetChildRows("FK_Mission_JournalDeBord");
 
+            // Enregistre dans le dossier Downloads de l'utilisateur sous le nom rapport-<nom_mission>.pdf
+            string chemin = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads", $"rapport-{missionActuelle["nomPlanete"]}{missionActuelle["numero"]}.pdf");
+
             Document.Create(container =>
             {
                 container.Page(page =>
@@ -829,7 +835,7 @@ namespace SAE24
                         });
                 });
             })
-            .GeneratePdf($"{missionActuelle["nomPlanete"]}{missionActuelle["numero"]}.pdf");
+            .GeneratePdf(chemin);
 
 
             MessageBox.Show("PDF Généré");

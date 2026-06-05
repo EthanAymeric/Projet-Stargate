@@ -420,7 +420,6 @@
             this.lblEventDescription.Name = "lblEventDescription";
             this.lblEventDescription.Size = new System.Drawing.Size(598, 108);
             this.lblEventDescription.TabIndex = 1;
-            this.lblEventDescription.Text = "<Event>";
             this.lblEventDescription.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // btnLast
@@ -473,9 +472,8 @@
             this.lblDateEvent.Font = new System.Drawing.Font("Cascadia Code", 25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.lblDateEvent.Location = new System.Drawing.Point(75, 135);
             this.lblDateEvent.Name = "lblDateEvent";
-            this.lblDateEvent.Size = new System.Drawing.Size(105, 33);
+            this.lblDateEvent.Size = new System.Drawing.Size(0, 33);
             this.lblDateEvent.TabIndex = 0;
-            this.lblDateEvent.Text = "<Date>";
             // 
             // grpFormEvent
             // 
@@ -1027,13 +1025,15 @@
             // 
             // btnGeneratePdf
             // 
+            this.btnGeneratePdf.BackColor = System.Drawing.Color.Transparent;
+            this.btnGeneratePdf.FlatAppearance.BorderSize = 0;
             this.btnGeneratePdf.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGeneratePdf.Image = ((System.Drawing.Image)(resources.GetObject("btnGeneratePdf.Image")));
             this.btnGeneratePdf.Location = new System.Drawing.Point(1727, 12);
             this.btnGeneratePdf.Name = "btnGeneratePdf";
             this.btnGeneratePdf.Size = new System.Drawing.Size(64, 64);
             this.btnGeneratePdf.TabIndex = 23;
-            this.btnGeneratePdf.UseVisualStyleBackColor = true;
+            this.btnGeneratePdf.UseVisualStyleBackColor = false;
             this.btnGeneratePdf.Click += new System.EventHandler(this.button1_Click);
             // 
             // FormulaireMission
