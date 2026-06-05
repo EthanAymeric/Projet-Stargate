@@ -79,6 +79,7 @@
             this.textBoxLogin.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.textBoxLogin.Location = new System.Drawing.Point(232, 52);
             this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.ShortcutsEnabled = false;
             this.textBoxLogin.Size = new System.Drawing.Size(183, 25);
             this.textBoxLogin.TabIndex = 3;
             this.textBoxLogin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxLogin_KeyPress);
@@ -88,6 +89,7 @@
             this.textBoxMdp.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.textBoxMdp.Location = new System.Drawing.Point(232, 115);
             this.textBoxMdp.Name = "textBoxMdp";
+            this.textBoxMdp.ShortcutsEnabled = false;
             this.textBoxMdp.Size = new System.Drawing.Size(183, 25);
             this.textBoxMdp.TabIndex = 4;
             this.textBoxMdp.UseSystemPasswordChar = true;

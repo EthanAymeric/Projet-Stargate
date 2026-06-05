@@ -245,6 +245,7 @@
             this.txtNomEspece.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.txtNomEspece.Location = new System.Drawing.Point(177, 53);
             this.txtNomEspece.Name = "txtNomEspece";
+            this.txtNomEspece.ShortcutsEnabled = false;
             this.txtNomEspece.Size = new System.Drawing.Size(222, 25);
             this.txtNomEspece.TabIndex = 7;
             this.txtNomEspece.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNomEspece_KeyPress);

@@ -175,6 +175,7 @@
             this.richTextBoxFeuilleRoute.Font = new System.Drawing.Font("Cascadia Code", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.richTextBoxFeuilleRoute.Location = new System.Drawing.Point(42, 367);
             this.richTextBoxFeuilleRoute.Name = "richTextBoxFeuilleRoute";
+            this.richTextBoxFeuilleRoute.ShortcutsEnabled = false;
             this.richTextBoxFeuilleRoute.Size = new System.Drawing.Size(694, 168);
             this.richTextBoxFeuilleRoute.TabIndex = 12;
             this.richTextBoxFeuilleRoute.Text = "";

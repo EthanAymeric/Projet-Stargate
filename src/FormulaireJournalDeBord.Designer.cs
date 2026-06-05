@@ -160,6 +160,7 @@
             this.txtCaptures.Name = "txtCaptures";
             this.txtCaptures.ReadOnly = true;
             this.txtCaptures.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtCaptures.ShortcutsEnabled = false;
             this.txtCaptures.Size = new System.Drawing.Size(430, 184);
             this.txtCaptures.TabIndex = 0;
             this.txtCaptures.Text = "";
@@ -234,6 +235,7 @@
             this.txtFeuilleRoute.Name = "txtFeuilleRoute";
             this.txtFeuilleRoute.ReadOnly = true;
             this.txtFeuilleRoute.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
+            this.txtFeuilleRoute.ShortcutsEnabled = false;
             this.txtFeuilleRoute.Size = new System.Drawing.Size(541, 640);
             this.txtFeuilleRoute.TabIndex = 6;
             this.txtFeuilleRoute.Text = "";
@@ -502,6 +504,7 @@
             // 
             this.rtxtCommentaire.Location = new System.Drawing.Point(52, 154);
             this.rtxtCommentaire.Name = "rtxtCommentaire";
+            this.rtxtCommentaire.ShortcutsEnabled = false;
             this.rtxtCommentaire.Size = new System.Drawing.Size(727, 89);
             this.rtxtCommentaire.TabIndex = 6;
             this.rtxtCommentaire.Text = "";
@@ -567,6 +570,7 @@
             // 
             this.txtNombre.Location = new System.Drawing.Point(230, 81);
             this.txtNombre.Name = "txtNombre";
+            this.txtNombre.ShortcutsEnabled = false;
             this.txtNombre.Size = new System.Drawing.Size(142, 25);
             this.txtNombre.TabIndex = 11;
             this.txtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombre_KeyPress);
@@ -638,6 +642,7 @@
             this.rtxtMotifDepense.Location = new System.Drawing.Point(52, 154);
             this.rtxtMotifDepense.Margin = new System.Windows.Forms.Padding(2);
             this.rtxtMotifDepense.Name = "rtxtMotifDepense";
+            this.rtxtMotifDepense.ShortcutsEnabled = false;
             this.rtxtMotifDepense.Size = new System.Drawing.Size(727, 89);
             this.rtxtMotifDepense.TabIndex = 10;
             this.rtxtMotifDepense.Text = "";
@@ -648,6 +653,7 @@
             this.txtMontantDepense.Location = new System.Drawing.Point(230, 81);
             this.txtMontantDepense.Margin = new System.Windows.Forms.Padding(2);
             this.txtMontantDepense.Name = "txtMontantDepense";
+            this.txtMontantDepense.ShortcutsEnabled = false;
             this.txtMontantDepense.Size = new System.Drawing.Size(142, 25);
             this.txtMontantDepense.TabIndex = 9;
             this.txtMontantDepense.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontantDepense_KeyPress);
@@ -765,6 +771,7 @@
             // 
             this.rtxtAppreciation.Location = new System.Drawing.Point(52, 154);
             this.rtxtAppreciation.Name = "rtxtAppreciation";
+            this.rtxtAppreciation.ShortcutsEnabled = false;
             this.rtxtAppreciation.Size = new System.Drawing.Size(727, 89);
             this.rtxtAppreciation.TabIndex = 14;
             this.rtxtAppreciation.Text = "";
@@ -792,6 +799,7 @@
             // 
             this.txtSomme.Location = new System.Drawing.Point(230, 81);
             this.txtSomme.Name = "txtSomme";
+            this.txtSomme.ShortcutsEnabled = false;
             this.txtSomme.Size = new System.Drawing.Size(142, 25);
             this.txtSomme.TabIndex = 11;
             this.txtSomme.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMontantDepense_KeyPress);
