@@ -88,14 +88,13 @@
             // 
             // btnNouvelleMission
             // 
-            this.btnNouvelleMission.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btnNouvelleMission.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
             this.btnNouvelleMission.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnNouvelleMission.FlatAppearance.BorderSize = 2;
             this.btnNouvelleMission.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnNouvelleMission.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnNouvelleMission.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnNouvelleMission.Location = new System.Drawing.Point(13, 440);
+            this.btnNouvelleMission.Location = new System.Drawing.Point(12, 12);
             this.btnNouvelleMission.Name = "btnNouvelleMission";
             this.btnNouvelleMission.Size = new System.Drawing.Size(213, 72);
             this.btnNouvelleMission.TabIndex = 2;
@@ -112,7 +111,7 @@
             this.btnRaces.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnRaces.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnRaces.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnRaces.Location = new System.Drawing.Point(13, 552);
+            this.btnRaces.Location = new System.Drawing.Point(12, 552);
             this.btnRaces.Name = "btnRaces";
             this.btnRaces.Size = new System.Drawing.Size(213, 72);
             this.btnRaces.TabIndex = 3;
@@ -129,7 +128,7 @@
             this.btnPlanetes.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnPlanetes.Font = new System.Drawing.Font("Cascadia Code", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnPlanetes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnPlanetes.Location = new System.Drawing.Point(13, 664);
+            this.btnPlanetes.Location = new System.Drawing.Point(12, 664);
             this.btnPlanetes.Name = "btnPlanetes";
             this.btnPlanetes.Size = new System.Drawing.Size(213, 72);
             this.btnPlanetes.TabIndex = 4;
@@ -144,7 +143,7 @@
             this.pnlPlanetes.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pnlPlanetes.Location = new System.Drawing.Point(268, 89);
             this.pnlPlanetes.Name = "pnlPlanetes";
-            this.pnlPlanetes.Size = new System.Drawing.Size(1418, 567);
+            this.pnlPlanetes.Size = new System.Drawing.Size(1418, 850);
             this.pnlPlanetes.TabIndex = 6;
             this.pnlPlanetes.WrapContents = false;
             // 
@@ -154,7 +153,7 @@
             this.pnlEspeces.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pnlEspeces.Location = new System.Drawing.Point(268, 88);
             this.pnlEspeces.Name = "pnlEspeces";
-            this.pnlEspeces.Size = new System.Drawing.Size(1418, 568);
+            this.pnlEspeces.Size = new System.Drawing.Size(1418, 605);
             this.pnlEspeces.TabIndex = 7;
             // 
             // grpEspeces
@@ -170,7 +169,7 @@
             this.grpEspeces.Controls.Add(this.rdbEnnemis);
             this.grpEspeces.Controls.Add(this.rdbAllies);
             this.grpEspeces.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
-            this.grpEspeces.Location = new System.Drawing.Point(268, 630);
+            this.grpEspeces.Location = new System.Drawing.Point(262, 699);
             this.grpEspeces.Name = "grpEspeces";
             this.grpEspeces.Size = new System.Drawing.Size(1418, 240);
             this.grpEspeces.TabIndex = 0;
@@ -184,7 +183,7 @@
             this.lblIndicationCouleur.Location = new System.Drawing.Point(168, 157);
             this.lblIndicationCouleur.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIndicationCouleur.Name = "lblIndicationCouleur";
-            this.lblIndicationCouleur.Size = new System.Drawing.Size(57, 17);
+            this.lblIndicationCouleur.Size = new System.Drawing.Size(81, 25);
             this.lblIndicationCouleur.TabIndex = 11;
             this.lblIndicationCouleur.Text = "Couleur";
             // 
@@ -195,7 +194,7 @@
             this.lblIndicationPlanete.Location = new System.Drawing.Point(168, 125);
             this.lblIndicationPlanete.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblIndicationPlanete.Name = "lblIndicationPlanete";
-            this.lblIndicationPlanete.Size = new System.Drawing.Size(56, 17);
+            this.lblIndicationPlanete.Size = new System.Drawing.Size(78, 25);
             this.lblIndicationPlanete.TabIndex = 10;
             this.lblIndicationPlanete.Text = "Planète";
             // 
@@ -208,7 +207,7 @@
             this.cboPlanete.Location = new System.Drawing.Point(16, 123);
             this.cboPlanete.Margin = new System.Windows.Forms.Padding(2);
             this.cboPlanete.Name = "cboPlanete";
-            this.cboPlanete.Size = new System.Drawing.Size(149, 24);
+            this.cboPlanete.Size = new System.Drawing.Size(149, 33);
             this.cboPlanete.TabIndex = 9;
             this.cboPlanete.SelectedIndexChanged += new System.EventHandler(this.cboPlanete_SelectedIndexChanged);
             // 
@@ -277,7 +276,7 @@
             this.rdbEnnemis.Location = new System.Drawing.Point(16, 55);
             this.rdbEnnemis.Margin = new System.Windows.Forms.Padding(2);
             this.rdbEnnemis.Name = "rdbEnnemis";
-            this.rdbEnnemis.Size = new System.Drawing.Size(171, 24);
+            this.rdbEnnemis.Size = new System.Drawing.Size(178, 24);
             this.rdbEnnemis.TabIndex = 1;
             this.rdbEnnemis.TabStop = true;
             this.rdbEnnemis.Text = "Espèces Ennemies";
@@ -290,7 +289,7 @@
             this.rdbAllies.Location = new System.Drawing.Point(16, 32);
             this.rdbAllies.Margin = new System.Windows.Forms.Padding(2);
             this.rdbAllies.Name = "rdbAllies";
-            this.rdbAllies.Size = new System.Drawing.Size(162, 24);
+            this.rdbAllies.Size = new System.Drawing.Size(169, 24);
             this.rdbAllies.TabIndex = 0;
             this.rdbAllies.TabStop = true;
             this.rdbAllies.Text = "Espèces Alliées";
@@ -302,7 +301,7 @@
             this.pnlAllies.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pnlAllies.Location = new System.Drawing.Point(268, 88);
             this.pnlAllies.Name = "pnlAllies";
-            this.pnlAllies.Size = new System.Drawing.Size(1418, 544);
+            this.pnlAllies.Size = new System.Drawing.Size(1418, 605);
             this.pnlAllies.TabIndex = 8;
             // 
             // pnlEnnemis
@@ -311,7 +310,7 @@
             this.pnlEnnemis.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.pnlEnnemis.Location = new System.Drawing.Point(268, 88);
             this.pnlEnnemis.Name = "pnlEnnemis";
-            this.pnlEnnemis.Size = new System.Drawing.Size(1418, 544);
+            this.pnlEnnemis.Size = new System.Drawing.Size(1418, 605);
             this.pnlEnnemis.TabIndex = 9;
             // 
             // pnlTDB
@@ -322,7 +321,7 @@
             this.pnlTDB.Location = new System.Drawing.Point(6, 30);
             this.pnlTDB.MaximumSize = new System.Drawing.Size(1418, 783);
             this.pnlTDB.Name = "pnlTDB";
-            this.pnlTDB.Size = new System.Drawing.Size(1406, 568);
+            this.pnlTDB.Size = new System.Drawing.Size(1406, 643);
             this.pnlTDB.TabIndex = 0;
             this.pnlTDB.WrapContents = false;
             // 
@@ -333,9 +332,9 @@
             this.btnSwitchTheme.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSwitchTheme.Font = new System.Drawing.Font("Cascadia Code", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.btnSwitchTheme.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
-            this.btnSwitchTheme.Location = new System.Drawing.Point(1796, 12);
+            this.btnSwitchTheme.Location = new System.Drawing.Point(1679, 12);
             this.btnSwitchTheme.Name = "btnSwitchTheme";
-            this.btnSwitchTheme.Size = new System.Drawing.Size(97, 51);
+            this.btnSwitchTheme.Size = new System.Drawing.Size(213, 72);
             this.btnSwitchTheme.TabIndex = 5;
             this.btnSwitchTheme.Text = "Theme Sombre";
             this.btnSwitchTheme.UseVisualStyleBackColor = false;
@@ -427,31 +426,35 @@
             this.grpTableauDeBord.Font = new System.Drawing.Font("Cascadia Code", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel, ((byte)(0)));
             this.grpTableauDeBord.Location = new System.Drawing.Point(268, 266);
             this.grpTableauDeBord.Name = "grpTableauDeBord";
-            this.grpTableauDeBord.Size = new System.Drawing.Size(1418, 605);
+            this.grpTableauDeBord.Size = new System.Drawing.Size(1418, 673);
             this.grpTableauDeBord.TabIndex = 10;
             this.grpTableauDeBord.TabStop = false;
             this.grpTableauDeBord.Text = "Nombre de mission trouvée : ";
             // 
             // btnStats
             // 
-            this.btnStats.Location = new System.Drawing.Point(0, 0);
+            this.btnStats.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btnStats.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(85)))), ((int)(((byte)(247)))));
+            this.btnStats.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnStats.Font = new System.Drawing.Font("Cascadia Code", 15.7F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
+            this.btnStats.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(10)))), ((int)(((byte)(60)))));
+            this.btnStats.Location = new System.Drawing.Point(12, 440);
             this.btnStats.Name = "btnStats";
             this.btnStats.Size = new System.Drawing.Size(213, 72);
             this.btnStats.TabIndex = 10;
             this.btnStats.Text = "Statistiques";
-            this.btnStats.UseVisualStyleBackColor = true;
+            this.btnStats.UseVisualStyleBackColor = false;
             this.btnStats.Click += new System.EventHandler(this.btnStats_Click);
             // 
             // pnlStats
             // 
             this.pnlStats.AutoScroll = true;
-            this.pnlStats.AutoSize = true;
             this.pnlStats.Controls.Add(this.cboStats2);
             this.pnlStats.Controls.Add(this.cboStats1);
-            this.pnlStats.Location = new System.Drawing.Point(268, 88);
+            this.pnlStats.Location = new System.Drawing.Point(268, 107);
             this.pnlStats.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.pnlStats.Name = "pnlStats";
-            this.pnlStats.Size = new System.Drawing.Size(1406, 1209);
+            this.pnlStats.Size = new System.Drawing.Size(854, 832);
             this.pnlStats.TabIndex = 7;
             // 
             // cboStats2
@@ -463,7 +466,7 @@
             this.cboStats2.Location = new System.Drawing.Point(13, 1181);
             this.cboStats2.Margin = new System.Windows.Forms.Padding(2);
             this.cboStats2.Name = "cboStats2";
-            this.cboStats2.Size = new System.Drawing.Size(240, 26);
+            this.cboStats2.Size = new System.Drawing.Size(240, 34);
             this.cboStats2.TabIndex = 2;
             this.cboStats2.SelectedIndexChanged += new System.EventHandler(this.cboStats2_SelectedIndexChanged);
             // 
@@ -476,7 +479,7 @@
             this.cboStats1.Location = new System.Drawing.Point(13, 169);
             this.cboStats1.Margin = new System.Windows.Forms.Padding(2);
             this.cboStats1.Name = "cboStats1";
-            this.cboStats1.Size = new System.Drawing.Size(240, 26);
+            this.cboStats1.Size = new System.Drawing.Size(240, 34);
             this.cboStats1.TabIndex = 1;
             this.cboStats1.SelectedIndexChanged += new System.EventHandler(this.cboStats1_SelectedIndexChanged);
             // 
@@ -496,10 +499,10 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.grpEspeces);
             this.Controls.Add(this.grpTableauDeBord);
             this.Controls.Add(this.btnNouvelleMission);
             this.Controls.Add(this.grpFiltreMission);
-            this.Controls.Add(this.grpEspeces);
             this.Controls.Add(this.pnlPlanetes);
             this.Controls.Add(this.pnlEnnemis);
             this.Controls.Add(this.pnlAllies);
@@ -525,7 +528,6 @@
             this.pnlStats.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
