@@ -27,7 +27,7 @@ Projet Stargate est une application réalisée sur Windows Forms développée en
 
 ### Tableau de bord
 
-
+C'est un menu principal à partir duquel l'utilisateur peut choisir d'accéder à différentes sections de l'application.
 
 <CAPTURE D'ECRAN>
 
@@ -35,9 +35,14 @@ Projet Stargate est une application réalisée sur Windows Forms développée en
 
 #### Authentification
 
+Il est possible de créer une mission de toute pièce.
+Cela nécessite tout d'abord de s'identifier, comme on ne souhaite pas autoriser n'importe qui à rajouter des missions.
+
 <CAPTURE D'ECRAN>
 
 #### Ajout des informations
+
+
 
 <CAPTURE D'ECRAN>
 
