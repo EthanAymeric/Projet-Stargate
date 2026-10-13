@@ -13,7 +13,7 @@ Projet Stargate est une application réalisée sur Windows Forms développée en
 ## 🛠️ Tutoriel d'installation
 
 - Créez un clône local de ce dépôt. Assurez-vous d'avoir une version récente de Visual Studio et de Windows.
-- 
+- Ouvrez le fichier
 
 ---
 
@@ -38,26 +38,21 @@ C'est un menu principal à partir duquel l'utilisateur peut choisir d'accéder �
 Il est possible de créer une mission de toute pièce.
 Cela nécessite tout d'abord de s'identifier, comme on ne souhaite pas autoriser n'importe qui à rajouter des missions.
 
-<CAPTURE D'ECRAN>
-
 #### Ajout des informations
 
-
-
-<CAPTURE D'ECRAN>
+Une fois authentifié, il est possible de créer une nouvelle mission, avec toutes les informations qui lui sont liés.
 
 ### Recherche des espèces 
 
-<CAPTURE D'ECRAN>
+Les espèces peuvent être recherchées de plein de manières différentes.
 
 ### Informations sur les planètes 
 
-<CAPTURE D'ECRAN>
-
+De la même manière que les espèces, il est possible de trier et rechercher les planètes selon des critères qui leur sont propres.
 
 ### Statistiques 
 
-<CAPTURE D'ECRAN>
+
 
 ---
 
