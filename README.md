@@ -29,8 +29,6 @@ Projet Stargate est une application réalisée sur Windows Forms développée en
 
 C'est un menu principal à partir duquel l'utilisateur peut choisir d'accéder à différentes sections de l'application.
 
-<CAPTURE D'ECRAN>
-
 ### Création de mission 
 
 #### Authentification
@@ -50,15 +48,6 @@ Les espèces peuvent être recherchées de plein de manières différentes.
 
 De la même manière que les espèces, il est possible de trier et rechercher les planètes selon des critères qui leur sont propres.
 
-### Statistiques 
-
-
-
----
-
-## ❓ Informations complémentaires 
-
----
 
 ## 📝 Auteurs 
 
